@@ -1,0 +1,793 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_3_Readman_.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}10 Jan 2025, 15:20:46
+{txt}
+{com}. //_1
+. cd "~/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis"
+{res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis
+{txt}
+{com}. global ex=3
+{txt}
+{com}. global lname="Readman"
+{txt}
+{com}. global eyear=2024
+{txt}
+{com}. //_2
+. clear
+{txt}
+{com}. append using "../Data/morg79.dta" "../Data/morg80.dta" "../Data/morg81.dta"
+{txt}(label {bf:{txt}prunecat} already defined)
+(label {bf:{txt}ptstat} already defined)
+(label {bf:{txt}ftpt79} already defined)
+(label {bf:{txt}why35lw} already defined)
+(label {bf:{txt}absentlw} already defined)
+(label {bf:{txt}reasonlw} already defined)
+(label {bf:{txt}uhours35} already defined)
+(label {bf:{txt}doinglw} already defined)
+(label {bf:{txt}activlwr} already defined)
+(label {bf:{txt}eligible} already defined)
+(label {bf:{txt}docc70} already defined)
+(label {bf:{txt}dind} already defined)
+(label {bf:{txt}ind70} already defined)
+(label {bf:{txt}esr} already defined)
+(label {bf:{txt}classer} already defined)
+(label {bf:{txt}class} already defined)
+(label {bf:{txt}I25d} already defined)
+(label {bf:{txt}I25c} already defined)
+(label {bf:{txt}I25b} already defined)
+(label {bf:{txt}I25a} already defined)
+(label {bf:{txt}paidhre} already defined)
+(label {bf:{txt}paidhr} already defined)
+(label {bf:{txt}relahh} already defined)
+(label {bf:{txt}gradecp} already defined)
+(label {bf:{txt}veteran} already defined)
+(label {bf:{txt}marital} already defined)
+(label {bf:{txt}ethnic} already defined)
+(label {bf:{txt}race} already defined)
+(label {bf:{txt}sex} already defined)
+(label {bf:{txt}smsarank} already defined)
+(label {bf:{txt}smsa70} already defined)
+(label {bf:{txt}centcity} already defined)
+(label {bf:{txt}smsastat} already defined)
+(label {bf:{txt}state} already defined)
+(label {bf:{txt}intmonth} already defined)
+(label {bf:{txt}minsamp} already defined)
+(label {bf:{txt}prunecat} already defined)
+(label {bf:{txt}ptstat} already defined)
+(label {bf:{txt}ftpt79} already defined)
+(label {bf:{txt}why35lw} already defined)
+(label {bf:{txt}absentlw} already defined)
+(label {bf:{txt}reasonlw} already defined)
+(label {bf:{txt}uhours35} already defined)
+(label {bf:{txt}doinglw} already defined)
+(label {bf:{txt}activlwr} already defined)
+(label {bf:{txt}eligible} already defined)
+(label {bf:{txt}docc70} already defined)
+(label {bf:{txt}dind} already defined)
+(label {bf:{txt}ind70} already defined)
+(label {bf:{txt}esr} already defined)
+(label {bf:{txt}classer} already defined)
+(label {bf:{txt}class} already defined)
+(label {bf:{txt}I25d} already defined)
+(label {bf:{txt}I25c} already defined)
+(label {bf:{txt}I25b} already defined)
+(label {bf:{txt}I25a} already defined)
+(label {bf:{txt}paidhre} already defined)
+(label {bf:{txt}paidhr} already defined)
+(label {bf:{txt}relahh} already defined)
+(label {bf:{txt}gradecp} already defined)
+(label {bf:{txt}veteran} already defined)
+(label {bf:{txt}marital} already defined)
+(label {bf:{txt}ethnic} already defined)
+(label {bf:{txt}race} already defined)
+(label {bf:{txt}sex} already defined)
+(label {bf:{txt}smsarank} already defined)
+(label {bf:{txt}smsa70} already defined)
+(label {bf:{txt}centcity} already defined)
+(label {bf:{txt}smsastat} already defined)
+(label {bf:{txt}state} already defined)
+(label {bf:{txt}intmonth} already defined)
+(label {bf:{txt}minsamp} already defined)
+
+{com}. keep year intmonth minsamp classer esr age race sex gradeat uhours earnwke earnwt
+{txt}
+{com}. //_3
+. describe
+
+{txt}Contains data
+ Observations:{res}     1,078,331                  
+{txt}    Variables:{res}            12                  
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:minsamp        }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:minsamp  }{bind:  }{res}{res}Month in sample (4 & 8 are departing){p_end}
+{p 0 48}{bind:intmonth       }{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:intmonth }{bind:  }{res}{res}Interview month{p_end}
+{p 0 48}{bind:classer        }{txt}{bind: byte    }{bind:%38.0g    }{space 1}{bind:classer  }{bind:  }{res}{res}(e&r) Class of worker{p_end}
+{p 0 48}{bind:age            }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Age{p_end}
+{p 0 48}{bind:race           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:race     }{bind:  }{res}{res}Race{p_end}
+{p 0 48}{bind:sex            }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:sex      }{bind:  }{res}{res}Sex{p_end}
+{p 0 48}{bind:gradeat        }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Highest grade attended{p_end}
+{p 0 48}{bind:esr            }{txt}{bind: byte    }{bind:%24.0g    }{space 1}{bind:esr      }{bind:  }{res}{res}Employment status recode{p_end}
+{p 0 48}{bind:uhours         }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}(dp) Usual hours{p_end}
+{p 0 48}{bind:earnwt         }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}(dp) Earnings weight for all races x100{p_end}
+{p 0 48}{bind:earnwke        }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}(e&dp) Earnings per week{p_end}
+{p 0 48}{bind:year           }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{txt}{hline}
+Sorted by: 
+     Note: {res}Dataset has changed since last saved.
+{txt}
+{com}. summarize
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 5}minsamp {c |}{res}  1,078,331    5.998091           2          4          8
+{txt}{space 4}intmonth {c |}{res}  1,078,331    6.473783     3.46456          1         12
+{txt}{space 5}classer {c |}{res}    824,544    1.390446    .7434256          1          5
+{txt}{space 9}age {c |}{res}  1,078,331    41.97297    18.59911         16         99
+{txt}{space 8}race {c |}{res}  1,078,331    1.150265    .4301182          1          3
+{txt}{hline 13}{c +}{hline 57}
+{space 9}sex {c |}{res}  1,078,331    1.531095    .4990324          1          2
+{txt}{space 5}gradeat {c |}{res}  1,078,331    12.04029    3.102997          0         18
+{txt}{space 9}esr {c |}{res}  1,078,331    2.605366    2.081117          1          7
+{txt}{space 6}uhours {c |}{res}    553,424    37.93656    11.00317         -9         99
+{txt}{space 6}earnwt {c |}{res}  1,078,331    5594.569    2677.213       8.36   69937.99
+{txt}{hline 13}{c +}{hline 57}
+{space 5}earnwke {c |}{res}    558,137    258.6179    172.1354          0        999
+{txt}{space 8}year {c |}{res}  1,078,331    1980.033    .8006286       1979       1981
+{txt}
+{com}. list in -10/l, noobs
+
+  {txt}{c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TRC}
+  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}
+  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}      Private {txt}{c |} {res} 37 {txt}{c |} {res}White {txt}{c |}
+  {c LT}{hline 9}{c +}{hline 10}{c BT}{c TT}{hline 14}{c BT}{hline 5}{c BT}{hline 7}{c RT}
+  {c |}    sex  {c |}  gradeat  {c |}                       esr  {c |}
+  {c |} {res}  Male  {txt}{c |}  {res}     14  {txt}{c |}  {res}        Employed-At Work  {txt}{c |}
+  {c LT}{hline 9}{c BT}{hline 1}{c TT}{hline 9}{c BT}{hline 3}{c TT}{hline 13}{c TT}{hline 10}{c RT}
+  {c |}  uhours   {c |}    earnwt   {c |}   earnwke   {c |}   year   {c |}
+  {c |}  {res}    40   {txt}{c |}   {res}1440.22   {txt}{c |}   {res}    852   {txt}{c |}   {res}1981   {txt}{c |}
+  {c BLC}{hline 11}{c BT}{hline 13}{c BT}{hline 13}{c BT}{hline 10}{c BRC}
+
+  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TRC}
+  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}
+  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}      Private {txt}{c |} {res} 36 {txt}{c |} {res}White {txt}{c |}
+  {c LT}{hline 9}{c +}{hline 10}{c BT}{c TT}{hline 14}{c BT}{hline 5}{c BT}{hline 7}{c RT}
+  {c |}    sex  {c |}  gradeat  {c |}                       esr  {c |}
+  {c |} {res}Female  {txt}{c |}  {res}     12  {txt}{c |}  {res}        Employed-At Work  {txt}{c |}
+  {c LT}{hline 9}{c BT}{hline 1}{c TT}{hline 9}{c BT}{hline 3}{c TT}{hline 13}{c TT}{hline 10}{c RT}
+  {c |}  uhours   {c |}    earnwt   {c |}   earnwke   {c |}   year   {c |}
+  {c |}  {res}    40   {txt}{c |}   {res}1238.05   {txt}{c |}   {res}    400   {txt}{c |}   {res}1981   {txt}{c |}
+  {c BLC}{hline 11}{c BT}{hline 13}{c BT}{hline 13}{c BT}{hline 10}{c BRC}
+
+  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TRC}
+  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}
+  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}      Private {txt}{c |} {res} 16 {txt}{c |} {res}White {txt}{c |}
+  {c LT}{hline 9}{c +}{hline 10}{c BT}{c TT}{hline 14}{c BT}{hline 5}{c BT}{hline 7}{c RT}
+  {c |}    sex  {c |}  gradeat  {c |}                       esr  {c |}
+  {c |} {res}  Male  {txt}{c |}  {res}     10  {txt}{c |}  {res}      Unemployed-Looking  {txt}{c |}
+  {c LT}{hline 9}{c BT}{hline 1}{c TT}{hline 9}{c BT}{hline 3}{c TT}{hline 13}{c TT}{hline 10}{c RT}
+  {c |}  uhours   {c |}    earnwt   {c |}   earnwke   {c |}   year   {c |}
+  {c |}  {res}     .   {txt}{c |}   {res}1176.16   {txt}{c |}   {res}      .   {txt}{c |}   {res}1981   {txt}{c |}
+  {c BLC}{hline 11}{c BT}{hline 13}{c BT}{hline 13}{c BT}{hline 10}{c BRC}
+
+  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TRC}
+  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}
+  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}      Private {txt}{c |} {res} 65 {txt}{c |} {res}White {txt}{c |}
+  {c LT}{hline 9}{c +}{hline 10}{c BT}{c TT}{hline 14}{c BT}{hline 5}{c BT}{hline 7}{c RT}
+  {c |}    sex  {c |}  gradeat  {c |}                       esr  {c |}
+  {c |} {res}  Male  {txt}{c |}  {res}     13  {txt}{c |}  {res}        Employed-At Work  {txt}{c |}
+  {c LT}{hline 9}{c BT}{hline 1}{c TT}{hline 9}{c BT}{hline 3}{c TT}{hline 13}{c TT}{hline 10}{c RT}
+  {c |}  uhours   {c |}    earnwt   {c |}   earnwke   {c |}   year   {c |}
+  {c |}  {res}    40   {txt}{c |}   {res}1298.19   {txt}{c |}   {res}    240   {txt}{c |}   {res}1981   {txt}{c |}
+  {c BLC}{hline 11}{c BT}{hline 13}{c BT}{hline 13}{c BT}{hline 10}{c BRC}
+
+  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TRC}
+  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}
+  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}      Private {txt}{c |} {res} 23 {txt}{c |} {res}White {txt}{c |}
+  {c LT}{hline 9}{c +}{hline 10}{c BT}{c TT}{hline 14}{c BT}{hline 5}{c BT}{hline 7}{c RT}
+  {c |}    sex  {c |}  gradeat  {c |}                       esr  {c |}
+  {c |} {res}  Male  {txt}{c |}  {res}     12  {txt}{c |}  {res}        Employed-At Work  {txt}{c |}
+  {c LT}{hline 9}{c BT}{hline 1}{c TT}{hline 9}{c BT}{hline 3}{c TT}{hline 13}{c TT}{hline 10}{c RT}
+  {c |}  uhours   {c |}    earnwt   {c |}   earnwke   {c |}   year   {c |}
+  {c |}  {res}    40   {txt}{c |}   {res}1499.93   {txt}{c |}   {res}    478   {txt}{c |}   {res}1981   {txt}{c |}
+  {c BLC}{hline 11}{c BT}{hline 13}{c BT}{hline 13}{c BT}{hline 10}{c BRC}
+
+  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TRC}
+  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}
+  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}      Private {txt}{c |} {res} 23 {txt}{c |} {res}White {txt}{c |}
+  {c LT}{hline 9}{c +}{hline 10}{c BT}{c TT}{hline 14}{c BT}{hline 5}{c BT}{hline 7}{c RT}
+  {c |}    sex  {c |}  gradeat  {c |}                       esr  {c |}
+  {c |} {res}  Male  {txt}{c |}  {res}     12  {txt}{c |}  {res}        Employed-At Work  {txt}{c |}
+  {c LT}{hline 9}{c BT}{hline 1}{c TT}{hline 9}{c BT}{hline 3}{c TT}{hline 13}{c TT}{hline 10}{c RT}
+  {c |}  uhours   {c |}    earnwt   {c |}   earnwke   {c |}   year   {c |}
+  {c |}  {res}    45   {txt}{c |}   {res} 999.95   {txt}{c |}   {res}    720   {txt}{c |}   {res}1981   {txt}{c |}
+  {c BLC}{hline 11}{c BT}{hline 13}{c BT}{hline 13}{c BT}{hline 10}{c BRC}
+
+  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TRC}
+  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}
+  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}      Private {txt}{c |} {res} 22 {txt}{c |} {res}White {txt}{c |}
+  {c LT}{hline 9}{c +}{hline 10}{c BT}{c TT}{hline 14}{c BT}{hline 5}{c BT}{hline 7}{c RT}
+  {c |}    sex  {c |}  gradeat  {c |}                       esr  {c |}
+  {c |} {res}Female  {txt}{c |}  {res}     15  {txt}{c |}  {res}               Housework  {txt}{c |}
+  {c LT}{hline 9}{c BT}{hline 1}{c TT}{hline 9}{c BT}{hline 3}{c TT}{hline 13}{c TT}{hline 10}{c RT}
+  {c |}  uhours   {c |}    earnwt   {c |}   earnwke   {c |}   year   {c |}
+  {c |}  {res}     .   {txt}{c |}   {res} 931.32   {txt}{c |}   {res}      .   {txt}{c |}   {res}1981   {txt}{c |}
+  {c BLC}{hline 11}{c BT}{hline 13}{c BT}{hline 13}{c BT}{hline 10}{c BRC}
+
+  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TRC}
+  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}
+  {c |} {res}  MIS 4 {txt}{c |} {res}December {txt}{c |} {res}      Private {txt}{c |} {res} 21 {txt}{c |} {res}Other {txt}{c |}
+  {c LT}{hline 9}{c +}{hline 10}{c BT}{c TT}{hline 14}{c BT}{hline 5}{c BT}{hline 7}{c RT}
+  {c |}    sex  {c |}  gradeat  {c |}                       esr  {c |}
+  {c |} {res}Female  {txt}{c |}  {res}     12  {txt}{c |}  {res}Other (Includes Retired)  {txt}{c |}
+  {c LT}{hline 9}{c BT}{hline 1}{c TT}{hline 9}{c BT}{hline 3}{c TT}{hline 13}{c TT}{hline 10}{c RT}
+  {c |}  uhours   {c |}    earnwt   {c |}   earnwke   {c |}   year   {c |}
+  {c |}  {res}     .   {txt}{c |}   {res}1005.17   {txt}{c |}   {res}      .   {txt}{c |}   {res}1981   {txt}{c |}
+  {c BLC}{hline 11}{c BT}{hline 13}{c BT}{hline 13}{c BT}{hline 10}{c BRC}
+
+  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TRC}
+  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}
+  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}Self-Employed {txt}{c |} {res} 24 {txt}{c |} {res}Other {txt}{c |}
+  {c LT}{hline 9}{c +}{hline 10}{c BT}{c TT}{hline 14}{c BT}{hline 5}{c BT}{hline 7}{c RT}
+  {c |}    sex  {c |}  gradeat  {c |}                       esr  {c |}
+  {c |} {res}  Male  {txt}{c |}  {res}     12  {txt}{c |}  {res}Other (Includes Retired)  {txt}{c |}
+  {c LT}{hline 9}{c BT}{hline 1}{c TT}{hline 9}{c BT}{hline 3}{c TT}{hline 13}{c TT}{hline 10}{c RT}
+  {c |}  uhours   {c |}    earnwt   {c |}   earnwke   {c |}   year   {c |}
+  {c |}  {res}     .   {txt}{c |}   {res}  277.2   {txt}{c |}   {res}      .   {txt}{c |}   {res}1981   {txt}{c |}
+  {c BLC}{hline 11}{c BT}{hline 13}{c BT}{hline 13}{c BT}{hline 10}{c BRC}
+
+  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TRC}
+  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}
+  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}  Without Pay {txt}{c |} {res} 23 {txt}{c |} {res}Other {txt}{c |}
+  {c LT}{hline 9}{c +}{hline 10}{c BT}{c TT}{hline 14}{c BT}{hline 5}{c BT}{hline 7}{c RT}
+  {c |}    sex  {c |}  gradeat  {c |}                       esr  {c |}
+  {c |} {res}Female  {txt}{c |}  {res}     12  {txt}{c |}  {res}               Housework  {txt}{c |}
+  {c LT}{hline 9}{c BT}{hline 1}{c TT}{hline 9}{c BT}{hline 3}{c TT}{hline 13}{c TT}{hline 10}{c RT}
+  {c |}  uhours   {c |}    earnwt   {c |}   earnwke   {c |}   year   {c |}
+  {c |}  {res}     .   {txt}{c |}   {res} 356.72   {txt}{c |}   {res}      .   {txt}{c |}   {res}1981   {txt}{c |}
+  {c BLC}{hline 11}{c BT}{hline 13}{c BT}{hline 13}{c BT}{hline 10}{c BRC}
+
+{com}. //_4
+. rename (minsamp intmonth) (mish month)
+{res}{txt}
+{com}. label define MONTH 1 "january" 2 "february" 3 "march" 4 "april" 5 "may" 6 "june" ///
+>                    7 "july" 8 "august" 9 "september" 10 "october" 11 "november" 12 "december"
+{txt}
+{com}. label values month MONTH
+{txt}
+{com}. label define MISH 4 "four" 8 "eight"
+{txt}
+{com}. label values mish MISH
+{txt}
+{com}. tabulate month mish
+
+           {txt}{c |} Month in sample (4 &
+ Interview {c |}   8 are departing)
+     month {c |}      four      eight {c |}     Total
+{hline 11}{c +}{hline 22}{c +}{hline 10}
+   january {c |}{res}    45,207     45,572 {txt}{c |}{res}    90,779 
+{txt}  february {c |}{res}    45,926     46,101 {txt}{c |}{res}    92,027 
+{txt}     march {c |}{res}    45,797     45,927 {txt}{c |}{res}    91,724 
+{txt}     april {c |}{res}    46,202     46,216 {txt}{c |}{res}    92,418 
+{txt}       may {c |}{res}    43,970     43,524 {txt}{c |}{res}    87,494 
+{txt}      june {c |}{res}    43,302     43,717 {txt}{c |}{res}    87,019 
+{txt}      july {c |}{res}    45,241     44,798 {txt}{c |}{res}    90,039 
+{txt}    august {c |}{res}    44,918     44,468 {txt}{c |}{res}    89,386 
+{txt} september {c |}{res}    44,257     44,291 {txt}{c |}{res}    88,548 
+{txt}   october {c |}{res}    44,715     44,211 {txt}{c |}{res}    88,926 
+{txt}  november {c |}{res}    44,624     44,961 {txt}{c |}{res}    89,585 
+{txt}  december {c |}{res}    45,521     44,865 {txt}{c |}{res}    90,386 
+{txt}{hline 11}{c +}{hline 22}{c +}{hline 10}
+     Total {c |}{res}   539,680    538,651 {txt}{c |}{res} 1,078,331 
+{txt}
+{com}. //_5
+. numlabel classer, add
+{res}{txt}
+{com}. tabulate classer
+
+                  {txt}(e&r) Class of worker {c |}      Freq.     Percent        Cum.
+{hline 40}{c +}{hline 35}
+                             1. Private {c |}{res}    606,926       73.61       73.61
+{txt}                          2. Government {c |}{res}    133,281       16.16       89.77
+{txt}                       3. Self-Employed {c |}{res}     69,780        8.46       98.23
+{txt}                         4. Without Pay {c |}{res}      9,129        1.11       99.34
+{txt}5. Never worked or never worked full-ti {c |}{res}      5,428        0.66      100.00
+{txt}{hline 40}{c +}{hline 35}
+                                  Total {c |}{res}    824,544      100.00
+{txt}
+{com}. keep if inrange(age, 18, 64) & (classer == 1 | classer == 2)
+{txt}(404,512 observations deleted)
+
+{com}. //_6
+. describe
+
+{txt}Contains data
+ Observations:{res}       673,819                  
+{txt}    Variables:{res}            12                  
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:mish           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:MISH     }{bind:  }{res}{res}Month in sample (4 & 8 are departing){p_end}
+{p 0 48}{bind:month          }{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:MONTH    }{bind:  }{res}{res}Interview month{p_end}
+{p 0 48}{bind:classer        }{txt}{bind: byte    }{bind:%41.0g    }{space 1}{bind:classer  }{bind:  }{res}{res}(e&r) Class of worker{p_end}
+{p 0 48}{bind:age            }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Age{p_end}
+{p 0 48}{bind:race           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:race     }{bind:  }{res}{res}Race{p_end}
+{p 0 48}{bind:sex            }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:sex      }{bind:  }{res}{res}Sex{p_end}
+{p 0 48}{bind:gradeat        }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Highest grade attended{p_end}
+{p 0 48}{bind:esr            }{txt}{bind: byte    }{bind:%24.0g    }{space 1}{bind:esr      }{bind:  }{res}{res}Employment status recode{p_end}
+{p 0 48}{bind:uhours         }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}(dp) Usual hours{p_end}
+{p 0 48}{bind:earnwt         }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}(dp) Earnings weight for all races x100{p_end}
+{p 0 48}{bind:earnwke        }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}(e&dp) Earnings per week{p_end}
+{p 0 48}{bind:year           }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{txt}{hline}
+Sorted by: 
+     Note: {res}Dataset has changed since last saved.
+{txt}
+{com}. summarize
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 8}mish {c |}{res}    673,819    5.995753    1.999997          4          8
+{txt}{space 7}month {c |}{res}    673,819    6.476002    3.468601          1         12
+{txt}{space 5}classer {c |}{res}    673,819    1.183076     .386729          1          2
+{txt}{space 9}age {c |}{res}    673,819    36.19307    13.07602         18         64
+{txt}{space 8}race {c |}{res}    673,819    1.155333    .4378069          1          3
+{txt}{hline 13}{c +}{hline 57}
+{space 9}sex {c |}{res}    673,819    1.482793    .4997042          1          2
+{txt}{space 5}gradeat {c |}{res}    673,819    12.73748    2.738672          0         18
+{txt}{space 9}esr {c |}{res}    673,819    1.727454    1.485632          1          7
+{txt}{space 6}uhours {c |}{res}    518,465    38.83527    10.12022         -8         99
+{txt}{space 6}earnwt {c |}{res}    673,819     5669.77    2694.698      11.03   69937.99
+{txt}{hline 13}{c +}{hline 57}
+{space 5}earnwke {c |}{res}    524,729    268.6182    170.3658          0        999
+{txt}{space 8}year {c |}{res}    673,819    1980.035    .8006011       1979       1981
+{txt}
+{com}. summarize earnwke, detail
+
+                  {txt}(e&dp) Earnings per week
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}       24              0
+{txt} 5%    {res}       60              0
+{txt}10%    {res}       94              0       {txt}Obs         {res}    524,729
+{txt}25%    {res}      150              0       {txt}Sum of wgt. {res}    524,729
+
+{txt}50%    {res}      233                      {txt}Mean          {res} 268.6182
+                        {txt}Largest       Std. dev.     {res} 170.3658
+{txt}75%    {res}      350            999
+{txt}90%    {res}      490            999       {txt}Variance      {res} 29024.51
+{txt}95%    {res}      600            999       {txt}Skewness      {res} 1.448418
+{txt}99%    {res}      900            999       {txt}Kurtosis      {res} 6.025732
+{txt}
+{com}. tab year if earnwke == .
+
+       {txt}year {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+       1979 {c |}{res}     43,640       29.27       29.27
+{txt}       1980 {c |}{res}     53,626       35.97       65.24
+{txt}       1981 {c |}{res}     51,824       34.76      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}    149,090      100.00
+{txt}
+{com}. //_7
+. import excel using "../Data/SeriesReport-20250109151624_b18e88.xlsx", cellrange(A12:M124) firstrow clear
+{res}{text}(13 vars, 112 obs)
+
+{com}. describe
+
+{txt}Contains data
+ Observations:{res}           112                  
+{txt}    Variables:{res}            13                  
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:Year           }{txt}{bind: int     }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Year{p_end}
+{p 0 48}{bind:Jan            }{txt}{bind: double  }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Jan{p_end}
+{p 0 48}{bind:Feb            }{txt}{bind: double  }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Feb{p_end}
+{p 0 48}{bind:Mar            }{txt}{bind: double  }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Mar{p_end}
+{p 0 48}{bind:Apr            }{txt}{bind: double  }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Apr{p_end}
+{p 0 48}{bind:May            }{txt}{bind: double  }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}May{p_end}
+{p 0 48}{bind:Jun            }{txt}{bind: double  }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Jun{p_end}
+{p 0 48}{bind:Jul            }{txt}{bind: double  }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Jul{p_end}
+{p 0 48}{bind:Aug            }{txt}{bind: double  }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Aug{p_end}
+{p 0 48}{bind:Sep            }{txt}{bind: double  }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Sep{p_end}
+{p 0 48}{bind:Oct            }{txt}{bind: double  }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Oct{p_end}
+{p 0 48}{bind:Nov            }{txt}{bind: double  }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Nov{p_end}
+{p 0 48}{bind:Dec            }{txt}{bind: double  }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Dec{p_end}
+{txt}{hline}
+Sorted by: 
+     Note: {res}Dataset has changed since last saved.
+{txt}
+{com}. summarize
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 8}Year {c |}{res}        112      1968.5    32.47563       1913       2024
+{txt}{space 9}Jan {c |}{res}        112    87.72178     86.4136        9.8    308.417
+{txt}{space 9}Feb {c |}{res}        112    88.05734    86.84822        9.8    310.326
+{txt}{space 9}Mar {c |}{res}        112    88.46087    87.33292        9.8    312.332
+{txt}{space 9}Apr {c |}{res}        112    88.79369     87.6453        9.8    313.548
+{txt}{hline 13}{c +}{hline 57}
+{space 9}May {c |}{res}        112    89.08363    87.93985        9.7    314.069
+{txt}{space 9}Jun {c |}{res}        112    89.39824    88.22356        9.8    314.175
+{txt}{space 9}Jul {c |}{res}        112    89.58172    88.28814        9.9     314.54
+{txt}{space 9}Aug {c |}{res}        112    89.76936    88.41522        9.9    314.796
+{txt}{space 9}Sep {c |}{res}        112    90.02799     88.5862         10    315.301
+{txt}{hline 13}{c +}{hline 57}
+{space 9}Oct {c |}{res}        112    90.17321     88.6385         10    315.664
+{txt}{space 9}Nov {c |}{res}        112    90.16198    88.48577       10.1    315.493
+{txt}{space 9}Dec {c |}{res}        111    88.09129    86.07916         10    306.746
+{txt}
+{com}. //_8
+. rename Year year // rename to match CPS
+{res}{txt}
+{com}. rename (Jan-Dec) m#, addnumber
+{res}{txt}
+{com}. reshape long m, i(year) j(month)
+{txt}(j = 1 2 3 4 5 6 7 8 9 10 11 12)
+
+Data{col 36}Wide{col 43}->{col 48}Long
+{hline 77}
+Number of observations     {res}         112   {txt}->   {res}1,344       
+{txt}Number of variables        {res}          13   {txt}->   {res}3           
+{txt}j variable (12 values)                    ->   {res}month
+{txt}xij variables:
+                          {res}m1 m2 ... m12   {txt}->   {res}m
+{txt}{hline 77}
+
+{com}. rename m cpi
+{res}{txt}
+{com}. describe
+
+{txt}Contains data
+ Observations:{res}         1,344                  
+{txt}    Variables:{res}             3                  
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:year           }{txt}{bind: int     }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Year{p_end}
+{p 0 48}{bind:month          }{txt}{bind: byte    }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:cpi            }{txt}{bind: double  }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{txt}{hline}
+Sorted by: {res}year  month
+{txt}     Note: {res}Dataset has changed since last saved.
+{txt}
+{com}. //_9
+. label variable month "Month"
+{txt}
+{com}. label variable cpi "Consumer Price Index"
+{txt}
+{com}. format cpi %9.3f
+{txt}
+{com}. //_10
+. sort year month
+{txt}
+{com}. list if year>=1982 & year<1984, noobs clean
+{txt}
+    {res}year   month       cpi {txt} 
+    {res}1982       1    94.300 {txt} 
+    {res}1982       2    94.600 {txt} 
+    {res}1982       3    94.500 {txt} 
+    {res}1982       4    94.900 {txt} 
+    {res}1982       5    95.800 {txt} 
+    {res}1982       6    97.000 {txt} 
+    {res}1982       7    97.500 {txt} 
+    {res}1982       8    97.700 {txt} 
+    {res}1982       9    97.900 {txt} 
+    {res}1982      10    98.200 {txt} 
+    {res}1982      11    98.000 {txt} 
+    {res}1982      12    97.600 {txt} 
+    {res}1983       1    97.800 {txt} 
+    {res}1983       2    97.900 {txt} 
+    {res}1983       3    97.900 {txt} 
+    {res}1983       4    98.600 {txt} 
+    {res}1983       5    99.200 {txt} 
+    {res}1983       6    99.500 {txt} 
+    {res}1983       7    99.900 {txt} 
+    {res}1983       8   100.200 {txt} 
+    {res}1983       9   100.700 {txt} 
+    {res}1983      10   101.000 {txt} 
+    {res}1983      11   101.200 {txt} 
+    {res}1983      12   101.300 {txt} 
+
+{com}. //_11
+. summarize
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 8}year {c |}{res}      1,344      1968.5    32.34236       1913       2024
+{txt}{space 7}month {c |}{res}      1,344         6.5    3.453337          1         12
+{txt}{space 9}cpi {c |}{res}      1,343    89.11085    87.39035        9.7    315.664
+{txt}
+{com}. describe
+
+{txt}Contains data
+ Observations:{res}         1,344                  
+{txt}    Variables:{res}             3                  
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:year           }{txt}{bind: int     }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Year{p_end}
+{p 0 48}{bind:month          }{txt}{bind: byte    }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Month{p_end}
+{p 0 48}{bind:cpi            }{txt}{bind: double  }{bind:%9.3f     }{space 1}{bind:         }{bind:  }{res}{res}Consumer Price Index{p_end}
+{txt}{hline}
+Sorted by: {res}year  month
+{txt}     Note: {res}Dataset has changed since last saved.
+{txt}
+{com}. //_12
+. use "../Data/CPS ORGs, 1982-2024, Cleaned.dta", clear
+{txt}
+{com}. describe
+
+{txt}Contains data from {res}../Data/CPS ORGs, 1982-2024, Cleaned.dta
+{txt} Observations:{res}     6,738,088                  
+{txt}    Variables:{res}            22                  9 Jan 2025 16:30
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:year           }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}survey year{p_end}
+{p 0 48}{bind:month          }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:MONTH    }{bind:  }{res}{res}month{p_end}
+{p 0 48}{bind:mish           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:MISH     }{bind:  }{res}{res}month in sample, household level{p_end}
+{p 0 48}{bind:region         }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:REGION   }{bind:  }{res}{res}region and division{p_end}
+{p 0 48}{bind:cpsidv         }{txt}{bind: double  }{bind:%12.0g    }{space 1}{bind:         }{bind:  }{res}{res}validated longitudinal identifier{p_end}
+{p 0 48}{bind:age            }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:AGE      }{bind:  }{res}{res}age{p_end}
+{p 0 48}{bind:female         }{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:FEMALE   }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:race           }{txt}{bind: int     }{bind:%58.0g    }{space 1}{bind:RACE     }{bind:  }{res}{res}race{p_end}
+{p 0 48}{bind:empstat        }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:EMPSTAT  }{bind:  }{res}{res}employment status{p_end}
+{p 0 48}{bind:classwkr       }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:CLASSWKR }{bind:  }{res}{res}class of worker{p_end}
+{p 0 48}{bind:uhrswork1      }{txt}{bind: int     }{bind:%8.0g     }{space 1}{txt}UHRSWORK1{p_end}
+{p 0 48}{space 44}{bind:  }{res}{res}hours usually worked per week at main job{p_end}
+{p 0 48}{bind:grade          }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}highest grade completed{p_end}
+{p 0 48}{bind:earnwt         }{txt}{bind: double  }{bind:%12.0g    }{space 1}{bind:         }{bind:  }{res}{res}earnings weight{p_end}
+{p 0 48}{bind:qearnwee       }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:QEARNWEE }{bind:  }{res}{res}data quality flag for earnweek{p_end}
+{p 0 48}{bind:hourwage       }{txt}{bind: double  }{bind:%12.0g    }{space 1}{bind:HOURWAGE }{bind:  }{res}{res}hourly wage{p_end}
+{p 0 48}{bind:paidhour       }{txt}{bind: byte    }{bind:%15.0g    }{space 1}{bind:PAIDHOUR }{bind:  }{res}{res}paid by the hour{p_end}
+{p 0 48}{bind:union          }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:UNION    }{bind:  }{res}{res}union membership{p_end}
+{p 0 48}{bind:earnweek       }{txt}{bind: double  }{bind:%12.0g    }{space 1}{bind:EARNWEEK }{bind:  }{res}{res}weekly earnings{p_end}
+{p 0 48}{bind:uhrsworkorg    }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}usual hours worked per week, outgoing rotation groups{p_end}
+{p 0 48}{bind:occupation     }{txt}{bind: byte    }{bind:%32.0g    }{space 1}{txt}OCCUPATION{p_end}
+{p 0 48}{space 44}{bind:  }{res}{res}occupation (1-10){p_end}
+{p 0 48}{bind:industry       }{txt}{bind: byte    }{bind:%49.0g    }{space 1}{bind:INDUSTRY }{bind:  }{res}{res}industry (1-11){p_end}
+{p 0 48}{bind:topcode        }{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}topcode indicator{p_end}
+{txt}{hline}
+Sorted by: 
+
+{com}. summarize
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 8}year {c |}{res}  6,738,088    2002.068    12.10799       1982       2024
+{txt}{space 7}month {c |}{res}  6,738,088    6.505521    3.450084          1         12
+{txt}{space 8}mish {c |}{res}  6,738,088    6.003526    1.999997          4          8
+{txt}{space 6}region {c |}{res}  6,738,088    27.35454    10.74259         11         42
+{txt}{space 6}cpsidv {c |}{res}  6,738,088    2.00e+14    1.21e+12   1.98e+14   2.02e+14
+{txt}{hline 13}{c +}{hline 57}
+{space 9}age {c |}{res}  6,738,088    39.04488    12.23483         18         64
+{txt}{space 6}female {c |}{res}  6,738,088    .4877906    .4998509          0          1
+{txt}{space 8}race {c |}{res}  6,738,088     141.819    129.5985        100        700
+{txt}{space 5}empstat {c |}{res}  6,738,088     10.0833    .3995664         10         12
+{txt}{space 4}classwkr {c |}{res}  6,738,088    22.68014    2.121586         13         28
+{txt}{hline 13}{c +}{hline 57}
+{space 3}uhrswork1 {c |}{res}  6,738,088    78.16546     189.717          0        997
+{txt}{space 7}grade {c |}{res}  6,738,088    13.49376    2.614426          0         18
+{txt}{space 6}earnwt {c |}{res}  6,738,088    8652.169    5093.023      90.01   209103.1
+{txt}{space 4}qearnwee {c |}{res}  4,437,930    1.275338    1.864099          0          4
+{txt}{space 4}hourwage {c |}{res}  3,958,207    12.89962    8.767912        .01      99.99
+{txt}{hline 13}{c +}{hline 57}
+{space 4}paidhour {c |}{res}  6,738,088    .5876722    .4922536          0          1
+{txt}{space 7}union {c |}{res}  6,517,337    1.172239    .4198614          1          3
+{txt}{space 4}earnweek {c |}{res}  6,738,088    713.4357    695.7659          0   4326.915
+{txt}{space 1}uhrsworkorg {c |}{res}  2,914,349    36.77634    9.983109          1         99
+{txt}{space 2}occupation {c |}{res}  6,738,088    3.936502     2.59726          1          9
+{txt}{hline 13}{c +}{hline 57}
+{space 4}industry {c |}{res}  6,738,088    6.976406    2.776901          1         11
+{txt}{space 5}topcode {c |}{res}    168,927           1           0          1          1
+{txt}
+{com}. sort year month
+{txt}
+{com}. //_13
+. merge m:1 year month using "../Data/CPI 1982-2024.dta", keep(match)
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}       6,738,088{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. assert _merge ==3
+{txt}
+{com}. drop _merge // do we drop _merge if it works?
+{txt}
+{com}. //_14
+. summarize cpi if year==2024 & month==11, meanonly
+{txt}
+{com}. return list
+
+{txt}scalars:
+                  r(N) =  {res}9687
+              {txt}r(sum_w) =  {res}9687
+                {txt}r(sum) =  {res}3056180.691
+               {txt}r(mean) =  {res}315.493
+                {txt}r(min) =  {res}315.493
+                {txt}r(max) =  {res}315.493
+{txt}
+{com}. scalar cpi_nov24 = r(mean)
+{txt}
+{com}. generate rwage=cpi_nov24*earnweek/cpi // November 2024 dollars
+{txt}
+{com}. label variable rwage "real wage"
+{txt}
+{com}. //_15
+. describe
+
+{txt}Contains data from {res}../Data/CPS ORGs, 1982-2024, Cleaned.dta
+{txt} Observations:{res}     6,738,088                  
+{txt}    Variables:{res}            24                  9 Jan 2025 16:30
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:year           }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}survey year{p_end}
+{p 0 48}{bind:month          }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:MONTH    }{bind:  }{res}{res}month{p_end}
+{p 0 48}{bind:mish           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:MISH     }{bind:  }{res}{res}month in sample, household level{p_end}
+{p 0 48}{bind:region         }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:REGION   }{bind:  }{res}{res}region and division{p_end}
+{p 0 48}{bind:cpsidv         }{txt}{bind: double  }{bind:%12.0g    }{space 1}{bind:         }{bind:  }{res}{res}validated longitudinal identifier{p_end}
+{p 0 48}{bind:age            }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:AGE      }{bind:  }{res}{res}age{p_end}
+{p 0 48}{bind:female         }{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:FEMALE   }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:race           }{txt}{bind: int     }{bind:%58.0g    }{space 1}{bind:RACE     }{bind:  }{res}{res}race{p_end}
+{p 0 48}{bind:empstat        }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:EMPSTAT  }{bind:  }{res}{res}employment status{p_end}
+{p 0 48}{bind:classwkr       }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:CLASSWKR }{bind:  }{res}{res}class of worker{p_end}
+{p 0 48}{bind:uhrswork1      }{txt}{bind: int     }{bind:%8.0g     }{space 1}{txt}UHRSWORK1{p_end}
+{p 0 48}{space 44}{bind:  }{res}{res}hours usually worked per week at main job{p_end}
+{p 0 48}{bind:grade          }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}highest grade completed{p_end}
+{p 0 48}{bind:earnwt         }{txt}{bind: double  }{bind:%12.0g    }{space 1}{bind:         }{bind:  }{res}{res}earnings weight{p_end}
+{p 0 48}{bind:qearnwee       }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:QEARNWEE }{bind:  }{res}{res}data quality flag for earnweek{p_end}
+{p 0 48}{bind:hourwage       }{txt}{bind: double  }{bind:%12.0g    }{space 1}{bind:HOURWAGE }{bind:  }{res}{res}hourly wage{p_end}
+{p 0 48}{bind:paidhour       }{txt}{bind: byte    }{bind:%15.0g    }{space 1}{bind:PAIDHOUR }{bind:  }{res}{res}paid by the hour{p_end}
+{p 0 48}{bind:union          }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:UNION    }{bind:  }{res}{res}union membership{p_end}
+{p 0 48}{bind:earnweek       }{txt}{bind: double  }{bind:%12.0g    }{space 1}{bind:EARNWEEK }{bind:  }{res}{res}weekly earnings{p_end}
+{p 0 48}{bind:uhrsworkorg    }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}usual hours worked per week, outgoing rotation groups{p_end}
+{p 0 48}{bind:occupation     }{txt}{bind: byte    }{bind:%32.0g    }{space 1}{txt}OCCUPATION{p_end}
+{p 0 48}{space 44}{bind:  }{res}{res}occupation (1-10){p_end}
+{p 0 48}{bind:industry       }{txt}{bind: byte    }{bind:%49.0g    }{space 1}{bind:INDUSTRY }{bind:  }{res}{res}industry (1-11){p_end}
+{p 0 48}{bind:topcode        }{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}topcode indicator{p_end}
+{p 0 48}{bind:cpi            }{txt}{bind: double  }{bind:%9.3f     }{space 1}{bind:         }{bind:  }{res}{res}Consumer Price Index{p_end}
+{p 0 48}{bind:rwage          }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}real wage{p_end}
+{txt}{hline}
+Sorted by: 
+     Note: {res}Dataset has changed since last saved.
+{txt}
+{com}. summarize
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 8}year {c |}{res}  6,738,088    2002.068    12.10799       1982       2024
+{txt}{space 7}month {c |}{res}  6,738,088    6.505521    3.450084          1         12
+{txt}{space 8}mish {c |}{res}  6,738,088    6.003526    1.999997          4          8
+{txt}{space 6}region {c |}{res}  6,738,088    27.35454    10.74259         11         42
+{txt}{space 6}cpsidv {c |}{res}  6,738,088    2.00e+14    1.21e+12   1.98e+14   2.02e+14
+{txt}{hline 13}{c +}{hline 57}
+{space 9}age {c |}{res}  6,738,088    39.04488    12.23483         18         64
+{txt}{space 6}female {c |}{res}  6,738,088    .4877906    .4998509          0          1
+{txt}{space 8}race {c |}{res}  6,738,088     141.819    129.5985        100        700
+{txt}{space 5}empstat {c |}{res}  6,738,088     10.0833    .3995664         10         12
+{txt}{space 4}classwkr {c |}{res}  6,738,088    22.68014    2.121586         13         28
+{txt}{hline 13}{c +}{hline 57}
+{space 3}uhrswork1 {c |}{res}  6,738,088    78.16546     189.717          0        997
+{txt}{space 7}grade {c |}{res}  6,738,088    13.49376    2.614426          0         18
+{txt}{space 6}earnwt {c |}{res}  6,738,088    8652.169    5093.023      90.01   209103.1
+{txt}{space 4}qearnwee {c |}{res}  4,437,930    1.275338    1.864099          0          4
+{txt}{space 4}hourwage {c |}{res}  3,958,207    12.89962    8.767912        .01      99.99
+{txt}{hline 13}{c +}{hline 57}
+{space 4}paidhour {c |}{res}  6,738,088    .5876722    .4922536          0          1
+{txt}{space 7}union {c |}{res}  6,517,337    1.172239    .4198614          1          3
+{txt}{space 4}earnweek {c |}{res}  6,738,088    713.4357    695.7659          0   4326.915
+{txt}{space 1}uhrsworkorg {c |}{res}  2,914,349    36.77634    9.983109          1         99
+{txt}{space 2}occupation {c |}{res}  6,738,088    3.936502     2.59726          1          9
+{txt}{hline 13}{c +}{hline 57}
+{space 4}industry {c |}{res}  6,738,088    6.976406    2.776901          1         11
+{txt}{space 5}topcode {c |}{res}    168,927           1           0          1          1
+{txt}{space 9}cpi {c |}{res}  6,738,088    184.1752    56.16483       94.3    315.664
+{txt}{space 7}rwage {c |}{res}  6,738,088    1191.274    993.7875          0   8447.472
+{txt}
+{com}. //_16
+. collapse (mean) mean=rwage /// mean
+>               (p10) p10=rwage /// 10th percentile
+>               (p50) p50=rwage /// 10th percentile
+>               (p90) p90=rwage /// 90th percentile
+>               ,by(year)
+{res}{txt}
+{com}. generate ldiff=ln(p90)-ln(p10)  
+{txt}
+{com}. //_17
+. describe
+
+{txt}Contains data
+ Observations:{res}            43                  
+{txt}    Variables:{res}             6                  
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:year           }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}survey year{p_end}
+{p 0 48}{bind:mean           }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}(mean) rwage{p_end}
+{p 0 48}{bind:p10            }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}(p 10) rwage{p_end}
+{p 0 48}{bind:p50            }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}(p 50) rwage{p_end}
+{p 0 48}{bind:p90            }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}(p 90) rwage{p_end}
+{p 0 48}{bind:ldiff          }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{txt}{hline}
+Sorted by: {res}year
+{txt}     Note: {res}Dataset has changed since last saved.
+{txt}
+{com}. summarize
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 8}year {c |}{res}         43        2003    12.55654       1982       2024
+{txt}{space 8}mean {c |}{res}         43     1199.67    111.0582   1026.876   1429.358
+{txt}{space 9}p10 {c |}{res}         43    353.7921    32.25841   309.6104   427.7871
+{txt}{space 9}p50 {c |}{res}         43    945.1696    59.86531   857.2128   1092.436
+{txt}{space 9}p90 {c |}{res}         43    2248.567    257.4558   1828.463   2756.375
+{txt}{hline 13}{c +}{hline 57}
+{space 7}ldiff {c |}{res}         43    1.846796    .0650292   1.733826   1.975677
+{txt}
+{com}. list in 1/5, noobs
+
+  {txt}{c TLC}{hline 6}{c TT}{hline 10}{c TT}{hline 10}{c TT}{hline 10}{c TT}{hline 10}{c TRC}
+  {c |} year {c |}     mean {c |}      p10 {c |}      p50 {c |}      p90 {c |}
+  {c |} {res}1982 {txt}{c |} {res}1026.876 {txt}{c |} {res}322.9202 {txt}{c |} {res}857.2128 {txt}{c |} {res}1828.463 {txt}{c |}
+  {c LT}{hline 6}{c BT}{hline 10}{c BT}{hline 10}{c BT}{hline 10}{c BT}{hline 10}{c RT}
+  {c |}                        ldiff                     {c |}
+  {c |}                     {res}1.733826                     {txt}{c |}
+  {c BLC}{hline 50}{c BRC}
+
+  {c TLC}{hline 6}{c TT}{hline 10}{c TT}{hline 10}{c TT}{hline 10}{c TT}{hline 10}{c TRC}
+  {c |} year {c |}     mean {c |}      p10 {c |}      p50 {c |}      p90 {c |}
+  {c |} {res}1983 {txt}{c |} {res}1041.898 {txt}{c |} {res}314.8633 {txt}{c |} {res}872.9055 {txt}{c |} {res}1874.216 {txt}{c |}
+  {c LT}{hline 6}{c BT}{hline 10}{c BT}{hline 10}{c BT}{hline 10}{c BT}{hline 10}{c RT}
+  {c |}                        ldiff                     {c |}
+  {c |}                     {res}1.783807                     {txt}{c |}
+  {c BLC}{hline 50}{c BRC}
+
+  {c TLC}{hline 6}{c TT}{hline 10}{c TT}{hline 10}{c TT}{hline 10}{c TT}{hline 10}{c TRC}
+  {c |} year {c |}     mean {c |}      p10 {c |}      p50 {c |}      p90 {c |}
+  {c |} {res}1984 {txt}{c |} {res}1052.158 {txt}{c |} {res}309.6104 {txt}{c |} {res}887.4197 {txt}{c |} {res}1857.662 {txt}{c |}
+  {c LT}{hline 6}{c BT}{hline 10}{c BT}{hline 10}{c BT}{hline 10}{c BT}{hline 10}{c RT}
+  {c |}                        ldiff                     {c |}
+  {c |}                     {res}1.791759                     {txt}{c |}
+  {c BLC}{hline 50}{c BRC}
+
+  {c TLC}{hline 6}{c TT}{hline 10}{c TT}{hline 10}{c TT}{hline 10}{c TT}{hline 10}{c TRC}
+  {c |} year {c |}     mean {c |}      p10 {c |}      p50 {c |}      p90 {c |}
+  {c |} {res}1985 {txt}{c |} {res}1069.129 {txt}{c |} {res}317.2721 {txt}{c |} {res}879.6273 {txt}{c |} {res}1921.424 {txt}{c |}
+  {c LT}{hline 6}{c BT}{hline 10}{c BT}{hline 10}{c BT}{hline 10}{c BT}{hline 10}{c RT}
+  {c |}                        ldiff                     {c |}
+  {c |}                     {res}1.801062                     {txt}{c |}
+  {c BLC}{hline 50}{c BRC}
+
+  {c TLC}{hline 6}{c TT}{hline 10}{c TT}{hline 10}{c TT}{hline 10}{c TT}{hline 10}{c TRC}
+  {c |} year {c |}     mean {c |}      p10 {c |}      p50 {c |}      p90 {c |}
+  {c |} {res}1986 {txt}{c |} {res}1094.707 {txt}{c |} {res}324.9837 {txt}{c |} {res}893.1236 {txt}{c |} {res}2000.409 {txt}{c |}
+  {c LT}{hline 6}{c BT}{hline 10}{c BT}{hline 10}{c BT}{hline 10}{c BT}{hline 10}{c RT}
+  {c |}                        ldiff                     {c |}
+  {c |}                     {res}1.817332                     {txt}{c |}
+  {c BLC}{hline 50}{c BRC}
+
+{com}. //_^
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_3_Readman_.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}10 Jan 2025, 15:20:53
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

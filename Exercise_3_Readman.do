@@ -1,0 +1,116 @@
+***** Exercise_3_Readman.do
+***** organizing the CPI and CPS-ORG Data, 1982–2024
+***** cps-org data extracted from ipums and cleaned on 1/7/2024
+
+cd "~/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis"
+log using Exercise_3_Readman.smcl, name(results) replace
+set scheme s2color
+global ex=3
+global lname="Readman"
+global eyear=2024
+global emonth=11
+
+* part a
+* appending three morg data sets
+  clear
+  append using "../Data/morg79.dta" "../Data/morg80.dta" "../Data/morg81.dta"
+  keep year intmonth minsamp classer esr age race sex gradeat uhours earnwke earnwt
+  run data_check
+  describe
+  summarize
+  list in -10/l, noobs
+
+* renaming month variables to align with IPUMS
+  rename (minsamp intmonth) (mish month)
+  label define MONTH 1 "january" 2 "february" 3 "march" 4 "april" 5 "may" 6 "june" ///
+                     7 "july" 8 "august" 9 "september" 10 "october" 11 "november" 12 "december"
+  label values month MONTH
+  label define MISH 4 "four" 8 "eight"
+  label values mish MISH
+  tabulate month mish
+
+* keeping people ages 18–64, employed last week, working for a private firm or government
+  numlabel classer, add
+  tabulate classer
+  keep if inrange(age, 18, 64) & (classer == 1 | classer == 2)
+  describe
+  summarize
+  summarize earnwke, detail
+  tab year if earnwke == .
+
+*** end part a 
+
+* part b
+
+* preparing CPI data to merge into CPS data
+  import excel using "../Data/SeriesReport-20250109151624_b18e88.xlsx", cellrange(A12:M124) firstrow clear
+  describe
+  summarize
+  rename Year year // rename to match CPS
+  rename (Jan-Dec) m#, addnumber
+  reshape long m, i(year) j(month)
+  rename m cpi
+  describe
+  label variable month "Month"
+  label variable cpi "Consumer Price Index"
+  format cpi %9.3f
+
+* sorting and saving
+  sort year month
+  list if year>=1982 & year<1984, noobs clean
+  save "../Data/CPI 1913-2024.dta", replace
+  summarize
+  describe
+
+*** end part b
+
+* part c
+
+* merging the CPI into the CPS data from previous session
+  use "../Data/CPS ORGs, 1982-2024, Cleaned.dta", clear
+  describe
+  summarize
+  sort year month
+  merge m:1 year month using "../Data/CPI 1913-2024.dta", keep(match)
+  assert _merge ==3
+  drop _merge 
+
+* computing real wage
+  summarize cpi if year==$eyear & month==$emonth, meanonly
+  return list
+  scalar cpi_scalar = r(mean)
+  generate rwage=(cpi_scalar*earnweek)/cpi // latest month dollars
+  label variable rwage "real wage in November 2024 dollars"
+
+* saving
+  save "../Data/CPS-ORG with CPI, 1982-2024.dta", replace
+  describe
+  summarize
+*** end part c
+
+* part d
+* calculating annual statistics for real weekly wage
+  collapse (mean) mean=rwage /// mean
+                  (p10) p10=rwage /// 10th percentile
+                  (p50) p50=rwage /// 10th percentile
+                  (p90) p90=rwage /// 90th percentile
+                  [pw=earnwt] ,by(year)
+  generate ldiff=100*(ln(p90) - ln(p10))
+  format ldiff %4.1f
+  save "../Data/CPS-ORG, Wage Percentiles, 1982-2024", replace
+  describe
+  summarize
+  list in 1/5, noobs
+
+* plots
+  line p10 year || line p50 year || line p90 year || line mean year, ///
+  xtitle(Year) xlabel(1965(5)1990) ///
+  ytitle("Real Weekly Wage, 1982=100") ylabel(100(10)140, noticks) ///
+  stext(105 1988 "p10")  text(125 1988 "p50") text(142 1988 "p90") ///
+  scheme(Wide727Scheme) name(fig1_scheme, replace)
+  graph export "Results/fig1.png", width(600) replace
+  line ldiff year, sort
+  graph export "Results/fig2.png", width(600) replace
+*** end part d
+
+log close results

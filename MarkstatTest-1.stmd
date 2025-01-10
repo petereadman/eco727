@@ -1,0 +1,24 @@
+## Markstat Test: Simple Markstat Code to Check Your Installation
+
+Let's create a little data set using input.
+
+    clear all
+    input person height weight
+    1 72 176
+    2 63 132
+    3 66 148
+    end
+    
+Let's summarize and list the data.
+
+    summarize
+    list
+
+To process this file, (a) cd to the folder where you've stored the file, and 
+(b) type "markstat using MarkstatTest" as a Stata command. (If you're reading 
+this in a web browser, you've already processed the stmd file.)
+
+Also, notice that you must type the "markstat using MarkstatTest" command; 
+if you have MarkstatTest.stmd open in Stata's do-file editor, clicking Do __doesn't__ 
+send the contents of the file to Markstat, 
+and Stata doesn't know what to do with the non-Stata elements of this file.

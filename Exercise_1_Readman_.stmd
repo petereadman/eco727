@@ -1,0 +1,117 @@
+## Exercise 1: Exploring and Cleaning CPS Monthly Data (1982-2024)
+Peter Readman
+
+---
+
+### Plan
+
+---
+
+- read the CPS monthly data for 1982-2024 into Stata,
+- verify and retain the correct rotation groups (4 and 8)
+- describe, summarize, and inspect the data structure,
+- tabulate variables to identify inconsistencies or coding changes over time.
+
+---
+
+### Using the data
+
+First, let's move to the analysis folder.
+
+    cd "~/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis"
+
+Now let's read the cps data extract, which is in Stata format, from IPUMS. The file is cps_00003.dta, which is in the Data folder (at the same level as Analysis). The two dots move us up one level (i.e., to Research Methods), and /data move us from there down to the Data folder.	
+	
+    use "../Data/cps_00003.dta", clear
+
+---
+	
+### Identifying and Retaining Correct Rotation Groups (4 and 8)
+
+Let's start by examining the rotation groups. 
+
+    tab1 mish eligorg labforce, missing
+	tab year mish, missing
+	
+Groups 1, 2, 3, 5, and 6 appear in 1982. These groups don't belong in the data because they aren't part of the CPS's 4-8-4 rotation scheme. So, we should drop the incorrect groups (i.e. keep groups 4 and 8):
+	
+    keep if mish == 4 | mish == 8
+
+Next, let's tabulate month and mish to confirm the new structure of the data after dropping those three variables.
+
+    tabulate month mish
+
+We have the correct rotations and can move on to looking at the data in more detail.
+
+---
+
+### Describing, Summarizing, and Listing the data
+
+    describe
+	
+The data has 6,738,088 observations over 32 variables.	
+	
+    summarize
+
+There are seven variables with some missing observations: hwtfinl, asecflag, qearnwee, hourwage, union, earnweek, uhrsworkorg. The date range is from 1982 to 2024, as expected from our data selection and all the asecflag observations are 2, indicating 'march basic', i.e. not in the ASEC data and no need to drop them. 
+
+Let's list the values of the variables in the last 10 observations, listing approximately 10 variables at a time.
+
+    list year serial month hwtfinl cpsid asecflag mish region pernum wtfinl in -10/l, noobs
+	
+The last 10 observations show data from November 2024, spanning multiple regions (e.g., Pacific, East North, New England). Month and region coding are consistent across observations.
+
+    list cpsidv cpsidp earnweek2 hourwage2 age sex race empstat labforce occ1950 in -10/l, noobs
+
+Among the last 10 observations, wages (earnweek2) are reported with unusually high hourly rates (hourwage2 = 999.99) for some respondents. These may indicate top-coded or misreported values.
+
+    list ind1950 classwkr uhrswork1 educ earnwt qearnwee hourwage paidhour union earnweek uhrsworkorg in -10/l, noobs  
+
+Several observations show uhrsworkorg (usual hours worked) coded as 999, indicating missing or non-applicable values. The distribution of education levels ranges from high school to advanced degrees, and union membership varies across jobs.
+
+---
+	
+### Tabulating categorical variables
+
+We'll tabulate categorical variables with fewer than 50 categories: asecflag, labforce, eligorg, month, mish, region, sex, race, empstat, classwkr, educ, qearnwee, paidhour, and union. The variables, occ1950 (occupation, 1950 basis) and ind1950 (industry, 1950 basis) have more than 50 categories, so we'll exclude them from this tabulation.
+
+    tab1 asecflag labforce eligorg month mish region sex race empstat ///
+	classwkr educ qearnwee paidhour union
+	
+Note that three variables—asecflag, labforce, and eligorg—have only one category across all observations. Since these variables do not vary, we should drop them to simplify the data:
+
+    drop asecflag labforce eligorg
+
+---	
+	
+#### Twoway Tabulations to Identify Coding Changes in race
+
+The majority of observations in the race variable are either white or black, accounting for 93.75% of the data. The remaining 6.25% are distributed across 26 other categories. It's possible the only options available initially were which or black, with additional categories introduced over time.
+
+Looking at a snapshot of years from 1982–2002, we can see a coding change coming into effect in 1989 with the addition of American Indian (300) and Asian or Pacific Islander (650) categories:
+
+    tabulate year race if year <= 2002, missing
+	
+Another coding change occurs in 2003, splitting Asian or Pacific Islander (650) into two distinct categories: Asian only (651) and Hawaiian/Pacific Islander only (652):
+	
+	numlabel RACE, add
+    tabulate year race  if inlist(race, 300, 650, 651, 652)
+
+---
+
+### Compressing and Saving the data for further analysis
+
+The final dataset is compressed to minimize file size and saved as CPS ORGs, 1982-2024.dta in the Data folder.
+
+    describe
+
+We now have 6,738,088 observations across 29 variables, with summary statistics as follows:
+	
+    summarize 
+	
+---
+
+
+	
+
+

@@ -1,0 +1,890 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}results
+       {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_1_Readman.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 7 Jan 2025, 15:57:49
+{txt}
+{com}. global ex=1
+{txt}
+{com}. global lname="Readman"
+{txt}
+{com}. 
+. * part d
+. * using the data
+.   use "../Data/cps_00003.dta", clear
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. tab ind1950
+
+                   {txt}industry, 1950 basis {c |}      Freq.     Percent        Cum.
+{hline 40}{c +}{hline 35}
+                            agriculture {c |}{res}    111,773        1.54        1.54
+{txt}                               forestry {c |}{res}      6,143        0.08        1.63
+{txt}                              fisheries {c |}{res}      2,457        0.03        1.66
+{txt}                           metal mining {c |}{res}      5,828        0.08        1.74
+{txt}                            coal mining {c |}{res}     11,125        0.15        1.90
+{txt}crude petroleum and natural gas extract {c |}{res}     21,974        0.30        2.20
+{txt}nonmetallic mining and quarrying, excep {c |}{res}     22,204        0.31        2.51
+{txt}                           construction {c |}{res}    413,171        5.71        8.21
+{txt}                                logging {c |}{res}      6,529        0.09        8.30
+{txt}  sawmills, planing mills, and millwork {c |}{res}     18,201        0.25        8.56
+{txt}                     misc wood products {c |}{res}     13,714        0.19        8.74
+{txt}                 furniture and fixtures {c |}{res}     32,421        0.45        9.19
+{txt}               glass and glass products {c |}{res}      9,506        0.13        9.32
+{txt}cement, concrete, gypsum and plaster pr {c |}{res}     12,002        0.17        9.49
+{txt}               structural clay products {c |}{res}      2,045        0.03        9.52
+{txt}           pottery and related products {c |}{res}      1,903        0.03        9.54
+{txt}miscellaneous nonmetallic mineral and s {c |}{res}      6,481        0.09        9.63
+{txt}blast furnaces, steel works, and rollin {c |}{res}     19,126        0.26        9.90
+{txt}other primary iron and steel industries {c |}{res}      6,882        0.10        9.99
+{txt}          primary nonferrous industries {c |}{res}     15,468        0.21       10.21
+{txt}              fabricated steel products {c |}{res}     66,998        0.93       11.13
+{txt}   fabricated nonferrous metal products {c |}{res}      8,982        0.12       11.26
+{txt}         not specified metal industries {c |}{res}        578        0.01       11.26
+{txt}    agricultural machinery and tractors {c |}{res}      8,474        0.12       11.38
+{txt}  office and store machines and devices {c |}{res}      3,026        0.04       11.42
+{txt}                miscellaneous machinery {c |}{res}     87,874        1.21       12.64
+{txt}electrical machinery, equipment, and su {c |}{res}    134,943        1.86       14.50
+{txt}motor vehicles and motor vehicle equipm {c |}{res}     70,261        0.97       15.47
+{txt}                     aircraft and parts {c |}{res}     48,073        0.66       16.13
+{txt}   ship and boat building and repairing {c |}{res}     14,863        0.21       16.34
+{txt}railroad and miscellaneous transportati {c |}{res}      6,154        0.08       16.42
+{txt}    professional equipment and supplies {c |}{res}     40,033        0.55       16.98
+{txt}    photographic equipment and supplies {c |}{res}      4,595        0.06       17.04
+{txt}watches, clocks, and clockwork-operated {c |}{res}        533        0.01       17.05
+{txt} miscellaneous manufacturing industries {c |}{res}     51,312        0.71       17.76
+{txt}                          meat products {c |}{res}     31,553        0.44       18.19
+{txt}                         dairy products {c |}{res}     10,818        0.15       18.34
+{txt}canning and preserving fruits, vegetabl {c |}{res}     13,368        0.18       18.53
+{txt}                    grain-mill products {c |}{res}      9,701        0.13       18.66
+{txt}                        bakery products {c |}{res}     13,133        0.18       18.84
+{txt}     confectionery and related products {c |}{res}      6,161        0.09       18.93
+{txt}                    beverage industries {c |}{res}     13,794        0.19       19.12
+{txt}miscellaneous food preparations and kin {c |}{res}     12,496        0.17       19.29
+{txt}          not specified food industries {c |}{res}      1,285        0.02       19.31
+{txt}                   tobacco manufactures {c |}{res}      2,676        0.04       19.35
+{txt}                         knitting mills {c |}{res}      5,300        0.07       19.42
+{txt}dyeing and finishing textiles, except k {c |}{res}      1,958        0.03       19.45
+{txt}carpets, rugs, and other floor covering {c |}{res}      3,165        0.04       19.49
+{txt}         yarn, thread, and fabric mills {c |}{res}     17,889        0.25       19.74
+{txt}    miscellaneous textile mill products {c |}{res}      3,660        0.05       19.79
+{txt}                apparel and accessories {c |}{res}     36,509        0.50       20.29
+{txt}miscellaneous fabricated textile produc {c |}{res}      5,520        0.08       20.37
+{txt}      pulp, paper, and paperboard mills {c |}{res}     17,333        0.24       20.61
+{txt}        paperboard containers and boxes {c |}{res}      9,841        0.14       20.74
+{txt}  miscellaneous paper and pulp products {c |}{res}      9,764        0.13       20.88
+{txt}printing, publishing, and allied indust {c |}{res}     95,927        1.32       22.20
+{txt}                       synthetic fibers {c |}{res}      4,295        0.06       22.26
+{txt}                    drugs and medicines {c |}{res}     23,189        0.32       22.58
+{txt}paints, varnishes, and related products {c |}{res}      3,772        0.05       22.63
+{txt}miscellaneous chemicals and allied prod {c |}{res}     59,228        0.82       23.45
+{txt}                     petroleum refining {c |}{res}     10,618        0.15       23.60
+{txt}miscellaneous petroleum and coal produc {c |}{res}      1,397        0.02       23.62
+{txt}                        rubber products {c |}{res}     13,000        0.18       23.80
+{txt} leather: tanned, curried, and finished {c |}{res}        541        0.01       23.81
+{txt}                footwear, except rubber {c |}{res}      5,604        0.08       23.88
+{txt}      leather products, except footwear {c |}{res}      2,322        0.03       23.91
+{txt} not specified manufacturing industries {c |}{res}        189        0.00       23.92
+{txt}  railroads and railway express service {c |}{res}     23,577        0.33       24.24
+{txt}          street railways and bus lines {c |}{res}     30,123        0.42       24.66
+{txt}                       trucking service {c |}{res}    100,359        1.39       26.05
+{txt}                warehousing and storage {c |}{res}     16,089        0.22       26.27
+{txt}                        taxicab service {c |}{res}      7,835        0.11       26.38
+{txt}                   water transportation {c |}{res}      8,586        0.12       26.49
+{txt}                     air transportation {c |}{res}     40,556        0.56       27.05
+{txt}      petroleum and gasoline pipe lines {c |}{res}      2,256        0.03       27.09
+{txt}  services incidental to transportation {c |}{res}     26,424        0.36       27.45
+{txt}                              telephone {c |}{res}     61,677        0.85       28.30
+{txt}                              telegraph {c |}{res}     13,745        0.19       28.49
+{txt}               electric light and power {c |}{res}     45,719        0.63       29.12
+{txt}           gas and steam supply systems {c |}{res}     11,002        0.15       29.28
+{txt}                 electric-gas utilities {c |}{res}      8,549        0.12       29.39
+{txt}                           water supply {c |}{res}     14,625        0.20       29.60
+{txt}                      sanitary services {c |}{res}     13,167        0.18       29.78
+{txt}      other and not specified utilities {c |}{res}      1,170        0.02       29.79
+{txt}           motor vehicles and equipment {c |}{res}     11,477        0.16       29.95
+{txt}  drugs, chemicals, and allied products {c |}{res}     12,802        0.18       30.13
+{txt}                      dry goods apparel {c |}{res}      5,728        0.08       30.21
+{txt}              food and related products {c |}{res}     46,621        0.64       30.85
+{txt}electrical goods, hardware, and plumbin {c |}{res}     26,906        0.37       31.22
+{txt}     machinery, equipment, and supplies {c |}{res}     40,059        0.55       31.78
+{txt}                     petroleum products {c |}{res}      9,256        0.13       31.91
+{txt}           farm products--raw materials {c |}{res}      6,605        0.09       32.00
+{txt}          miscellaneous wholesale trade {c |}{res}     72,782        1.01       33.00
+{txt}          not specified wholesale trade {c |}{res}      1,536        0.02       33.02
+{txt}     food stores, except dairy products {c |}{res}    173,430        2.40       35.42
+{txt}dairy products stores and milk retailin {c |}{res}      1,138        0.02       35.43
+{txt}             general merchandise stores {c |}{res}    164,194        2.27       37.70
+{txt}               five and ten cent stores {c |}{res}      4,968        0.07       37.77
+{txt}apparel and accessories stores, except  {c |}{res}     43,788        0.60       38.38
+{txt}                            shoe stores {c |}{res}      8,135        0.11       38.49
+{txt}  furniture and house furnishing stores {c |}{res}     27,510        0.38       38.87
+{txt}   household appliance and radio stores {c |}{res}     30,839        0.43       39.29
+{txt}motor vehicles and accessories retailin {c |}{res}    100,894        1.39       40.69
+{txt}              gasoline service stations {c |}{res}     27,236        0.38       41.06
+{txt}                            drug stores {c |}{res}     38,555        0.53       41.60
+{txt}             eating and drinking places {c |}{res}    361,460        4.99       46.59
+{txt}     hardware and farm implement stores {c |}{res}     12,258        0.17       46.76
+{txt} lumber and building material retailing {c |}{res}     42,149        0.58       47.34
+{txt}                          liquor stores {c |}{res}      6,721        0.09       47.43
+{txt}                        retail florists {c |}{res}      6,896        0.10       47.53
+{txt}                         jewelry stores {c |}{res}      8,556        0.12       47.65
+{txt}                 fuel and ice retailing {c |}{res}      6,861        0.09       47.74
+{txt}            miscellaneous retail stores {c |}{res}     99,838        1.38       49.12
+{txt}             not specified retail trade {c |}{res}      7,374        0.10       49.22
+{txt}            banking and credit agencies {c |}{res}    191,048        2.64       51.86
+{txt}security and commodity brokerage and in {c |}{res}     46,416        0.64       52.50
+{txt}                              insurance {c |}{res}    140,128        1.94       54.44
+{txt}                            real estate {c |}{res}     96,585        1.33       55.77
+{txt}                            advertising {c |}{res}     18,566        0.26       56.03
+{txt}accounting, auditing, and bookkeeping s {c |}{res}     36,483        0.50       56.53
+{txt}        miscellaneous business services {c |}{res}    306,949        4.24       60.77
+{txt}       auto repair services and garages {c |}{res}     63,653        0.88       61.65
+{txt}          miscellaneous repair services {c |}{res}     25,599        0.35       62.00
+{txt}                     private households {c |}{res}     50,303        0.69       62.70
+{txt}              hotels and lodging places {c |}{res}     93,168        1.29       63.98
+{txt}laundering, cleaning, and dyeing servic {c |}{res}     19,427        0.27       64.25
+{txt}                      dressmaking shops {c |}{res}        106        0.00       64.25
+{txt}                      shoe repair shops {c |}{res}        224        0.00       64.26
+{txt}        miscellaneous personal services {c |}{res}     59,086        0.82       65.07
+{txt}      radio broadcasting and television {c |}{res}     26,049        0.36       65.43
+{txt}           theaters and motion pictures {c |}{res}     18,239        0.25       65.69
+{txt}bowling alleys, and billiard and pool p {c |}{res}      3,110        0.04       65.73
+{txt}miscellaneous entertainment and recreat {c |}{res}     91,050        1.26       66.99
+{txt}medical and other health services, exce {c |}{res}    385,681        5.33       72.31
+{txt}                              hospitals {c |}{res}    360,129        4.97       77.29
+{txt}                         legal services {c |}{res}     64,696        0.89       78.18
+{txt}                   educational services {c |}{res}    775,387       10.71       88.89
+{txt}         welfare and religious services {c |}{res}    120,654        1.67       90.56
+{txt}     nonprofit membership organizations {c |}{res}     38,957        0.54       91.09
+{txt} engineering and architectural services {c |}{res}     60,486        0.84       91.93
+{txt}miscellaneous professional and related  {c |}{res}    120,578        1.67       93.60
+{txt}                         postal service {c |}{res}     51,774        0.72       94.31
+{txt}          federal public administration {c |}{res}    199,076        2.75       97.06
+{txt}            state public administration {c |}{res}      8,430        0.12       97.18
+{txt}            local public administration {c |}{res}    204,391        2.82      100.00
+{txt}{hline 40}{c +}{hline 35}
+                                  Total {c |}{res}  7,240,117      100.00
+
+{com}. numlabel IND1950, add
+{res}
+{com}. tab ind1950
+
+                   {txt}industry, 1950 basis {c |}      Freq.     Percent        Cum.
+{hline 40}{c +}{hline 35}
+                       105. agriculture {c |}{res}    111,773        1.54        1.54
+{txt}                          116. forestry {c |}{res}      6,143        0.08        1.63
+{txt}                         126. fisheries {c |}{res}      2,457        0.03        1.66
+{txt}                      206. metal mining {c |}{res}      5,828        0.08        1.74
+{txt}                       216. coal mining {c |}{res}     11,125        0.15        1.90
+{txt}226. crude petroleum and natural gas ex {c |}{res}     21,974        0.30        2.20
+{txt}236. nonmetallic mining and quarrying,  {c |}{res}     22,204        0.31        2.51
+{txt}                      246. construction {c |}{res}    413,171        5.71        8.21
+{txt}                           306. logging {c |}{res}      6,529        0.09        8.30
+{txt}307. sawmills, planing mills, and millw {c |}{res}     18,201        0.25        8.56
+{txt}                308. misc wood products {c |}{res}     13,714        0.19        8.74
+{txt}            309. furniture and fixtures {c |}{res}     32,421        0.45        9.19
+{txt}          316. glass and glass products {c |}{res}      9,506        0.13        9.32
+{txt}317. cement, concrete, gypsum and plast {c |}{res}     12,002        0.17        9.49
+{txt}          318. structural clay products {c |}{res}      2,045        0.03        9.52
+{txt}      319. pottery and related products {c |}{res}      1,903        0.03        9.54
+{txt}326. miscellaneous nonmetallic mineral  {c |}{res}      6,481        0.09        9.63
+{txt}336. blast furnaces, steel works, and r {c |}{res}     19,126        0.26        9.90
+{txt}337. other primary iron and steel indus {c |}{res}      6,882        0.10        9.99
+{txt}     338. primary nonferrous industries {c |}{res}     15,468        0.21       10.21
+{txt}         346. fabricated steel products {c |}{res}     66,998        0.93       11.13
+{txt}347. fabricated nonferrous metal produc {c |}{res}      8,982        0.12       11.26
+{txt}    348. not specified metal industries {c |}{res}        578        0.01       11.26
+{txt}356. agricultural machinery and tractor {c |}{res}      8,474        0.12       11.38
+{txt}357. office and store machines and devi {c |}{res}      3,026        0.04       11.42
+{txt}           358. miscellaneous machinery {c |}{res}     87,874        1.21       12.64
+{txt}367. electrical machinery, equipment, a {c |}{res}    134,943        1.86       14.50
+{txt}376. motor vehicles and motor vehicle e {c |}{res}     70,261        0.97       15.47
+{txt}                377. aircraft and parts {c |}{res}     48,073        0.66       16.13
+{txt}378. ship and boat building and repairi {c |}{res}     14,863        0.21       16.34
+{txt}379. railroad and miscellaneous transpo {c |}{res}      6,154        0.08       16.42
+{txt}386. professional equipment and supplie {c |}{res}     40,033        0.55       16.98
+{txt}387. photographic equipment and supplie {c |}{res}      4,595        0.06       17.04
+{txt}388. watches, clocks, and clockwork-ope {c |}{res}        533        0.01       17.05
+{txt}399. miscellaneous manufacturing indust {c |}{res}     51,312        0.71       17.76
+{txt}                     406. meat products {c |}{res}     31,553        0.44       18.19
+{txt}                    407. dairy products {c |}{res}     10,818        0.15       18.34
+{txt}408. canning and preserving fruits, veg {c |}{res}     13,368        0.18       18.53
+{txt}               409. grain-mill products {c |}{res}      9,701        0.13       18.66
+{txt}                   416. bakery products {c |}{res}     13,133        0.18       18.84
+{txt}417. confectionery and related products {c |}{res}      6,161        0.09       18.93
+{txt}               418. beverage industries {c |}{res}     13,794        0.19       19.12
+{txt}419. miscellaneous food preparations an {c |}{res}     12,496        0.17       19.29
+{txt}     426. not specified food industries {c |}{res}      1,285        0.02       19.31
+{txt}              429. tobacco manufactures {c |}{res}      2,676        0.04       19.35
+{txt}                    436. knitting mills {c |}{res}      5,300        0.07       19.42
+{txt}437. dyeing and finishing textiles, exc {c |}{res}      1,958        0.03       19.45
+{txt}438. carpets, rugs, and other floor cov {c |}{res}      3,165        0.04       19.49
+{txt}    439. yarn, thread, and fabric mills {c |}{res}     17,889        0.25       19.74
+{txt}446. miscellaneous textile mill product {c |}{res}      3,660        0.05       19.79
+{txt}           448. apparel and accessories {c |}{res}     36,509        0.50       20.29
+{txt}449. miscellaneous fabricated textile p {c |}{res}      5,520        0.08       20.37
+{txt} 456. pulp, paper, and paperboard mills {c |}{res}     17,333        0.24       20.61
+{txt}   457. paperboard containers and boxes {c |}{res}      9,841        0.14       20.74
+{txt}458. miscellaneous paper and pulp produ {c |}{res}      9,764        0.13       20.88
+{txt}459. printing, publishing, and allied i {c |}{res}     95,927        1.32       22.20
+{txt}                  466. synthetic fibers {c |}{res}      4,295        0.06       22.26
+{txt}               467. drugs and medicines {c |}{res}     23,189        0.32       22.58
+{txt}468. paints, varnishes, and related pro {c |}{res}      3,772        0.05       22.63
+{txt}469. miscellaneous chemicals and allied {c |}{res}     59,228        0.82       23.45
+{txt}                476. petroleum refining {c |}{res}     10,618        0.15       23.60
+{txt}477. miscellaneous petroleum and coal p {c |}{res}      1,397        0.02       23.62
+{txt}                   478. rubber products {c |}{res}     13,000        0.18       23.80
+{txt}487. leather: tanned, curried, and fini {c |}{res}        541        0.01       23.81
+{txt}           488. footwear, except rubber {c |}{res}      5,604        0.08       23.88
+{txt} 489. leather products, except footwear {c |}{res}      2,322        0.03       23.91
+{txt}499. not specified manufacturing indust {c |}{res}        189        0.00       23.92
+{txt}506. railroads and railway express serv {c |}{res}     23,577        0.33       24.24
+{txt}     516. street railways and bus lines {c |}{res}     30,123        0.42       24.66
+{txt}                  526. trucking service {c |}{res}    100,359        1.39       26.05
+{txt}           527. warehousing and storage {c |}{res}     16,089        0.22       26.27
+{txt}                   536. taxicab service {c |}{res}      7,835        0.11       26.38
+{txt}              546. water transportation {c |}{res}      8,586        0.12       26.49
+{txt}                556. air transportation {c |}{res}     40,556        0.56       27.05
+{txt} 567. petroleum and gasoline pipe lines {c |}{res}      2,256        0.03       27.09
+{txt}568. services incidental to transportat {c |}{res}     26,424        0.36       27.45
+{txt}                         578. telephone {c |}{res}     61,677        0.85       28.30
+{txt}                         579. telegraph {c |}{res}     13,745        0.19       28.49
+{txt}          586. electric light and power {c |}{res}     45,719        0.63       29.12
+{txt}      587. gas and steam supply systems {c |}{res}     11,002        0.15       29.28
+{txt}            588. electric-gas utilities {c |}{res}      8,549        0.12       29.39
+{txt}                      596. water supply {c |}{res}     14,625        0.20       29.60
+{txt}                 597. sanitary services {c |}{res}     13,167        0.18       29.78
+{txt} 598. other and not specified utilities {c |}{res}      1,170        0.02       29.79
+{txt}      606. motor vehicles and equipment {c |}{res}     11,477        0.16       29.95
+{txt}607. drugs, chemicals, and allied produ {c |}{res}     12,802        0.18       30.13
+{txt}                 608. dry goods apparel {c |}{res}      5,728        0.08       30.21
+{txt}         609. food and related products {c |}{res}     46,621        0.64       30.85
+{txt}616. electrical goods, hardware, and pl {c |}{res}     26,906        0.37       31.22
+{txt}617. machinery, equipment, and supplies {c |}{res}     40,059        0.55       31.78
+{txt}                618. petroleum products {c |}{res}      9,256        0.13       31.91
+{txt}      619. farm products--raw materials {c |}{res}      6,605        0.09       32.00
+{txt}     626. miscellaneous wholesale trade {c |}{res}     72,782        1.01       33.00
+{txt}     627. not specified wholesale trade {c |}{res}      1,536        0.02       33.02
+{txt}636. food stores, except dairy products {c |}{res}    173,430        2.40       35.42
+{txt}637. dairy products stores and milk ret {c |}{res}      1,138        0.02       35.43
+{txt}        646. general merchandise stores {c |}{res}    164,194        2.27       37.70
+{txt}          647. five and ten cent stores {c |}{res}      4,968        0.07       37.77
+{txt}656. apparel and accessories stores, ex {c |}{res}     43,788        0.60       38.38
+{txt}                       657. shoe stores {c |}{res}      8,135        0.11       38.49
+{txt}658. furniture and house furnishing sto {c |}{res}     27,510        0.38       38.87
+{txt}659. household appliance and radio stor {c |}{res}     30,839        0.43       39.29
+{txt}667. motor vehicles and accessories ret {c |}{res}    100,894        1.39       40.69
+{txt}         668. gasoline service stations {c |}{res}     27,236        0.38       41.06
+{txt}                       669. drug stores {c |}{res}     38,555        0.53       41.60
+{txt}        679. eating and drinking places {c |}{res}    361,460        4.99       46.59
+{txt}686. hardware and farm implement stores {c |}{res}     12,258        0.17       46.76
+{txt}687. lumber and building material retai {c |}{res}     42,149        0.58       47.34
+{txt}                     688. liquor stores {c |}{res}      6,721        0.09       47.43
+{txt}                   689. retail florists {c |}{res}      6,896        0.10       47.53
+{txt}                    696. jewelry stores {c |}{res}      8,556        0.12       47.65
+{txt}            697. fuel and ice retailing {c |}{res}      6,861        0.09       47.74
+{txt}       698. miscellaneous retail stores {c |}{res}     99,838        1.38       49.12
+{txt}        699. not specified retail trade {c |}{res}      7,374        0.10       49.22
+{txt}       716. banking and credit agencies {c |}{res}    191,048        2.64       51.86
+{txt}726. security and commodity brokerage a {c |}{res}     46,416        0.64       52.50
+{txt}                         736. insurance {c |}{res}    140,128        1.94       54.44
+{txt}                       746. real estate {c |}{res}     96,585        1.33       55.77
+{txt}                       806. advertising {c |}{res}     18,566        0.26       56.03
+{txt}807. accounting, auditing, and bookkeep {c |}{res}     36,483        0.50       56.53
+{txt}   808. miscellaneous business services {c |}{res}    306,949        4.24       60.77
+{txt}  816. auto repair services and garages {c |}{res}     63,653        0.88       61.65
+{txt}     817. miscellaneous repair services {c |}{res}     25,599        0.35       62.00
+{txt}                826. private households {c |}{res}     50,303        0.69       62.70
+{txt}         836. hotels and lodging places {c |}{res}     93,168        1.29       63.98
+{txt}846. laundering, cleaning, and dyeing s {c |}{res}     19,427        0.27       64.25
+{txt}                 847. dressmaking shops {c |}{res}        106        0.00       64.25
+{txt}                 848. shoe repair shops {c |}{res}        224        0.00       64.26
+{txt}   849. miscellaneous personal services {c |}{res}     59,086        0.82       65.07
+{txt} 856. radio broadcasting and television {c |}{res}     26,049        0.36       65.43
+{txt}      857. theaters and motion pictures {c |}{res}     18,239        0.25       65.69
+{txt}858. bowling alleys, and billiard and p {c |}{res}      3,110        0.04       65.73
+{txt}859. miscellaneous entertainment and re {c |}{res}     91,050        1.26       66.99
+{txt}868. medical and other health services, {c |}{res}    385,681        5.33       72.31
+{txt}                         869. hospitals {c |}{res}    360,129        4.97       77.29
+{txt}                    879. legal services {c |}{res}     64,696        0.89       78.18
+{txt}              888. educational services {c |}{res}    775,387       10.71       88.89
+{txt}    896. welfare and religious services {c |}{res}    120,654        1.67       90.56
+{txt}897. nonprofit membership organizations {c |}{res}     38,957        0.54       91.09
+{txt}898. engineering and architectural serv {c |}{res}     60,486        0.84       91.93
+{txt}899. miscellaneous professional and rel {c |}{res}    120,578        1.67       93.60
+{txt}                    906. postal service {c |}{res}     51,774        0.72       94.31
+{txt}     916. federal public administration {c |}{res}    199,076        2.75       97.06
+{txt}       926. state public administration {c |}{res}      8,430        0.12       97.18
+{txt}       936. local public administration {c |}{res}    204,391        2.82      100.00
+{txt}{hline 40}{c +}{hline 35}
+                                  Total {c |}{res}  7,240,117      100.00
+
+{com}. numlabel occ1950, add
+{err}value label {bf}occ1950{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. tab occ1950
+
+                 {txt}occupation, 1950 basis {c |}      Freq.     Percent        Cum.
+{hline 40}{c +}{hline 35}
+               accountants and auditors {c |}{res}     89,712        1.24        1.24
+{txt}                   actors and actresses {c |}{res}        562        0.01        1.25
+{txt}         airplane pilots and navigators {c |}{res}      7,389        0.10        1.35
+{txt}                             architects {c |}{res}      7,616        0.11        1.45
+{txt}               artists and art teachers {c |}{res}      6,134        0.08        1.54
+{txt}                               athletes {c |}{res}      5,390        0.07        1.61
+{txt}                                authors {c |}{res}      4,110        0.06        1.67
+{txt}                               chemists {c |}{res}      7,735        0.11        1.78
+{txt}                          chiropractors {c |}{res}        688        0.01        1.79
+{txt}                              clergymen {c |}{res}     21,033        0.29        2.08
+{txt}           college presidents and deans {c |}{res}      1,085        0.01        2.09
+{txt}                  agricultural sciences {c |}{res}        263        0.00        2.10
+{txt}                    biological sciences {c |}{res}      1,231        0.02        2.11
+{txt}                              chemistry {c |}{res}        699        0.01        2.12
+{txt}                              economics {c |}{res}        775        0.01        2.13
+{txt}                            engineering {c |}{res}      2,744        0.04        2.17
+{txt}                            mathematics {c |}{res}      1,099        0.02        2.19
+{txt}                       medical sciences {c |}{res}      2,219        0.03        2.22
+{txt}                                physics {c |}{res}        551        0.01        2.22
+{txt}                             psychology {c |}{res}        875        0.01        2.24
+{txt}               natural science (n.e.c.) {c |}{res}        289        0.00        2.24
+{txt}               social sciences (n.e.c.) {c |}{res}      1,808        0.02        2.27
+{txt}                 nonscientific subjects {c |}{res}      5,649        0.08        2.34
+{txt}                  subject not specified {c |}{res}     42,723        0.59        2.93
+{txt}           dancers and dancing teachers {c |}{res}      1,019        0.01        2.95
+{txt}                               dentists {c |}{res}      2,462        0.03        2.98
+{txt}                              designers {c |}{res}     30,095        0.42        3.40
+{txt}           dieticians and nutritionists {c |}{res}      5,573        0.08        3.47
+{txt}                              draftsmen {c |}{res}     13,898        0.19        3.67
+{txt}                  editors and reporters {c |}{res}     24,945        0.34        4.01
+{txt}                engineers, aeronautical {c |}{res}      5,821        0.08        4.09
+{txt}                    engineers, chemical {c |}{res}      4,593        0.06        4.15
+{txt}                       engineers, civil {c |}{res}     17,956        0.25        4.40
+{txt}                  engineers, electrical {c |}{res}     27,434        0.38        4.78
+{txt}                  engineers, industrial {c |}{res}     18,132        0.25        5.03
+{txt}                  engineers, mechanical {c |}{res}     18,992        0.26        5.29
+{txt}engineers, metallurgical, metallurgists {c |}{res}      1,879        0.03        5.32
+{txt}                      engineers, mining {c |}{res}      2,201        0.03        5.35
+{txt}                     engineers (n.e.c.) {c |}{res}     24,861        0.34        5.69
+{txt}                  entertainers (n.e.c.) {c |}{res}      4,630        0.06        5.76
+{txt}      farm and home management advisors {c |}{res}        118        0.00        5.76
+{txt}         foresters and conservationists {c |}{res}      3,383        0.05        5.81
+{txt}        funeral directors and embalmers {c |}{res}      1,376        0.02        5.83
+{txt}                     lawyers and judges {c |}{res}     41,115        0.57        6.39
+{txt}                             librarians {c |}{res}     16,306        0.23        6.62
+{txt}           musicians and music teachers {c |}{res}     32,045        0.44        7.06
+{txt}                   nurses, professional {c |}{res}    165,960        2.29        9.35
+{txt}           nurses, student professional {c |}{res}         72        0.00        9.35
+{txt}                agricultural scientists {c |}{res}      2,240        0.03        9.39
+{txt}                  biological scientists {c |}{res}     12,019        0.17        9.55
+{txt}           geologists and geophysicists {c |}{res}      2,055        0.03        9.58
+{txt}                         mathematicians {c |}{res}      2,718        0.04        9.62
+{txt}                             physicists {c |}{res}      1,950        0.03        9.64
+{txt}       miscellaneous natural scientists {c |}{res}      9,269        0.13        9.77
+{txt}                           optometrists {c |}{res}        937        0.01        9.78
+{txt}  personnel and labor relations workers {c |}{res}     42,350        0.58       10.37
+{txt}                            pharmacists {c |}{res}     12,846        0.18       10.55
+{txt}                          photographers {c |}{res}      4,551        0.06       10.61
+{txt}                physicians and surgeons {c |}{res}     31,276        0.43       11.04
+{txt}                        radio operators {c |}{res}      5,839        0.08       11.12
+{txt}           recreation and group workers {c |}{res}     11,888        0.16       11.29
+{txt}                      religious workers {c |}{res}      6,493        0.09       11.38
+{txt}social and welfare workers, except grou {c |}{res}     52,316        0.72       12.10
+{txt}                             economists {c |}{res}      6,081        0.08       12.18
+{txt}                          psychologists {c |}{res}      8,964        0.12       12.31
+{txt}            statisticians and actuaries {c |}{res}      2,693        0.04       12.34
+{txt}        miscellaneous social scientists {c |}{res}      3,356        0.05       12.39
+{txt}       sports instructors and officials {c |}{res}      3,214        0.04       12.43
+{txt}                              surveyors {c |}{res}      6,333        0.09       12.52
+{txt}                      teachers (n.e.c.) {c |}{res}    332,910        4.60       17.12
+{txt}        technicians, medical and dental {c |}{res}     89,518        1.24       18.36
+{txt}                   technicians, testing {c |}{res}     52,034        0.72       19.08
+{txt}                   technicians (n.e.c.) {c |}{res}      8,121        0.11       19.19
+{txt}        therapists and healers (n.e.c.) {c |}{res}     37,441        0.52       19.70
+{txt}                          veterinarians {c |}{res}      3,067        0.04       19.75
+{txt}professional, technical and kindred wor {c |}{res}    304,563        4.21       23.95
+{txt}           farmers (owners and tenants) {c |}{res}        375        0.01       23.96
+{txt}                          farm managers {c |}{res}      5,725        0.08       24.04
+{txt}     buyers and department heads, store {c |}{res}     44,328        0.61       24.65
+{txt}     buyers and shippers, farm products {c |}{res}     17,316        0.24       24.89
+{txt}                   conductors, railroad {c |}{res}      3,231        0.04       24.93
+{txt}                             credit men {c |}{res}        511        0.01       24.94
+{txt}      inspectors, public administration {c |}{res}     13,417        0.19       25.13
+{txt} managers and superintendents, building {c |}{res}     20,298        0.28       25.41
+{txt}officers, pilots, pursers and engineers {c |}{res}      2,180        0.03       25.44
+{txt}officials and administrators (n.e.c.),  {c |}{res}     37,332        0.52       25.95
+{txt}  officials, lodge, society, union, etc {c |}{res}        966        0.01       25.97
+{txt}                            postmasters {c |}{res}      1,387        0.02       25.99
+{txt}  purchasing agents and buyers (n.e.c.) {c |}{res}     24,828        0.34       26.33
+{txt}managers, officials, and proprietors (n {c |}{res}    724,506       10.01       36.33
+{txt}                        agents (n.e.c.) {c |}{res}        501        0.01       36.34
+{txt}     attendants and assistants, library {c |}{res}      8,019        0.11       36.45
+{txt}attendants, physicians and dentists off {c |}{res}     41,852        0.58       37.03
+{txt}                           bank tellers {c |}{res}     30,391        0.42       37.45
+{txt}                            bookkeepers {c |}{res}     92,886        1.28       38.73
+{txt}                               cashiers {c |}{res}    146,059        2.02       40.75
+{txt}           collectors, bill and account {c |}{res}      9,558        0.13       40.88
+{txt}      dispatchers and starters, vehicle {c |}{res}     14,671        0.20       41.09
+{txt}                          mail carriers {c |}{res}     20,835        0.29       41.37
+{txt}             messengers and office boys {c |}{res}     11,493        0.16       41.53
+{txt}               office machine operators {c |}{res}     72,932        1.01       42.54
+{txt}          shipping and receiving clerks {c |}{res}     39,263        0.54       43.08
+{txt}stenographers, typists, and secretaries {c |}{res}    249,205        3.44       46.52
+{txt}                   telegraph messengers {c |}{res}         11        0.00       46.52
+{txt}                    telegraph operators {c |}{res}        147        0.00       46.53
+{txt}                    telephone operators {c |}{res}      9,403        0.13       46.66
+{txt}    ticket, station, and express agents {c |}{res}     10,284        0.14       46.80
+{txt}  clerical and kindred workers (n.e.c.) {c |}{res}    563,192        7.78       54.58
+{txt}        advertising agents and salesmen {c |}{res}     10,121        0.14       54.72
+{txt}                            auctioneers {c |}{res}         75        0.00       54.72
+{txt}                          demonstrators {c |}{res}      2,269        0.03       54.75
+{txt}                 hucksters and peddlers {c |}{res}      7,898        0.11       54.86
+{txt}           insurance agents and brokers {c |}{res}     52,584        0.73       55.58
+{txt}                               newsboys {c |}{res}      2,134        0.03       55.61
+{txt}         real estate agents and brokers {c |}{res}     28,592        0.39       56.01
+{txt}                stock and bond salesmen {c |}{res}     15,958        0.22       56.23
+{txt}     salesmen and sales clerks (n.e.c.) {c |}{res}    296,327        4.09       60.32
+{txt}                                 bakers {c |}{res}      9,740        0.13       60.46
+{txt}                            blacksmiths {c |}{res}        189        0.00       60.46
+{txt}                            bookbinders {c |}{res}      1,574        0.02       60.48
+{txt}                           boilermakers {c |}{res}      1,679        0.02       60.50
+{txt}brickmasons, stonemasons, and tile sett {c |}{res}      9,607        0.13       60.64
+{txt}                          cabinetmakers {c |}{res}      3,012        0.04       60.68
+{txt}                             carpenters {c |}{res}     61,271        0.85       61.52
+{txt}          cement and concrete finishers {c |}{res}      4,272        0.06       61.58
+{txt}            compositors and typesetters {c |}{res}      3,465        0.05       61.63
+{txt}     cranemen, derrickmen, and hoistmen {c |}{res}      6,204        0.09       61.72
+{txt}         decorators and window dressers {c |}{res}        743        0.01       61.73
+{txt}                           electricians {c |}{res}     43,769        0.60       62.33
+{txt}         electrotypers and stereotypers {c |}{res}         13        0.00       62.33
+{txt}       engravers, except photoengravers {c |}{res}        631        0.01       62.34
+{txt}excavating, grading, and road machinery {c |}{res}     17,812        0.25       62.59
+{txt}                       foremen (n.e.c.) {c |}{res}    116,292        1.61       64.19
+{txt}                 forgemen and hammermen {c |}{res}        627        0.01       64.20
+{txt}                               furriers {c |}{res}        194        0.00       64.20
+{txt}                               glaziers {c |}{res}      2,445        0.03       64.24
+{txt}    heat treaters, annealers, temperers {c |}{res}        637        0.01       64.25
+{txt}inspectors, scalers, and graders, log a {c |}{res}        141        0.00       64.25
+{txt}                    inspectors (n.e.c.) {c |}{res}      6,938        0.10       64.34
+{txt}jewelers, watchmakers, goldsmiths, and  {c |}{res}      2,599        0.04       64.38
+{txt}                     job setters, metal {c |}{res}      1,192        0.02       64.40
+{txt}linemen and servicemen, telegraph, tele {c |}{res}     24,110        0.33       64.73
+{txt}                   locomotive engineers {c |}{res}      3,801        0.05       64.78
+{txt}                     locomotive firemen {c |}{res}         27        0.00       64.78
+{txt}                            loom fixers {c |}{res}         66        0.00       64.78
+{txt}                             machinists {c |}{res}     27,690        0.38       65.17
+{txt}      mechanics and repairmen, airplane {c |}{res}      9,152        0.13       65.29
+{txt}    mechanics and repairmen, automobile {c |}{res}     73,773        1.02       66.31
+{txt}mechanics and repairmen, office machine {c |}{res}     14,417        0.20       66.51
+{txt}mechanics and repairmen, radio and tele {c |}{res}      9,452        0.13       66.64
+{txt}mechanics and repairmen, railroad and c {c |}{res}      6,601        0.09       66.73
+{txt}       mechanics and repairmen (n.e.c.) {c |}{res}    114,981        1.59       68.32
+{txt}       millers, grain, flour, feed, etc {c |}{res}         40        0.00       68.32
+{txt}                            millwrights {c |}{res}      4,901        0.07       68.39
+{txt}                         molders, metal {c |}{res}        743        0.01       68.40
+{txt}          motion picture projectionists {c |}{res}        406        0.01       68.40
+{txt}opticians and lens grinders and polishe {c |}{res}      2,227        0.03       68.44
+{txt} painters, construction and maintenance {c |}{res}     21,862        0.30       68.74
+{txt}                           paperhangers {c |}{res}      1,099        0.02       68.75
+{txt} pattern and model makers, except paper {c |}{res}      1,124        0.02       68.77
+{txt}       photoengravers and lithographers {c |}{res}      1,370        0.02       68.79
+{txt}   piano and organ tuners and repairmen {c |}{res}         25        0.00       68.79
+{txt}                             plasterers {c |}{res}      1,773        0.02       68.81
+{txt}              plumbers and pipe fitters {c |}{res}     29,128        0.40       69.21
+{txt}  pressmen and plate printers, printing {c |}{res}     10,075        0.14       69.35
+{txt}          rollers and roll hands, metal {c |}{res}        809        0.01       69.36
+{txt}                    roofers and slaters {c |}{res}      9,073        0.13       69.49
+{txt}shoemakers and repairers, except factor {c |}{res}      2,830        0.04       69.53
+{txt}                   stationary engineers {c |}{res}     11,788        0.16       69.69
+{txt}        stone cutters and stone carvers {c |}{res}         31        0.00       69.69
+{txt}               structural metal workers {c |}{res}      5,139        0.07       69.76
+{txt}                tailors and tailoresses {c |}{res}      2,203        0.03       69.79
+{txt}tinsmiths, coppersmiths, and sheet meta {c |}{res}      8,897        0.12       69.92
+{txt}tool makers, and die makers and setters {c |}{res}      6,611        0.09       70.01
+{txt}                           upholsterers {c |}{res}      2,172        0.03       70.04
+{txt} craftsmen and kindred workers (n.e.c.) {c |}{res}     14,814        0.20       70.24
+{txt}              apprentice auto mechanics {c |}{res}         97        0.00       70.24
+{txt}      apprentice bricklayers and masons {c |}{res}         85        0.00       70.24
+{txt}                  apprentice carpenters {c |}{res}        323        0.00       70.25
+{txt}                apprentice electricians {c |}{res}      1,265        0.02       70.27
+{txt}   apprentice machinists and toolmakers {c |}{res}        340        0.00       70.27
+{txt}      apprentice mechanics, except auto {c |}{res}         36        0.00       70.27
+{txt}   apprentice plumbers and pipe fitters {c |}{res}        552        0.01       70.28
+{txt}  apprentices, building trades (n.e.c.) {c |}{res}         15        0.00       70.28
+{txt}apprentices, metalworking trades (n.e.c {c |}{res}        120        0.00       70.28
+{txt}           apprentices, printing trades {c |}{res}         40        0.00       70.28
+{txt}    apprentices, other specified trades {c |}{res}        134        0.00       70.28
+{txt}       apprentices, trade not specified {c |}{res}         12        0.00       70.28
+{txt}        asbestos and insulation workers {c |}{res}      3,246        0.04       70.33
+{txt}   attendants, auto service and parking {c |}{res}     13,500        0.19       70.51
+{txt}                 blasters and powdermen {c |}{res}        642        0.01       70.52
+{txt}    boatmen, canalmen, and lock keepers {c |}{res}         25        0.00       70.52
+{txt}                     brakemen, railroad {c |}{res}      1,485        0.02       70.54
+{txt}                            bus drivers {c |}{res}     29,337        0.41       70.95
+{txt} chainmen, rodmen, and axmen, surveying {c |}{res}        387        0.01       70.96
+{txt}     conductors, bus and street railway {c |}{res}         59        0.00       70.96
+{txt}               deliverymen and routemen {c |}{res}     18,407        0.25       71.21
+{txt}dressmakers and seamstresses, except fa {c |}{res}      1,952        0.03       71.24
+{txt}                                  dyers {c |}{res}        191        0.00       71.24
+{txt} filers, grinders, and polishers, metal {c |}{res}      7,283        0.10       71.34
+{txt}fruit, nut, veg graders and packers, ex {c |}{res}      2,197        0.03       71.37
+{txt}     furnacemen, smeltermen and pourers {c |}{res}        973        0.01       71.38
+{txt}                         heaters, metal {c |}{res}         23        0.00       71.38
+{txt}    laundry and dry cleaning operatives {c |}{res}     16,381        0.23       71.61
+{txt}meat cutters, except slaughter and pack {c |}{res}     17,198        0.24       71.85
+{txt}                              milliners {c |}{res}          4        0.00       71.85
+{txt}           mine operatives and laborers {c |}{res}     11,766        0.16       72.01
+{txt}motormen, mine, factory, logging camp,  {c |}{res}        116        0.00       72.01
+{txt}motormen, street, subway, and elevated  {c |}{res}        360        0.00       72.02
+{txt}        oilers and greaser, except auto {c |}{res}      2,019        0.03       72.05
+{txt}painters, except construction or mainte {c |}{res}     11,525        0.16       72.20
+{txt}           photographic process workers {c |}{res}      4,258        0.06       72.26
+{txt}                power station operators {c |}{res}      3,148        0.04       72.31
+{txt}                 sailors and deck hands {c |}{res}      1,360        0.02       72.33
+{txt}                                sawyers {c |}{res}      4,532        0.06       72.39
+{txt}                     stationary firemen {c |}{res}      3,588        0.05       72.44
+{txt}                    switchmen, railroad {c |}{res}        432        0.01       72.44
+{txt}          taxicab drivers and chauffers {c |}{res}     12,009        0.17       72.61
+{txt}              truck and tractor drivers {c |}{res}    154,222        2.13       74.74
+{txt}                       weavers, textile {c |}{res}      1,763        0.02       74.76
+{txt}              welders and flame cutters {c |}{res}     35,626        0.49       75.26
+{txt} operative and kindred workers (n.e.c.) {c |}{res}    441,347        6.10       81.35
+{txt}        housekeepers, private household {c |}{res}      1,444        0.02       81.37
+{txt}        laundressses, private household {c |}{res}         45        0.00       81.37
+{txt}     private household workers (n.e.c.) {c |}{res}     58,311        0.81       82.18
+{txt}attendants, hospital and other institut {c |}{res}    106,254        1.47       83.65
+{txt}attendants, professional and personal s {c |}{res}     48,050        0.66       84.31
+{txt}   attendants, recreation and amusement {c |}{res}     14,403        0.20       84.51
+{txt}  barbers, beauticians, and manicurists {c |}{res}     29,184        0.40       84.91
+{txt}                             bartenders {c |}{res}     23,393        0.32       85.23
+{txt}                             bootblacks {c |}{res}          8        0.00       85.23
+{txt}     boarding and lodging house keepers {c |}{res}          7        0.00       85.23
+{txt}                 charwomen and cleaners {c |}{res}     25,879        0.36       85.59
+{txt}        cooks, except private household {c |}{res}    139,260        1.92       87.52
+{txt}           counter and fountain workers {c |}{res}     13,036        0.18       87.70
+{txt}                     elevator operators {c |}{res}        386        0.01       87.70
+{txt}               firemen, fire protection {c |}{res}     18,745        0.26       87.96
+{txt}      guards, watchmen, and doorkeepers {c |}{res}     57,245        0.79       88.75
+{txt}housekeepers and stewards, except priva {c |}{res}     11,520        0.16       88.91
+{txt}                   janitors and sextons {c |}{res}    119,230        1.65       90.56
+{txt}                marshals and constables {c |}{res}         47        0.00       90.56
+{txt}                               midwives {c |}{res}          7        0.00       90.56
+{txt}               policemen and detectives {c |}{res}     49,692        0.69       91.24
+{txt}                                porters {c |}{res}      3,078        0.04       91.29
+{txt}                       practical nurses {c |}{res}     30,967        0.43       91.71
+{txt}                  sheriffs and bailiffs {c |}{res}     14,067        0.19       91.91
+{txt}       ushers, recreation and amusement {c |}{res}      1,347        0.02       91.93
+{txt}                 waiters and waitresses {c |}{res}     98,674        1.36       93.29
+{txt} watchmen (crossing) and bridge tenders {c |}{res}      3,270        0.05       93.33
+{txt}service workers, except private househo {c |}{res}    141,152        1.95       95.28
+{txt}                           farm foremen {c |}{res}      1,267        0.02       95.30
+{txt}            farm laborers, wage workers {c |}{res}     49,170        0.68       95.98
+{txt}                fishermen and oystermen {c |}{res}      1,289        0.02       96.00
+{txt}garage laborers and car washers and gre {c |}{res}      3,560        0.05       96.05
+{txt}gardeners, except farm, and groundskeep {c |}{res}     43,174        0.60       96.64
+{txt}            longshoremen and stevedores {c |}{res}        606        0.01       96.65
+{txt}  lumbermen, raftsmen, and woodchoppers {c |}{res}      3,630        0.05       96.70
+{txt}                              teamsters {c |}{res}         32        0.00       96.70
+{txt}                      laborers (n.e.c.) {c |}{res}    238,705        3.30      100.00
+{txt}{hline 40}{c +}{hline 35}
+                                  Total {c |}{res}  7,240,117      100.00
+
+{com}. numlabel OCC1950, add
+{res}
+{com}. tab occ1950
+
+                 {txt}occupation, 1950 basis {c |}      Freq.     Percent        Cum.
+{hline 40}{c +}{hline 35}
+            0. accountants and auditors {c |}{res}     89,712        1.24        1.24
+{txt}                1. actors and actresses {c |}{res}        562        0.01        1.25
+{txt}      2. airplane pilots and navigators {c |}{res}      7,389        0.10        1.35
+{txt}                          3. architects {c |}{res}      7,616        0.11        1.45
+{txt}            4. artists and art teachers {c |}{res}      6,134        0.08        1.54
+{txt}                            5. athletes {c |}{res}      5,390        0.07        1.61
+{txt}                             6. authors {c |}{res}      4,110        0.06        1.67
+{txt}                            7. chemists {c |}{res}      7,735        0.11        1.78
+{txt}                       8. chiropractors {c |}{res}        688        0.01        1.79
+{txt}                           9. clergymen {c |}{res}     21,033        0.29        2.08
+{txt}       10. college presidents and deans {c |}{res}      1,085        0.01        2.09
+{txt}              12. agricultural sciences {c |}{res}        263        0.00        2.10
+{txt}                13. biological sciences {c |}{res}      1,231        0.02        2.11
+{txt}                          14. chemistry {c |}{res}        699        0.01        2.12
+{txt}                          15. economics {c |}{res}        775        0.01        2.13
+{txt}                        16. engineering {c |}{res}      2,744        0.04        2.17
+{txt}                        18. mathematics {c |}{res}      1,099        0.02        2.19
+{txt}                   19. medical sciences {c |}{res}      2,219        0.03        2.22
+{txt}                            23. physics {c |}{res}        551        0.01        2.22
+{txt}                         24. psychology {c |}{res}        875        0.01        2.24
+{txt}           26. natural science (n.e.c.) {c |}{res}        289        0.00        2.24
+{txt}           27. social sciences (n.e.c.) {c |}{res}      1,808        0.02        2.27
+{txt}             28. nonscientific subjects {c |}{res}      5,649        0.08        2.34
+{txt}              29. subject not specified {c |}{res}     42,723        0.59        2.93
+{txt}       31. dancers and dancing teachers {c |}{res}      1,019        0.01        2.95
+{txt}                           32. dentists {c |}{res}      2,462        0.03        2.98
+{txt}                          33. designers {c |}{res}     30,095        0.42        3.40
+{txt}       34. dieticians and nutritionists {c |}{res}      5,573        0.08        3.47
+{txt}                          35. draftsmen {c |}{res}     13,898        0.19        3.67
+{txt}              36. editors and reporters {c |}{res}     24,945        0.34        4.01
+{txt}            41. engineers, aeronautical {c |}{res}      5,821        0.08        4.09
+{txt}                42. engineers, chemical {c |}{res}      4,593        0.06        4.15
+{txt}                   43. engineers, civil {c |}{res}     17,956        0.25        4.40
+{txt}              44. engineers, electrical {c |}{res}     27,434        0.38        4.78
+{txt}              45. engineers, industrial {c |}{res}     18,132        0.25        5.03
+{txt}              46. engineers, mechanical {c |}{res}     18,992        0.26        5.29
+{txt}47. engineers, metallurgical, metallurg {c |}{res}      1,879        0.03        5.32
+{txt}                  48. engineers, mining {c |}{res}      2,201        0.03        5.35
+{txt}                 49. engineers (n.e.c.) {c |}{res}     24,861        0.34        5.69
+{txt}              51. entertainers (n.e.c.) {c |}{res}      4,630        0.06        5.76
+{txt}  52. farm and home management advisors {c |}{res}        118        0.00        5.76
+{txt}     53. foresters and conservationists {c |}{res}      3,383        0.05        5.81
+{txt}    54. funeral directors and embalmers {c |}{res}      1,376        0.02        5.83
+{txt}                 55. lawyers and judges {c |}{res}     41,115        0.57        6.39
+{txt}                         56. librarians {c |}{res}     16,306        0.23        6.62
+{txt}       57. musicians and music teachers {c |}{res}     32,045        0.44        7.06
+{txt}               58. nurses, professional {c |}{res}    165,960        2.29        9.35
+{txt}       59. nurses, student professional {c |}{res}         72        0.00        9.35
+{txt}            61. agricultural scientists {c |}{res}      2,240        0.03        9.39
+{txt}              62. biological scientists {c |}{res}     12,019        0.17        9.55
+{txt}       63. geologists and geophysicists {c |}{res}      2,055        0.03        9.58
+{txt}                     67. mathematicians {c |}{res}      2,718        0.04        9.62
+{txt}                         68. physicists {c |}{res}      1,950        0.03        9.64
+{txt}   69. miscellaneous natural scientists {c |}{res}      9,269        0.13        9.77
+{txt}                       70. optometrists {c |}{res}        937        0.01        9.78
+{txt}72. personnel and labor relations worke {c |}{res}     42,350        0.58       10.37
+{txt}                        73. pharmacists {c |}{res}     12,846        0.18       10.55
+{txt}                      74. photographers {c |}{res}      4,551        0.06       10.61
+{txt}            75. physicians and surgeons {c |}{res}     31,276        0.43       11.04
+{txt}                    76. radio operators {c |}{res}      5,839        0.08       11.12
+{txt}       77. recreation and group workers {c |}{res}     11,888        0.16       11.29
+{txt}                  78. religious workers {c |}{res}      6,493        0.09       11.38
+{txt}79. social and welfare workers, except  {c |}{res}     52,316        0.72       12.10
+{txt}                         81. economists {c |}{res}      6,081        0.08       12.18
+{txt}                      82. psychologists {c |}{res}      8,964        0.12       12.31
+{txt}        83. statisticians and actuaries {c |}{res}      2,693        0.04       12.34
+{txt}    84. miscellaneous social scientists {c |}{res}      3,356        0.05       12.39
+{txt}   91. sports instructors and officials {c |}{res}      3,214        0.04       12.43
+{txt}                          92. surveyors {c |}{res}      6,333        0.09       12.52
+{txt}                  93. teachers (n.e.c.) {c |}{res}    332,910        4.60       17.12
+{txt}    94. technicians, medical and dental {c |}{res}     89,518        1.24       18.36
+{txt}               95. technicians, testing {c |}{res}     52,034        0.72       19.08
+{txt}               96. technicians (n.e.c.) {c |}{res}      8,121        0.11       19.19
+{txt}    97. therapists and healers (n.e.c.) {c |}{res}     37,441        0.52       19.70
+{txt}                      98. veterinarians {c |}{res}      3,067        0.04       19.75
+{txt}99. professional, technical and kindred {c |}{res}    304,563        4.21       23.95
+{txt}      100. farmers (owners and tenants) {c |}{res}        375        0.01       23.96
+{txt}                     123. farm managers {c |}{res}      5,725        0.08       24.04
+{txt}200. buyers and department heads, store {c |}{res}     44,328        0.61       24.65
+{txt}201. buyers and shippers, farm products {c |}{res}     17,316        0.24       24.89
+{txt}              203. conductors, railroad {c |}{res}      3,231        0.04       24.93
+{txt}                        204. credit men {c |}{res}        511        0.01       24.94
+{txt} 210. inspectors, public administration {c |}{res}     13,417        0.19       25.13
+{txt}230. managers and superintendents, buil {c |}{res}     20,298        0.28       25.41
+{txt}240. officers, pilots, pursers and engi {c |}{res}      2,180        0.03       25.44
+{txt}250. officials and administrators (n.e. {c |}{res}     37,332        0.52       25.95
+{txt}260. officials, lodge, society, union,  {c |}{res}        966        0.01       25.97
+{txt}                       270. postmasters {c |}{res}      1,387        0.02       25.99
+{txt}280. purchasing agents and buyers (n.e. {c |}{res}     24,828        0.34       26.33
+{txt}290. managers, officials, and proprieto {c |}{res}    724,506       10.01       36.33
+{txt}                   300. agents (n.e.c.) {c |}{res}        501        0.01       36.34
+{txt}301. attendants and assistants, library {c |}{res}      8,019        0.11       36.45
+{txt}302. attendants, physicians and dentist {c |}{res}     41,852        0.58       37.03
+{txt}                      305. bank tellers {c |}{res}     30,391        0.42       37.45
+{txt}                       310. bookkeepers {c |}{res}     92,886        1.28       38.73
+{txt}                          320. cashiers {c |}{res}    146,059        2.02       40.75
+{txt}      321. collectors, bill and account {c |}{res}      9,558        0.13       40.88
+{txt} 322. dispatchers and starters, vehicle {c |}{res}     14,671        0.20       41.09
+{txt}                     335. mail carriers {c |}{res}     20,835        0.29       41.37
+{txt}        340. messengers and office boys {c |}{res}     11,493        0.16       41.53
+{txt}          341. office machine operators {c |}{res}     72,932        1.01       42.54
+{txt}     342. shipping and receiving clerks {c |}{res}     39,263        0.54       43.08
+{txt}350. stenographers, typists, and secret {c |}{res}    249,205        3.44       46.52
+{txt}              360. telegraph messengers {c |}{res}         11        0.00       46.52
+{txt}               365. telegraph operators {c |}{res}        147        0.00       46.53
+{txt}               370. telephone operators {c |}{res}      9,403        0.13       46.66
+{txt}380. ticket, station, and express agent {c |}{res}     10,284        0.14       46.80
+{txt}390. clerical and kindred workers (n.e. {c |}{res}    563,192        7.78       54.58
+{txt}   400. advertising agents and salesmen {c |}{res}     10,121        0.14       54.72
+{txt}                       410. auctioneers {c |}{res}         75        0.00       54.72
+{txt}                     420. demonstrators {c |}{res}      2,269        0.03       54.75
+{txt}            430. hucksters and peddlers {c |}{res}      7,898        0.11       54.86
+{txt}      450. insurance agents and brokers {c |}{res}     52,584        0.73       55.58
+{txt}                          460. newsboys {c |}{res}      2,134        0.03       55.61
+{txt}    470. real estate agents and brokers {c |}{res}     28,592        0.39       56.01
+{txt}           480. stock and bond salesmen {c |}{res}     15,958        0.22       56.23
+{txt}490. salesmen and sales clerks (n.e.c.) {c |}{res}    296,327        4.09       60.32
+{txt}                            500. bakers {c |}{res}      9,740        0.13       60.46
+{txt}                       501. blacksmiths {c |}{res}        189        0.00       60.46
+{txt}                       502. bookbinders {c |}{res}      1,574        0.02       60.48
+{txt}                      503. boilermakers {c |}{res}      1,679        0.02       60.50
+{txt}504. brickmasons, stonemasons, and tile {c |}{res}      9,607        0.13       60.64
+{txt}                     505. cabinetmakers {c |}{res}      3,012        0.04       60.68
+{txt}                        510. carpenters {c |}{res}     61,271        0.85       61.52
+{txt}     511. cement and concrete finishers {c |}{res}      4,272        0.06       61.58
+{txt}       512. compositors and typesetters {c |}{res}      3,465        0.05       61.63
+{txt}513. cranemen, derrickmen, and hoistmen {c |}{res}      6,204        0.09       61.72
+{txt}    514. decorators and window dressers {c |}{res}        743        0.01       61.73
+{txt}                      515. electricians {c |}{res}     43,769        0.60       62.33
+{txt}    520. electrotypers and stereotypers {c |}{res}         13        0.00       62.33
+{txt}  521. engravers, except photoengravers {c |}{res}        631        0.01       62.34
+{txt}522. excavating, grading, and road mach {c |}{res}     17,812        0.25       62.59
+{txt}                  523. foremen (n.e.c.) {c |}{res}    116,292        1.61       64.19
+{txt}            524. forgemen and hammermen {c |}{res}        627        0.01       64.20
+{txt}                          525. furriers {c |}{res}        194        0.00       64.20
+{txt}                          530. glaziers {c |}{res}      2,445        0.03       64.24
+{txt}531. heat treaters, annealers, temperer {c |}{res}        637        0.01       64.25
+{txt}532. inspectors, scalers, and graders,  {c |}{res}        141        0.00       64.25
+{txt}               533. inspectors (n.e.c.) {c |}{res}      6,938        0.10       64.34
+{txt}534. jewelers, watchmakers, goldsmiths, {c |}{res}      2,599        0.04       64.38
+{txt}                535. job setters, metal {c |}{res}      1,192        0.02       64.40
+{txt}540. linemen and servicemen, telegraph, {c |}{res}     24,110        0.33       64.73
+{txt}              541. locomotive engineers {c |}{res}      3,801        0.05       64.78
+{txt}                542. locomotive firemen {c |}{res}         27        0.00       64.78
+{txt}                       543. loom fixers {c |}{res}         66        0.00       64.78
+{txt}                        544. machinists {c |}{res}     27,690        0.38       65.17
+{txt} 545. mechanics and repairmen, airplane {c |}{res}      9,152        0.13       65.29
+{txt}550. mechanics and repairmen, automobil {c |}{res}     73,773        1.02       66.31
+{txt}551. mechanics and repairmen, office ma {c |}{res}     14,417        0.20       66.51
+{txt}552. mechanics and repairmen, radio and {c |}{res}      9,452        0.13       66.64
+{txt}553. mechanics and repairmen, railroad  {c |}{res}      6,601        0.09       66.73
+{txt}  554. mechanics and repairmen (n.e.c.) {c |}{res}    114,981        1.59       68.32
+{txt}  555. millers, grain, flour, feed, etc {c |}{res}         40        0.00       68.32
+{txt}                       560. millwrights {c |}{res}      4,901        0.07       68.39
+{txt}                    561. molders, metal {c |}{res}        743        0.01       68.40
+{txt}     562. motion picture projectionists {c |}{res}        406        0.01       68.40
+{txt}563. opticians and lens grinders and po {c |}{res}      2,227        0.03       68.44
+{txt}564. painters, construction and mainten {c |}{res}     21,862        0.30       68.74
+{txt}                      565. paperhangers {c |}{res}      1,099        0.02       68.75
+{txt}570. pattern and model makers, except p {c |}{res}      1,124        0.02       68.77
+{txt}  571. photoengravers and lithographers {c |}{res}      1,370        0.02       68.79
+{txt}572. piano and organ tuners and repairm {c |}{res}         25        0.00       68.79
+{txt}                        573. plasterers {c |}{res}      1,773        0.02       68.81
+{txt}         574. plumbers and pipe fitters {c |}{res}     29,128        0.40       69.21
+{txt}575. pressmen and plate printers, print {c |}{res}     10,075        0.14       69.35
+{txt}     580. rollers and roll hands, metal {c |}{res}        809        0.01       69.36
+{txt}               581. roofers and slaters {c |}{res}      9,073        0.13       69.49
+{txt}582. shoemakers and repairers, except f {c |}{res}      2,830        0.04       69.53
+{txt}              583. stationary engineers {c |}{res}     11,788        0.16       69.69
+{txt}   584. stone cutters and stone carvers {c |}{res}         31        0.00       69.69
+{txt}          585. structural metal workers {c |}{res}      5,139        0.07       69.76
+{txt}           590. tailors and tailoresses {c |}{res}      2,203        0.03       69.79
+{txt}591. tinsmiths, coppersmiths, and sheet {c |}{res}      8,897        0.12       69.92
+{txt}592. tool makers, and die makers and se {c |}{res}      6,611        0.09       70.01
+{txt}                      593. upholsterers {c |}{res}      2,172        0.03       70.04
+{txt}594. craftsmen and kindred workers (n.e {c |}{res}     14,814        0.20       70.24
+{txt}         600. apprentice auto mechanics {c |}{res}         97        0.00       70.24
+{txt} 601. apprentice bricklayers and masons {c |}{res}         85        0.00       70.24
+{txt}             602. apprentice carpenters {c |}{res}        323        0.00       70.25
+{txt}           603. apprentice electricians {c |}{res}      1,265        0.02       70.27
+{txt}604. apprentice machinists and toolmake {c |}{res}        340        0.00       70.27
+{txt} 605. apprentice mechanics, except auto {c |}{res}         36        0.00       70.27
+{txt}610. apprentice plumbers and pipe fitte {c |}{res}        552        0.01       70.28
+{txt}611. apprentices, building trades (n.e. {c |}{res}         15        0.00       70.28
+{txt}612. apprentices, metalworking trades ( {c |}{res}        120        0.00       70.28
+{txt}      613. apprentices, printing trades {c |}{res}         40        0.00       70.28
+{txt}614. apprentices, other specified trade {c |}{res}        134        0.00       70.28
+{txt}  615. apprentices, trade not specified {c |}{res}         12        0.00       70.28
+{txt}   620. asbestos and insulation workers {c |}{res}      3,246        0.04       70.33
+{txt}621. attendants, auto service and parki {c |}{res}     13,500        0.19       70.51
+{txt}            622. blasters and powdermen {c |}{res}        642        0.01       70.52
+{txt}623. boatmen, canalmen, and lock keeper {c |}{res}         25        0.00       70.52
+{txt}                624. brakemen, railroad {c |}{res}      1,485        0.02       70.54
+{txt}                       625. bus drivers {c |}{res}     29,337        0.41       70.95
+{txt}630. chainmen, rodmen, and axmen, surve {c |}{res}        387        0.01       70.96
+{txt}631. conductors, bus and street railway {c |}{res}         59        0.00       70.96
+{txt}          632. deliverymen and routemen {c |}{res}     18,407        0.25       71.21
+{txt}633. dressmakers and seamstresses, exce {c |}{res}      1,952        0.03       71.24
+{txt}                             634. dyers {c |}{res}        191        0.00       71.24
+{txt}635. filers, grinders, and polishers, m {c |}{res}      7,283        0.10       71.34
+{txt}640. fruit, nut, veg graders and packer {c |}{res}      2,197        0.03       71.37
+{txt}641. furnacemen, smeltermen and pourers {c |}{res}        973        0.01       71.38
+{txt}                    642. heaters, metal {c |}{res}         23        0.00       71.38
+{txt}643. laundry and dry cleaning operative {c |}{res}     16,381        0.23       71.61
+{txt}644. meat cutters, except slaughter and {c |}{res}     17,198        0.24       71.85
+{txt}                         645. milliners {c |}{res}          4        0.00       71.85
+{txt}      650. mine operatives and laborers {c |}{res}     11,766        0.16       72.01
+{txt}660. motormen, mine, factory, logging c {c |}{res}        116        0.00       72.01
+{txt}661. motormen, street, subway, and elev {c |}{res}        360        0.00       72.02
+{txt}   662. oilers and greaser, except auto {c |}{res}      2,019        0.03       72.05
+{txt}670. painters, except construction or m {c |}{res}     11,525        0.16       72.20
+{txt}      671. photographic process workers {c |}{res}      4,258        0.06       72.26
+{txt}           672. power station operators {c |}{res}      3,148        0.04       72.31
+{txt}            673. sailors and deck hands {c |}{res}      1,360        0.02       72.33
+{txt}                           674. sawyers {c |}{res}      4,532        0.06       72.39
+{txt}                680. stationary firemen {c |}{res}      3,588        0.05       72.44
+{txt}               681. switchmen, railroad {c |}{res}        432        0.01       72.44
+{txt}     682. taxicab drivers and chauffers {c |}{res}     12,009        0.17       72.61
+{txt}         683. truck and tractor drivers {c |}{res}    154,222        2.13       74.74
+{txt}                  684. weavers, textile {c |}{res}      1,763        0.02       74.76
+{txt}         685. welders and flame cutters {c |}{res}     35,626        0.49       75.26
+{txt}690. operative and kindred workers (n.e {c |}{res}    441,347        6.10       81.35
+{txt}   700. housekeepers, private household {c |}{res}      1,444        0.02       81.37
+{txt}   710. laundressses, private household {c |}{res}         45        0.00       81.37
+{txt}720. private household workers (n.e.c.) {c |}{res}     58,311        0.81       82.18
+{txt}730. attendants, hospital and other ins {c |}{res}    106,254        1.47       83.65
+{txt}731. attendants, professional and perso {c |}{res}     48,050        0.66       84.31
+{txt}732. attendants, recreation and amuseme {c |}{res}     14,403        0.20       84.51
+{txt}740. barbers, beauticians, and manicuri {c |}{res}     29,184        0.40       84.91
+{txt}                        750. bartenders {c |}{res}     23,393        0.32       85.23
+{txt}                        751. bootblacks {c |}{res}          8        0.00       85.23
+{txt}752. boarding and lodging house keepers {c |}{res}          7        0.00       85.23
+{txt}            753. charwomen and cleaners {c |}{res}     25,879        0.36       85.59
+{txt}   754. cooks, except private household {c |}{res}    139,260        1.92       87.52
+{txt}      760. counter and fountain workers {c |}{res}     13,036        0.18       87.70
+{txt}                761. elevator operators {c |}{res}        386        0.01       87.70
+{txt}          762. firemen, fire protection {c |}{res}     18,745        0.26       87.96
+{txt} 763. guards, watchmen, and doorkeepers {c |}{res}     57,245        0.79       88.75
+{txt}764. housekeepers and stewards, except  {c |}{res}     11,520        0.16       88.91
+{txt}              770. janitors and sextons {c |}{res}    119,230        1.65       90.56
+{txt}           771. marshals and constables {c |}{res}         47        0.00       90.56
+{txt}                          772. midwives {c |}{res}          7        0.00       90.56
+{txt}          773. policemen and detectives {c |}{res}     49,692        0.69       91.24
+{txt}                           780. porters {c |}{res}      3,078        0.04       91.29
+{txt}                  781. practical nurses {c |}{res}     30,967        0.43       91.71
+{txt}             782. sheriffs and bailiffs {c |}{res}     14,067        0.19       91.91
+{txt}  783. ushers, recreation and amusement {c |}{res}      1,347        0.02       91.93
+{txt}            784. waiters and waitresses {c |}{res}     98,674        1.36       93.29
+{txt}785. watchmen (crossing) and bridge ten {c |}{res}      3,270        0.05       93.33
+{txt}790. service workers, except private ho {c |}{res}    141,152        1.95       95.28
+{txt}                      810. farm foremen {c |}{res}      1,267        0.02       95.30
+{txt}       820. farm laborers, wage workers {c |}{res}     49,170        0.68       95.98
+{txt}           910. fishermen and oystermen {c |}{res}      1,289        0.02       96.00
+{txt}920. garage laborers and car washers an {c |}{res}      3,560        0.05       96.05
+{txt}930. gardeners, except farm, and ground {c |}{res}     43,174        0.60       96.64
+{txt}       940. longshoremen and stevedores {c |}{res}        606        0.01       96.65
+{txt}950. lumbermen, raftsmen, and woodchopp {c |}{res}      3,630        0.05       96.70
+{txt}                         960. teamsters {c |}{res}         32        0.00       96.70
+{txt}                 970. laborers (n.e.c.) {c |}{res}    238,705        3.30      100.00
+{txt}{hline 40}{c +}{hline 35}
+                                  Total {c |}{res}  7,240,117      100.00
+
+{com}. do /var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T/StataRun1736283645884.do
+{txt}
+{com}. ***** Exercise_2_Readman.do
+. ***** preparing the CPS ORG Data, 1982-2024
+. ***** cps-org data extracted from ipums and prepared on 1/4/2024
+. 
+. cd "~/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis"
+{res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis
+{txt}
+{com}. log using Exercise_2_Readman.smcl, name(results) replace
+{err}log file already open
+{txt}{search r(604), local:r(604);}
+
+end of do-file
+
+{search r(604), local:r(604);}
+
+{com}. do /var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T/StataRun1736283653465.do
+{txt}
+{com}. log close results
+      {txt}name:  {res}results
+       {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_1_Readman.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 7 Jan 2025, 16:00:53
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

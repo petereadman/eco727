@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Exercise_3_Readman_</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+<style>
+/* CSS for Markstat 2.0 using Pandoc 2.0 */
+body{padding:14px 28px; max-width:45em;}
+body, table {font-family: Helvetica, Arial, Sans-serif; font-size: 14px; max-width:70em}
+h1, h2, h3, h4 {font-weight: normal; color: #3366cc}
+h1 {font-size: 200%;}
+h2 {font-size: 150%;}
+h3 {font-size: 120%;}
+h4 {font-size: 100%; font-weight:bold}
+img.center {display:block; margin-left:auto; margin-right:auto}
+.small{font-size:8pt;}
+a {color: black;}
+a:visited {color: #808080;}
+a.plain {text-decoration:none;}
+a.plain:hover {text-decoration:underline;}
+.em {font-weight:bold;}
+pre, code {font-family: "lucida console", monospace;}
+pre.stata {font-size:13px; line-height:13px;}
+pre {padding:8px; border:1px solid #c0c0c0; border-radius:8px; background-color:#fdfdfd;}
+code {color:#3366cc; background-color:#fafafa;}
+pre code { color:black; background-color:white}
+/* Added for Pandoc */
+figure > img, div.figure > img {display:block; margin:auto}
+figcaption, p.caption {text-align:center; font-weight:bold; color:#3366cc;}
+h1.title {text-align:center; margin-bottom:0}
+p.author, h2.author {font-style:italic; text-align:center;margin-top:4px;margin-bottom:0}
+p.date, h3.date {text-align:center;margin-top:4px; margin-bottom:0}
+/* Tables*/
+table { margin:auto; border-collapse:collapse; }
+table caption { margin-bottom:1ex;}
+td {padding:0 0 0 0} /* override */
+table:not([class]) th { padding:4px 6px } 
+table:not([class]) td { padding:4px 6px } 
+table:not([class]) thead tr:first-child th {border-top:1px solid black; padding-top:6px}
+table:not([class]) thead tr:last-child  th {padding-bottom:6px}
+table:not([class]) tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
+table:not([class]) tbody tr:last-child  td {padding-bottom:6px;}
+table:not([class]) tbody:last-child tr:last-child td {border-bottom:1px solid black;}
+</style>
+</head>
+<body>
+<h2 id="exercise-3-organizing-the-cpi-and-cps-org-data">Exercise 3:
+Organizing the CPI and CPS-ORG Data</h2>
+<p>Peter Readman</p>
+<hr />
+<h3 id="plan">Plan</h3>
+<hr />
+<ul>
+<li>append morg data sets for years 1979, 1980, 1981 and align with
+IPUMS</li>
+<li>merge monthly CPI data into CPS 1982-2024 cleaned on 1/7/2024,
+compute real weekly wage</li>
+<li>Plot annual statistics for real weekly wage and difference in
+10th/90th percentiles</li>
+</ul>
+<hr />
+<h3 id="preliminaries">Preliminaries</h3>
+<p>As usual, we start by moving to the analysis folder and setting up
+some macros</p>
+<pre class='stata'>. cd "~/Dropbox/@10,000 feet and Runway/MA in Economics
+>  at Hunter/ECO 727 - Data Analysis and Research Metho
+> ds/Analysis"
+/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA 
+> in Economics at Hunter/ECO 727 - Data Analysis and Re
+> search Methods/Analysis
+
+. global ex=3
+
+. global lname="Readman"
+
+. global eyear=2024
+</pre>
+<h3 id="appending-and-cleaning-cps-org-data">Appending and Cleaning
+CPS-ORG Data</h3>
+<p>Three data sets of morg data were downloaded from ____ and appended,
+keeping a subset of variables:</p>
+<pre class='stata'>. clear
+
+. append using "../Data/morg79.dta" "../Data/morg80.dta
+> " "../Data/morg81.dta"
+(label prunecat already defined)
+(label ptstat already defined)
+(label ftpt79 already defined)
+(label why35lw already defined)
+(label absentlw already defined)
+(label reasonlw already defined)
+(label uhours35 already defined)
+(label doinglw already defined)
+(label activlwr already defined)
+(label eligible already defined)
+(label docc70 already defined)
+(label dind already defined)
+(label ind70 already defined)
+(label esr already defined)
+(label classer already defined)
+(label class already defined)
+(label I25d already defined)
+(label I25c already defined)
+(label I25b already defined)
+(label I25a already defined)
+(label paidhre already defined)
+(label paidhr already defined)
+(label relahh already defined)
+(label gradecp already defined)
+(label veteran already defined)
+(label marital already defined)
+(label ethnic already defined)
+(label race already defined)
+(label sex already defined)
+(label smsarank already defined)
+(label smsa70 already defined)
+(label centcity already defined)
+(label smsastat already defined)
+(label state already defined)
+(label intmonth already defined)
+(label minsamp already defined)
+(label prunecat already defined)
+(label ptstat already defined)
+(label ftpt79 already defined)
+(label why35lw already defined)
+(label absentlw already defined)
+(label reasonlw already defined)
+(label uhours35 already defined)
+(label doinglw already defined)
+(label activlwr already defined)
+(label eligible already defined)
+(label docc70 already defined)
+(label dind already defined)
+(label ind70 already defined)
+(label esr already defined)
+(label classer already defined)
+(label class already defined)
+(label I25d already defined)
+(label I25c already defined)
+(label I25b already defined)
+(label I25a already defined)
+(label paidhre already defined)
+(label paidhr already defined)
+(label relahh already defined)
+(label gradecp already defined)
+(label veteran already defined)
+(label marital already defined)
+(label ethnic already defined)
+(label race already defined)
+(label sex already defined)
+(label smsarank already defined)
+(label smsa70 already defined)
+(label centcity already defined)
+(label smsastat already defined)
+(label state already defined)
+(label intmonth already defined)
+(label minsamp already defined)
+
+. keep year intmonth minsamp classer esr age race sex g
+> radeat uhours earnwke earnwt
+</pre>
+<p>Summary statistics of the cleaned CPS-ORG dataset confirm the
+presence of key variables for analysis:</p>
+<pre class='stata'>. describe
+
+Contains data
+ Observations:     1,078,331                  
+    Variables:            12                  
+───────────────────────────────────────────────────────
+Variable      Storage   Display    Value
+    name         type    format    label      Variable 
+> label
+───────────────────────────────────────────────────────
+minsamp         byte    %8.0g      minsamp    Month in
+                                   sample (4 &amp; 8 are
+                                   departing)
+intmonth        byte    %9.0g      intmonth   Interview
+                                   month
+classer         byte    %38.0g     classer    (e&amp;r)
+                                   Class of worker
+age             byte    %8.0g                 Age
+race            byte    %8.0g      race       Race
+sex             byte    %8.0g      sex        Sex
+gradeat         byte    %8.0g                 Highest
+                                   grade attended
+esr             byte    %24.0g     esr        Employmen
+                                   > t status recode
+uhours          byte    %8.0g                 (dp)
+                                   Usual hours
+earnwt          float   %9.0g                 (dp)
+                                   Earnings weight for
+                                   all races x100
+earnwke         int     %8.0g                 (e&amp;dp)
+                                   Earnings per week
+year            int     %8.0g                 
+───────────────────────────────────────────────────────
+Sorted by: 
+     Note: Dataset has changed since last saved.
+
+. summarize
+
+    Variable │        Obs        Mean    Std. dev.     
+>   Min        Max
+─────────────┼─────────────────────────────────────────
+────────────────
+     minsamp │  1,078,331    5.998091           2      
+>     4          8
+    intmonth │  1,078,331    6.473783     3.46456      
+>     1         12
+     classer │    824,544    1.390446    .7434256      
+>     1          5
+         age │  1,078,331    41.97297    18.59911      
+>    16         99
+        race │  1,078,331    1.150265    .4301182      
+>     1          3
+─────────────┼─────────────────────────────────────────
+────────────────
+         sex │  1,078,331    1.531095    .4990324      
+>     1          2
+     gradeat │  1,078,331    12.04029    3.102997      
+>     0         18
+         esr │  1,078,331    2.605366    2.081117      
+>     1          7
+      uhours │    553,424    37.93656    11.00317      
+>    -9         99
+      earnwt │  1,078,331    5594.569    2677.213      
+>  8.36   69937.99
+─────────────┼─────────────────────────────────────────
+────────────────
+     earnwke │    558,137    258.6179    172.1354      
+>     0        999
+        year │  1,078,331    1980.033    .8006286      
+>  1979       1981
+
+. list in -10/l, noobs
+
+  ┌─────────┬──────────┬───────────────┬─────┬───────┐
+  │ minsamp │ intmonth │       classer │ age │  race │
+  │   MIS 8 │ December │       Private │  37 │ White │
+  ├─────────┼──────────┴┬──────────────┴─────┴───────┤
+  │    sex  │  gradeat  │                       esr  │
+  │   Male  │       14  │          Employed-At Work  │
+  ├─────────┴-┬─────────┴───┬─────────────┬──────────┤
+  │  uhours   │    earnwt   │   earnwke   │   year   │
+  │      40   │   1440.22   │       852   │   1981   │
+  └───────────┴─────────────┴─────────────┴──────────┘
+
+  ┌─────────┬──────────┬───────────────┬─────┬───────┐
+  │ minsamp │ intmonth │       classer │ age │  race │
+  │   MIS 8 │ December │       Private │  36 │ White │
+  ├─────────┼──────────┴┬──────────────┴─────┴───────┤
+  │    sex  │  gradeat  │                       esr  │
+  │ Female  │       12  │          Employed-At Work  │
+  ├─────────┴-┬─────────┴───┬─────────────┬──────────┤
+  │  uhours   │    earnwt   │   earnwke   │   year   │
+  │      40   │   1238.05   │       400   │   1981   │
+  └───────────┴─────────────┴─────────────┴──────────┘
+
+  ┌─────────┬──────────┬───────────────┬─────┬───────┐
+  │ minsamp │ intmonth │       classer │ age │  race │
+  │   MIS 8 │ December │       Private │  16 │ White │
+  ├─────────┼──────────┴┬──────────────┴─────┴───────┤
+  │    sex  │  gradeat  │                       esr  │
+  │   Male  │       10  │        Unemployed-Looking  │
+  ├─────────┴-┬─────────┴───┬─────────────┬──────────┤
+  │  uhours   │    earnwt   │   earnwke   │   year   │
+  │       .   │   1176.16   │         .   │   1981   │
+  └───────────┴─────────────┴─────────────┴──────────┘
+
+  ┌─────────┬──────────┬───────────────┬─────┬───────┐
+  │ minsamp │ intmonth │       classer │ age │  race │
+  │   MIS 8 │ December │       Private │  65 │ White │
+  ├─────────┼──────────┴┬──────────────┴─────┴───────┤
+  │    sex  │  gradeat  │                       esr  │
+  │   Male  │       13  │          Employed-At Work  │
+  ├─────────┴-┬─────────┴───┬─────────────┬──────────┤
+  │  uhours   │    earnwt   │   earnwke   │   year   │
+  │      40   │   1298.19   │       240   │   1981   │
+  └───────────┴─────────────┴─────────────┴──────────┘
+
+  ┌─────────┬──────────┬───────────────┬─────┬───────┐
+  │ minsamp │ intmonth │       classer │ age │  race │
+  │   MIS 8 │ December │       Private │  23 │ White │
+  ├─────────┼──────────┴┬──────────────┴─────┴───────┤
+  │    sex  │  gradeat  │                       esr  │
+  │   Male  │       12  │          Employed-At Work  │
+  ├─────────┴-┬─────────┴───┬─────────────┬──────────┤
+  │  uhours   │    earnwt   │   earnwke   │   year   │
+  │      40   │   1499.93   │       478   │   1981   │
+  └───────────┴─────────────┴─────────────┴──────────┘
+
+  ┌─────────┬──────────┬───────────────┬─────┬───────┐
+  │ minsamp │ intmonth │       classer │ age │  race │
+  │   MIS 8 │ December │       Private │  23 │ White │
+  ├─────────┼──────────┴┬──────────────┴─────┴───────┤
+  │    sex  │  gradeat  │                       esr  │
+  │   Male  │       12  │          Employed-At Work  │
+  ├─────────┴-┬─────────┴───┬─────────────┬──────────┤
+  │  uhours   │    earnwt   │   earnwke   │   year   │
+  │      45   │    999.95   │       720   │   1981   │
+  └───────────┴─────────────┴─────────────┴──────────┘
+
+  ┌─────────┬──────────┬───────────────┬─────┬───────┐
+  │ minsamp │ intmonth │       classer │ age │  race │
+  │   MIS 8 │ December │       Private │  22 │ White │
+  ├─────────┼──────────┴┬──────────────┴─────┴───────┤
+  │    sex  │  gradeat  │                       esr  │
+  │ Female  │       15  │                 Housework  │
+  ├─────────┴-┬─────────┴───┬─────────────┬──────────┤
+  │  uhours   │    earnwt   │   earnwke   │   year   │
+  │       .   │    931.32   │         .   │   1981   │
+  └───────────┴─────────────┴─────────────┴──────────┘
+
+  ┌─────────┬──────────┬───────────────┬─────┬───────┐
+  │ minsamp │ intmonth │       classer │ age │  race │
+  │   MIS 4 │ December │       Private │  21 │ Other │
+  ├─────────┼──────────┴┬──────────────┴─────┴───────┤
+  │    sex  │  gradeat  │                       esr  │
+  │ Female  │       12  │  Other (Includes Retired)  │
+  ├─────────┴-┬─────────┴───┬─────────────┬──────────┤
+  │  uhours   │    earnwt   │   earnwke   │   year   │
+  │       .   │   1005.17   │         .   │   1981   │
+  └───────────┴─────────────┴─────────────┴──────────┘
+
+  ┌─────────┬──────────┬───────────────┬─────┬───────┐
+  │ minsamp │ intmonth │       classer │ age │  race │
+  │   MIS 8 │ December │ Self-Employed │  24 │ Other │
+  ├─────────┼──────────┴┬──────────────┴─────┴───────┤
+  │    sex  │  gradeat  │                       esr  │
+  │   Male  │       12  │  Other (Includes Retired)  │
+  ├─────────┴-┬─────────┴───┬─────────────┬──────────┤
+  │  uhours   │    earnwt   │   earnwke   │   year   │
+  │       .   │     277.2   │         .   │   1981   │
+  └───────────┴─────────────┴─────────────┴──────────┘
+
+  ┌─────────┬──────────┬───────────────┬─────┬───────┐
+  │ minsamp │ intmonth │       classer │ age │  race │
+  │   MIS 8 │ December │   Without Pay │  23 │ Other │
+  ├─────────┼──────────┴┬──────────────┴─────┴───────┤
+  │    sex  │  gradeat  │                       esr  │
+  │ Female  │       12  │                 Housework  │
+  ├─────────┴-┬─────────┴───┬─────────────┬──────────┤
+  │  uhours   │    earnwt   │   earnwke   │   year   │
+  │       .   │    356.72   │         .   │   1981   │
+  └───────────┴─────────────┴─────────────┴──────────┘
+</pre>
+<p>We may want to merge some or all this data into our IPUMS data set,
+so let’s edit the variable and label names to align:</p>
+<pre class='stata'>. rename (minsamp intmonth) (mish month)
+
+. label define MONTH 1 "january" 2 "february" 3 "march"
+>  4 "april" 5 "may" 6 "june" ///
+>                    7 "july" 8 "august" 9 "september" 
+> 10 "october" 11 "november" 12 "december"
+
+. label values month MONTH
+
+. label define MISH 4 "four" 8 "eight"
+
+. label values mish MISH
+
+. tabulate month mish
+
+           │ Month in sample (4 &amp;
+ Interview │   8 are departing)
+     month │      four      eight │     Total
+───────────┼──────────────────────┼──────────
+   january │    45,207     45,572 │    90,779 
+  february │    45,926     46,101 │    92,027 
+     march │    45,797     45,927 │    91,724 
+     april │    46,202     46,216 │    92,418 
+       may │    43,970     43,524 │    87,494 
+      june │    43,302     43,717 │    87,019 
+      july │    45,241     44,798 │    90,039 
+    august │    44,918     44,468 │    89,386 
+ september │    44,257     44,291 │    88,548 
+   october │    44,715     44,211 │    88,926 
+  november │    44,624     44,961 │    89,585 
+  december │    45,521     44,865 │    90,386 
+───────────┼──────────────────────┼──────────
+     Total │   539,680    538,651 │ 1,078,331 
+</pre>
+<p>For this analysis, we’re only interested in people aged 18–64 who
+were employed last week, working for a private firm or a governemnt
+body.</p>
+<pre class='stata'>. numlabel classer, add
+
+. tabulate classer
+
+                  (e&amp;r) Class of worker │      Freq.   
+>   Percent        Cum.
+────────────────────────────────────────┼──────────────
+─────────────────────
+                             1. Private │    606,926   
+>     73.61       73.61
+                          2. Government │    133,281   
+>     16.16       89.77
+                       3. Self-Employed │     69,780   
+>      8.46       98.23
+                         4. Without Pay │      9,129   
+>      1.11       99.34
+5. Never worked or never worked full-ti │      5,428   
+>      0.66      100.00
+────────────────────────────────────────┼──────────────
+─────────────────────
+                                  Total │    824,544   
+>    100.00
+
+. keep if inrange(age, 18, 64) &amp; (classer == 1 | classe
+> r == 2)
+(404,512 observations deleted)
+</pre>
+<pre class='stata'>. describe
+
+Contains data
+ Observations:       673,819                  
+    Variables:            12                  
+───────────────────────────────────────────────────────
+Variable      Storage   Display    Value
+    name         type    format    label      Variable 
+> label
+───────────────────────────────────────────────────────
+mish            byte    %8.0g      MISH       Month in
+                                   sample (4 &amp; 8 are
+                                   departing)
+month           byte    %9.0g      MONTH      Interview
+                                   month
+classer         byte    %41.0g     classer    (e&amp;r)
+                                   Class of worker
+age             byte    %8.0g                 Age
+race            byte    %8.0g      race       Race
+sex             byte    %8.0g      sex        Sex
+gradeat         byte    %8.0g                 Highest
+                                   grade attended
+esr             byte    %24.0g     esr        Employmen
+                                   > t status recode
+uhours          byte    %8.0g                 (dp)
+                                   Usual hours
+earnwt          float   %9.0g                 (dp)
+                                   Earnings weight for
+                                   all races x100
+earnwke         int     %8.0g                 (e&amp;dp)
+                                   Earnings per week
+year            int     %8.0g                 
+───────────────────────────────────────────────────────
+Sorted by: 
+     Note: Dataset has changed since last saved.
+
+. summarize
+
+    Variable │        Obs        Mean    Std. dev.     
+>   Min        Max
+─────────────┼─────────────────────────────────────────
+────────────────
+        mish │    673,819    5.995753    1.999997      
+>     4          8
+       month │    673,819    6.476002    3.468601      
+>     1         12
+     classer │    673,819    1.183076     .386729      
+>     1          2
+         age │    673,819    36.19307    13.07602      
+>    18         64
+        race │    673,819    1.155333    .4378069      
+>     1          3
+─────────────┼─────────────────────────────────────────
+────────────────
+         sex │    673,819    1.482793    .4997042      
+>     1          2
+     gradeat │    673,819    12.73748    2.738672      
+>     0         18
+         esr │    673,819    1.727454    1.485632      
+>     1          7
+      uhours │    518,465    38.83527    10.12022      
+>    -8         99
+      earnwt │    673,819     5669.77    2694.698      
+> 11.03   69937.99
+─────────────┼─────────────────────────────────────────
+────────────────
+     earnwke │    524,729    268.6182    170.3658      
+>     0        999
+        year │    673,819    1980.035    .8006011      
+>  1979       1981
+
+. summarize earnwke, detail
+
+                  (e&amp;dp) Earnings per week
+───────────────────────────────────────────────────────
+──────
+      Percentiles      Smallest
+ 1%           24              0
+ 5%           60              0
+10%           94              0       Obs             5
+> 24,729
+25%          150              0       Sum of wgt.     5
+> 24,729
+
+50%          233                      Mean           26
+> 8.6182
+                        Largest       Std. dev.      17
+> 0.3658
+75%          350            999
+90%          490            999       Variance       29
+> 024.51
+95%          600            999       Skewness       1.
+> 448418
+99%          900            999       Kurtosis       6.
+> 025732
+
+. tab year if earnwke == .
+
+       year │      Freq.     Percent        Cum.
+────────────┼───────────────────────────────────
+       1979 │     43,640       29.27       29.27
+       1980 │     53,626       35.97       65.24
+       1981 │     51,824       34.76      100.00
+────────────┼───────────────────────────────────
+      Total │    149,090      100.00
+</pre>
+<p>The mean meekly earnings is $268.62 with the median slightly lower at
+$233. Weekly earnings range from 0 to 999, which looks like a missing
+value code or topcode. We’ll note this and move on.</p>
+<hr />
+<h3 id="preparing-the-cpi-data">Preparing the CPI Data</h3>
+<p>The CPI data were downloaded from the Bureau of Labor Statistics and
+imported.</p>
+<pre class='stata'>. import excel using "../Data/SeriesReport-202501091516
+> 24_b18e88.xlsx", cellrange(A12:M124) firstrow clear
+(13 vars, 112 obs)
+
+. describe
+
+Contains data
+ Observations:           112                  
+    Variables:            13                  
+───────────────────────────────────────────────────────
+Variable      Storage   Display    Value
+    name         type    format    label      Variable 
+> label
+───────────────────────────────────────────────────────
+Year            int     %10.0g                Year
+Jan             double  %10.0g                Jan
+Feb             double  %10.0g                Feb
+Mar             double  %10.0g                Mar
+Apr             double  %10.0g                Apr
+May             double  %10.0g                May
+Jun             double  %10.0g                Jun
+Jul             double  %10.0g                Jul
+Aug             double  %10.0g                Aug
+Sep             double  %10.0g                Sep
+Oct             double  %10.0g                Oct
+Nov             double  %10.0g                Nov
+Dec             double  %10.0g                Dec
+───────────────────────────────────────────────────────
+Sorted by: 
+     Note: Dataset has changed since last saved.
+
+. summarize
+
+    Variable │        Obs        Mean    Std. dev.     
+>   Min        Max
+─────────────┼─────────────────────────────────────────
+────────────────
+        Year │        112      1968.5    32.47563      
+>  1913       2024
+         Jan │        112    87.72178     86.4136      
+>   9.8    308.417
+         Feb │        112    88.05734    86.84822      
+>   9.8    310.326
+         Mar │        112    88.46087    87.33292      
+>   9.8    312.332
+         Apr │        112    88.79369     87.6453      
+>   9.8    313.548
+─────────────┼─────────────────────────────────────────
+────────────────
+         May │        112    89.08363    87.93985      
+>   9.7    314.069
+         Jun │        112    89.39824    88.22356      
+>   9.8    314.175
+         Jul │        112    89.58172    88.28814      
+>   9.9     314.54
+         Aug │        112    89.76936    88.41522      
+>   9.9    314.796
+         Sep │        112    90.02799     88.5862      
+>    10    315.301
+─────────────┼─────────────────────────────────────────
+────────────────
+         Oct │        112    90.17321     88.6385      
+>    10    315.664
+         Nov │        112    90.16198    88.48577      
+>  10.1    315.493
+         Dec │        111    88.09129    86.07916      
+>    10    306.746
+</pre>
+<p>Let’s reshape …</p>
+<pre class='stata'>. rename Year year // rename to match CPS
+
+. rename (Jan-Dec) m#, addnumber
+
+. reshape long m, i(year) j(month)
+(j = 1 2 3 4 5 6 7 8 9 10 11 12)
+
+Data                               Wide   ->   Long
+───────────────────────────────────────────────────────
+──────────────────────
+Number of observations              112   ->   1,344   
+>     
+Number of variables                  13   ->   3       
+>     
+j variable (12 values)                    ->   month
+xij variables:
+                          m1 m2 ... m12   ->   m
+───────────────────────────────────────────────────────
+──────────────────────
+
+. rename m cpi
+
+. describe
+
+Contains data
+ Observations:         1,344                  
+    Variables:             3                  
+───────────────────────────────────────────────────────
+Variable      Storage   Display    Value
+    name         type    format    label      Variable 
+> label
+───────────────────────────────────────────────────────
+year            int     %10.0g                Year
+month           byte    %10.0g                
+cpi             double  %10.0g                
+───────────────────────────────────────────────────────
+Sorted by: year  month
+     Note: Dataset has changed since last saved.
+</pre>
+<p>We should revise the labeling and formatting for ease of use</p>
+<pre class='stata'>. label variable month "Month"
+
+. label variable cpi "Consumer Price Index"
+
+. format cpi %9.3f
+</pre>
+<p>Sorting the CPI data by year and month will ready the data for
+merging into our CPS data. A quick of the first couple years’ CPI data
+confirms it’s in the correct format.</p>
+<pre class='stata'>. sort year month
+
+. list if year>=1982 &amp; year&lt;1984, noobs clean
+
+    year   month       cpi  
+    1982       1    94.300  
+    1982       2    94.600  
+    1982       3    94.500  
+    1982       4    94.900  
+    1982       5    95.800  
+    1982       6    97.000  
+    1982       7    97.500  
+    1982       8    97.700  
+    1982       9    97.900  
+    1982      10    98.200  
+    1982      11    98.000  
+    1982      12    97.600  
+    1983       1    97.800  
+    1983       2    97.900  
+    1983       3    97.900  
+    1983       4    98.600  
+    1983       5    99.200  
+    1983       6    99.500  
+    1983       7    99.900  
+    1983       8   100.200  
+    1983       9   100.700  
+    1983      10   101.000  
+    1983      11   101.200  
+    1983      12   101.300  
+</pre>
+<p>After saving, we have the following summary statistics and
+variables</p>
+<pre class='stata'>. summarize
+
+    Variable │        Obs        Mean    Std. dev.     
+>   Min        Max
+─────────────┼─────────────────────────────────────────
+────────────────
+        year │      1,344      1968.5    32.34236      
+>  1913       2024
+       month │      1,344         6.5    3.453337      
+>     1         12
+         cpi │      1,343    89.11085    87.39035      
+>   9.7    315.664
+
+. describe
+
+Contains data
+ Observations:         1,344                  
+    Variables:             3                  
+───────────────────────────────────────────────────────
+Variable      Storage   Display    Value
+    name         type    format    label      Variable 
+> label
+───────────────────────────────────────────────────────
+year            int     %10.0g                Year
+month           byte    %10.0g                Month
+cpi             double  %9.3f                 Consumer
+                                   Price Index
+───────────────────────────────────────────────────────
+Sorted by: year  month
+     Note: Dataset has changed since last saved.
+</pre>
+<hr />
+<h3 id="merging-cpi-and-cps-org-data">Merging CPI and CPS-ORG Data</h3>
+<p>To integrate the two datasets, the CPI data were merged into the
+CPS-ORG dataset by year and month. A new variable for real weekly wages
+was calculated by dividing nominal earnings by the CPI. The resulting
+dataset was saved for further analysis.</p>
+<pre class='stata'>. use "../Data/CPS ORGs, 1982-2024, Cleaned.dta", clear
+
+. describe
+
+Contains data from ../Data/CPS ORGs, 1982-2024, Cleaned
+> .dta
+ Observations:     6,738,088                  
+    Variables:            22                  9 Jan 202
+> 5 16:30
+───────────────────────────────────────────────────────
+Variable      Storage   Display    Value
+    name         type    format    label      Variable 
+> label
+───────────────────────────────────────────────────────
+year            int     %8.0g                 survey
+                                   year
+month           byte    %8.0g      MONTH      month
+mish            byte    %8.0g      MISH       month in
+                                   sample, household
+                                   level
+region          byte    %8.0g      REGION     region
+                                   and division
+cpsidv          double  %12.0g                validated
+                                   longitudinal
+                                   identifier
+age             byte    %8.0g      AGE        age
+female          byte    %9.0g      FEMALE     
+race            int     %58.0g     RACE       race
+empstat         byte    %8.0g      EMPSTAT    employmen
+                                   > t status
+classwkr        byte    %8.0g      CLASSWKR   class of
+                                   worker
+uhrswork1       int     %8.0g      UHRSWORK1
+                                              hours
+                                   usually worked per
+                                   week at main job
+grade           float   %9.0g                 highest
+                                   grade completed
+earnwt          double  %12.0g                earnings
+                                   weight
+qearnwee        byte    %8.0g      QEARNWEE   data
+                                   quality flag for
+                                   earnweek
+hourwage        double  %12.0g     HOURWAGE   hourly
+                                   wage
+paidhour        byte    %15.0g     PAIDHOUR   paid by
+                                   the hour
+union           byte    %8.0g      UNION      union
+                                   membership
+earnweek        double  %12.0g     EARNWEEK   weekly
+                                   earnings
+uhrsworkorg     byte    %8.0g                 usual
+                                   hours worked per
+                                   week, outgoing
+                                   rotation groups
+occupation      byte    %32.0g     OCCUPATION
+                                              occupatio
+                                   > n (1-10)
+industry        byte    %49.0g     INDUSTRY   industry
+                                   (1-11)
+topcode         byte    %9.0g                 topcode
+                                   indicator
+───────────────────────────────────────────────────────
+Sorted by: 
+
+. summarize
+
+    Variable │        Obs        Mean    Std. dev.     
+>   Min        Max
+─────────────┼─────────────────────────────────────────
+────────────────
+        year │  6,738,088    2002.068    12.10799      
+>  1982       2024
+       month │  6,738,088    6.505521    3.450084      
+>     1         12
+        mish │  6,738,088    6.003526    1.999997      
+>     4          8
+      region │  6,738,088    27.35454    10.74259      
+>    11         42
+      cpsidv │  6,738,088    2.00e+14    1.21e+12   1.9
+> 8e+14   2.02e+14
+─────────────┼─────────────────────────────────────────
+────────────────
+         age │  6,738,088    39.04488    12.23483      
+>    18         64
+      female │  6,738,088    .4877906    .4998509      
+>     0          1
+        race │  6,738,088     141.819    129.5985      
+>   100        700
+     empstat │  6,738,088     10.0833    .3995664      
+>    10         12
+    classwkr │  6,738,088    22.68014    2.121586      
+>    13         28
+─────────────┼─────────────────────────────────────────
+────────────────
+   uhrswork1 │  6,738,088    78.16546     189.717      
+>     0        997
+       grade │  6,738,088    13.49376    2.614426      
+>     0         18
+      earnwt │  6,738,088    8652.169    5093.023      
+> 90.01   209103.1
+    qearnwee │  4,437,930    1.275338    1.864099      
+>     0          4
+    hourwage │  3,958,207    12.89962    8.767912      
+>   .01      99.99
+─────────────┼─────────────────────────────────────────
+────────────────
+    paidhour │  6,738,088    .5876722    .4922536      
+>     0          1
+       union │  6,517,337    1.172239    .4198614      
+>     1          3
+    earnweek │  6,738,088    713.4357    695.7659      
+>     0   4326.915
+ uhrsworkorg │  2,914,349    36.77634    9.983109      
+>     1         99
+  occupation │  6,738,088    3.936502     2.59726      
+>     1          9
+─────────────┼─────────────────────────────────────────
+────────────────
+    industry │  6,738,088    6.976406    2.776901      
+>     1         11
+     topcode │    168,927           1           0      
+>     1          1
+
+. sort year month
+</pre>
+<p>Now it’s ready to merge in CPI into the CPS</p>
+<pre class='stata'>. merge m:1 year month using "../Data/CPI 1982-2024.dta
+> ", keep(match)
+
+    Result                      Number of obs
+    ─────────────────────────────────────────
+    Not matched                             0
+    Matched                         6,738,088  (_merge=
+> =3)
+    ─────────────────────────────────────────
+
+. assert _merge ==3
+
+. drop _merge // do we drop _merge if it works?
+</pre>
+<p>We want to analyze the real wage, adjusted for inflation</p>
+<pre class='stata'>. summarize cpi if year==2024 &amp; month==11, meanonly
+
+. return list
+
+scalars:
+                  r(N) =  9687
+              r(sum_w) =  9687
+                r(sum) =  3056180.691
+               r(mean) =  315.493
+                r(min) =  315.493
+                r(max) =  315.493
+
+. scalar cpi_nov24 = r(mean)
+
+. generate rwage=cpi_nov24*earnweek/cpi // November 202
+> 4 dollars
+
+. label variable rwage "real wage"
+</pre>
+<p>Summary statistics of the merged data show the inclusion of the CPI
+and real weekly wages:</p>
+<pre class='stata'>. describe
+
+Contains data from ../Data/CPS ORGs, 1982-2024, Cleaned
+> .dta
+ Observations:     6,738,088                  
+    Variables:            24                  9 Jan 202
+> 5 16:30
+───────────────────────────────────────────────────────
+Variable      Storage   Display    Value
+    name         type    format    label      Variable 
+> label
+───────────────────────────────────────────────────────
+year            int     %8.0g                 survey
+                                   year
+month           byte    %8.0g      MONTH      month
+mish            byte    %8.0g      MISH       month in
+                                   sample, household
+                                   level
+region          byte    %8.0g      REGION     region
+                                   and division
+cpsidv          double  %12.0g                validated
+                                   longitudinal
+                                   identifier
+age             byte    %8.0g      AGE        age
+female          byte    %9.0g      FEMALE     
+race            int     %58.0g     RACE       race
+empstat         byte    %8.0g      EMPSTAT    employmen
+                                   > t status
+classwkr        byte    %8.0g      CLASSWKR   class of
+                                   worker
+uhrswork1       int     %8.0g      UHRSWORK1
+                                              hours
+                                   usually worked per
+                                   week at main job
+grade           float   %9.0g                 highest
+                                   grade completed
+earnwt          double  %12.0g                earnings
+                                   weight
+qearnwee        byte    %8.0g      QEARNWEE   data
+                                   quality flag for
+                                   earnweek
+hourwage        double  %12.0g     HOURWAGE   hourly
+                                   wage
+paidhour        byte    %15.0g     PAIDHOUR   paid by
+                                   the hour
+union           byte    %8.0g      UNION      union
+                                   membership
+earnweek        double  %12.0g     EARNWEEK   weekly
+                                   earnings
+uhrsworkorg     byte    %8.0g                 usual
+                                   hours worked per
+                                   week, outgoing
+                                   rotation groups
+occupation      byte    %32.0g     OCCUPATION
+                                              occupatio
+                                   > n (1-10)
+industry        byte    %49.0g     INDUSTRY   industry
+                                   (1-11)
+topcode         byte    %9.0g                 topcode
+                                   indicator
+cpi             double  %9.3f                 Consumer
+                                   Price Index
+rwage           float   %9.0g                 real wage
+───────────────────────────────────────────────────────
+Sorted by: 
+     Note: Dataset has changed since last saved.
+
+. summarize
+
+    Variable │        Obs        Mean    Std. dev.     
+>   Min        Max
+─────────────┼─────────────────────────────────────────
+────────────────
+        year │  6,738,088    2002.068    12.10799      
+>  1982       2024
+       month │  6,738,088    6.505521    3.450084      
+>     1         12
+        mish │  6,738,088    6.003526    1.999997      
+>     4          8
+      region │  6,738,088    27.35454    10.74259      
+>    11         42
+      cpsidv │  6,738,088    2.00e+14    1.21e+12   1.9
+> 8e+14   2.02e+14
+─────────────┼─────────────────────────────────────────
+────────────────
+         age │  6,738,088    39.04488    12.23483      
+>    18         64
+      female │  6,738,088    .4877906    .4998509      
+>     0          1
+        race │  6,738,088     141.819    129.5985      
+>   100        700
+     empstat │  6,738,088     10.0833    .3995664      
+>    10         12
+    classwkr │  6,738,088    22.68014    2.121586      
+>    13         28
+─────────────┼─────────────────────────────────────────
+────────────────
+   uhrswork1 │  6,738,088    78.16546     189.717      
+>     0        997
+       grade │  6,738,088    13.49376    2.614426      
+>     0         18
+      earnwt │  6,738,088    8652.169    5093.023      
+> 90.01   209103.1
+    qearnwee │  4,437,930    1.275338    1.864099      
+>     0          4
+    hourwage │  3,958,207    12.89962    8.767912      
+>   .01      99.99
+─────────────┼─────────────────────────────────────────
+────────────────
+    paidhour │  6,738,088    .5876722    .4922536      
+>     0          1
+       union │  6,517,337    1.172239    .4198614      
+>     1          3
+    earnweek │  6,738,088    713.4357    695.7659      
+>     0   4326.915
+ uhrsworkorg │  2,914,349    36.77634    9.983109      
+>     1         99
+  occupation │  6,738,088    3.936502     2.59726      
+>     1          9
+─────────────┼─────────────────────────────────────────
+────────────────
+    industry │  6,738,088    6.976406    2.776901      
+>     1         11
+     topcode │    168,927           1           0      
+>     1          1
+         cpi │  6,738,088    184.1752    56.16483      
+>  94.3    315.664
+       rwage │  6,738,088    1191.274    993.7875      
+>     0   8447.472
+</pre>
+<hr />
+<h3 id="annual-summary-statistics-and-visualization">Annual Summary
+Statistics and Visualization</h3>
+<p>The data were collapsed to annual statistics, including the mean,
+10th, 50th, and 90th percentiles of real weekly wages. These metrics
+were plotted to illustrate wage trends over time.</p>
+<pre class='stata'>. collapse (mean) mean=rwage /// mean
+>               (p10) p10=rwage /// 10th percentile
+>               (p50) p50=rwage /// 10th percentile
+>               (p90) p90=rwage /// 90th percentile
+>               ,by(year)
+
+. generate ldiff=ln(p90)-ln(p10)  
+</pre>
+<pre class='stata'>. describe
+
+Contains data
+ Observations:            43                  
+    Variables:             6                  
+───────────────────────────────────────────────────────
+Variable      Storage   Display    Value
+    name         type    format    label      Variable 
+> label
+───────────────────────────────────────────────────────
+year            int     %8.0g                 survey
+                                   year
+mean            float   %9.0g                 (mean)
+                                   rwage
+p10             float   %9.0g                 (p 10)
+                                   rwage
+p50             float   %9.0g                 (p 50)
+                                   rwage
+p90             float   %9.0g                 (p 90)
+                                   rwage
+ldiff           float   %9.0g                 
+───────────────────────────────────────────────────────
+Sorted by: year
+     Note: Dataset has changed since last saved.
+
+. summarize
+
+    Variable │        Obs        Mean    Std. dev.     
+>   Min        Max
+─────────────┼─────────────────────────────────────────
+────────────────
+        year │         43        2003    12.55654      
+>  1982       2024
+        mean │         43     1199.67    111.0582   102
+> 6.876   1429.358
+         p10 │         43    353.7921    32.25841   309
+> .6104   427.7871
+         p50 │         43    945.1696    59.86531   857
+> .2128   1092.436
+         p90 │         43    2248.567    257.4558   182
+> 8.463   2756.375
+─────────────┼─────────────────────────────────────────
+────────────────
+       ldiff │         43    1.846796    .0650292   1.7
+> 33826   1.975677
+
+. list in 1/5, noobs
+
+  ┌──────┬──────────┬──────────┬──────────┬──────────┐
+  │ year │     mean │      p10 │      p50 │      p90 │
+  │ 1982 │ 1026.876 │ 322.9202 │ 857.2128 │ 1828.463 │
+  ├──────┴──────────┴──────────┴──────────┴──────────┤
+  │                        ldiff                     │
+  │                     1.733826                     │
+  └──────────────────────────────────────────────────┘
+
+  ┌──────┬──────────┬──────────┬──────────┬──────────┐
+  │ year │     mean │      p10 │      p50 │      p90 │
+  │ 1983 │ 1041.898 │ 314.8633 │ 872.9055 │ 1874.216 │
+  ├──────┴──────────┴──────────┴──────────┴──────────┤
+  │                        ldiff                     │
+  │                     1.783807                     │
+  └──────────────────────────────────────────────────┘
+
+  ┌──────┬──────────┬──────────┬──────────┬──────────┐
+  │ year │     mean │      p10 │      p50 │      p90 │
+  │ 1984 │ 1052.158 │ 309.6104 │ 887.4197 │ 1857.662 │
+  ├──────┴──────────┴──────────┴──────────┴──────────┤
+  │                        ldiff                     │
+  │                     1.791759                     │
+  └──────────────────────────────────────────────────┘
+
+  ┌──────┬──────────┬──────────┬──────────┬──────────┐
+  │ year │     mean │      p10 │      p50 │      p90 │
+  │ 1985 │ 1069.129 │ 317.2721 │ 879.6273 │ 1921.424 │
+  ├──────┴──────────┴──────────┴──────────┴──────────┤
+  │                        ldiff                     │
+  │                     1.801062                     │
+  └──────────────────────────────────────────────────┘
+
+  ┌──────┬──────────┬──────────┬──────────┬──────────┐
+  │ year │     mean │      p10 │      p50 │      p90 │
+  │ 1986 │ 1094.707 │ 324.9837 │ 893.1236 │ 2000.409 │
+  ├──────┴──────────┴──────────┴──────────┴──────────┤
+  │                        ldiff                     │
+  │                     1.817332                     │
+  └──────────────────────────────────────────────────┘
+</pre>
+<p>The figure below displays the trends in real weekly wages over the
+analyzed period:</p>
+<figure>
+<img role="img" aria-label="Real Wage Percentiles, 1982–2924" src="data:image/png;base64,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Y1TG9hAEEWrrpazuq99LAif2tqJ+Nxt/Ys3QS7VhfTyMyzRhL8Gf9rd1GhHivCY+m2gKvEdV3q7HP4MpMGIt3lyVt6febbnxLohbfVsq0j2hRH03Wx9v/qjfiReO7jUqucolCDhq1Wh3bMbHfw1vagrEO7bVEexORXKNICAICAJ2QeCDDz7A5V5SpXn33XeTWn8qK3c9Efb7mVBgKhuc3EsQEASSjcB//vOfiy66KNkjBH/4wx8effTRZOuSmvpdT4SpgVnuIggIAoJAShAgwvkll1xCFKBk3+3KK68k9KyJOJvseyW7fiHCZCMs9QsCgoAgkDoEZs+evWXLlhNO0MHAzzrrrIcffviHP/zh4Ycf/uyzz9KBIwTeMccc87///c8ItHr1aoL57Lvvvj/5yU9Im0zGPAlssPfeexM1b+HChWTOmjXrT3/6E8xHydNOO40AeWQefPDBRJmlfnOVdaQqIu6dfvrpRBMipt7mzZs5ddddd/34xz82Za644op//vOfpInijjCHHnrob3/726amJnP2r3/9K9Kee+651Gzo3OfzXX/99dwOpV5++WVTLLHHFEWfSKzQ9o0+kVg946xNwi+4OfyCy61v5+gT172pVlTF+TB3VTzDqx44JXIhOAMmI54rp/v168cyIvptn3/++Ysvvjhy5Mif//znL730EkF+CIQHaDvttNOECROIow79EMqKCOqUJzQsMWW/+93vPvjgg3DqRx999H//93/3338/hAo7Egt22rRpTz/9NPXPmDGDAq+//nqwKEOGDKmsrDziiCOgse985ztUAneOHz/+66+/XrNmTf/+/Ymyx+DtqlWrLrzwwt/85jeU//Wvf00vFjkN3cKLcO3f/vY3JCFsEXROjL+LL76YiU+ERxFkC75jz9NxrrHs+Q2TWQNj4m5ePy3qi/WT+XjZum4+HbGt9Q8YqXZOdDxsryeqOeA8+MM6DXtBjTDcCy+8QDhYelpw0qmnnkqwv4ceeoho6vSxiGkMQcKapA877LBrr7320ksvJUweJEenEGqktt12243g6iRaW1vhNlP/zjvv/Nprr1n3shIQ5N///nd+0tuDlenMQXsjRox4++236UTyDyuB2RnCRQA4mP/hnnzySYpZRGg6ghDzp59+un79ejqy8C4yUyEdzQceeECI0II6QiI/Pz9CrmuyRH3XmDqComL9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E6BziJDQMiIGisuIxlLBzaxzI1LeNGNLfVND5xJ22cxA2AI52pMYbMRggY0AckwvBDymAdlB6DPOOIOuHv1CI8zIkSPPP//8K664Ily2c845Z+bMmYMHDw45VVtbC49aDTTkrON/ivpifdc2/pqamsLCQteq7/iXW7IVtNEc4bBhw5ggtBTmHz240PopCUFAEBAEBAFBIBkI2IgI99577+XLlxslq6qqKioqpkyZkgydpU5BQBAQBAQBQcBCwF5EyOqYWbNmQYGXXHJJaWnpuHHjLEElIQgIAoKAICAIJAMBGxFheXn5HXfcccEFFwwcOPDVV1997rnnZMQ/GSaXOgUBQUAQEASCEbARESLWL37xi23bts2fP59O4QEHHBAsqKQFAUFAEBAEBIFkIGCjzyeMekVFRbvuumvnqrKg+bPPPhswYEBIMUKzsvTctf1IUV+sL40/5J2Qmp985TV06NDU3EvukgwEbPT5ROzqffzxxy+99JL1vZp14csvv/zd737XfKZmZbonIeq72fo8Eccdd5xrG3/vqn/IIYccdthh7nnVOE/TtCTCaGY4+uijX3/99WhnHZ8v6ov1Hd/Ioyno8sYfDRbJjxEBe80Rxii0FBMEBAFBQBAQBBKFgBBhopCUegQBQUAQEATSEgEhwrQ0mwgtCAgCgoAgkCgEHDVHSISKQYMGJQqatKtH1Bfrp12jTZTALm/8iYLRtfU4ighda0VRXBAQBAQBQaDbCMjQaLehkwsFAUFAEBAEnICAEKETrCg6CAKCgCAgCHQbgXQiwi1btuyyyy4rV6402hLz87e//S0RKvbbb7/bbrvNZG7atOn6668n83vf+96//vUvk0mA+6uvvnr33XefPn367Nmzuw1W714Yi/pr1qw59dRTcVZ+4oknvvXWW45R/+677953331HjRp10kknWQ3gySefPOKII/bZZ58bb7zRhNWMaOiImb1rynjvHq5+J0oBC44FrFt0UtIqY/NEjOoTj/Pcc8/daaedJk+efNVVV5mAwA5Q3+bWcYh4vEHsvzU0NDz11FNHHnkkoH/xxRdG4Pvuu6+4uPi666675ZZb+vTp86c//Yn8s88+G7J86KGHLrzwQrxsLFmyhMzLLrsMB0iPPvooCUKof/755/ZXOVjC2NXHvQXq33///cQuxlndV1995QD1MRwRwPlf54EHHuA1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" alt="Real Wage Percentiles, 1982–2924" />
+<figcaption aria-hidden="true">Real Wage Percentiles,
+1982–2924</figcaption>
+</figure>
+<hr />
+</body>
+</html>

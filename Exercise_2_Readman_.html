@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Exercise_2_Readman_</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+/* CSS for Markstat 2.0 using Pandoc 2.0 */
+body{padding:14px 28px; max-width:45em;}
+body, table {font-family: Helvetica, Arial, Sans-serif; font-size: 14px; max-width:70em}
+h1, h2, h3, h4 {font-weight: normal; color: #3366cc}
+h1 {font-size: 200%;}
+h2 {font-size: 150%;}
+h3 {font-size: 120%;}
+h4 {font-size: 100%; font-weight:bold}
+img.center {display:block; margin-left:auto; margin-right:auto}
+.small{font-size:8pt;}
+a {color: black;}
+a:visited {color: #808080;}
+a.plain {text-decoration:none;}
+a.plain:hover {text-decoration:underline;}
+.em {font-weight:bold;}
+pre, code {font-family: "lucida console", monospace;}
+pre.stata {font-size:13px; line-height:13px;}
+pre {padding:8px; border:1px solid #c0c0c0; border-radius:8px; background-color:#fdfdfd;}
+code {color:#3366cc; background-color:#fafafa;}
+pre code { color:black; background-color:white}
+/* Added for Pandoc */
+figure > img, div.figure > img {display:block; margin:auto}
+figcaption, p.caption {text-align:center; font-weight:bold; color:#3366cc;}
+h1.title {text-align:center; margin-bottom:0}
+p.author, h2.author {font-style:italic; text-align:center;margin-top:4px;margin-bottom:0}
+p.date, h3.date {text-align:center;margin-top:4px; margin-bottom:0}
+/* Tables*/
+table { margin:auto; border-collapse:collapse; }
+table caption { margin-bottom:1ex;}
+td {padding:0 0 0 0} /* override */
+table:not([class]) th { padding:4px 6px } 
+table:not([class]) td { padding:4px 6px } 
+table:not([class]) thead tr:first-child th {border-top:1px solid black; padding-top:6px}
+table:not([class]) thead tr:last-child  th {padding-bottom:6px}
+table:not([class]) tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
+table:not([class]) tbody tr:last-child  td {padding-bottom:6px;}
+table:not([class]) tbody:last-child tr:last-child td {border-bottom:1px solid black;}
+</style>
+</head>
+<body>
+<h2 id="exercise-2-cleaning-the-cps-org-data-1982-2024">Exercise 2:
+Cleaning the CPS ORG Data, 1982-2024</h2>
+<p>Peter Readman</p>
+<hr />
+<h3 id="plan">Plan</h3>
+<hr />
+<ul>
+<li>use the CPS monthly data for 1982-2024, prepared on 1/4/2024</li>
+<li>recode missing observations, for consistency with cps, and top codes
+of income variables</li>
+<li>save the cleaned data for further analysis</li>
+</ul>
+<hr />
+<h3 id="preliminaries">Preliminaries</h3>
+<p>We start by moving to the analysis folder.</p>
+<pre class='stata'>. cd "~/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis
+> "
+/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Meth
+> ods/Analysis
+</pre>
+<p>Now let’s read the cps data extract saved after initial checks and
+preparation.</p>
+<pre class='stata'>. use "../Data/CPS ORGs, 1982-2024.dta", clear
+</pre>
+<pre class='stata'>. describe
+
+Contains data from ../Data/CPS ORGs, 1982-2024.dta
+ Observations:     6,738,088                  
+    Variables:            29                  7 Jan 2025 05:57
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+year            int     %8.0g                 survey year
+serial          long    %12.0g                household serial number
+month           byte    %8.0g      MONTH      month
+hwtfinl         double  %12.0g                household weight, basic monthly
+cpsid           double  %12.0g                cpsid, household record
+mish            byte    %8.0g      MISH       month in sample, household level
+region          byte    %8.0g      REGION     region and division
+pernum          byte    %8.0g                 person number in sample unit
+wtfinl          double  %12.0g                final basic weight
+cpsidv          double  %12.0g                validated longitudinal identifier
+cpsidp          double  %12.0g                cpsid, person record
+earnweek2       double  %12.0g     EARNWEEK2
+                                              weekly earnings (rounded)
+hourwage2       double  %12.0g     HOURWAGE2
+                                              hourly wage (rounded)
+age             byte    %8.0g      AGE        age
+sex             byte    %8.0g      SEX        sex
+race            int     %58.0g     RACE       race
+empstat         byte    %8.0g      EMPSTAT    employment status
+occ1950         int     %8.0g      OCC1950    occupation, 1950 basis
+ind1950         int     %8.0g      IND1950    industry, 1950 basis
+classwkr        byte    %8.0g      CLASSWKR   class of worker
+uhrswork1       int     %8.0g      UHRSWORK1
+                                              hours usually worked per week at main job
+educ            int     %8.0g      EDUC       educational attainment recode
+earnwt          double  %12.0g                earnings weight
+qearnwee        byte    %8.0g      QEARNWEE   data quality flag for earnweek
+hourwage        double  %12.0g     HOURWAGE   hourly wage
+paidhour        byte    %8.0g      PAIDHOUR   paid by the hour
+union           byte    %8.0g      UNION      union membership
+earnweek        double  %12.0g     EARNWEEK   weekly earnings
+uhrsworkorg     int     %8.0g                 usual hours worked per week, outgoing rotation groups
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Sorted by: 
+
+. summarize
+
+    Variable │        Obs        Mean    Std. dev.       Min        Max
+─────────────┼─────────────────────────────────────────────────────────
+        year │  6,738,088    2002.068    12.10799       1982       2024
+      serial │  6,738,088    34874.83    20278.18          1      74625
+       month │  6,738,088    6.505521    3.450084          1         12
+     hwtfinl │  5,560,511    2223.566    1277.181          0   34716.21
+       cpsid │  6,738,088    2.00e+13    1.21e+11   1.98e+13   2.02e+13
+─────────────┼─────────────────────────────────────────────────────────
+        mish │  6,738,088    6.003526    1.999997          4          8
+      region │  6,738,088    27.35454    10.74259         11         42
+      pernum │  6,738,088    1.679193    .9420621          1         22
+      wtfinl │  6,738,088    2164.166    1271.501      22.24   34716.21
+      cpsidv │  6,738,088    2.00e+14    1.21e+12   1.98e+14   2.02e+14
+─────────────┼─────────────────────────────────────────────────────────
+      cpsidp │  6,738,088    2.00e+13    1.21e+11   1.98e+13   2.02e+13
+   earnweek2 │  6,738,088    1958.853    35654.57          0    1000000
+   hourwage2 │  6,738,088    420.1412    485.9802        .05     999.99
+         age │  6,738,088    39.04488    12.23483         18         64
+         sex │  6,738,088    1.487791    .4998509          1          2
+─────────────┼─────────────────────────────────────────────────────────
+        race │  6,738,088    142.7038    133.6738        100        830
+     empstat │  6,738,088     10.0833    .3995664         10         12
+     occ1950 │  6,738,088    421.1817    267.7166          0        970
+     ind1950 │  6,738,088    676.7314     222.289        105        936
+    classwkr │  6,738,088    22.68014    2.121586         13         28
+─────────────┼─────────────────────────────────────────────────────────
+   uhrswork1 │  6,738,088    78.16546     189.717          0        997
+        educ │  6,738,088    86.05168    23.06105          2        125
+      earnwt │  6,738,088    8652.169    5093.023      90.01   209103.1
+    qearnwee │  4,437,930    1.275338    1.864099          0          4
+    hourwage │  6,545,976    418.8949     485.937        .01     999.99
+─────────────┼─────────────────────────────────────────────────────────
+    paidhour │  6,738,088    1.587672    .4922536          1          2
+       union │  6,517,390     1.17223     .419873          0          3
+    earnweek │  6,545,976    676.4486    646.6187        .01    9999.99
+ uhrsworkorg │  5,560,511    494.6838    480.6063          1        999
+</pre>
+<p>The dataset contains 6,738,088 observations across 29 variables,
+spanning 1982–2024. A brief look shows some coding issues that need
+attention. Hourly and weekly wages show unusually high values, likely
+due to missing value codes or top-coding. Categorical variables,
+including occupation, industry, race, and education, have high codes
+that will require cleaning and recoding for consistency.</p>
+<p>Let’s list the last 10 observations for our data in groups of
+approximately 10 variables</p>
+<pre class='stata'>. list year serial month hwtfinl cpsid mish region pernum wtfinl cpsidv in -10/l, noobs
+
+  ┌──────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ year   serial      month     hwtfinl         cpsid    mish     region   pernum      wtfinl        cpsidv │
+  ├──────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ 2024    69598   november    838.3943   2.02408e+13    four    pacific        1    838.3943   2.02408e+14 │
+  │ 2024    69604   november    4287.067   2.02308e+13   eight   east nor        1    4287.067   2.02308e+14 │
+  │ 2024    69604   november    4287.067   2.02308e+13   eight   east nor        2    4540.372   2.02308e+14 │
+  │ 2024    69607   november   2772.9405   2.02408e+13    four   new engl        1   2772.9405   2.02408e+14 │
+  │ 2024    69607   november   2772.9405   2.02408e+13    four   new engl        4    4273.887   2.02408e+14 │
+  ├──────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ 2024    69617   november   7670.1106   2.02308e+13   eight   east nor        1   7670.1106   2.02308e+14 │
+  │ 2024    69617   november   7670.1106   2.02308e+13   eight   east nor        2   6052.9955   2.02308e+14 │
+  │ 2024    69617   november   7670.1106   2.02308e+13   eight   east nor        3   7795.0071   2.02308e+14 │
+  │ 2024    69621   november   8640.0764   2.02308e+13   eight   east nor        1   8640.0764   2.02308e+14 │
+  │ 2024    69630   november   4171.2557   2.02408e+13    four   east sou        1   4171.2557   2.02408e+14 │
+  └──────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+. list cpsidp earnweek2 hourwage2 age sex race empstat occ1950 ind1950 classwkr in -10/l, noobs
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │      cpsidp   earnwe~2   hourwa~2   age      sex               race   empstat    occ1950    ind1950   classwkr │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ 2.02408e+13       2440     999.99    31     male         100. white   at work   managers   accounti   private, │
+  │ 2.02308e+13       1050     999.99    37     male         100. white   at work   managers   eating a   private, │
+  │ 2.02308e+13       1850     999.99    34   female         100. white   at work   managers   eating a   private, │
+  │ 2.02408e+13       1200     999.99    57   female         100. white   at work   clerical   legal se   private, │
+  │ 2.02408e+13       3360     999.99    29     male         100. white   at work   engineer   syntheti   private, │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ 2.02308e+13        640         16    57   female         200. black   at work    service   miscella   private, │
+  │ 2.02308e+13        408         17    20     male   801. white-black   at work    service   eating a   private, │
+  │ 2.02308e+13        480         20    30     male   801. white-black   at work    service   eating a   private, │
+  │ 2.02308e+13        808         17    25   female         200. black   at work   professi   educatio   private, │
+  │ 2.02408e+13        800         20    29   female         200. black   at work   clerical   legal se   private, │
+  └────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+. list uhrswork1 educ earnwt qearnwee hourwage paidhour union earnweek uhrsworkorg in -10/l, noobs
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ uhrswo~1       educ       earnwt   qearnwee   hourwage   paidhour      union   earnweek   uhrswo~g │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │       40   bachelor    3286.6294   not allo          .         no   no union          .        999 │
+  │       40   bachelor   17089.3593   not allo          .         no   no union          .        999 │
+  │       40   bachelor    18089.269   not allo          .         no   no union          .        999 │
+  │       40   high sch   10877.5911   allocate          .         no   no union          .        999 │
+  │ hours va   bachelor   17004.6319   allocate          .         no   no union          .        999 │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │       45   associat   28851.0844   not allo          .        yes   member o          .         40 │
+  │       24   high sch   24264.4613   allocate          .        yes   no union          .         24 │
+  │       24   high sch   30525.4348   allocate          .        yes   no union          .         24 │
+  │       40   master's   33516.3721   not allo          .        yes   no union          .         40 │
+  │       40   high sch   16299.3536   allocate          .        yes   no union          .         40 │
+  └────────────────────────────────────────────────────────────────────────────────────────────────────┘
+</pre>
+<p>There are some variables we don’t need and we can drop them before we
+get into cleaning the data.</p>
+<pre class='stata'>. drop serial cpsid cpsidp pernum hwtfinl wtfinl
+</pre>
+<hr />
+<h3 id="replacing-missing-values">Replacing Missing Values</h3>
+<p>The IPUMS documentation provides a number of codes for missing or
+unknown values. For example, missing values in <code>earnweek</code> are
+coded with 9999.99, missing values in <code>hourwage</code> are coded
+with 999.99. We need to replace any coded missing values to missing
+(“.”).</p>
+<pre class='stata'>. replace region=. if region ==97
+(0 real changes made)
+
+. replace earnweek2=. if earnweek2==999999.99
+(8,586 real changes made, 8,586 to missing)
+
+. replace hourwage2=. if hourwage2==999.99
+(2,779,881 real changes made, 2,779,881 to missing)
+
+. replace sex=. if sex==9
+(0 real changes made)
+
+. replace race=. if race==999
+(0 real changes made)
+
+. replace empstat=. if empstat==00
+(0 real changes made)
+
+. replace occ1950=. if inlist(occ1950, 997, 999)
+(0 real changes made)
+
+. replace ind1950=. if inlist(ind1950, 000, 001, 998, 999)
+(0 real changes made)
+
+. replace classwkr=. if inlist(classwkr, 00, 99)
+(0 real changes made)
+
+. replace uhrswork1=. if uhrswork1==999
+(0 real changes made)
+
+. replace educ=. if inlist(educ, 000, 001, 999)
+(0 real changes made)
+
+. replace hourwage=. if hourwage==999.99
+(2,693,538 real changes made, 2,693,538 to missing)
+
+. replace paidhour=. if inlist(paidhour, 0, 6, 7)
+(0 real changes made)
+
+. replace union=. if union ==0
+(53 real changes made, 53 to missing)
+
+. replace earnweek=. if earnweek==9999.99
+(8,572 real changes made, 8,572 to missing)
+
+. replace uhrsworkorg=. if inlist(uhrsworkorg, 998, 999)
+(2,646,162 real changes made, 2,646,162 to missing)
+</pre>
+<p>Missing codes were change in <code>earnweek2</code>,
+<code>hourwage2</code>, <code>hourwage</code>, <code>union</code>,
+<code>earnweek</code>, and <code>uhrsworkorg</code>. No changes needed
+to be made to the other variables.</p>
+<h3 id="dummy-variables">Dummy variables</h3>
+<p>To simplify modeling, we convert <code>sex</code> and
+<code>paidhour</code> into dummy variables: <code>female</code> (1 =
+female, 0 = male) and <code>paidhour</code> (1 = paid hourly, 0 = not
+paid hourly).</p>
+<pre class='stata'>. generate female = sex-1
+
+. drop sex
+
+. order female, before(race)
+</pre>
+<pre class='stata'>. replace paidhour = paidhour-1
+(6,738,088 real changes made)
+</pre>
+<h3 id="recoding-for-consistency-across-years">Recoding for Consistency
+Across Years</h3>
+<h4 id="recoding-race">Recoding Race</h4>
+<p>We recode <code>race</code> into the following categories: white,
+black, American Indian, Asian/Hawaiian/Pacific Islander, and other.</p>
+<pre class='stata'>.   replace race=650 if inlist(race, 651, 652) &amp; year>=2003
+(183,076 real changes made)
+
+.   replace race=700 if inrange(race, 800, 830) &amp; year>=2003
+(55,615 real changes made)
+
+.   tab year race, missing
+
+    survey │                          race
+      year │ 100. whit  200. blac  300. amer  650. asia  700. othe │     Total
+───────────┼───────────────────────────────────────────────────────┼──────────
+      1982 │   146,627     14,669          0          0      5,354 │   166,650 
+      1983 │   145,099     14,722          0          0      5,354 │   165,175 
+      1984 │   147,612     15,322          0          0      5,517 │   168,451 
+      1985 │   150,014     16,027          0          0      5,573 │   171,614 
+      1986 │   148,277     16,274          0          0      5,715 │   170,266 
+      1987 │   148,758     16,685          0          0      5,804 │   171,247 
+      1988 │   142,956     15,764          0          0      5,454 │   164,174 
+      1989 │   145,665     15,917      1,274      4,420        336 │   167,612 
+      1990 │   152,628     16,739      1,331      5,130        427 │   176,255 
+      1991 │   148,002     16,077      1,375      5,303        539 │   171,296 
+      1992 │   145,775     15,758      1,403      5,414        610 │   168,960 
+      1993 │   142,959     15,843      1,539      5,551        822 │   166,714 
+      1994 │   138,455     15,509      1,525      5,464      1,792 │   162,745 
+      1995 │   136,838     15,731      1,463      5,595      2,634 │   162,261 
+      1996 │   123,995     13,979      1,531      5,298          0 │   144,803 
+      1997 │   125,932     14,384      1,635      5,589          0 │   147,540 
+      1998 │   126,956     14,662      1,720      5,940          0 │   149,278 
+      1999 │   128,952     14,992      1,641      5,886          0 │   151,471 
+      2000 │   129,688     15,324      1,783      6,280          0 │   153,075 
+      2001 │   142,204     16,483      2,039      7,125          0 │   167,851 
+      2002 │   148,990     16,602      2,111      7,335          0 │   175,038 
+      2003 │   145,295     15,683      1,595      6,711      2,577 │   171,861 
+      2004 │   142,104     15,286      1,764      6,877      2,843 │   168,874 
+      2005 │   142,662     15,269      1,643      7,221      3,132 │   169,927 
+      2006 │   141,472     15,592      1,549      7,565      3,018 │   169,196 
+      2007 │   139,499     15,869      1,610      7,784      2,689 │   167,451 
+      2008 │   137,551     15,604      1,606      8,036      2,557 │   165,354 
+      2009 │   133,797     14,824      1,428      8,018      2,498 │   160,565 
+      2010 │   131,687     15,195      1,393      8,110      2,528 │   158,913 
+      2011 │   129,996     14,776      1,418      8,451      2,501 │   157,142 
+      2012 │   128,888     14,837      1,453      8,815      2,399 │   156,392 
+      2013 │   127,904     14,918      1,433      9,036      2,424 │   155,715 
+      2014 │   128,025     15,409      1,482      9,029      2,566 │   156,511 
+      2015 │   125,029     16,147      1,744      9,143      2,422 │   154,485 
+      2016 │   124,596     16,208      1,843      9,444      2,376 │   154,467 
+      2017 │   122,430     15,861      1,736      9,519      2,528 │   152,074 
+      2018 │   119,304     15,161      1,660      9,419      2,653 │   148,197 
+      2019 │   114,973     14,539      1,620      9,177      2,586 │   142,895 
+      2020 │    99,416     12,234      1,381      7,924      2,098 │   123,053 
+      2021 │    98,674     12,671      1,401      8,401      2,282 │   123,429 
+      2022 │    94,546     12,223      1,364      8,494      2,299 │   118,926 
+      2023 │    91,429     11,661      1,328      8,156      2,410 │   114,984 
+      2024 │    83,703     10,329      1,194      7,746      2,229 │   105,201 
+───────────┼───────────────────────────────────────────────────────┼──────────
+     Total │ 5,669,362    647,759     56,015    263,406    101,546 │ 6,738,088 
+</pre>
+<h4 id="recoding-education">Recoding Education</h4>
+<p>Next we use the education variable educ to generate grade, which
+measures highest grade completed.</p>
+<p>We’ll generate a new variable <code>grade</code> to capture highest
+grade completed. Since 1992, the education variable tracks degrees
+rather than grades, so we use Jaeger (1997) to transform degrees into
+grades.</p>
+<pre class='stata'>. generate grade =.
+(6,738,088 missing values generated)
+
+. **1982-1991
+. replace grade=0  if educ==2 &amp; year&lt;=1991 // (none or preschool)
+(3,693 real changes made)
+
+. replace grade=1  if educ==11 &amp; year&lt;=1991
+(827 real changes made)
+
+. replace grade=2  if educ==12 &amp; year&lt;=1991
+(2,023 real changes made)
+
+. replace grade=3  if educ==13 &amp; year&lt;=1991
+(3,228 real changes made)
+
+. replace grade=4  if educ==14 &amp; year&lt;=1991
+(4,010 real changes made)
+
+. replace grade=5  if educ==21 &amp; year&lt;=1991
+(5,261 real changes made)
+
+. replace grade=6  if educ==22 &amp; year&lt;=1991
+(13,252 real changes made)
+
+. replace grade=7  if educ==31 &amp; year&lt;=1991
+(11,324 real changes made)
+
+. replace grade=8  if educ==32 &amp; year&lt;=1991
+(37,861 real changes made)
+
+. replace grade=9  if educ==40 &amp; year&lt;=1991
+(38,411 real changes made)
+
+. replace grade=10 if educ==50 &amp; year&lt;=1991
+(56,240 real changes made)
+
+. replace grade=11 if educ==60 &amp; year&lt;=1991
+(60,845 real changes made)
+
+. replace grade=12 if (educ==72 | educ==73) &amp; year&lt;=1991 // 72 is `diploma unclear'
+(704,348 real changes made)
+
+. replace grade=13 if educ==80 &amp; year&lt;=1991
+(134,820 real changes made)
+
+. replace grade=14 if educ==90 &amp; year&lt;=1991
+(168,063 real changes made)
+
+. replace grade=15 if educ==100 &amp; year&lt;=1991
+(63,319 real changes made)
+
+. replace grade=16 if educ==110 &amp; year&lt;=1991
+(229,636 real changes made)
+
+. replace grade=17 if educ==121 &amp; year&lt;=1991
+(45,334 real changes made)
+
+. replace grade=18 if educ==122 &amp; year&lt;=1991
+(110,245 real changes made)
+
+. **1992-2024 (Jaeger 1997)
+. replace grade=0   if educ==2  &amp; year>=1992
+(8,229 real changes made)
+
+. replace grade=2.5 if educ==10 &amp; year>=1992 // grades 1-4
+(21,107 real changes made)
+
+. replace grade=5.5 if educ==20 &amp; year>=1992 // grades 5-6
+(49,851 real changes made)
+
+. replace grade=7.5 if educ==30 &amp; year>=1992 // grades 7-8
+(50,759 real changes made)
+
+. replace grade=9   if educ==40 &amp; year>=1992 // grade 9
+(56,283 real changes made)
+
+. replace grade=10  if educ==50 &amp; year>=1992 // grade 10
+(73,186 real changes made)
+
+. replace grade=11  if educ==60 &amp; year>=1992 // grade 11
+(111,530 real changes made)
+
+. replace grade=12  if (educ==71 | educ==73) &amp; year>=1992 // 71 is `no diploma'
+(1,558,364 real changes made)
+
+. replace grade=13  if educ==81 &amp; year>=1992 // some college, no degree
+(977,528 real changes made)
+
+. replace grade=14  if (educ==91 | educ==92) &amp; year>=1992 // academic or vocational associate's degree
+(510,086 real changes made)
+
+. replace grade=16  if educ==111 &amp; year>=1992
+(1,072,281 real changes made)
+
+. replace grade=18  if inlist(educ, 123, 124, 125) &amp; year>=1992
+(556,144 real changes made)
+
+. order grade, before(educ)
+</pre>
+<h4 id="recoding-occupation">Recoding Occupation</h4>
+<p>The <code>occ1950</code> variable contains too many categories to
+manage efficiently, so we consolidate them into a new variable,
+<code>occupation</code>.</p>
+<pre class='stata'>. recode occ1950 ///
+>   (0/99=1) /// professional, technical
+>   (100/290=2) /// managers, officials, proprietors
+>   (300/390=3) /// clerical, kindred
+>   (400/490=4) /// sales
+>   (500/594=5) /// craftsmen
+>   (600/690=6) /// operatives
+>   (700/720=7) /// service (private hh)
+>   (730/790=8) /// service (other)
+>   (810/970=9) /// laborers
+>   (595=10) /// armed forces
+> , generate(occupation) 
+(6,737,619 differences between occ1950 and occupation)
+
+. * check everything is recoded 
+. tab occ1950 if occ1950~=. &amp; occupation==.
+no observations
+</pre>
+<p>Notice there are no observations to tab because
+<code>occupation</code> is only missing if <code>occ1950</code> is
+missing.</p>
+<h4 id="recoding-industry">Recoding Industry</h4>
+<p>Similarly, <code>ind1950</code> contains too many categories. We
+group these into a new variable, <code>industry</code>, for
+consistency.</p>
+<pre class='stata'>. recode ind1950 ///
+>   (150/239=1) /// agriculture, fisheries, metal mining, coal mining
+>   (246/246=2) /// construction
+>   (306/399=3) /// durable manufacturing
+>   (406/499=4) /// nondurable manufacturing
+>   (506/598=5) /// communications, transportation, utilities
+>   (606/627=6) /// wholesale trade
+>   (636/699=7) /// retail trade
+>   (716/756=8) /// professional services, fire
+>   (868/879=8) /// professional services, fire
+>   (897/899=8) /// professional services, fire
+>   (888/896=9)  /// education, welfare services
+>   (906/946=10) /// public administration
+>   (806/859=11) /// other services
+>   (997/998=11)  /// other services
+> , generate(industry)
+(6,627,369 differences between ind1950 and industry)
+
+. * check everything is covered
+. tab ind1950 if ind1950~=. &amp; industry==.
+no observations
+</pre>
+<p>Again, notice there are no observations to tab because
+<code>industry</code> is only missing if <code>ind1950</code> is
+missing.</p>
+<h4 id="replacing-missing-values-of-earnweek-and-hourwage">Replacing
+Missing Values of <code>earnweek</code> and <code>hourwage</code></h4>
+<pre class='stata'>.  replace earnweek = earnweek2 if missing(earnweek) &amp; !missing(earnweek2)
+(192,098 real changes made)
+
+.  replace hourwage = hourwage2 if missing(hourwage) &amp; !missing(hourwage2)
+(105,769 real changes made)
+
+.  drop earnweek2 hourwage2
+</pre>
+<h3 id="dealing-with-top-codes">Dealing with Top Codes</h3>
+<p>The documentation provides details on top codes for
+<code>earnweek</code> and how they have changed over time. First, we add
+a <code>topcode</code> flag:</p>
+<pre class='stata'>. generate topcode=.
+(6,738,088 missing values generated)
+
+. replace topcode=1 if earnweek==999 &amp; inrange(year, 1982, 1988)
+(34,917 real changes made)
+
+. replace topcode=1 if earnweek>=1923 &amp; inrange(year, 1989, 1997)
+(16,218 real changes made)
+
+. replace topcode=1 if earnweek>=2884.61 &amp; inrange(year, 1998, $eyear)
+(117,792 real changes made)
+</pre>
+<p>Second, let’s scale up the top-coded values of <code>earnweek</code>.
+The scale factor is 1.5, which is stored in a macro variable.</p>
+<pre class='stata'>. replace earnweek=$tcscale*999 if inrange(year, 1982, 1988) &amp; topcode==1
+(34,917 real changes made)
+
+. replace earnweek=$tcscale*1923 if inrange(year, 1989, 1997) &amp; topcode==1
+(16,218 real changes made)
+
+. replace earnweek=$tcscale*2884.61 if inrange(year, 1998, $eyear) &amp; topcode==1
+(117,792 real changes made)
+</pre>
+<h3 id="adding-updating-labels-and-saving-the-revised-data">Adding,
+Updating Labels, and Saving the Revised Data</h3>
+<p>Before saving the cleaned data, let’s add or update any labels for
+new and recoded variables.</p>
+<pre class='stata'>. label define FEMALE 0 "male" 1 "female"
+
+. label value female FEMALE
+
+. label define PAIDHOUR 0 "not paid hourly" 1 "paid hourly", modify
+
+. label value paidhour PAIDHOUR
+
+. label variable grade "highest grade completed"
+</pre>
+<p><code>occupation</code> and <code>industry</code> will be easier to
+understand with all of the categories labeled:</p>
+<pre class='stata'>. label define OCCUPATION 1 "professional, technical" ///
+>                         2 "managers, officials, proprietors" ///
+>                         3 "clerical, kindred" ///
+>                         4 "sales" ///
+>                         5 "craftsmen" ///
+>                         6 "operatives" ///
+>                         7 "service (private hh)" ///
+>                         8 "service (other)" ///
+>                         9 "laborers" ///
+>                         10 "armed forces" 
+
+. label value occupation OCCUPATION
+
+. label variable occupation "occupation (1-10)"
+</pre>
+<pre class='stata'>. label define INDUSTRY 1 "agriculture, fisheries, metal mining, coal mining" ///
+>                     2 "construction" ///
+>                     3 "durable manufacturing" ///
+>                     4 "nondurable manufacturing" ///
+>                     5 "communications, transportation, utilities" ///
+>                     6 "wholesale trade" ///
+>                     7 "retail trade" ///
+>                     8 "professional services, fire" ///
+>                     9 "education, welfare services" ///
+>                     10 "public administration" ///
+>                     11 "other services"
+
+. label value industry INDUSTRY
+
+. label variable industry "industry (1-11)"
+</pre>
+<pre class='stata'>. label variable topcode "topcode indicator"
+</pre>
+<p>Before saving the data, we can drop the old <code>educ</code>,
+<code>occ1950</code>, and <code>ind1950</code> variables we just
+replaced.</p>
+<pre class='stata'>. drop educ occ1950 ind1950
+</pre>
+<p>The final dataset is compressed to minimize file size and saved as
+‘CPS ORGs, 1982–2024, Cleaned.dta’ in the Data folder.</p>
+<pre class='stata'>. describe
+
+Contains data from ../Data/CPS ORGs, 1982-2024.dta
+ Observations:     6,738,088                  
+    Variables:            22                  7 Jan 2025 05:57
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+year            int     %8.0g                 survey year
+month           byte    %8.0g      MONTH      month
+mish            byte    %8.0g      MISH       month in sample, household level
+region          byte    %8.0g      REGION     region and division
+cpsidv          double  %12.0g                validated longitudinal identifier
+age             byte    %8.0g      AGE        age
+female          float   %9.0g      FEMALE     
+race            int     %58.0g     RACE       race
+empstat         byte    %8.0g      EMPSTAT    employment status
+classwkr        byte    %8.0g      CLASSWKR   class of worker
+uhrswork1       int     %8.0g      UHRSWORK1
+                                              hours usually worked per week at main job
+grade           float   %9.0g                 highest grade completed
+earnwt          double  %12.0g                earnings weight
+qearnwee        byte    %8.0g      QEARNWEE   data quality flag for earnweek
+hourwage        double  %12.0g     HOURWAGE   hourly wage
+paidhour        byte    %15.0g     PAIDHOUR   paid by the hour
+union           byte    %8.0g      UNION      union membership
+earnweek        double  %12.0g     EARNWEEK   weekly earnings
+uhrsworkorg     int     %8.0g                 usual hours worked per week, outgoing rotation groups
+occupation      int     %32.0g     OCCUPATION
+                                              occupation (1-10)
+industry        int     %49.0g     INDUSTRY   industry (1-11)
+topcode         float   %9.0g                 topcode indicator
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Sorted by: 
+     Note: Dataset has changed since last saved.
+</pre>
+<p>The cleaned dataset contains 6,738,088 observations and 22 variables.
+Summary statistics are as follows:</p>
+<pre class='stata'>. summarize 
+
+    Variable │        Obs        Mean    Std. dev.       Min        Max
+─────────────┼─────────────────────────────────────────────────────────
+        year │  6,738,088    2002.068    12.10799       1982       2024
+       month │  6,738,088    6.505521    3.450084          1         12
+        mish │  6,738,088    6.003526    1.999997          4          8
+      region │  6,738,088    27.35454    10.74259         11         42
+      cpsidv │  6,738,088    2.00e+14    1.21e+12   1.98e+14   2.02e+14
+─────────────┼─────────────────────────────────────────────────────────
+         age │  6,738,088    39.04488    12.23483         18         64
+      female │  6,738,088    .4877906    .4998509          0          1
+        race │  6,738,088     141.819    129.5985        100        700
+     empstat │  6,738,088     10.0833    .3995664         10         12
+    classwkr │  6,738,088    22.68014    2.121586         13         28
+─────────────┼─────────────────────────────────────────────────────────
+   uhrswork1 │  6,738,088    78.16546     189.717          0        997
+       grade │  6,738,088    13.49376    2.614426          0         18
+      earnwt │  6,738,088    8652.169    5093.023      90.01   209103.1
+    qearnwee │  4,437,930    1.275338    1.864099          0          4
+    hourwage │  3,958,207    12.89962    8.767912        .01      99.99
+─────────────┼─────────────────────────────────────────────────────────
+    paidhour │  6,738,088    .5876722    .4922536          0          1
+       union │  6,517,337    1.172239    .4198614          1          3
+    earnweek │  6,738,088    713.4357    695.7659          0   4326.915
+ uhrsworkorg │  2,914,349    36.77634    9.983109          1         99
+  occupation │  6,738,088    3.936502     2.59726          1          9
+─────────────┼─────────────────────────────────────────────────────────
+    industry │  6,738,088    8.700937    12.85851          1        126
+     topcode │    168,927           1           0          1          1
+</pre>
+<hr />
+</body>
+</html>

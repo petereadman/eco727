@@ -1,0 +1,248 @@
+## Exercise 2: Cleaning the CPS ORG Data, 1982-2024
+Peter Readman
+
+---
+
+### Plan
+
+---
+
+- use the CPS monthly data for 1982-2024, prepared on 1/4/2024
+- recode missing observations, for consistency with cps, and top codes of income variables
+- save the cleaned data for further analysis
+
+---
+
+### Preliminaries
+
+We start by moving to the analysis folder. 
+
+    cd "~/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis"
+
+Now let's read the cps data extract saved after initial checks and preparation.	
+	
+    use "../Data/CPS ORGs, 1982-2024.dta", clear
+
+    describe
+    summarize
+
+The dataset contains 6,738,088 observations across 29 variables, spanning 1982–2024. A brief look shows some coding issues that need attention. Hourly and weekly wages show unusually high values, likely due to missing value codes or top-coding. Categorical variables, including occupation, industry, race, and education, have high codes that will require cleaning and recoding for consistency.
+
+Let's list the last 10 observations for our data in groups of approximately 10 variables
+
+    list year serial month hwtfinl cpsid mish region pernum wtfinl cpsidv in -10/l, noobs
+    list cpsidp earnweek2 hourwage2 age sex race empstat occ1950 ind1950 classwkr in -10/l, noobs
+    list uhrswork1 educ earnwt qearnwee hourwage paidhour union earnweek uhrsworkorg in -10/l, noobs
+
+There are some variables we don't need and we can drop them before we get into cleaning the data.
+
+    drop serial cpsid cpsidp pernum hwtfinl wtfinl
+
+---
+	
+### Replacing Missing Values
+
+The IPUMS documentation provides a number of codes for missing or unknown values. For example, missing values in `earnweek` are coded with 9999.99, missing values in `hourwage` are coded with 999.99. We need to replace any coded missing values to missing (".").
+
+    replace region=. if region ==97
+    replace earnweek2=. if earnweek2==999999.99
+    replace hourwage2=. if hourwage2==999.99
+    replace sex=. if sex==9
+    replace race=. if race==999
+    replace empstat=. if empstat==00
+    replace occ1950=. if inlist(occ1950, 997, 999)
+    replace ind1950=. if inlist(ind1950, 000, 001, 998, 999)
+    replace classwkr=. if inlist(classwkr, 00, 99)
+    replace uhrswork1=. if uhrswork1==999
+    replace educ=. if inlist(educ, 000, 001, 999)
+    replace hourwage=. if hourwage==999.99
+    replace paidhour=. if inlist(paidhour, 0, 6, 7)
+    replace union=. if union ==0
+    replace earnweek=. if earnweek==9999.99
+    replace uhrsworkorg=. if inlist(uhrsworkorg, 998, 999)
+
+Missing codes were change in `earnweek2`, `hourwage2`, `hourwage`, `union`, `earnweek`, and `uhrsworkorg`. No changes needed to be made to the other variables.
+
+### Dummy variables
+
+To simplify modeling, we convert `sex` and `paidhour` into dummy variables: `female` (1 = female, 0 = male) and `paidhour` (1 = paid hourly, 0 = not paid hourly).
+
+    generate female = sex-1
+    drop sex
+    order female, before(race)
+
+    replace paidhour = paidhour-1
+
+### Recoding for Consistency Across Years
+
+#### Recoding Race
+
+We recode `race` into the following categories: white, black, American Indian, Asian/Hawaiian/Pacific Islander, and other.
+
+      replace race=650 if inlist(race, 651, 652) & year>=2003
+      replace race=700 if inrange(race, 800, 830) & year>=2003
+      tab year race, missing
+
+#### Recoding Education
+
+Next we use the education variable educ to generate grade, which measures highest grade completed. 
+
+We'll generate a new variable `grade` to capture highest grade completed. Since 1992, the education variable tracks degrees rather than grades, so we use Jaeger (1997) to transform degrees into grades.
+
+	generate grade =.
+    **1982-1991
+    replace grade=0  if educ==2 & year<=1991 // (none or preschool)
+    replace grade=1  if educ==11 & year<=1991
+    replace grade=2  if educ==12 & year<=1991
+    replace grade=3  if educ==13 & year<=1991
+    replace grade=4  if educ==14 & year<=1991
+    replace grade=5  if educ==21 & year<=1991
+    replace grade=6  if educ==22 & year<=1991
+    replace grade=7  if educ==31 & year<=1991
+    replace grade=8  if educ==32 & year<=1991
+    replace grade=9  if educ==40 & year<=1991
+    replace grade=10 if educ==50 & year<=1991
+    replace grade=11 if educ==60 & year<=1991
+    replace grade=12 if (educ==72 | educ==73) & year<=1991 // 72 is `diploma unclear'
+    replace grade=13 if educ==80 & year<=1991
+    replace grade=14 if educ==90 & year<=1991
+    replace grade=15 if educ==100 & year<=1991
+    replace grade=16 if educ==110 & year<=1991
+    replace grade=17 if educ==121 & year<=1991
+    replace grade=18 if educ==122 & year<=1991
+    **1992-2024 (Jaeger 1997)
+    replace grade=0   if educ==2  & year>=1992
+    replace grade=2.5 if educ==10 & year>=1992 // grades 1-4
+    replace grade=5.5 if educ==20 & year>=1992 // grades 5-6
+    replace grade=7.5 if educ==30 & year>=1992 // grades 7-8
+    replace grade=9   if educ==40 & year>=1992 // grade 9
+    replace grade=10  if educ==50 & year>=1992 // grade 10
+    replace grade=11  if educ==60 & year>=1992 // grade 11
+    replace grade=12  if (educ==71 | educ==73) & year>=1992 // 71 is `no diploma'
+    replace grade=13  if educ==81 & year>=1992 // some college, no degree
+    replace grade=14  if (educ==91 | educ==92) & year>=1992 // academic or vocational associate's degree
+    replace grade=16  if educ==111 & year>=1992
+    replace grade=18  if inlist(educ, 123, 124, 125) & year>=1992
+    order grade, before(educ)
+
+#### Recoding Occupation
+
+The `occ1950` variable contains too many categories to manage efficiently, so we consolidate them into a new variable, `occupation`.
+
+    recode occ1950 ///
+      (0/99=1) /// professional, technical
+      (100/290=2) /// managers, officials, proprietors
+      (300/390=3) /// clerical, kindred
+      (400/490=4) /// sales
+      (500/594=5) /// craftsmen
+      (600/690=6) /// operatives
+      (700/720=7) /// service (private hh)
+      (730/790=8) /// service (other)
+      (810/970=9) /// laborers
+      (595=10) /// armed forces
+    , generate(occupation) 
+    * check everything is recoded 
+    tab occ1950 if occ1950~=. & occupation==.
+
+Notice there are no observations to tab because `occupation` is only missing if `occ1950` is missing.
+
+#### Recoding Industry
+
+Similarly, `ind1950` contains too many categories. We group these into a new variable, `industry`, for consistency.
+
+    recode ind1950 ///
+      (150/239=1) /// agriculture, fisheries, metal mining, coal mining
+      (246/246=2) /// construction
+      (306/399=3) /// durable manufacturing
+      (406/499=4) /// nondurable manufacturing
+      (506/598=5) /// communications, transportation, utilities
+      (606/627=6) /// wholesale trade
+      (636/699=7) /// retail trade
+      (716/756=8) /// professional services, fire
+      (868/879=8) /// professional services, fire
+      (897/899=8) /// professional services, fire
+      (888/896=9)  /// education, welfare services
+      (906/946=10) /// public administration
+      (806/859=11) /// other services
+      (997/998=11)  /// other services
+    , generate(industry)
+    * check everything is covered
+    tab ind1950 if ind1950~=. & industry==.
+
+Again, notice there are no observations to tab because `industry` is only missing if `ind1950` is missing.
+
+#### Replacing Missing Values of `earnweek` and `hourwage`
+
+     replace earnweek = earnweek2 if missing(earnweek) & !missing(earnweek2)
+     replace hourwage = hourwage2 if missing(hourwage) & !missing(hourwage2)
+     drop earnweek2 hourwage2
+
+### Dealing with Top Codes
+
+The documentation provides details on top codes for `earnweek` and how they have changed over time. First, we add a `topcode` flag:
+
+    generate topcode=.
+    replace topcode=1 if earnweek==999 & inrange(year, 1982, 1988)
+    replace topcode=1 if earnweek>=1923 & inrange(year, 1989, 1997)
+    replace topcode=1 if earnweek>=2884.61 & inrange(year, 1998, $eyear)
+
+Second, let’s scale up the top-coded values of `earnweek`. The scale factor is 1.5, which is stored in a macro variable.
+
+    replace earnweek=$tcscale*999 if inrange(year, 1982, 1988) & topcode==1
+    replace earnweek=$tcscale*1923 if inrange(year, 1989, 1997) & topcode==1
+    replace earnweek=$tcscale*2884.61 if inrange(year, 1998, $eyear) & topcode==1
+
+### Adding, Updating Labels, and Saving the Revised Data
+
+Before saving the cleaned data, let's add or update any labels for new and recoded variables.
+
+    label define FEMALE 0 "male" 1 "female"
+    label value female FEMALE
+    label define PAIDHOUR 0 "not paid hourly" 1 "paid hourly", modify
+    label value paidhour PAIDHOUR
+    label variable grade "highest grade completed"
+
+`occupation` and `industry` will be easier to understand with all of the categories labeled:
+
+    label define OCCUPATION 1 "professional, technical" ///
+                            2 "managers, officials, proprietors" ///
+                            3 "clerical, kindred" ///
+                            4 "sales" ///
+                            5 "craftsmen" ///
+                            6 "operatives" ///
+                            7 "service (private hh)" ///
+                            8 "service (other)" ///
+                            9 "laborers" ///
+                            10 "armed forces" 
+    label value occupation OCCUPATION
+    label variable occupation "occupation (1-10)"
+    
+    label define INDUSTRY 1 "agriculture, fisheries, metal mining, coal mining" ///
+                        2 "construction" ///
+                        3 "durable manufacturing" ///
+                        4 "nondurable manufacturing" ///
+                        5 "communications, transportation, utilities" ///
+                        6 "wholesale trade" ///
+                        7 "retail trade" ///
+                        8 "professional services, fire" ///
+                        9 "education, welfare services" ///
+                        10 "public administration" ///
+                        11 "other services"
+    label value industry INDUSTRY
+    label variable industry "industry (1-11)"
+ 
+    label variable topcode "topcode indicator"
+
+Before saving the data, we can drop the old `educ`, `occ1950`, and `ind1950` variables we just replaced.
+
+    drop educ occ1950 ind1950
+
+The final dataset is compressed to minimize file size and saved as 'CPS ORGs, 1982--2024, Cleaned.dta' in the Data folder.
+
+    describe
+
+The cleaned dataset contains 6,738,088 observations and 22 variables. Summary statistics are as follows:
+	
+    summarize 
+	
+---
