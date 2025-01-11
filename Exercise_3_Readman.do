@@ -11,6 +11,7 @@ global eyear=2024
 global emonth=11
 
 * part a
+
 * appending three morg data sets
   clear
   append using "../Data/morg79.dta" "../Data/morg80.dta" "../Data/morg81.dta"
@@ -89,6 +90,7 @@ global emonth=11
 *** end part c
 
 * part d
+
 * calculating annual statistics for real weekly wage
   collapse (mean) mean=rwage /// mean
                   (p10) p10=rwage /// 10th percentile
@@ -102,15 +104,20 @@ global emonth=11
   summarize
   list in 1/5, noobs
 
-* plots
+* plotting trend in real weekly wages
   line p10 year || line p50 year || line p90 year || line mean year, ///
-  xtitle(Year) xlabel(1965(5)1990) ///
-  ytitle("Real Weekly Wage, 1982=100") ylabel(100(10)140, noticks) ///
-  stext(105 1988 "p10")  text(125 1988 "p50") text(142 1988 "p90") ///
-  scheme(Wide727Scheme) name(fig1_scheme, replace)
+  title("Trends in Real Weekly Wages") ///
+  xtitle("Year") xlabel(1980(5)2025, format(%ty)) ///
+  ytitle("Real Weekly Wage, 1982=100") ylabel(0(500)3000, noticks) ///
+  text(416.25 2025 "P10") text(1042.354 2025 "P50") text(1600 2025 "mean") text(2672.061 2025 "P90") ///
+  scheme(Wide727Scheme)
   graph export "Results/fig1.png", width(600) replace
-  line ldiff year, sort
+
+* Plot difference between 10th and 90th percentiles
+  line ldiff year, sort scheme(Squarish727Scheme) ///
+  title("Wage Gap Between 90th and 10th Percentiles") ///
+  xtitle("Year") xlabel(1980(5)2025, format(%ty)) ///
+  ytitle("Log Difference")
   graph export "Results/fig2.png", width(600) replace
-*** end part d
 
 log close results

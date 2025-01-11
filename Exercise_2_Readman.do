@@ -30,7 +30,7 @@ global tcscale=1.5
 * recoding missing values with .
   replace region=. if region ==97
   replace earnweek2=. if earnweek2==999999.99
-  replace hourwage2=. if hourwage2==999.99
+  replace hourwage2=. if hourwage2==999.99    
   replace sex=. if sex==9
   replace race=. if race==999
   replace empstat=. if empstat==00
@@ -134,29 +134,29 @@ global tcscale=1.5
 * replacing missing values of earnweek and hourwage
   replace earnweek = earnweek2 if missing(earnweek) & !missing(earnweek2)
   replace hourwage = hourwage2 if missing(hourwage) & !missing(hourwage2)
+  summarize earnweek2, meanonly
+  scalar max_earnweek2 = r(max) // required for topcoding
   drop earnweek2 hourwage2
 
 * creating topcode variable to identify top-coded values of earnweek 
   generate topcode=.
-  replace topcode=1 if earnweek==999 & inrange(year, 1982, 1988)
-  replace topcode=1 if earnweek>=1923 & inrange(year, 1989, 1997)
-  replace topcode=1 if earnweek>=2884.61 & inrange(year, 1998, $eyear)
-
+  replace topcode=1 if earnweek>=999 & inrange(year, 1982, 1988) // & !missing(earnweek)
+  replace topcode=1 if earnweek>=1923 & inrange(year, 1989, 1997) // & !missing(earnweek)
+  replace topcode=1 if earnweek>=2884.61 & (inrange(year, 1998, 2022) | (year==2023 & month <=3)) // & !missing(earnweek)
+  replace topcode=1 if earnweek>=max_earnweek2 & ((year == 2023 & month >= 4) | (year == 2024 & month <= 3)) & mish == 4 // & !missing(earnweek)
+  replace topcode=1 if earnweek>=2884.61 & ((year == 2023 & month >= 4) | (year == 2024 & month <= 3)) & mish == 8 // & !missing(earnweek)
+  replace topcode=0 if topcode==.
+  tab topcode
+  
 * replacing top-coded values of earnweek with 1.5 times the top-coded values
-  replace earnweek=$tcscale*999 if inrange(year, 1982, 1988) & topcode==1
-  replace earnweek=$tcscale*1923 if inrange(year, 1989, 1997) & topcode==1
-  replace earnweek=$tcscale*2884.61 if inrange(year, 1998, $eyear) & topcode==1
+  replace earnweek = $tcscale * earnweek if topcode == 1
 
 * labeling new variables female, paidhour, grade, occupation, industry, topcode
-  *labeling for female
   label define FEMALE 0 "male" 1 "female"
   label value female FEMALE
-  *labeling for paidhour
   label define PAIDHOUR 0 "not paid hourly" 1 "paid hourly", modify
   label value paidhour PAIDHOUR
-  *labeling for grade
   label variable grade "highest grade completed"
-  *labeling for occupation
   label define OCCUPATION 1 "professional, technical" ///
                           2 "managers, officials, proprietors" ///
                           3 "clerical, kindred" ///
@@ -169,7 +169,6 @@ global tcscale=1.5
                           10 "armed forces" 
   label value occupation OCCUPATION
   label variable occupation "occupation (1-10)"
-  *labeling for industry
   label define INDUSTRY 1 "agriculture, fisheries, metal mining, coal mining" ///
                         2 "construction" ///
                         3 "durable manufacturing" ///
@@ -183,7 +182,6 @@ global tcscale=1.5
                         11 "other services"
   label value industry INDUSTRY
   label variable industry "industry (1-11)"
-  *labeling for topcode
   label variable topcode "topcode indicator"
 
 * dropping variables replaced by grade, occupation, industry

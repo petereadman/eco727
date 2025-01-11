@@ -3,7 +3,7 @@
       name:  {res}results
        {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_3_Readman.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}10 Jan 2025, 17:55:45
+ {txt}opened on:  {res}11 Jan 2025, 09:27:58
 {txt}
 {com}. set scheme s2color
 {txt}
@@ -17,6 +17,7 @@
 {txt}
 {com}. 
 . * part a
+. 
 . * appending three morg data sets
 .   clear
 {txt}
@@ -144,85 +145,85 @@ Sorted by:
 {txt}
 {com}.   list in -10/l, noobs
 
-  {txt}{c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
-  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}    sex {c |} gradeat {c |}                      esr {c |} uhours {c |}  earnwt {c |}
-  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}      Private {txt}{c |} {res} 37 {txt}{c |} {res}White {txt}{c |} {res}  Male {txt}{c |} {res}     14 {txt}{c |} {res}        Employed-At Work {txt}{c |} {res}    40 {txt}{c |} {res}1440.22 {txt}{c |}
-  {c LT}{hline 9}{c BT}{hline 10}{c BT}{hline 15}{c BT}{hline 5}{c BT}{hline 7}{c BT}{hline 7}{c TT}{c BT}{hline 9}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 9}{c RT}
-  {c |}                         earnwke                          {c |}                          year                          {c |}
-  {c |}                         {res}    852                          {txt}{c |}                          {res}1981                          {txt}{c |}
-  {c BLC}{hline 58}{c BT}{hline 56}{c BRC}
+  {txt}{c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 9}{c TRC}
+  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}    sex {c |} gradeat {c |}                      esr {c |} uhours {c |}  earnwt {c |} earnwke {c |}
+  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}      Private {txt}{c |} {res} 37 {txt}{c |} {res}White {txt}{c |} {res}  Male {txt}{c |} {res}     14 {txt}{c |} {res}        Employed-At Work {txt}{c |} {res}    40 {txt}{c |} {res}1440.22 {txt}{c |} {res}    852 {txt}{c |}
+  {c LT}{hline 9}{c BT}{hline 10}{c BT}{hline 15}{c BT}{hline 5}{c BT}{hline 7}{c BT}{hline 8}{c BT}{hline 9}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 9}{c BT}{hline 9}{c RT}
+  {c |}                                                            year                                                             {c |}
+  {c |}                                                            {res}1981                                                             {txt}{c |}
+  {c BLC}{hline 125}{c BRC}
 
-  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
-  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}    sex {c |} gradeat {c |}                      esr {c |} uhours {c |}  earnwt {c |}
-  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}      Private {txt}{c |} {res} 36 {txt}{c |} {res}White {txt}{c |} {res}Female {txt}{c |} {res}     12 {txt}{c |} {res}        Employed-At Work {txt}{c |} {res}    40 {txt}{c |} {res}1238.05 {txt}{c |}
-  {c LT}{hline 9}{c BT}{hline 10}{c BT}{hline 15}{c BT}{hline 5}{c BT}{hline 7}{c BT}{hline 7}{c TT}{c BT}{hline 9}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 9}{c RT}
-  {c |}                         earnwke                          {c |}                          year                          {c |}
-  {c |}                         {res}    400                          {txt}{c |}                          {res}1981                          {txt}{c |}
-  {c BLC}{hline 58}{c BT}{hline 56}{c BRC}
+  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 9}{c TRC}
+  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}    sex {c |} gradeat {c |}                      esr {c |} uhours {c |}  earnwt {c |} earnwke {c |}
+  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}      Private {txt}{c |} {res} 36 {txt}{c |} {res}White {txt}{c |} {res}Female {txt}{c |} {res}     12 {txt}{c |} {res}        Employed-At Work {txt}{c |} {res}    40 {txt}{c |} {res}1238.05 {txt}{c |} {res}    400 {txt}{c |}
+  {c LT}{hline 9}{c BT}{hline 10}{c BT}{hline 15}{c BT}{hline 5}{c BT}{hline 7}{c BT}{hline 8}{c BT}{hline 9}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 9}{c BT}{hline 9}{c RT}
+  {c |}                                                            year                                                             {c |}
+  {c |}                                                            {res}1981                                                             {txt}{c |}
+  {c BLC}{hline 125}{c BRC}
 
-  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
-  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}    sex {c |} gradeat {c |}                      esr {c |} uhours {c |}  earnwt {c |}
-  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}      Private {txt}{c |} {res} 16 {txt}{c |} {res}White {txt}{c |} {res}  Male {txt}{c |} {res}     10 {txt}{c |} {res}      Unemployed-Looking {txt}{c |} {res}     . {txt}{c |} {res}1176.16 {txt}{c |}
-  {c LT}{hline 9}{c BT}{hline 10}{c BT}{hline 15}{c BT}{hline 5}{c BT}{hline 7}{c BT}{hline 7}{c TT}{c BT}{hline 9}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 9}{c RT}
-  {c |}                         earnwke                          {c |}                          year                          {c |}
-  {c |}                         {res}      .                          {txt}{c |}                          {res}1981                          {txt}{c |}
-  {c BLC}{hline 58}{c BT}{hline 56}{c BRC}
+  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 9}{c TRC}
+  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}    sex {c |} gradeat {c |}                      esr {c |} uhours {c |}  earnwt {c |} earnwke {c |}
+  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}      Private {txt}{c |} {res} 16 {txt}{c |} {res}White {txt}{c |} {res}  Male {txt}{c |} {res}     10 {txt}{c |} {res}      Unemployed-Looking {txt}{c |} {res}     . {txt}{c |} {res}1176.16 {txt}{c |} {res}      . {txt}{c |}
+  {c LT}{hline 9}{c BT}{hline 10}{c BT}{hline 15}{c BT}{hline 5}{c BT}{hline 7}{c BT}{hline 8}{c BT}{hline 9}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 9}{c BT}{hline 9}{c RT}
+  {c |}                                                            year                                                             {c |}
+  {c |}                                                            {res}1981                                                             {txt}{c |}
+  {c BLC}{hline 125}{c BRC}
 
-  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
-  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}    sex {c |} gradeat {c |}                      esr {c |} uhours {c |}  earnwt {c |}
-  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}      Private {txt}{c |} {res} 65 {txt}{c |} {res}White {txt}{c |} {res}  Male {txt}{c |} {res}     13 {txt}{c |} {res}        Employed-At Work {txt}{c |} {res}    40 {txt}{c |} {res}1298.19 {txt}{c |}
-  {c LT}{hline 9}{c BT}{hline 10}{c BT}{hline 15}{c BT}{hline 5}{c BT}{hline 7}{c BT}{hline 7}{c TT}{c BT}{hline 9}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 9}{c RT}
-  {c |}                         earnwke                          {c |}                          year                          {c |}
-  {c |}                         {res}    240                          {txt}{c |}                          {res}1981                          {txt}{c |}
-  {c BLC}{hline 58}{c BT}{hline 56}{c BRC}
+  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 9}{c TRC}
+  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}    sex {c |} gradeat {c |}                      esr {c |} uhours {c |}  earnwt {c |} earnwke {c |}
+  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}      Private {txt}{c |} {res} 65 {txt}{c |} {res}White {txt}{c |} {res}  Male {txt}{c |} {res}     13 {txt}{c |} {res}        Employed-At Work {txt}{c |} {res}    40 {txt}{c |} {res}1298.19 {txt}{c |} {res}    240 {txt}{c |}
+  {c LT}{hline 9}{c BT}{hline 10}{c BT}{hline 15}{c BT}{hline 5}{c BT}{hline 7}{c BT}{hline 8}{c BT}{hline 9}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 9}{c BT}{hline 9}{c RT}
+  {c |}                                                            year                                                             {c |}
+  {c |}                                                            {res}1981                                                             {txt}{c |}
+  {c BLC}{hline 125}{c BRC}
 
-  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
-  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}    sex {c |} gradeat {c |}                      esr {c |} uhours {c |}  earnwt {c |}
-  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}      Private {txt}{c |} {res} 23 {txt}{c |} {res}White {txt}{c |} {res}  Male {txt}{c |} {res}     12 {txt}{c |} {res}        Employed-At Work {txt}{c |} {res}    40 {txt}{c |} {res}1499.93 {txt}{c |}
-  {c LT}{hline 9}{c BT}{hline 10}{c BT}{hline 15}{c BT}{hline 5}{c BT}{hline 7}{c BT}{hline 7}{c TT}{c BT}{hline 9}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 9}{c RT}
-  {c |}                         earnwke                          {c |}                          year                          {c |}
-  {c |}                         {res}    478                          {txt}{c |}                          {res}1981                          {txt}{c |}
-  {c BLC}{hline 58}{c BT}{hline 56}{c BRC}
+  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 9}{c TRC}
+  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}    sex {c |} gradeat {c |}                      esr {c |} uhours {c |}  earnwt {c |} earnwke {c |}
+  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}      Private {txt}{c |} {res} 23 {txt}{c |} {res}White {txt}{c |} {res}  Male {txt}{c |} {res}     12 {txt}{c |} {res}        Employed-At Work {txt}{c |} {res}    40 {txt}{c |} {res}1499.93 {txt}{c |} {res}    478 {txt}{c |}
+  {c LT}{hline 9}{c BT}{hline 10}{c BT}{hline 15}{c BT}{hline 5}{c BT}{hline 7}{c BT}{hline 8}{c BT}{hline 9}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 9}{c BT}{hline 9}{c RT}
+  {c |}                                                            year                                                             {c |}
+  {c |}                                                            {res}1981                                                             {txt}{c |}
+  {c BLC}{hline 125}{c BRC}
 
-  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
-  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}    sex {c |} gradeat {c |}                      esr {c |} uhours {c |}  earnwt {c |}
-  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}      Private {txt}{c |} {res} 23 {txt}{c |} {res}White {txt}{c |} {res}  Male {txt}{c |} {res}     12 {txt}{c |} {res}        Employed-At Work {txt}{c |} {res}    45 {txt}{c |} {res} 999.95 {txt}{c |}
-  {c LT}{hline 9}{c BT}{hline 10}{c BT}{hline 15}{c BT}{hline 5}{c BT}{hline 7}{c BT}{hline 7}{c TT}{c BT}{hline 9}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 9}{c RT}
-  {c |}                         earnwke                          {c |}                          year                          {c |}
-  {c |}                         {res}    720                          {txt}{c |}                          {res}1981                          {txt}{c |}
-  {c BLC}{hline 58}{c BT}{hline 56}{c BRC}
+  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 9}{c TRC}
+  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}    sex {c |} gradeat {c |}                      esr {c |} uhours {c |}  earnwt {c |} earnwke {c |}
+  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}      Private {txt}{c |} {res} 23 {txt}{c |} {res}White {txt}{c |} {res}  Male {txt}{c |} {res}     12 {txt}{c |} {res}        Employed-At Work {txt}{c |} {res}    45 {txt}{c |} {res} 999.95 {txt}{c |} {res}    720 {txt}{c |}
+  {c LT}{hline 9}{c BT}{hline 10}{c BT}{hline 15}{c BT}{hline 5}{c BT}{hline 7}{c BT}{hline 8}{c BT}{hline 9}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 9}{c BT}{hline 9}{c RT}
+  {c |}                                                            year                                                             {c |}
+  {c |}                                                            {res}1981                                                             {txt}{c |}
+  {c BLC}{hline 125}{c BRC}
 
-  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
-  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}    sex {c |} gradeat {c |}                      esr {c |} uhours {c |}  earnwt {c |}
-  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}      Private {txt}{c |} {res} 22 {txt}{c |} {res}White {txt}{c |} {res}Female {txt}{c |} {res}     15 {txt}{c |} {res}               Housework {txt}{c |} {res}     . {txt}{c |} {res} 931.32 {txt}{c |}
-  {c LT}{hline 9}{c BT}{hline 10}{c BT}{hline 15}{c BT}{hline 5}{c BT}{hline 7}{c BT}{hline 7}{c TT}{c BT}{hline 9}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 9}{c RT}
-  {c |}                         earnwke                          {c |}                          year                          {c |}
-  {c |}                         {res}      .                          {txt}{c |}                          {res}1981                          {txt}{c |}
-  {c BLC}{hline 58}{c BT}{hline 56}{c BRC}
+  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 9}{c TRC}
+  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}    sex {c |} gradeat {c |}                      esr {c |} uhours {c |}  earnwt {c |} earnwke {c |}
+  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}      Private {txt}{c |} {res} 22 {txt}{c |} {res}White {txt}{c |} {res}Female {txt}{c |} {res}     15 {txt}{c |} {res}               Housework {txt}{c |} {res}     . {txt}{c |} {res} 931.32 {txt}{c |} {res}      . {txt}{c |}
+  {c LT}{hline 9}{c BT}{hline 10}{c BT}{hline 15}{c BT}{hline 5}{c BT}{hline 7}{c BT}{hline 8}{c BT}{hline 9}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 9}{c BT}{hline 9}{c RT}
+  {c |}                                                            year                                                             {c |}
+  {c |}                                                            {res}1981                                                             {txt}{c |}
+  {c BLC}{hline 125}{c BRC}
 
-  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
-  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}    sex {c |} gradeat {c |}                      esr {c |} uhours {c |}  earnwt {c |}
-  {c |} {res}  MIS 4 {txt}{c |} {res}December {txt}{c |} {res}      Private {txt}{c |} {res} 21 {txt}{c |} {res}Other {txt}{c |} {res}Female {txt}{c |} {res}     12 {txt}{c |} {res}Other (Includes Retired) {txt}{c |} {res}     . {txt}{c |} {res}1005.17 {txt}{c |}
-  {c LT}{hline 9}{c BT}{hline 10}{c BT}{hline 15}{c BT}{hline 5}{c BT}{hline 7}{c BT}{hline 7}{c TT}{c BT}{hline 9}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 9}{c RT}
-  {c |}                         earnwke                          {c |}                          year                          {c |}
-  {c |}                         {res}      .                          {txt}{c |}                          {res}1981                          {txt}{c |}
-  {c BLC}{hline 58}{c BT}{hline 56}{c BRC}
+  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 9}{c TRC}
+  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}    sex {c |} gradeat {c |}                      esr {c |} uhours {c |}  earnwt {c |} earnwke {c |}
+  {c |} {res}  MIS 4 {txt}{c |} {res}December {txt}{c |} {res}      Private {txt}{c |} {res} 21 {txt}{c |} {res}Other {txt}{c |} {res}Female {txt}{c |} {res}     12 {txt}{c |} {res}Other (Includes Retired) {txt}{c |} {res}     . {txt}{c |} {res}1005.17 {txt}{c |} {res}      . {txt}{c |}
+  {c LT}{hline 9}{c BT}{hline 10}{c BT}{hline 15}{c BT}{hline 5}{c BT}{hline 7}{c BT}{hline 8}{c BT}{hline 9}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 9}{c BT}{hline 9}{c RT}
+  {c |}                                                            year                                                             {c |}
+  {c |}                                                            {res}1981                                                             {txt}{c |}
+  {c BLC}{hline 125}{c BRC}
 
-  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
-  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}    sex {c |} gradeat {c |}                      esr {c |} uhours {c |}  earnwt {c |}
-  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}Self-Employed {txt}{c |} {res} 24 {txt}{c |} {res}Other {txt}{c |} {res}  Male {txt}{c |} {res}     12 {txt}{c |} {res}Other (Includes Retired) {txt}{c |} {res}     . {txt}{c |} {res}  277.2 {txt}{c |}
-  {c LT}{hline 9}{c BT}{hline 10}{c BT}{hline 15}{c BT}{hline 5}{c BT}{hline 7}{c BT}{hline 7}{c TT}{c BT}{hline 9}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 9}{c RT}
-  {c |}                         earnwke                          {c |}                          year                          {c |}
-  {c |}                         {res}      .                          {txt}{c |}                          {res}1981                          {txt}{c |}
-  {c BLC}{hline 58}{c BT}{hline 56}{c BRC}
+  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 9}{c TRC}
+  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}    sex {c |} gradeat {c |}                      esr {c |} uhours {c |}  earnwt {c |} earnwke {c |}
+  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}Self-Employed {txt}{c |} {res} 24 {txt}{c |} {res}Other {txt}{c |} {res}  Male {txt}{c |} {res}     12 {txt}{c |} {res}Other (Includes Retired) {txt}{c |} {res}     . {txt}{c |} {res}  277.2 {txt}{c |} {res}      . {txt}{c |}
+  {c LT}{hline 9}{c BT}{hline 10}{c BT}{hline 15}{c BT}{hline 5}{c BT}{hline 7}{c BT}{hline 8}{c BT}{hline 9}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 9}{c BT}{hline 9}{c RT}
+  {c |}                                                            year                                                             {c |}
+  {c |}                                                            {res}1981                                                             {txt}{c |}
+  {c BLC}{hline 125}{c BRC}
 
-  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
-  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}    sex {c |} gradeat {c |}                      esr {c |} uhours {c |}  earnwt {c |}
-  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}  Without Pay {txt}{c |} {res} 23 {txt}{c |} {res}Other {txt}{c |} {res}Female {txt}{c |} {res}     12 {txt}{c |} {res}               Housework {txt}{c |} {res}     . {txt}{c |} {res} 356.72 {txt}{c |}
-  {c LT}{hline 9}{c BT}{hline 10}{c BT}{hline 15}{c BT}{hline 5}{c BT}{hline 7}{c BT}{hline 7}{c TT}{c BT}{hline 9}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 9}{c RT}
-  {c |}                         earnwke                          {c |}                          year                          {c |}
-  {c |}                         {res}      .                          {txt}{c |}                          {res}1981                          {txt}{c |}
-  {c BLC}{hline 58}{c BT}{hline 56}{c BRC}
+  {c TLC}{hline 9}{c TT}{hline 10}{c TT}{hline 15}{c TT}{hline 5}{c TT}{hline 7}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 9}{c TT}{hline 9}{c TRC}
+  {c |} minsamp {c |} intmonth {c |}       classer {c |} age {c |}  race {c |}    sex {c |} gradeat {c |}                      esr {c |} uhours {c |}  earnwt {c |} earnwke {c |}
+  {c |} {res}  MIS 8 {txt}{c |} {res}December {txt}{c |} {res}  Without Pay {txt}{c |} {res} 23 {txt}{c |} {res}Other {txt}{c |} {res}Female {txt}{c |} {res}     12 {txt}{c |} {res}               Housework {txt}{c |} {res}     . {txt}{c |} {res} 356.72 {txt}{c |} {res}      . {txt}{c |}
+  {c LT}{hline 9}{c BT}{hline 10}{c BT}{hline 15}{c BT}{hline 5}{c BT}{hline 7}{c BT}{hline 8}{c BT}{hline 9}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 9}{c BT}{hline 9}{c RT}
+  {c |}                                                            year                                                             {c |}
+  {c |}                                                            {res}1981                                                             {txt}{c |}
+  {c BLC}{hline 125}{c BRC}
 
 {com}. 
 . * renaming month variables to align with IPUMS
@@ -494,7 +495,7 @@ saved
 
 {txt}Contains data from {res}../Data/CPI 1913-2024.dta
 {txt} Observations:{res}         1,344                  
-{txt}    Variables:{res}             3                  10 Jan 2025 17:55
+{txt}    Variables:{res}             3                  11 Jan 2025 09:28
 {txt}{hline}
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
@@ -517,7 +518,7 @@ Sorted by: {res}year  month
 
 {txt}Contains data from {res}../Data/CPS ORGs, 1982-2024, Cleaned.dta
 {txt} Observations:{res}     6,738,088                  
-{txt}    Variables:{res}            22                  9 Jan 2025 16:30
+{txt}    Variables:{res}            22                  11 Jan 2025 08:30
 {txt}{hline}
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
@@ -573,12 +574,12 @@ Sorted by:
 {txt}{hline 13}{c +}{hline 57}
 {space 4}paidhour {c |}{res}  6,738,088    .5876722    .4922536          0          1
 {txt}{space 7}union {c |}{res}  6,517,337    1.172239    .4198614          1          3
-{txt}{space 4}earnweek {c |}{res}  6,738,088    713.4357    695.7659          0   4326.915
+{txt}{space 4}earnweek {c |}{res}  6,729,502    711.4856    709.6454          0      11960
 {txt}{space 1}uhrsworkorg {c |}{res}  2,914,349    36.77634    9.983109          1         99
 {txt}{space 2}occupation {c |}{res}  6,738,088    3.936502     2.59726          1          9
 {txt}{hline 13}{c +}{hline 57}
 {space 4}industry {c |}{res}  6,738,088    6.976406    2.776901          1         11
-{txt}{space 5}topcode {c |}{res}    168,927           1           0          1          1
+{txt}{space 5}topcode {c |}{res}  6,738,088    .0235956    .1517854          0          1
 {txt}
 {com}.   sort year month
 {txt}
@@ -611,7 +612,8 @@ Sorted by:
 {com}.   scalar cpi_scalar = r(mean)
 {txt}
 {com}.   generate rwage=(cpi_scalar*earnweek)/cpi // latest month dollars
-{txt}
+{txt}(8,586 missing values generated)
+
 {com}.   label variable rwage "real wage in November 2024 dollars"
 {txt}
 {com}. 
@@ -627,7 +629,7 @@ saved
 
 {txt}Contains data from {res}../Data/CPS-ORG with CPI, 1982-2024.dta
 {txt} Observations:{res}     6,738,088                  
-{txt}    Variables:{res}            24                  10 Jan 2025 17:55
+{txt}    Variables:{res}            24                  11 Jan 2025 09:28
 {txt}{hline}
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
@@ -685,18 +687,19 @@ Sorted by:
 {txt}{hline 13}{c +}{hline 57}
 {space 4}paidhour {c |}{res}  6,738,088    .5876722    .4922536          0          1
 {txt}{space 7}union {c |}{res}  6,517,337    1.172239    .4198614          1          3
-{txt}{space 4}earnweek {c |}{res}  6,738,088    713.4357    695.7659          0   4326.915
+{txt}{space 4}earnweek {c |}{res}  6,729,502    711.4856    709.6454          0      11960
 {txt}{space 1}uhrsworkorg {c |}{res}  2,914,349    36.77634    9.983109          1         99
 {txt}{space 2}occupation {c |}{res}  6,738,088    3.936502     2.59726          1          9
 {txt}{hline 13}{c +}{hline 57}
 {space 4}industry {c |}{res}  6,738,088    6.976406    2.776901          1         11
-{txt}{space 5}topcode {c |}{res}    168,927           1           0          1          1
+{txt}{space 5}topcode {c |}{res}  6,738,088    .0235956    .1517854          0          1
 {txt}{space 9}cpi {c |}{res}  6,738,088    184.1752    56.16483       94.3    315.664
-{txt}{space 7}rwage {c |}{res}  6,738,088    1191.274    993.7875          0   8447.472
+{txt}{space 7}rwage {c |}{res}  6,729,502    1186.985    992.6541          0   11986.48
 {txt}
 {com}. *** end part c
 . 
 . * part d
+. 
 . * calculating annual statistics for real weekly wage
 .   collapse (mean) mean=rwage /// mean
 >                   (p10) p10=rwage /// 10th percentile
@@ -719,7 +722,7 @@ saved
 
 {txt}Contains data from {res}../Data/CPS-ORG, Wage Percentiles, 1982-2024.dta
 {txt} Observations:{res}            43                  
-{txt}    Variables:{res}             6                  10 Jan 2025 17:55
+{txt}    Variables:{res}             6                  11 Jan 2025 09:28
 {txt}{hline}
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
@@ -738,12 +741,12 @@ Sorted by: {res}year
 {txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
 {hline 13}{c +}{hline 57}
 {space 8}year {c |}{res}         43        2003    12.55654       1982       2024
-{txt}{space 8}mean {c |}{res}         43    1196.229    108.2033    1029.45    1422.13
-{txt}{space 9}p10 {c |}{res}         43    352.4057    30.18434   315.8088   423.4635
-{txt}{space 9}p50 {c |}{res}         43    936.8003    53.97099   864.2232   1071.527
-{txt}{space 9}p90 {c |}{res}         43    2252.023     260.041   1828.463   2773.671
+{txt}{space 8}mean {c |}{res}         43    1193.257    114.2032    1029.45   1477.799
+{txt}{space 9}p10 {c |}{res}         43    352.1248    30.14124   315.8088   423.4635
+{txt}{space 9}p50 {c |}{res}         43    935.8104    53.62844   863.1819   1071.522
+{txt}{space 9}p90 {c |}{res}         43    2241.833    255.0157   1828.463   2749.459
 {txt}{hline 13}{c +}{hline 57}
-{space 7}ldiff {c |}{res}         43    185.1709    7.513962   173.1777   200.6992
+{space 7}ldiff {c |}{res}         43    184.8171    7.380632   173.1777   199.8685
 {txt}
 {com}.   list in 1/5, noobs
 {txt}
@@ -758,17 +761,45 @@ Sorted by: {res}year
   {c BLC}{hline 6}{c -}{hline 10}{c -}{hline 10}{c -}{hline 10}{c -}{hline 10}{c -}{hline 7}{c BRC}
 
 {com}. 
-. * plots
+. * plotting trend in real weekly wages
 .   line p10 year || line p50 year || line p90 year || line mean year, ///
->   xtitle(Year) xlabel(1965(5)1990) ///
->   ytitle("Real Weekly Wage, 1982=100") ylabel(100(10)140, noticks) ///
->   stext(105 1988 "p10")  text(125 1988 "p50") text(142 1988 "p90") ///
->   scheme(Wide727Scheme) name(fig1_scheme, replace)
-{err}option {bf:stext()} not allowed
-{txt}{search r(198), local:r(198);}
-
-end of do-file
-
-{search r(198), local:r(198);}
+>   title("Trends in Real Weekly Wages") ///
+>   xtitle("Year") xlabel(1980(5)2025, format(%ty)) ///
+>   ytitle("Real Weekly Wage, 1982=100") ylabel(0(500)3000, noticks) ///
+>   text(416.25 2025 "P10") text(1042.354 2025 "P50") text(1600 2025 "mean") text(2672.061 2025 "P90") ///
+>   scheme(Wide727Scheme)
+{res}{txt}
+{com}.   graph export "Results/fig1.png", width(600) replace
+{txt}{p 0 4 2}
+file {bf}
+/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Results/fig1.png{rm}
+saved as
+PNG
+format
+{p_end}
 
 {com}. 
+. * Plot difference between 10th and 90th percentiles
+.   line ldiff year, sort scheme(Squarish727Scheme) ///
+>   title("Wage Gap Between 90th and 10th Percentiles") ///
+>   xtitle("Year") xlabel(1980(5)2025, format(%ty)) ///
+>   ytitle("Log Difference")
+{res}{txt}
+{com}.   graph export "Results/fig2.png", width(600) replace
+{txt}{p 0 4 2}
+file {bf}
+/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Results/fig2.png{rm}
+saved as
+PNG
+format
+{p_end}
+
+{com}. 
+. log close results
+      {txt}name:  {res}results
+       {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_3_Readman.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}11 Jan 2025, 09:28:07
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

@@ -3,7 +3,7 @@
       name:  {res}results
        {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_2_Readman.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 9 Jan 2025, 16:29:17
+ {txt}opened on:  {res}11 Jan 2025, 08:29:29
 {txt}
 {com}. global ex=2
 {txt}
@@ -106,168 +106,40 @@ Sorted by:
 {txt}{space 1}uhrsworkorg {c |}{res}  5,560,511    494.6838    480.6063          1        999
 {txt}
 {com}.   list year serial month hwtfinl cpsid mish region pernum wtfinl cpsidv in -10/l, noobs
-
-  {txt}{c TLC}{hline 6}{c TT}{hline 8}{c TT}{hline 10}{c TT}{hline 11}{c TT}{hline 13}{c TT}{hline 7}{c TT}{hline 10}{c TT}{hline 8}{c TT}{hline 11}{c TRC}
-  {c |} year {c |} serial {c |}    month {c |}   hwtfinl {c |}       cpsid {c |}  mish {c |}   region {c |} pernum {c |}    wtfinl {c |}
-  {c |} {res}2024 {txt}{c |} {res} 69598 {txt}{c |} {res}november {txt}{c |} {res} 838.3943 {txt}{c |} {res}2.02408e+13 {txt}{c |} {res} four {txt}{c |} {res} pacific {txt}{c |} {res}     1 {txt}{c |} {res} 838.3943 {txt}{c |}
-  {c LT}{hline 6}{c BT}{hline 8}{c BT}{hline 10}{c BT}{hline 11}{c BT}{hline 13}{c BT}{hline 7}{c BT}{hline 10}{c BT}{hline 8}{c BT}{hline 11}{c RT}
-  {c |}                                             cpsidv                                         {c |}
-  {c |}                                        {res}2.02408e+14                                         {txt}{c |}
-  {c BLC}{hline 92}{c BRC}
-
-  {c TLC}{hline 6}{c TT}{hline 8}{c TT}{hline 10}{c TT}{hline 11}{c TT}{hline 13}{c TT}{hline 7}{c TT}{hline 10}{c TT}{hline 8}{c TT}{hline 11}{c TRC}
-  {c |} year {c |} serial {c |}    month {c |}   hwtfinl {c |}       cpsid {c |}  mish {c |}   region {c |} pernum {c |}    wtfinl {c |}
-  {c |} {res}2024 {txt}{c |} {res} 69604 {txt}{c |} {res}november {txt}{c |} {res} 4287.067 {txt}{c |} {res}2.02308e+13 {txt}{c |} {res}eight {txt}{c |} {res}east nor {txt}{c |} {res}     1 {txt}{c |} {res} 4287.067 {txt}{c |}
-  {c LT}{hline 6}{c BT}{hline 8}{c BT}{hline 10}{c BT}{hline 11}{c BT}{hline 13}{c BT}{hline 7}{c BT}{hline 10}{c BT}{hline 8}{c BT}{hline 11}{c RT}
-  {c |}                                             cpsidv                                         {c |}
-  {c |}                                        {res}2.02308e+14                                         {txt}{c |}
-  {c BLC}{hline 92}{c BRC}
-
-  {c TLC}{hline 6}{c TT}{hline 8}{c TT}{hline 10}{c TT}{hline 11}{c TT}{hline 13}{c TT}{hline 7}{c TT}{hline 10}{c TT}{hline 8}{c TT}{hline 11}{c TRC}
-  {c |} year {c |} serial {c |}    month {c |}   hwtfinl {c |}       cpsid {c |}  mish {c |}   region {c |} pernum {c |}    wtfinl {c |}
-  {c |} {res}2024 {txt}{c |} {res} 69604 {txt}{c |} {res}november {txt}{c |} {res} 4287.067 {txt}{c |} {res}2.02308e+13 {txt}{c |} {res}eight {txt}{c |} {res}east nor {txt}{c |} {res}     2 {txt}{c |} {res} 4540.372 {txt}{c |}
-  {c LT}{hline 6}{c BT}{hline 8}{c BT}{hline 10}{c BT}{hline 11}{c BT}{hline 13}{c BT}{hline 7}{c BT}{hline 10}{c BT}{hline 8}{c BT}{hline 11}{c RT}
-  {c |}                                             cpsidv                                         {c |}
-  {c |}                                        {res}2.02308e+14                                         {txt}{c |}
-  {c BLC}{hline 92}{c BRC}
-
-  {c TLC}{hline 6}{c TT}{hline 8}{c TT}{hline 10}{c TT}{hline 11}{c TT}{hline 13}{c TT}{hline 7}{c TT}{hline 10}{c TT}{hline 8}{c TT}{hline 11}{c TRC}
-  {c |} year {c |} serial {c |}    month {c |}   hwtfinl {c |}       cpsid {c |}  mish {c |}   region {c |} pernum {c |}    wtfinl {c |}
-  {c |} {res}2024 {txt}{c |} {res} 69607 {txt}{c |} {res}november {txt}{c |} {res}2772.9405 {txt}{c |} {res}2.02408e+13 {txt}{c |} {res} four {txt}{c |} {res}new engl {txt}{c |} {res}     1 {txt}{c |} {res}2772.9405 {txt}{c |}
-  {c LT}{hline 6}{c BT}{hline 8}{c BT}{hline 10}{c BT}{hline 11}{c BT}{hline 13}{c BT}{hline 7}{c BT}{hline 10}{c BT}{hline 8}{c BT}{hline 11}{c RT}
-  {c |}                                             cpsidv                                         {c |}
-  {c |}                                        {res}2.02408e+14                                         {txt}{c |}
-  {c BLC}{hline 92}{c BRC}
-
-  {c TLC}{hline 6}{c TT}{hline 8}{c TT}{hline 10}{c TT}{hline 11}{c TT}{hline 13}{c TT}{hline 7}{c TT}{hline 10}{c TT}{hline 8}{c TT}{hline 11}{c TRC}
-  {c |} year {c |} serial {c |}    month {c |}   hwtfinl {c |}       cpsid {c |}  mish {c |}   region {c |} pernum {c |}    wtfinl {c |}
-  {c |} {res}2024 {txt}{c |} {res} 69607 {txt}{c |} {res}november {txt}{c |} {res}2772.9405 {txt}{c |} {res}2.02408e+13 {txt}{c |} {res} four {txt}{c |} {res}new engl {txt}{c |} {res}     4 {txt}{c |} {res} 4273.887 {txt}{c |}
-  {c LT}{hline 6}{c BT}{hline 8}{c BT}{hline 10}{c BT}{hline 11}{c BT}{hline 13}{c BT}{hline 7}{c BT}{hline 10}{c BT}{hline 8}{c BT}{hline 11}{c RT}
-  {c |}                                             cpsidv                                         {c |}
-  {c |}                                        {res}2.02408e+14                                         {txt}{c |}
-  {c BLC}{hline 92}{c BRC}
-
-  {c TLC}{hline 6}{c TT}{hline 8}{c TT}{hline 10}{c TT}{hline 11}{c TT}{hline 13}{c TT}{hline 7}{c TT}{hline 10}{c TT}{hline 8}{c TT}{hline 11}{c TRC}
-  {c |} year {c |} serial {c |}    month {c |}   hwtfinl {c |}       cpsid {c |}  mish {c |}   region {c |} pernum {c |}    wtfinl {c |}
-  {c |} {res}2024 {txt}{c |} {res} 69617 {txt}{c |} {res}november {txt}{c |} {res}7670.1106 {txt}{c |} {res}2.02308e+13 {txt}{c |} {res}eight {txt}{c |} {res}east nor {txt}{c |} {res}     1 {txt}{c |} {res}7670.1106 {txt}{c |}
-  {c LT}{hline 6}{c BT}{hline 8}{c BT}{hline 10}{c BT}{hline 11}{c BT}{hline 13}{c BT}{hline 7}{c BT}{hline 10}{c BT}{hline 8}{c BT}{hline 11}{c RT}
-  {c |}                                             cpsidv                                         {c |}
-  {c |}                                        {res}2.02308e+14                                         {txt}{c |}
-  {c BLC}{hline 92}{c BRC}
-
-  {c TLC}{hline 6}{c TT}{hline 8}{c TT}{hline 10}{c TT}{hline 11}{c TT}{hline 13}{c TT}{hline 7}{c TT}{hline 10}{c TT}{hline 8}{c TT}{hline 11}{c TRC}
-  {c |} year {c |} serial {c |}    month {c |}   hwtfinl {c |}       cpsid {c |}  mish {c |}   region {c |} pernum {c |}    wtfinl {c |}
-  {c |} {res}2024 {txt}{c |} {res} 69617 {txt}{c |} {res}november {txt}{c |} {res}7670.1106 {txt}{c |} {res}2.02308e+13 {txt}{c |} {res}eight {txt}{c |} {res}east nor {txt}{c |} {res}     2 {txt}{c |} {res}6052.9955 {txt}{c |}
-  {c LT}{hline 6}{c BT}{hline 8}{c BT}{hline 10}{c BT}{hline 11}{c BT}{hline 13}{c BT}{hline 7}{c BT}{hline 10}{c BT}{hline 8}{c BT}{hline 11}{c RT}
-  {c |}                                             cpsidv                                         {c |}
-  {c |}                                        {res}2.02308e+14                                         {txt}{c |}
-  {c BLC}{hline 92}{c BRC}
-
-  {c TLC}{hline 6}{c TT}{hline 8}{c TT}{hline 10}{c TT}{hline 11}{c TT}{hline 13}{c TT}{hline 7}{c TT}{hline 10}{c TT}{hline 8}{c TT}{hline 11}{c TRC}
-  {c |} year {c |} serial {c |}    month {c |}   hwtfinl {c |}       cpsid {c |}  mish {c |}   region {c |} pernum {c |}    wtfinl {c |}
-  {c |} {res}2024 {txt}{c |} {res} 69617 {txt}{c |} {res}november {txt}{c |} {res}7670.1106 {txt}{c |} {res}2.02308e+13 {txt}{c |} {res}eight {txt}{c |} {res}east nor {txt}{c |} {res}     3 {txt}{c |} {res}7795.0071 {txt}{c |}
-  {c LT}{hline 6}{c BT}{hline 8}{c BT}{hline 10}{c BT}{hline 11}{c BT}{hline 13}{c BT}{hline 7}{c BT}{hline 10}{c BT}{hline 8}{c BT}{hline 11}{c RT}
-  {c |}                                             cpsidv                                         {c |}
-  {c |}                                        {res}2.02308e+14                                         {txt}{c |}
-  {c BLC}{hline 92}{c BRC}
-
-  {c TLC}{hline 6}{c TT}{hline 8}{c TT}{hline 10}{c TT}{hline 11}{c TT}{hline 13}{c TT}{hline 7}{c TT}{hline 10}{c TT}{hline 8}{c TT}{hline 11}{c TRC}
-  {c |} year {c |} serial {c |}    month {c |}   hwtfinl {c |}       cpsid {c |}  mish {c |}   region {c |} pernum {c |}    wtfinl {c |}
-  {c |} {res}2024 {txt}{c |} {res} 69621 {txt}{c |} {res}november {txt}{c |} {res}8640.0764 {txt}{c |} {res}2.02308e+13 {txt}{c |} {res}eight {txt}{c |} {res}east nor {txt}{c |} {res}     1 {txt}{c |} {res}8640.0764 {txt}{c |}
-  {c LT}{hline 6}{c BT}{hline 8}{c BT}{hline 10}{c BT}{hline 11}{c BT}{hline 13}{c BT}{hline 7}{c BT}{hline 10}{c BT}{hline 8}{c BT}{hline 11}{c RT}
-  {c |}                                             cpsidv                                         {c |}
-  {c |}                                        {res}2.02308e+14                                         {txt}{c |}
-  {c BLC}{hline 92}{c BRC}
-
-  {c TLC}{hline 6}{c TT}{hline 8}{c TT}{hline 10}{c TT}{hline 11}{c TT}{hline 13}{c TT}{hline 7}{c TT}{hline 10}{c TT}{hline 8}{c TT}{hline 11}{c TRC}
-  {c |} year {c |} serial {c |}    month {c |}   hwtfinl {c |}       cpsid {c |}  mish {c |}   region {c |} pernum {c |}    wtfinl {c |}
-  {c |} {res}2024 {txt}{c |} {res} 69630 {txt}{c |} {res}november {txt}{c |} {res}4171.2557 {txt}{c |} {res}2.02408e+13 {txt}{c |} {res} four {txt}{c |} {res}east sou {txt}{c |} {res}     1 {txt}{c |} {res}4171.2557 {txt}{c |}
-  {c LT}{hline 6}{c BT}{hline 8}{c BT}{hline 10}{c BT}{hline 11}{c BT}{hline 13}{c BT}{hline 7}{c BT}{hline 10}{c BT}{hline 8}{c BT}{hline 11}{c RT}
-  {c |}                                             cpsidv                                         {c |}
-  {c |}                                        {res}2.02408e+14                                         {txt}{c |}
-  {c BLC}{hline 92}{c BRC}
+{txt}
+  {c TLC}{hline 6}{c -}{hline 8}{c -}{hline 10}{c -}{hline 11}{c -}{hline 13}{c -}{hline 7}{c -}{hline 10}{c -}{hline 8}{c -}{hline 11}{c -}{hline 13}{c TRC}
+  {c |} {res}year   serial      month     hwtfinl         cpsid    mish     region   pernum      wtfinl        cpsidv {txt}{c |}
+  {c LT}{hline 6}{c -}{hline 8}{c -}{hline 10}{c -}{hline 11}{c -}{hline 13}{c -}{hline 7}{c -}{hline 10}{c -}{hline 8}{c -}{hline 11}{c -}{hline 13}{c RT}
+  {c |} {res}2024    69598   november    838.3943   2.02408e+13    four    pacific        1    838.3943   2.02408e+14 {txt}{c |}
+  {c |} {res}2024    69604   november    4287.067   2.02308e+13   eight   east nor        1    4287.067   2.02308e+14 {txt}{c |}
+  {c |} {res}2024    69604   november    4287.067   2.02308e+13   eight   east nor        2    4540.372   2.02308e+14 {txt}{c |}
+  {c |} {res}2024    69607   november   2772.9405   2.02408e+13    four   new engl        1   2772.9405   2.02408e+14 {txt}{c |}
+  {c |} {res}2024    69607   november   2772.9405   2.02408e+13    four   new engl        4    4273.887   2.02408e+14 {txt}{c |}
+  {c LT}{hline 6}{c -}{hline 8}{c -}{hline 10}{c -}{hline 11}{c -}{hline 13}{c -}{hline 7}{c -}{hline 10}{c -}{hline 8}{c -}{hline 11}{c -}{hline 13}{c RT}
+  {c |} {res}2024    69617   november   7670.1106   2.02308e+13   eight   east nor        1   7670.1106   2.02308e+14 {txt}{c |}
+  {c |} {res}2024    69617   november   7670.1106   2.02308e+13   eight   east nor        2   6052.9955   2.02308e+14 {txt}{c |}
+  {c |} {res}2024    69617   november   7670.1106   2.02308e+13   eight   east nor        3   7795.0071   2.02308e+14 {txt}{c |}
+  {c |} {res}2024    69621   november   8640.0764   2.02308e+13   eight   east nor        1   8640.0764   2.02308e+14 {txt}{c |}
+  {c |} {res}2024    69630   november   4171.2557   2.02408e+13    four   east sou        1   4171.2557   2.02408e+14 {txt}{c |}
+  {c BLC}{hline 6}{c -}{hline 8}{c -}{hline 10}{c -}{hline 11}{c -}{hline 13}{c -}{hline 7}{c -}{hline 10}{c -}{hline 8}{c -}{hline 11}{c -}{hline 13}{c BRC}
 
 {com}.   list cpsidp earnweek2 hourwage2 age sex race empstat occ1950 ind1950 classwkr in -10/l, noobs
-
-  {txt}{c TLC}{hline 13}{c TT}{hline 10}{c TT}{hline 10}{c TT}{hline 5}{c TT}{hline 8}{c TT}{hline 18}{c TT}{hline 9}{c TT}{hline 10}{c TRC}
-  {c |}      cpsidp {c |} earnwe~2 {c |} hourwa~2 {c |} age {c |}    sex {c |}             race {c |} empstat {c |}  occ1950 {c |}
-  {c |} {res}2.02408e+13 {txt}{c |} {res}    2440 {txt}{c |} {res}  999.99 {txt}{c |} {res} 31 {txt}{c |} {res}  male {txt}{c |} {res}      100. white {txt}{c |} {res}at work {txt}{c |} {res}managers {txt}{c |}
-  {c LT}{hline 13}{c BT}{hline 10}{c BT}{hline 10}{c BT}{hline 5}{c BT}{hline 2}{c TT}{hline 5}{c BT}{hline 18}{c BT}{hline 9}{c BT}{hline 10}{c RT}
-  {c |}                   ind1950                  {c |}                  classwkr                   {c |}
-  {c |}                  {res}accounti                  {txt}{c |}                  {res}private,                   {txt}{c |}
-  {c BLC}{hline 44}{c BT}{hline 45}{c BRC}
-
-  {c TLC}{hline 13}{c TT}{hline 10}{c TT}{hline 10}{c TT}{hline 5}{c TT}{hline 8}{c TT}{hline 18}{c TT}{hline 9}{c TT}{hline 10}{c TRC}
-  {c |}      cpsidp {c |} earnwe~2 {c |} hourwa~2 {c |} age {c |}    sex {c |}             race {c |} empstat {c |}  occ1950 {c |}
-  {c |} {res}2.02308e+13 {txt}{c |} {res}    1050 {txt}{c |} {res}  999.99 {txt}{c |} {res} 37 {txt}{c |} {res}  male {txt}{c |} {res}      100. white {txt}{c |} {res}at work {txt}{c |} {res}managers {txt}{c |}
-  {c LT}{hline 13}{c BT}{hline 10}{c BT}{hline 10}{c BT}{hline 5}{c BT}{hline 2}{c TT}{hline 5}{c BT}{hline 18}{c BT}{hline 9}{c BT}{hline 10}{c RT}
-  {c |}                   ind1950                  {c |}                  classwkr                   {c |}
-  {c |}                  {res}eating a                  {txt}{c |}                  {res}private,                   {txt}{c |}
-  {c BLC}{hline 44}{c BT}{hline 45}{c BRC}
-
-  {c TLC}{hline 13}{c TT}{hline 10}{c TT}{hline 10}{c TT}{hline 5}{c TT}{hline 8}{c TT}{hline 18}{c TT}{hline 9}{c TT}{hline 10}{c TRC}
-  {c |}      cpsidp {c |} earnwe~2 {c |} hourwa~2 {c |} age {c |}    sex {c |}             race {c |} empstat {c |}  occ1950 {c |}
-  {c |} {res}2.02308e+13 {txt}{c |} {res}    1850 {txt}{c |} {res}  999.99 {txt}{c |} {res} 34 {txt}{c |} {res}female {txt}{c |} {res}      100. white {txt}{c |} {res}at work {txt}{c |} {res}managers {txt}{c |}
-  {c LT}{hline 13}{c BT}{hline 10}{c BT}{hline 10}{c BT}{hline 5}{c BT}{hline 2}{c TT}{hline 5}{c BT}{hline 18}{c BT}{hline 9}{c BT}{hline 10}{c RT}
-  {c |}                   ind1950                  {c |}                  classwkr                   {c |}
-  {c |}                  {res}eating a                  {txt}{c |}                  {res}private,                   {txt}{c |}
-  {c BLC}{hline 44}{c BT}{hline 45}{c BRC}
-
-  {c TLC}{hline 13}{c TT}{hline 10}{c TT}{hline 10}{c TT}{hline 5}{c TT}{hline 8}{c TT}{hline 18}{c TT}{hline 9}{c TT}{hline 10}{c TRC}
-  {c |}      cpsidp {c |} earnwe~2 {c |} hourwa~2 {c |} age {c |}    sex {c |}             race {c |} empstat {c |}  occ1950 {c |}
-  {c |} {res}2.02408e+13 {txt}{c |} {res}    1200 {txt}{c |} {res}  999.99 {txt}{c |} {res} 57 {txt}{c |} {res}female {txt}{c |} {res}      100. white {txt}{c |} {res}at work {txt}{c |} {res}clerical {txt}{c |}
-  {c LT}{hline 13}{c BT}{hline 10}{c BT}{hline 10}{c BT}{hline 5}{c BT}{hline 2}{c TT}{hline 5}{c BT}{hline 18}{c BT}{hline 9}{c BT}{hline 10}{c RT}
-  {c |}                   ind1950                  {c |}                  classwkr                   {c |}
-  {c |}                  {res}legal se                  {txt}{c |}                  {res}private,                   {txt}{c |}
-  {c BLC}{hline 44}{c BT}{hline 45}{c BRC}
-
-  {c TLC}{hline 13}{c TT}{hline 10}{c TT}{hline 10}{c TT}{hline 5}{c TT}{hline 8}{c TT}{hline 18}{c TT}{hline 9}{c TT}{hline 10}{c TRC}
-  {c |}      cpsidp {c |} earnwe~2 {c |} hourwa~2 {c |} age {c |}    sex {c |}             race {c |} empstat {c |}  occ1950 {c |}
-  {c |} {res}2.02408e+13 {txt}{c |} {res}    3360 {txt}{c |} {res}  999.99 {txt}{c |} {res} 29 {txt}{c |} {res}  male {txt}{c |} {res}      100. white {txt}{c |} {res}at work {txt}{c |} {res}engineer {txt}{c |}
-  {c LT}{hline 13}{c BT}{hline 10}{c BT}{hline 10}{c BT}{hline 5}{c BT}{hline 2}{c TT}{hline 5}{c BT}{hline 18}{c BT}{hline 9}{c BT}{hline 10}{c RT}
-  {c |}                   ind1950                  {c |}                  classwkr                   {c |}
-  {c |}                  {res}syntheti                  {txt}{c |}                  {res}private,                   {txt}{c |}
-  {c BLC}{hline 44}{c BT}{hline 45}{c BRC}
-
-  {c TLC}{hline 13}{c TT}{hline 10}{c TT}{hline 10}{c TT}{hline 5}{c TT}{hline 8}{c TT}{hline 18}{c TT}{hline 9}{c TT}{hline 10}{c TRC}
-  {c |}      cpsidp {c |} earnwe~2 {c |} hourwa~2 {c |} age {c |}    sex {c |}             race {c |} empstat {c |}  occ1950 {c |}
-  {c |} {res}2.02308e+13 {txt}{c |} {res}     640 {txt}{c |} {res}      16 {txt}{c |} {res} 57 {txt}{c |} {res}female {txt}{c |} {res}      200. black {txt}{c |} {res}at work {txt}{c |} {res} service {txt}{c |}
-  {c LT}{hline 13}{c BT}{hline 10}{c BT}{hline 10}{c BT}{hline 5}{c BT}{hline 2}{c TT}{hline 5}{c BT}{hline 18}{c BT}{hline 9}{c BT}{hline 10}{c RT}
-  {c |}                   ind1950                  {c |}                  classwkr                   {c |}
-  {c |}                  {res}miscella                  {txt}{c |}                  {res}private,                   {txt}{c |}
-  {c BLC}{hline 44}{c BT}{hline 45}{c BRC}
-
-  {c TLC}{hline 13}{c TT}{hline 10}{c TT}{hline 10}{c TT}{hline 5}{c TT}{hline 8}{c TT}{hline 18}{c TT}{hline 9}{c TT}{hline 10}{c TRC}
-  {c |}      cpsidp {c |} earnwe~2 {c |} hourwa~2 {c |} age {c |}    sex {c |}             race {c |} empstat {c |}  occ1950 {c |}
-  {c |} {res}2.02308e+13 {txt}{c |} {res}     408 {txt}{c |} {res}      17 {txt}{c |} {res} 20 {txt}{c |} {res}  male {txt}{c |} {res}801. white-black {txt}{c |} {res}at work {txt}{c |} {res} service {txt}{c |}
-  {c LT}{hline 13}{c BT}{hline 10}{c BT}{hline 10}{c BT}{hline 5}{c BT}{hline 2}{c TT}{hline 5}{c BT}{hline 18}{c BT}{hline 9}{c BT}{hline 10}{c RT}
-  {c |}                   ind1950                  {c |}                  classwkr                   {c |}
-  {c |}                  {res}eating a                  {txt}{c |}                  {res}private,                   {txt}{c |}
-  {c BLC}{hline 44}{c BT}{hline 45}{c BRC}
-
-  {c TLC}{hline 13}{c TT}{hline 10}{c TT}{hline 10}{c TT}{hline 5}{c TT}{hline 8}{c TT}{hline 18}{c TT}{hline 9}{c TT}{hline 10}{c TRC}
-  {c |}      cpsidp {c |} earnwe~2 {c |} hourwa~2 {c |} age {c |}    sex {c |}             race {c |} empstat {c |}  occ1950 {c |}
-  {c |} {res}2.02308e+13 {txt}{c |} {res}     480 {txt}{c |} {res}      20 {txt}{c |} {res} 30 {txt}{c |} {res}  male {txt}{c |} {res}801. white-black {txt}{c |} {res}at work {txt}{c |} {res} service {txt}{c |}
-  {c LT}{hline 13}{c BT}{hline 10}{c BT}{hline 10}{c BT}{hline 5}{c BT}{hline 2}{c TT}{hline 5}{c BT}{hline 18}{c BT}{hline 9}{c BT}{hline 10}{c RT}
-  {c |}                   ind1950                  {c |}                  classwkr                   {c |}
-  {c |}                  {res}eating a                  {txt}{c |}                  {res}private,                   {txt}{c |}
-  {c BLC}{hline 44}{c BT}{hline 45}{c BRC}
-
-  {c TLC}{hline 13}{c TT}{hline 10}{c TT}{hline 10}{c TT}{hline 5}{c TT}{hline 8}{c TT}{hline 18}{c TT}{hline 9}{c TT}{hline 10}{c TRC}
-  {c |}      cpsidp {c |} earnwe~2 {c |} hourwa~2 {c |} age {c |}    sex {c |}             race {c |} empstat {c |}  occ1950 {c |}
-  {c |} {res}2.02308e+13 {txt}{c |} {res}     808 {txt}{c |} {res}      17 {txt}{c |} {res} 25 {txt}{c |} {res}female {txt}{c |} {res}      200. black {txt}{c |} {res}at work {txt}{c |} {res}professi {txt}{c |}
-  {c LT}{hline 13}{c BT}{hline 10}{c BT}{hline 10}{c BT}{hline 5}{c BT}{hline 2}{c TT}{hline 5}{c BT}{hline 18}{c BT}{hline 9}{c BT}{hline 10}{c RT}
-  {c |}                   ind1950                  {c |}                  classwkr                   {c |}
-  {c |}                  {res}educatio                  {txt}{c |}                  {res}private,                   {txt}{c |}
-  {c BLC}{hline 44}{c BT}{hline 45}{c BRC}
-
-  {c TLC}{hline 13}{c TT}{hline 10}{c TT}{hline 10}{c TT}{hline 5}{c TT}{hline 8}{c TT}{hline 18}{c TT}{hline 9}{c TT}{hline 10}{c TRC}
-  {c |}      cpsidp {c |} earnwe~2 {c |} hourwa~2 {c |} age {c |}    sex {c |}             race {c |} empstat {c |}  occ1950 {c |}
-  {c |} {res}2.02408e+13 {txt}{c |} {res}     800 {txt}{c |} {res}      20 {txt}{c |} {res} 29 {txt}{c |} {res}female {txt}{c |} {res}      200. black {txt}{c |} {res}at work {txt}{c |} {res}clerical {txt}{c |}
-  {c LT}{hline 13}{c BT}{hline 10}{c BT}{hline 10}{c BT}{hline 5}{c BT}{hline 2}{c TT}{hline 5}{c BT}{hline 18}{c BT}{hline 9}{c BT}{hline 10}{c RT}
-  {c |}                   ind1950                  {c |}                  classwkr                   {c |}
-  {c |}                  {res}legal se                  {txt}{c |}                  {res}private,                   {txt}{c |}
-  {c BLC}{hline 44}{c BT}{hline 45}{c BRC}
+{txt}
+  {c TLC}{hline 13}{c -}{hline 10}{c -}{hline 10}{c -}{hline 5}{c -}{hline 8}{c -}{hline 18}{c -}{hline 9}{c -}{hline 10}{c -}{hline 10}{c -}{hline 10}{c TRC}
+  {c |} {res}     cpsidp   earnwe~2   hourwa~2   age      sex               race   empstat    occ1950    ind1950   classwkr {txt}{c |}
+  {c LT}{hline 13}{c -}{hline 10}{c -}{hline 10}{c -}{hline 5}{c -}{hline 8}{c -}{hline 18}{c -}{hline 9}{c -}{hline 10}{c -}{hline 10}{c -}{hline 10}{c RT}
+  {c |} {res}2.02408e+13       2440     999.99    31     male         100. white   at work   managers   accounti   private, {txt}{c |}
+  {c |} {res}2.02308e+13       1050     999.99    37     male         100. white   at work   managers   eating a   private, {txt}{c |}
+  {c |} {res}2.02308e+13       1850     999.99    34   female         100. white   at work   managers   eating a   private, {txt}{c |}
+  {c |} {res}2.02408e+13       1200     999.99    57   female         100. white   at work   clerical   legal se   private, {txt}{c |}
+  {c |} {res}2.02408e+13       3360     999.99    29     male         100. white   at work   engineer   syntheti   private, {txt}{c |}
+  {c LT}{hline 13}{c -}{hline 10}{c -}{hline 10}{c -}{hline 5}{c -}{hline 8}{c -}{hline 18}{c -}{hline 9}{c -}{hline 10}{c -}{hline 10}{c -}{hline 10}{c RT}
+  {c |} {res}2.02308e+13        640         16    57   female         200. black   at work    service   miscella   private, {txt}{c |}
+  {c |} {res}2.02308e+13        408         17    20     male   801. white-black   at work    service   eating a   private, {txt}{c |}
+  {c |} {res}2.02308e+13        480         20    30     male   801. white-black   at work    service   eating a   private, {txt}{c |}
+  {c |} {res}2.02308e+13        808         17    25   female         200. black   at work   professi   educatio   private, {txt}{c |}
+  {c |} {res}2.02408e+13        800         20    29   female         200. black   at work   clerical   legal se   private, {txt}{c |}
+  {c BLC}{hline 13}{c -}{hline 10}{c -}{hline 10}{c -}{hline 5}{c -}{hline 8}{c -}{hline 18}{c -}{hline 9}{c -}{hline 10}{c -}{hline 10}{c -}{hline 10}{c BRC}
 
 {com}.   list uhrswork1 educ earnwt qearnwee hourwage paidhour union earnweek uhrsworkorg in -10/l, noobs
 {txt}
@@ -302,7 +174,7 @@ Sorted by:
 {com}.   replace earnweek2=. if earnweek2==999999.99
 {txt}(8,586 real changes made, 8,586 to missing)
 
-{com}.   replace hourwage2=. if hourwage2==999.99
+{com}.   replace hourwage2=. if hourwage2==999.99    
 {txt}(2,779,881 real changes made, 2,779,881 to missing)
 
 {com}.   replace sex=. if sex==9
@@ -570,6 +442,10 @@ Sorted by:
 {com}.   replace hourwage = hourwage2 if missing(hourwage) & !missing(hourwage2)
 {txt}(105,769 real changes made)
 
+{com}.   summarize earnweek2, meanonly
+{txt}
+{com}.   scalar max_earnweek2 = r(max) // required for topcoding
+{txt}
 {com}.   drop earnweek2 hourwage2
 {txt}
 {com}. 
@@ -577,43 +453,51 @@ Sorted by:
 .   generate topcode=.
 {txt}(6,738,088 missing values generated)
 
-{com}.   replace topcode=1 if earnweek==999 & inrange(year, 1982, 1988)
+{com}.   replace topcode=1 if earnweek>=999 & inrange(year, 1982, 1988) // & !missing(earnweek)
 {txt}(34,917 real changes made)
 
-{com}.   replace topcode=1 if earnweek>=1923 & inrange(year, 1989, 1997)
+{com}.   replace topcode=1 if earnweek>=1923 & inrange(year, 1989, 1997) // & !missing(earnweek)
 {txt}(16,218 real changes made)
 
-{com}.   replace topcode=1 if earnweek>=2884.61 & inrange(year, 1998, $eyear)
-{txt}(117,792 real changes made)
+{com}.   replace topcode=1 if earnweek>=2884.61 & (inrange(year, 1998, 2022) | (year==2023 & month <=3)) // & !missing(earnweek)
+{txt}(103,264 real changes made)
 
-{com}. 
+{com}.   replace topcode=1 if earnweek>=max_earnweek2 & ((year == 2023 & month >= 4) | (year == 2024 & month <= 3)) & mish == 4 // & !missing(earnweek)
+{txt}(75 real changes made)
+
+{com}.   replace topcode=1 if earnweek>=2884.61 & ((year == 2023 & month >= 4) | (year == 2024 & month <= 3)) & mish == 8 // & !missing(earnweek)
+{txt}(4,515 real changes made)
+
+{com}.   replace topcode=0 if topcode==.
+{txt}(6,579,099 real changes made)
+
+{com}.   tab topcode
+
+    {txt}topcode {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}  6,579,099       97.64       97.64
+{txt}          1 {c |}{res}    158,989        2.36      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}  6,738,088      100.00
+{txt}
+{com}.   
 . * replacing top-coded values of earnweek with 1.5 times the top-coded values
-.   replace earnweek=$tcscale*999 if inrange(year, 1982, 1988) & topcode==1
-{txt}(34,917 real changes made)
-
-{com}.   replace earnweek=$tcscale*1923 if inrange(year, 1989, 1997) & topcode==1
-{txt}(16,218 real changes made)
-
-{com}.   replace earnweek=$tcscale*2884.61 if inrange(year, 1998, $eyear) & topcode==1
-{txt}(117,792 real changes made)
+.   replace earnweek = $tcscale * earnweek if topcode == 1
+{txt}(150,483 real changes made)
 
 {com}. 
 . * labeling new variables female, paidhour, grade, occupation, industry, topcode
-.   *labeling for female
 .   label define FEMALE 0 "male" 1 "female"
 {txt}
 {com}.   label value female FEMALE
 {txt}
-{com}.   *labeling for paidhour
-.   label define PAIDHOUR 0 "not paid hourly" 1 "paid hourly", modify
+{com}.   label define PAIDHOUR 0 "not paid hourly" 1 "paid hourly", modify
 {txt}
 {com}.   label value paidhour PAIDHOUR
 {txt}
-{com}.   *labeling for grade
-.   label variable grade "highest grade completed"
+{com}.   label variable grade "highest grade completed"
 {txt}
-{com}.   *labeling for occupation
-.   label define OCCUPATION 1 "professional, technical" ///
+{com}.   label define OCCUPATION 1 "professional, technical" ///
 >                           2 "managers, officials, proprietors" ///
 >                           3 "clerical, kindred" ///
 >                           4 "sales" ///
@@ -628,8 +512,7 @@ Sorted by:
 {txt}
 {com}.   label variable occupation "occupation (1-10)"
 {txt}
-{com}.   *labeling for industry
-.   label define INDUSTRY 1 "agriculture, fisheries, metal mining, coal mining" ///
+{com}.   label define INDUSTRY 1 "agriculture, fisheries, metal mining, coal mining" ///
 >                         2 "construction" ///
 >                         3 "durable manufacturing" ///
 >                         4 "nondurable manufacturing" ///
@@ -645,8 +528,7 @@ Sorted by:
 {txt}
 {com}.   label variable industry "industry (1-11)"
 {txt}
-{com}.   *labeling for topcode
-.   label variable topcode "topcode indicator"
+{com}.   label variable topcode "topcode indicator"
 {txt}
 {com}. 
 . * dropping variables replaced by grade, occupation, industry
@@ -676,7 +558,7 @@ saved
 
 {txt}Contains data from {res}../Data/CPS ORGs, 1982-2024, Cleaned.dta
 {txt} Observations:{res}     6,738,088                  
-{txt}    Variables:{res}            22                  9 Jan 2025 16:30
+{txt}    Variables:{res}            22                  11 Jan 2025 08:30
 {txt}{hline}
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
@@ -732,12 +614,12 @@ Sorted by:
 {txt}{hline 13}{c +}{hline 57}
 {space 4}paidhour {c |}{res}  6,738,088    .5876722    .4922536          0          1
 {txt}{space 7}union {c |}{res}  6,517,337    1.172239    .4198614          1          3
-{txt}{space 4}earnweek {c |}{res}  6,738,088    713.4357    695.7659          0   4326.915
+{txt}{space 4}earnweek {c |}{res}  6,729,502    711.4856    709.6454          0      11960
 {txt}{space 1}uhrsworkorg {c |}{res}  2,914,349    36.77634    9.983109          1         99
 {txt}{space 2}occupation {c |}{res}  6,738,088    3.936502     2.59726          1          9
 {txt}{hline 13}{c +}{hline 57}
 {space 4}industry {c |}{res}  6,738,088    6.976406    2.776901          1         11
-{txt}{space 5}topcode {c |}{res}    168,927           1           0          1          1
+{txt}{space 5}topcode {c |}{res}  6,738,088    .0235956    .1517854          0          1
 {txt}
 {com}. *** end part c
 . 
@@ -745,7 +627,7 @@ Sorted by:
       {txt}name:  {res}results
        {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_2_Readman.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 9 Jan 2025, 16:30:13
+ {txt}closed on:  {res}11 Jan 2025, 08:30:12
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
