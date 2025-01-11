@@ -3,7 +3,7 @@
       name:  {res}results
        {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_3_Readman.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}10 Jan 2025, 17:26:36
+ {txt}opened on:  {res}10 Jan 2025, 17:55:45
 {txt}
 {com}. set scheme s2color
 {txt}
@@ -494,7 +494,7 @@ saved
 
 {txt}Contains data from {res}../Data/CPI 1913-2024.dta
 {txt} Observations:{res}         1,344                  
-{txt}    Variables:{res}             3                  10 Jan 2025 17:26
+{txt}    Variables:{res}             3                  10 Jan 2025 17:55
 {txt}{hline}
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
@@ -627,7 +627,7 @@ saved
 
 {txt}Contains data from {res}../Data/CPS-ORG with CPI, 1982-2024.dta
 {txt} Observations:{res}     6,738,088                  
-{txt}    Variables:{res}            24                  10 Jan 2025 17:26
+{txt}    Variables:{res}            24                  10 Jan 2025 17:55
 {txt}{hline}
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
@@ -702,7 +702,7 @@ Sorted by:
 >                   (p10) p10=rwage /// 10th percentile
 >                   (p50) p50=rwage /// 10th percentile
 >                   (p90) p90=rwage /// 90th percentile
->                   [pw=earnwt] ,by(year)
+>                   [pw=earnwt], by(year)
 {res}{txt}
 {com}.   generate ldiff=100*(ln(p90) - ln(p10))
 {txt}
@@ -719,7 +719,7 @@ saved
 
 {txt}Contains data from {res}../Data/CPS-ORG, Wage Percentiles, 1982-2024.dta
 {txt} Observations:{res}            43                  
-{txt}    Variables:{res}             6                  10 Jan 2025 17:26
+{txt}    Variables:{res}             6                  10 Jan 2025 17:55
 {txt}{hline}
 Variable      Storage   Display    Value
     name         type    format    label      Variable label

@@ -94,7 +94,7 @@ global emonth=11
                   (p10) p10=rwage /// 10th percentile
                   (p50) p50=rwage /// 10th percentile
                   (p90) p90=rwage /// 90th percentile
-                  [pw=earnwt] ,by(year)
+                  [pw=earnwt], by(year)
   generate ldiff=100*(ln(p90) - ln(p10))
   format ldiff %4.1f
   save "../Data/CPS-ORG, Wage Percentiles, 1982-2024", replace
