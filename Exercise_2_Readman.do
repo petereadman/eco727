@@ -132,20 +132,21 @@ global tcscale=1.5
   tab ind1950 if ind1950~=. & industry==.
 
 * replacing missing values of earnweek and hourwage
-  replace earnweek = earnweek2 if missing(earnweek) & !missing(earnweek2)
-  replace hourwage = hourwage2 if missing(hourwage) & !missing(hourwage2)
+  replace earnweek = earnweek2 if missing(earnweek) & month>=4 & year>=2023
+  replace hourwage = hourwage2 if missing(hourwage) & month>=4 & year>=2023
   summarize earnweek2, meanonly
   scalar max_earnweek2 = r(max) // required for topcoding
   drop earnweek2 hourwage2
 
 * creating topcode variable to identify top-coded values of earnweek 
   generate topcode=.
-  replace topcode=1 if earnweek>=999 & inrange(year, 1982, 1988) // & !missing(earnweek)
-  replace topcode=1 if earnweek>=1923 & inrange(year, 1989, 1997) // & !missing(earnweek)
-  replace topcode=1 if earnweek>=2884.61 & (inrange(year, 1998, 2022) | (year==2023 & month <=3)) // & !missing(earnweek)
-  replace topcode=1 if earnweek>=max_earnweek2 & ((year == 2023 & month >= 4) | (year == 2024 & month <= 3)) & mish == 4 // & !missing(earnweek)
-  replace topcode=1 if earnweek>=2884.61 & ((year == 2023 & month >= 4) | (year == 2024 & month <= 3)) & mish == 8 // & !missing(earnweek)
-  replace topcode=0 if topcode==.
+  replace topcode=1 if earnweek>=9999.99
+  replace topcode=1 if earnweek>=999 & inrange(year, 1982, 1988)
+  replace topcode=1 if earnweek>=1923 & inrange(year, 1989, 1997)
+  replace topcode=1 if earnweek>=2884.61 & (inrange(year, 1998, 2022) | (year==2023 & month <=3))
+  replace topcode=1 if earnweek>=max_earnweek2 & ((year == 2023 & month >= 4) | (year == 2024 & month <= 3)) & mish == 4
+  replace topcode=1 if earnweek>=2884.61 & ((year == 2023 & month >= 4) | (year == 2024 & month <= 3)) & mish == 8
+  replace topcode = 0 if missing(topcode) & !missing(earnweek)
   tab topcode
   
 * replacing top-coded values of earnweek with 1.5 times the top-coded values
