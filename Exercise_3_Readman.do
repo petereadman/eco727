@@ -65,7 +65,7 @@ global emonth=11
 
 *** end part b
 
-* part c: mergint the CPI into the CPS-ORGS
+* part c: merging the CPI into the CPS-ORGS
 
 * merging the CPI into the CPS data from previous session
   use "../Data/CPS ORGs, 1982-2024, Cleaned.dta", clear
@@ -120,5 +120,7 @@ global emonth=11
   ytitle("Log Difference") ///
   scheme(Wide727Scheme)
   graph export "Results/fig2.png", width(600) replace
+
+*** end part d
 
 log close results

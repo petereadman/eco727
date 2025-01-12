@@ -3,7 +3,7 @@
       name:  {res}results
        {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_3_Readman.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}12 Jan 2025, 06:46:20
+ {txt}opened on:  {res}12 Jan 2025, 08:07:33
 {txt}
 {com}. set scheme s2color
 {txt}
@@ -431,7 +431,7 @@ saved
 
 {txt}Contains data from {res}../Data/CPI 1913-2024.dta
 {txt} Observations:{res}         1,344                  
-{txt}    Variables:{res}             3                  12 Jan 2025 06:46
+{txt}    Variables:{res}             3                  12 Jan 2025 08:07
 {txt}{hline}
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
@@ -565,7 +565,7 @@ saved
 
 {txt}Contains data from {res}../Data/CPS-ORG with CPI, 1982-2024.dta
 {txt} Observations:{res}     6,738,088                  
-{txt}    Variables:{res}            24                  12 Jan 2025 06:46
+{txt}    Variables:{res}            24                  12 Jan 2025 08:07
 {txt}{hline}
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
@@ -658,7 +658,7 @@ saved
 
 {txt}Contains data from {res}../Data/CPS-ORG, Wage Percentiles, 1982-2024.dta
 {txt} Observations:{res}            43                  
-{txt}    Variables:{res}             6                  12 Jan 2025 06:46
+{txt}    Variables:{res}             6                  12 Jan 2025 08:07
 {txt}{hline}
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
@@ -732,11 +732,13 @@ format
 {p_end}
 
 {com}. 
+. *** end part d
+. 
 . log close results
       {txt}name:  {res}results
        {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_3_Readman.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}12 Jan 2025, 06:46:28
+ {txt}closed on:  {res}12 Jan 2025, 08:07:42
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

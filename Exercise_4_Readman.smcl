@@ -3,7 +3,7 @@
       name:  {res}results
        {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_4_Readman.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}12 Jan 2025, 07:55:53
+ {txt}opened on:  {res}12 Jan 2025, 16:48:44
 {txt}
 {com}. set scheme s2color
 {txt}
@@ -17,7 +17,6 @@
 {txt}
 {com}. 
 . * part a: using the merged CPS-ORG/CPI data from exercise 3
-. 
 .   use "../Data/CPS-ORG with CPI, 1982-2024.dta", replace
 {txt}
 {com}.   run data_check
@@ -27,15 +26,21 @@
 
 {com}.   generate experience=age-grade-6
 {txt}
+{com}.   label variable experience "experience as function of age and education"
+{txt}
 {com}.   generate exp2=experience^2
 {txt}
+{com}.   label variable exp2 "quadratic of experience"
+{txt}
 {com}.   generate lrwage=log(rwage)
+{txt}
+{com}.   label variable lrwage "log of real weekly wage"
 {txt}
 {com}.   describe
 
 {txt}Contains data from {res}../Data/CPS-ORG with CPI, 1982-2024.dta
 {txt} Observations:{res}     6,729,292                  
-{txt}    Variables:{res}            27                  12 Jan 2025 06:46
+{txt}    Variables:{res}            27                  12 Jan 2025 08:07
 {txt}{hline}
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
@@ -66,9 +71,9 @@ Variable      Storage   Display    Value
 {p 0 48}{bind:topcode        }{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}topcode indicator{p_end}
 {p 0 48}{bind:cpi            }{txt}{bind: double  }{bind:%9.3f     }{space 1}{bind:         }{bind:  }{res}{res}Consumer Price Index{p_end}
 {p 0 48}{bind:rwage          }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}real wage in November 2024 dollars{p_end}
-{p 0 48}{bind:experience     }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
-{p 0 48}{bind:exp2           }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
-{p 0 48}{bind:lrwage         }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:experience     }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}experience as function of age and education{p_end}
+{p 0 48}{bind:exp2           }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}quadratic of experience{p_end}
+{p 0 48}{bind:lrwage         }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}log of real weekly wage{p_end}
 {txt}{hline}
 Sorted by: 
      Note: {res}Dataset has changed since last saved.
@@ -110,41 +115,11 @@ Sorted by:
 {space 8}exp2 {c |}{res}  6,729,292     535.218    542.8229          0       3364
 {txt}{space 6}lrwage {c |}{res}  6,729,292    6.797184     .796826  -4.557612   9.391535
 {txt}
-{com}.   
-.   *label new variables
+{com}. 
+. *** end part a
 . 
 . * part b: estimating a simple log-wage regression
-.   regress lwage grade experience exp2, [ppw=earnwt]
-{err}variable {bf}lwage{sf} not found
-{txt}{search r(111), local:r(111);}
-
-end of do-file
-
-{search r(111), local:r(111);}
-
-{com}. do /var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T/StataRun1736686571475.do
-{txt}
-{com}.   regress lrwage grade experience exp2, [ppw=earnwt]
-{err}option {bf:[} not allowed
-{txt}{search r(198), local:r(198);}
-
-end of do-file
-
-{search r(198), local:r(198);}
-
-{com}. do /var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T/StataRun1736686589978.do
-{txt}
-{com}.   regress lrwage grade experience exp2 [ppw=earnwt]
-{err}ppw unknown weight type
-{txt}{search r(198), local:r(198);}
-
-end of do-file
-
-{search r(198), local:r(198);}
-
-{com}. do /var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T/StataRun1736686596634.do
-{txt}
-{com}.   regress lrwage grade experience exp2 [pw=earnwt]
+.   regress lrwage grade experience exp2 [pw=earnwt]
 {txt}(sum of wgt is 58,220,128,431.12)
 
 Linear regression                               Number of obs     = {res} 6,729,292
@@ -163,15 +138,554 @@ Linear regression                               Number of obs     = {res} 6,729,
 {txt}{space 7}_cons {c |}{col 14}{res}{space 2}  4.66554{col 26}{space 2} .0019926{col 37}{space 1} 2341.47{col 46}{space 3}0.000{col 54}{space 4} 4.661635{col 67}{space 3} 4.669446
 {txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {res}{txt}
-{com}. 
-{txt}end of do-file
+{com}.   test experience exp2 // joinly significant at any conventional level
 
-{com}. do /var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T/StataRun1736686965576.do
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}experience = 0{p_end}
+{p 0 7}{space 1}{text:( 2)}{space 1} exp2 = 0{p_end}
+
+{txt}       F(  2,6729288) ={res} 2.8e+05
+{txt}{col 13}Prob > F ={res}    0.0000
 {txt}
-{com}.   display "The log-wage profile peaks at" , %4.1f -e(b)[1,2]/(2*e(b)[1,3]) , "years of experience."
+{com}.   display "The sign of the coefficient on exp2 is negative, reflecting diminishing marginal returns to experience."
+{res}The sign of the coefficient on exp2 is negative, reflecting diminishing marginal returns to experience.
+{txt}
+{com}.   display "The log-wage profile peaks at" , %4.1f -e(b)[1,2]/(2*e(b)[1,3]) , "years of experience." // Compute and display peak experience
 {res}The log-wage profile peaks at 28.8 years of experience.
 {txt}
 {com}. 
-{txt}end of do-file
+. *** end part b
+. 
+. * part c: adding factor variables
+.   regress lrwage grade experience exp2 i.female i.race i.region i.occupation i.industry year [pw=earnwt]
+{txt}(sum of wgt is 58,220,128,431.12)
+
+Linear regression                               Number of obs     = {res} 6,729,292
+                                                {txt}F(35, 6729256)    =  {res} 83593.86
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.3907
+                                                {txt}Root MSE          =    {res} .62596
+
+{txt}{hline 43}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 44}{c |}{col 56}    Robust
+{col 1}                                    lrwage{col 44}{c |} Coefficient{col 56}  std. err.{col 68}      t{col 76}   P>|t|{col 84}     [95% con{col 97}f. interval]
+{hline 43}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 37}grade {c |}{col 44}{res}{space 2} .0833663{col 56}{space 2}  .000153{col 67}{space 1}  544.83{col 76}{space 3}0.000{col 84}{space 4} .0830664{col 97}{space 3} .0836662
+{txt}{space 32}experience {c |}{col 44}{res}{space 2} .0446801{col 56}{space 2} .0000892{col 67}{space 1}  500.93{col 76}{space 3}0.000{col 84}{space 4} .0445053{col 97}{space 3} .0448549
+{txt}{space 38}exp2 {c |}{col 44}{res}{space 2}-.0007664{col 56}{space 2} 2.04e-06{col 67}{space 1} -375.69{col 76}{space 3}0.000{col 84}{space 4}-.0007704{col 97}{space 3}-.0007624
+{txt}{space 42} {c |}
+{space 36}female {c |}
+{space 35}female  {c |}{col 44}{res}{space 2}-.3018181{col 56}{space 2} .0006694{col 67}{space 1} -450.88{col 76}{space 3}0.000{col 84}{space 4}-.3031301{col 97}{space 3}-.3005061
+{txt}{space 42} {c |}
+{space 38}race {c |}
+{space 31}200. black  {c |}{col 44}{res}{space 2}-.0712843{col 56}{space 2} .0009453{col 67}{space 1}  -75.41{col 76}{space 3}0.000{col 84}{space 4} -.073137{col 97}{space 3}-.0694316
+{txt}{space 8}300. american indian/aleut/eskimo  {c |}{col 44}{res}{space 2}-.0663038{col 56}{space 2}  .003421{col 67}{space 1}  -19.38{col 76}{space 3}0.000{col 84}{space 4}-.0730089{col 97}{space 3}-.0595987
+{txt}{space 11}650. asian or pacific islander  {c |}{col 44}{res}{space 2}-.0033642{col 56}{space 2} .0016112{col 67}{space 1}   -2.09{col 76}{space 3}0.037{col 84}{space 4}-.0065221{col 97}{space 3}-.0002062
+{txt}{space 10}700. other (single) race, n.e.c  {c |}{col 44}{res}{space 2}-.0345404{col 56}{space 2} .0026349{col 67}{space 1}  -13.11{col 76}{space 3}0.000{col 84}{space 4}-.0397048{col 97}{space 3}-.0293761
+{txt}{space 42} {c |}
+{space 36}region {c |}
+{space 17}middle atlantic division  {c |}{col 44}{res}{space 2} .0032932{col 56}{space 2} .0013267{col 67}{space 1}    2.48{col 76}{space 3}0.013{col 84}{space 4} .0006929{col 97}{space 3} .0058936
+{txt}{space 14}east north central division  {c |}{col 44}{res}{space 2} -.052967{col 56}{space 2}  .001267{col 67}{space 1}  -41.80{col 76}{space 3}0.000{col 84}{space 4}-.0554503{col 97}{space 3}-.0504836
+{txt}{space 14}west north central division  {c |}{col 44}{res}{space 2}-.0838215{col 56}{space 2} .0013861{col 67}{space 1}  -60.47{col 76}{space 3}0.000{col 84}{space 4}-.0865382{col 97}{space 3}-.0811048
+{txt}{space 18}south atlantic division  {c |}{col 44}{res}{space 2} -.035467{col 56}{space 2} .0012564{col 67}{space 1}  -28.23{col 76}{space 3}0.000{col 84}{space 4}-.0379295{col 97}{space 3}-.0330045
+{txt}{space 14}east south central division  {c |}{col 44}{res}{space 2} -.109749{col 56}{space 2} .0015049{col 67}{space 1}  -72.93{col 76}{space 3}0.000{col 84}{space 4}-.1126984{col 97}{space 3}-.1067995
+{txt}{space 14}west south central division  {c |}{col 44}{res}{space 2}-.0504315{col 56}{space 2} .0013792{col 67}{space 1}  -36.57{col 76}{space 3}0.000{col 84}{space 4}-.0531346{col 97}{space 3}-.0477284
+{txt}{space 24}mountain division  {c |}{col 44}{res}{space 2}-.0483506{col 56}{space 2} .0014245{col 67}{space 1}  -33.94{col 76}{space 3}0.000{col 84}{space 4}-.0511426{col 97}{space 3}-.0455586
+{txt}{space 25}pacific division  {c |}{col 44}{res}{space 2} .0390525{col 56}{space 2} .0013174{col 67}{space 1}   29.64{col 76}{space 3}0.000{col 84}{space 4} .0364704{col 97}{space 3} .0416347
+{txt}{space 42} {c |}
+{space 32}occupation {c |}
+{space 9}managers, officials, proprietors  {c |}{col 44}{res}{space 2}  .111161{col 56}{space 2} .0010736{col 67}{space 1}  103.54{col 76}{space 3}0.000{col 84}{space 4} .1090569{col 97}{space 3} .1132652
+{txt}{space 24}clerical, kindred  {c |}{col 44}{res}{space 2}-.3389504{col 56}{space 2} .0010072{col 67}{space 1} -336.52{col 76}{space 3}0.000{col 84}{space 4}-.3409245{col 97}{space 3}-.3369763
+{txt}{space 36}sales  {c |}{col 44}{res}{space 2}-.2130731{col 56}{space 2} .0015962{col 67}{space 1} -133.49{col 76}{space 3}0.000{col 84}{space 4}-.2162015{col 97}{space 3}-.2099446
+{txt}{space 32}craftsmen  {c |}{col 44}{res}{space 2}-.1732996{col 56}{space 2} .0012174{col 67}{space 1} -142.36{col 76}{space 3}0.000{col 84}{space 4}-.1756856{col 97}{space 3}-.1709137
+{txt}{space 31}operatives  {c |}{col 44}{res}{space 2}-.3572575{col 56}{space 2} .0012467{col 67}{space 1} -286.56{col 76}{space 3}0.000{col 84}{space 4} -.359701{col 97}{space 3}-.3548139
+{txt}{space 21}service (private hh)  {c |}{col 44}{res}{space 2}-.8220463{col 56}{space 2} .0040344{col 67}{space 1} -203.76{col 76}{space 3}0.000{col 84}{space 4}-.8299536{col 97}{space 3}-.8141391
+{txt}{space 26}service (other)  {c |}{col 44}{res}{space 2}-.4863184{col 56}{space 2} .0011733{col 67}{space 1} -414.49{col 76}{space 3}0.000{col 84}{space 4} -.488618{col 97}{space 3}-.4840187
+{txt}{space 33}laborers  {c |}{col 44}{res}{space 2}-.4774112{col 56}{space 2} .0016656{col 67}{space 1} -286.64{col 76}{space 3}0.000{col 84}{space 4}-.4806756{col 97}{space 3}-.4741468
+{txt}{space 42} {c |}
+{space 34}industry {c |}
+{space 29}construction  {c |}{col 44}{res}{space 2} .0521652{col 56}{space 2}  .002263{col 67}{space 1}   23.05{col 76}{space 3}0.000{col 84}{space 4} .0477299{col 97}{space 3} .0566005
+{txt}{space 20}durable manufacturing  {c |}{col 44}{res}{space 2} .1241675{col 56}{space 2} .0021649{col 67}{space 1}   57.35{col 76}{space 3}0.000{col 84}{space 4} .1199244{col 97}{space 3} .1284107
+{txt}{space 17}nondurable manufacturing  {c |}{col 44}{res}{space 2}   .06989{col 56}{space 2} .0022761{col 67}{space 1}   30.71{col 76}{space 3}0.000{col 84}{space 4} .0654289{col 97}{space 3} .0743511
+{txt}communications, transportation, utilities  {c |}{col 44}{res}{space 2} .1214161{col 56}{space 2} .0022936{col 67}{space 1}   52.94{col 76}{space 3}0.000{col 84}{space 4} .1169208{col 97}{space 3} .1259115
+{txt}{space 26}wholesale trade  {c |}{col 44}{res}{space 2} .0420554{col 56}{space 2} .0024989{col 67}{space 1}   16.83{col 76}{space 3}0.000{col 84}{space 4} .0371578{col 97}{space 3} .0469531
+{txt}{space 29}retail trade  {c |}{col 44}{res}{space 2}-.2920026{col 56}{space 2}  .002177{col 67}{space 1} -134.13{col 76}{space 3}0.000{col 84}{space 4}-.2962695{col 97}{space 3}-.2877357
+{txt}{space 14}professional services, fire  {c |}{col 44}{res}{space 2} .0062668{col 56}{space 2} .0021874{col 67}{space 1}    2.87{col 76}{space 3}0.004{col 84}{space 4} .0019796{col 97}{space 3} .0105539
+{txt}{space 14}education, welfare services  {c |}{col 44}{res}{space 2}-.3147063{col 56}{space 2} .0023205{col 67}{space 1} -135.62{col 76}{space 3}0.000{col 84}{space 4}-.3192543{col 97}{space 3}-.3101583
+{txt}{space 20}public administration  {c |}{col 44}{res}{space 2} .1252502{col 56}{space 2}  .002334{col 67}{space 1}   53.66{col 76}{space 3}0.000{col 84}{space 4} .1206757{col 97}{space 3} .1298246
+{txt}{space 27}other services  {c |}{col 44}{res}{space 2}-.0914046{col 56}{space 2}  .002251{col 67}{space 1}  -40.61{col 76}{space 3}0.000{col 84}{space 4}-.0958165{col 97}{space 3}-.0869927
+{txt}{space 42} {c |}
+{space 38}year {c |}{col 44}{res}{space 2} .0017393{col 56}{space 2} .0000241{col 67}{space 1}   72.26{col 76}{space 3}0.000{col 84}{space 4} .0016921{col 97}{space 3} .0017865
+{txt}{space 37}_cons {c |}{col 44}{res}{space 2} 2.188275{col 56}{space 2}  .047943{col 67}{space 1}   45.64{col 76}{space 3}0.000{col 84}{space 4} 2.094308{col 97}{space 3} 2.282241
+{txt}{hline 43}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}.   testparm i.female
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}1.female = 0{p_end}
+
+{txt}       F(  1,6729256) ={res} 2.0e+05
+{txt}{col 13}Prob > F ={res}    0.0000
+{txt}
+{com}.   testparm i.race
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}200.race = 0{p_end}
+{p 0 7}{space 1}{text:( 2)}{space 1} 300.race = 0{p_end}
+{p 0 7}{space 1}{text:( 3)}{space 1} 650.race = 0{p_end}
+{p 0 7}{space 1}{text:( 4)}{space 1} 700.race = 0{p_end}
+
+{txt}       F(  4,6729256) ={res} 1525.56
+{txt}{col 13}Prob > F ={res}    0.0000
+{txt}
+{com}.   testparm i.region
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}12.region = 0{p_end}
+{p 0 7}{space 1}{text:( 2)}{space 1} 21.region = 0{p_end}
+{p 0 7}{space 1}{text:( 3)}{space 1} 22.region = 0{p_end}
+{p 0 7}{space 1}{text:( 4)}{space 1} 31.region = 0{p_end}
+{p 0 7}{space 1}{text:( 5)}{space 1} 32.region = 0{p_end}
+{p 0 7}{space 1}{text:( 6)}{space 1} 33.region = 0{p_end}
+{p 0 7}{space 1}{text:( 7)}{space 1} 41.region = 0{p_end}
+{p 0 7}{space 1}{text:( 8)}{space 1} 42.region = 0{p_end}
+
+{txt}       F(  8,6729256) ={res} 2625.60
+{txt}{col 13}Prob > F ={res}    0.0000
+{txt}
+{com}.   testparm i.occupation
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}2.occupation = 0{p_end}
+{p 0 7}{space 1}{text:( 2)}{space 1} 3.occupation = 0{p_end}
+{p 0 7}{space 1}{text:( 3)}{space 1} 4.occupation = 0{p_end}
+{p 0 7}{space 1}{text:( 4)}{space 1} 5.occupation = 0{p_end}
+{p 0 7}{space 1}{text:( 5)}{space 1} 6.occupation = 0{p_end}
+{p 0 7}{space 1}{text:( 6)}{space 1} 7.occupation = 0{p_end}
+{p 0 7}{space 1}{text:( 7)}{space 1} 8.occupation = 0{p_end}
+{p 0 7}{space 1}{text:( 8)}{space 1} 9.occupation = 0{p_end}
+
+{txt}       F(  8,6729256) ={res}49697.56
+{txt}{col 13}Prob > F ={res}    0.0000
+{txt}
+{com}.   testparm i.industry
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}2.industry = 0{p_end}
+{p 0 7}{space 1}{text:( 2)}{space 1} 3.industry = 0{p_end}
+{p 0 7}{space 1}{text:( 3)}{space 1} 4.industry = 0{p_end}
+{p 0 7}{space 1}{text:( 4)}{space 1} 5.industry = 0{p_end}
+{p 0 7}{space 1}{text:( 5)}{space 1} 6.industry = 0{p_end}
+{p 0 7}{space 1}{text:( 6)}{space 1} 7.industry = 0{p_end}
+{p 0 7}{space 1}{text:( 7)}{space 1} 8.industry = 0{p_end}
+{p 0 7}{space 1}{text:( 8)}{space 1} 9.industry = 0{p_end}
+{p 0 7}{space 1}{text:( 9)}{space 1} 10.industry = 0{p_end}
+{p 0 7}{space 1}{text:(10)}{space 1} 11.industry = 0{p_end}
+
+{txt}       F( 10,6729256) ={res}29158.24
+{txt}{col 13}Prob > F ={res}    0.0000
+{txt}
+{com}. 
+. *** end part c
+. 
+. * part d: estimate year-specific grade coefficients
+.   regress lrwage year#c.grade grade experience exp2 i.female i.race i.region i.occupation i.industry year [pw=earnwt]
+{txt}(sum of wgt is 58,220,128,431.12)
+
+Linear regression                               Number of obs     = {res} 6,729,292
+                                                {txt}F(77, 6729214)    =  {res} 39000.51
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.3926
+                                                {txt}Root MSE          =    {res}   .625
+
+{txt}{hline 43}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 44}{c |}{col 56}    Robust
+{col 1}                                    lrwage{col 44}{c |} Coefficient{col 56}  std. err.{col 68}      t{col 76}   P>|t|{col 84}     [95% con{col 97}f. interval]
+{hline 43}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 30}year#c.grade {c |}
+{space 37}1983  {c |}{col 44}{res}{space 2} .0005182{col 56}{space 2}  .000166{col 67}{space 1}    3.12{col 76}{space 3}0.002{col 84}{space 4} .0001929{col 97}{space 3} .0008435
+{txt}{space 37}1984  {c |}{col 44}{res}{space 2}  .001523{col 56}{space 2}  .000166{col 67}{space 1}    9.18{col 76}{space 3}0.000{col 84}{space 4} .0011977{col 97}{space 3} .0018483
+{txt}{space 37}1985  {c |}{col 44}{res}{space 2} .0022132{col 56}{space 2} .0001666{col 67}{space 1}   13.28{col 76}{space 3}0.000{col 84}{space 4} .0018867{col 97}{space 3} .0025397
+{txt}{space 37}1986  {c |}{col 44}{res}{space 2}  .003859{col 56}{space 2} .0001692{col 67}{space 1}   22.81{col 76}{space 3}0.000{col 84}{space 4} .0035275{col 97}{space 3} .0041906
+{txt}{space 37}1987  {c |}{col 44}{res}{space 2} .0044147{col 56}{space 2} .0001724{col 67}{space 1}   25.61{col 76}{space 3}0.000{col 84}{space 4} .0040769{col 97}{space 3} .0047525
+{txt}{space 37}1988  {c |}{col 44}{res}{space 2} .0044144{col 56}{space 2} .0001802{col 67}{space 1}   24.50{col 76}{space 3}0.000{col 84}{space 4} .0040612{col 97}{space 3} .0047676
+{txt}{space 37}1989  {c |}{col 44}{res}{space 2} .0038258{col 56}{space 2} .0001802{col 67}{space 1}   21.24{col 76}{space 3}0.000{col 84}{space 4} .0034727{col 97}{space 3} .0041789
+{txt}{space 37}1990  {c |}{col 44}{res}{space 2} .0036613{col 56}{space 2} .0001803{col 67}{space 1}   20.30{col 76}{space 3}0.000{col 84}{space 4} .0033079{col 97}{space 3} .0040147
+{txt}{space 37}1991  {c |}{col 44}{res}{space 2}  .002853{col 56}{space 2} .0001866{col 67}{space 1}   15.29{col 76}{space 3}0.000{col 84}{space 4} .0024874{col 97}{space 3} .0032187
+{txt}{space 37}1992  {c |}{col 44}{res}{space 2} .0030677{col 56}{space 2} .0001922{col 67}{space 1}   15.96{col 76}{space 3}0.000{col 84}{space 4}  .002691{col 97}{space 3} .0034444
+{txt}{space 37}1993  {c |}{col 44}{res}{space 2} .0033219{col 56}{space 2} .0001983{col 67}{space 1}   16.75{col 76}{space 3}0.000{col 84}{space 4} .0029332{col 97}{space 3} .0037107
+{txt}{space 37}1994  {c |}{col 44}{res}{space 2} .0027737{col 56}{space 2} .0002093{col 67}{space 1}   13.25{col 76}{space 3}0.000{col 84}{space 4} .0023636{col 97}{space 3} .0031839
+{txt}{space 37}1995  {c |}{col 44}{res}{space 2} .0025966{col 56}{space 2} .0002158{col 67}{space 1}   12.03{col 76}{space 3}0.000{col 84}{space 4} .0021736{col 97}{space 3} .0030196
+{txt}{space 37}1996  {c |}{col 44}{res}{space 2} .0027219{col 56}{space 2} .0002246{col 67}{space 1}   12.12{col 76}{space 3}0.000{col 84}{space 4} .0022818{col 97}{space 3}  .003162
+{txt}{space 37}1997  {c |}{col 44}{res}{space 2} .0041705{col 56}{space 2} .0002288{col 67}{space 1}   18.23{col 76}{space 3}0.000{col 84}{space 4}  .003722{col 97}{space 3} .0046189
+{txt}{space 37}1998  {c |}{col 44}{res}{space 2}  .006631{col 56}{space 2} .0002358{col 67}{space 1}   28.12{col 76}{space 3}0.000{col 84}{space 4} .0061688{col 97}{space 3} .0070932
+{txt}{space 37}1999  {c |}{col 44}{res}{space 2}  .008522{col 56}{space 2} .0002408{col 67}{space 1}   35.39{col 76}{space 3}0.000{col 84}{space 4}   .00805{col 97}{space 3}  .008994
+{txt}{space 37}2000  {c |}{col 44}{res}{space 2} .0099598{col 56}{space 2} .0002474{col 67}{space 1}   40.25{col 76}{space 3}0.000{col 84}{space 4} .0094749{col 97}{space 3} .0104448
+{txt}{space 37}2001  {c |}{col 44}{res}{space 2} .0106262{col 56}{space 2} .0002552{col 67}{space 1}   41.64{col 76}{space 3}0.000{col 84}{space 4}  .010126{col 97}{space 3} .0111264
+{txt}{space 37}2002  {c |}{col 44}{res}{space 2} .0112567{col 56}{space 2} .0002611{col 67}{space 1}   43.11{col 76}{space 3}0.000{col 84}{space 4}  .010745{col 97}{space 3} .0117684
+{txt}{space 37}2003  {c |}{col 44}{res}{space 2} .0117202{col 56}{space 2} .0002727{col 67}{space 1}   42.98{col 76}{space 3}0.000{col 84}{space 4} .0111857{col 97}{space 3} .0122547
+{txt}{space 37}2004  {c |}{col 44}{res}{space 2} .0122583{col 56}{space 2} .0002788{col 67}{space 1}   43.96{col 76}{space 3}0.000{col 84}{space 4} .0117118{col 97}{space 3} .0128048
+{txt}{space 37}2005  {c |}{col 44}{res}{space 2} .0121664{col 56}{space 2} .0002849{col 67}{space 1}   42.71{col 76}{space 3}0.000{col 84}{space 4} .0116081{col 97}{space 3} .0127247
+{txt}{space 37}2006  {c |}{col 44}{res}{space 2} .0129317{col 56}{space 2} .0002914{col 67}{space 1}   44.39{col 76}{space 3}0.000{col 84}{space 4} .0123607{col 97}{space 3} .0135027
+{txt}{space 37}2007  {c |}{col 44}{res}{space 2} .0132442{col 56}{space 2} .0003013{col 67}{space 1}   43.96{col 76}{space 3}0.000{col 84}{space 4} .0126537{col 97}{space 3} .0138347
+{txt}{space 37}2008  {c |}{col 44}{res}{space 2} .0130305{col 56}{space 2} .0003098{col 67}{space 1}   42.06{col 76}{space 3}0.000{col 84}{space 4} .0124233{col 97}{space 3} .0136377
+{txt}{space 37}2009  {c |}{col 44}{res}{space 2} .0131732{col 56}{space 2}  .000319{col 67}{space 1}   41.30{col 76}{space 3}0.000{col 84}{space 4}  .012548{col 97}{space 3} .0137983
+{txt}{space 37}2010  {c |}{col 44}{res}{space 2} .0129365{col 56}{space 2} .0003277{col 67}{space 1}   39.48{col 76}{space 3}0.000{col 84}{space 4} .0122943{col 97}{space 3} .0135788
+{txt}{space 37}2011  {c |}{col 44}{res}{space 2} .0119473{col 56}{space 2}  .000334{col 67}{space 1}   35.77{col 76}{space 3}0.000{col 84}{space 4} .0112927{col 97}{space 3} .0126019
+{txt}{space 37}2012  {c |}{col 44}{res}{space 2} .0120676{col 56}{space 2} .0003422{col 67}{space 1}   35.27{col 76}{space 3}0.000{col 84}{space 4}  .011397{col 97}{space 3} .0127383
+{txt}{space 37}2013  {c |}{col 44}{res}{space 2} .0128638{col 56}{space 2} .0003489{col 67}{space 1}   36.87{col 76}{space 3}0.000{col 84}{space 4}   .01218{col 97}{space 3} .0135477
+{txt}{space 37}2014  {c |}{col 44}{res}{space 2} .0133192{col 56}{space 2} .0003562{col 67}{space 1}   37.40{col 76}{space 3}0.000{col 84}{space 4} .0126211{col 97}{space 3} .0140173
+{txt}{space 37}2015  {c |}{col 44}{res}{space 2} .0154672{col 56}{space 2} .0003651{col 67}{space 1}   42.36{col 76}{space 3}0.000{col 84}{space 4} .0147516{col 97}{space 3} .0161828
+{txt}{space 37}2016  {c |}{col 44}{res}{space 2} .0170325{col 56}{space 2} .0003724{col 67}{space 1}   45.74{col 76}{space 3}0.000{col 84}{space 4} .0163027{col 97}{space 3} .0177624
+{txt}{space 37}2017  {c |}{col 44}{res}{space 2} .0182282{col 56}{space 2} .0003812{col 67}{space 1}   47.81{col 76}{space 3}0.000{col 84}{space 4}  .017481{col 97}{space 3} .0189755
+{txt}{space 37}2018  {c |}{col 44}{res}{space 2} .0190896{col 56}{space 2} .0003904{col 67}{space 1}   48.90{col 76}{space 3}0.000{col 84}{space 4} .0183245{col 97}{space 3} .0198547
+{txt}{space 37}2019  {c |}{col 44}{res}{space 2}  .021141{col 56}{space 2} .0003988{col 67}{space 1}   53.02{col 76}{space 3}0.000{col 84}{space 4} .0203594{col 97}{space 3} .0219226
+{txt}{space 37}2020  {c |}{col 44}{res}{space 2} .0234488{col 56}{space 2} .0004125{col 67}{space 1}   56.85{col 76}{space 3}0.000{col 84}{space 4} .0226404{col 97}{space 3} .0242573
+{txt}{space 37}2021  {c |}{col 44}{res}{space 2} .0237568{col 56}{space 2} .0004148{col 67}{space 1}   57.27{col 76}{space 3}0.000{col 84}{space 4} .0229438{col 97}{space 3} .0245699
+{txt}{space 37}2022  {c |}{col 44}{res}{space 2} .0230131{col 56}{space 2} .0004243{col 67}{space 1}   54.23{col 76}{space 3}0.000{col 84}{space 4} .0221814{col 97}{space 3} .0238447
+{txt}{space 37}2023  {c |}{col 44}{res}{space 2} .0240213{col 56}{space 2} .0004337{col 67}{space 1}   55.39{col 76}{space 3}0.000{col 84}{space 4} .0231713{col 97}{space 3} .0248713
+{txt}{space 37}2024  {c |}{col 44}{res}{space 2}  .024966{col 56}{space 2} .0004497{col 67}{space 1}   55.52{col 76}{space 3}0.000{col 84}{space 4} .0240846{col 97}{space 3} .0258474
+{txt}{space 42} {c |}
+{space 37}grade {c |}{col 44}{res}{space 2} .0720893{col 56}{space 2} .0002593{col 67}{space 1}  278.00{col 76}{space 3}0.000{col 84}{space 4} .0715811{col 97}{space 3} .0725976
+{txt}{space 32}experience {c |}{col 44}{res}{space 2} .0448733{col 56}{space 2} .0000894{col 67}{space 1}  502.16{col 76}{space 3}0.000{col 84}{space 4} .0446982{col 97}{space 3} .0450484
+{txt}{space 38}exp2 {c |}{col 44}{res}{space 2}-.0007708{col 56}{space 2} 2.05e-06{col 67}{space 1} -376.57{col 76}{space 3}0.000{col 84}{space 4}-.0007748{col 97}{space 3}-.0007667
+{txt}{space 42} {c |}
+{space 36}female {c |}
+{space 35}female  {c |}{col 44}{res}{space 2}-.3034127{col 56}{space 2} .0006688{col 67}{space 1} -453.70{col 76}{space 3}0.000{col 84}{space 4}-.3047234{col 97}{space 3} -.302102
+{txt}{space 42} {c |}
+{space 38}race {c |}
+{space 31}200. black  {c |}{col 44}{res}{space 2}-.0722556{col 56}{space 2} .0009437{col 67}{space 1}  -76.57{col 76}{space 3}0.000{col 84}{space 4}-.0741052{col 97}{space 3}-.0704061
+{txt}{space 8}300. american indian/aleut/eskimo  {c |}{col 44}{res}{space 2}-.0613411{col 56}{space 2} .0034241{col 67}{space 1}  -17.91{col 76}{space 3}0.000{col 84}{space 4}-.0680521{col 97}{space 3}  -.05463
+{txt}{space 11}650. asian or pacific islander  {c |}{col 44}{res}{space 2}-.0063889{col 56}{space 2} .0016086{col 67}{space 1}   -3.97{col 76}{space 3}0.000{col 84}{space 4}-.0095418{col 97}{space 3}-.0032361
+{txt}{space 10}700. other (single) race, n.e.c  {c |}{col 44}{res}{space 2}-.0416792{col 56}{space 2} .0026356{col 67}{space 1}  -15.81{col 76}{space 3}0.000{col 84}{space 4}-.0468449{col 97}{space 3}-.0365135
+{txt}{space 42} {c |}
+{space 36}region {c |}
+{space 17}middle atlantic division  {c |}{col 44}{res}{space 2} .0035941{col 56}{space 2} .0013243{col 67}{space 1}    2.71{col 76}{space 3}0.007{col 84}{space 4} .0009986{col 97}{space 3} .0061897
+{txt}{space 14}east north central division  {c |}{col 44}{res}{space 2}-.0520822{col 56}{space 2}  .001265{col 67}{space 1}  -41.17{col 76}{space 3}0.000{col 84}{space 4}-.0545615{col 97}{space 3} -.049603
+{txt}{space 14}west north central division  {c |}{col 44}{res}{space 2}-.0826564{col 56}{space 2} .0013839{col 67}{space 1}  -59.73{col 76}{space 3}0.000{col 84}{space 4}-.0853688{col 97}{space 3} -.079944
+{txt}{space 18}south atlantic division  {c |}{col 44}{res}{space 2}-.0351736{col 56}{space 2} .0012544{col 67}{space 1}  -28.04{col 76}{space 3}0.000{col 84}{space 4}-.0376321{col 97}{space 3}-.0327151
+{txt}{space 14}east south central division  {c |}{col 44}{res}{space 2} -.109383{col 56}{space 2} .0015023{col 67}{space 1}  -72.81{col 76}{space 3}0.000{col 84}{space 4}-.1123274{col 97}{space 3}-.1064385
+{txt}{space 14}west south central division  {c |}{col 44}{res}{space 2}-.0496235{col 56}{space 2} .0013771{col 67}{space 1}  -36.03{col 76}{space 3}0.000{col 84}{space 4}-.0523226{col 97}{space 3}-.0469243
+{txt}{space 24}mountain division  {c |}{col 44}{res}{space 2}  -.04719{col 56}{space 2} .0014221{col 67}{space 1}  -33.18{col 76}{space 3}0.000{col 84}{space 4}-.0499772{col 97}{space 3}-.0444028
+{txt}{space 25}pacific division  {c |}{col 44}{res}{space 2} .0403849{col 56}{space 2} .0013148{col 67}{space 1}   30.72{col 76}{space 3}0.000{col 84}{space 4}  .037808{col 97}{space 3} .0429619
+{txt}{space 42} {c |}
+{space 32}occupation {c |}
+{space 9}managers, officials, proprietors  {c |}{col 44}{res}{space 2} .1116943{col 56}{space 2} .0010714{col 67}{space 1}  104.25{col 76}{space 3}0.000{col 84}{space 4} .1095943{col 97}{space 3} .1137943
+{txt}{space 24}clerical, kindred  {c |}{col 44}{res}{space 2} -.336411{col 56}{space 2}  .001007{col 67}{space 1} -334.06{col 76}{space 3}0.000{col 84}{space 4}-.3383847{col 97}{space 3}-.3344372
+{txt}{space 36}sales  {c |}{col 44}{res}{space 2} -.210462{col 56}{space 2} .0015936{col 67}{space 1} -132.07{col 76}{space 3}0.000{col 84}{space 4}-.2135854{col 97}{space 3}-.2073385
+{txt}{space 32}craftsmen  {c |}{col 44}{res}{space 2}-.1730909{col 56}{space 2}  .001216{col 67}{space 1} -142.35{col 76}{space 3}0.000{col 84}{space 4}-.1754742{col 97}{space 3}-.1707076
+{txt}{space 31}operatives  {c |}{col 44}{res}{space 2}-.3575383{col 56}{space 2} .0012451{col 67}{space 1} -287.15{col 76}{space 3}0.000{col 84}{space 4}-.3599787{col 97}{space 3}-.3550979
+{txt}{space 21}service (private hh)  {c |}{col 44}{res}{space 2}-.8156002{col 56}{space 2} .0040618{col 67}{space 1} -200.80{col 76}{space 3}0.000{col 84}{space 4}-.8235612{col 97}{space 3}-.8076393
+{txt}{space 26}service (other)  {c |}{col 44}{res}{space 2}-.4833245{col 56}{space 2}  .001173{col 67}{space 1} -412.05{col 76}{space 3}0.000{col 84}{space 4}-.4856235{col 97}{space 3}-.4810255
+{txt}{space 33}laborers  {c |}{col 44}{res}{space 2}-.4774826{col 56}{space 2} .0016638{col 67}{space 1} -286.99{col 76}{space 3}0.000{col 84}{space 4}-.4807436{col 97}{space 3}-.4742217
+{txt}{space 42} {c |}
+{space 34}industry {c |}
+{space 29}construction  {c |}{col 44}{res}{space 2} .0520557{col 56}{space 2} .0022651{col 67}{space 1}   22.98{col 76}{space 3}0.000{col 84}{space 4} .0476162{col 97}{space 3} .0564952
+{txt}{space 20}durable manufacturing  {c |}{col 44}{res}{space 2} .1214736{col 56}{space 2} .0021663{col 67}{space 1}   56.07{col 76}{space 3}0.000{col 84}{space 4} .1172277{col 97}{space 3} .1257195
+{txt}{space 17}nondurable manufacturing  {c |}{col 44}{res}{space 2} .0670448{col 56}{space 2} .0022772{col 67}{space 1}   29.44{col 76}{space 3}0.000{col 84}{space 4} .0625815{col 97}{space 3} .0715081
+{txt}communications, transportation, utilities  {c |}{col 44}{res}{space 2} .1208537{col 56}{space 2} .0022949{col 67}{space 1}   52.66{col 76}{space 3}0.000{col 84}{space 4} .1163558{col 97}{space 3} .1253516
+{txt}{space 26}wholesale trade  {c |}{col 44}{res}{space 2} .0413953{col 56}{space 2} .0024993{col 67}{space 1}   16.56{col 76}{space 3}0.000{col 84}{space 4} .0364967{col 97}{space 3} .0462939
+{txt}{space 29}retail trade  {c |}{col 44}{res}{space 2}-.2911314{col 56}{space 2} .0021784{col 67}{space 1} -133.65{col 76}{space 3}0.000{col 84}{space 4}-.2954009{col 97}{space 3}-.2868619
+{txt}{space 14}professional services, fire  {c |}{col 44}{res}{space 2}  .004712{col 56}{space 2} .0021891{col 67}{space 1}    2.15{col 76}{space 3}0.031{col 84}{space 4} .0004215{col 97}{space 3} .0090024
+{txt}{space 14}education, welfare services  {c |}{col 44}{res}{space 2}-.3140355{col 56}{space 2} .0023215{col 67}{space 1} -135.27{col 76}{space 3}0.000{col 84}{space 4}-.3185856{col 97}{space 3}-.3094854
+{txt}{space 20}public administration  {c |}{col 44}{res}{space 2}  .123646{col 56}{space 2} .0023359{col 67}{space 1}   52.93{col 76}{space 3}0.000{col 84}{space 4} .1190676{col 97}{space 3} .1282243
+{txt}{space 27}other services  {c |}{col 44}{res}{space 2}-.0930333{col 56}{space 2} .0022523{col 67}{space 1}  -41.31{col 76}{space 3}0.000{col 84}{space 4}-.0974477{col 97}{space 3}-.0886188
+{txt}{space 42} {c |}
+{space 38}year {c |}{col 44}{res}{space 2}-.0059431{col 56}{space 2} .0001317{col 67}{space 1}  -45.14{col 76}{space 3}0.000{col 84}{space 4}-.0062011{col 97}{space 3} -.005685
+{txt}{space 37}_cons {c |}{col 44}{res}{space 2} 17.58189{col 56}{space 2} .2632648{col 67}{space 1}   66.78{col 76}{space 3}0.000{col 84}{space 4}  17.0659{col 97}{space 3} 18.09788
+{txt}{hline 43}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}.   matrix b = e(b)[1, "1982.year#c.grade".."2024.year#c.grade"]'
+{txt}
+{com}.   clear
+{txt}
+{com}.   svmat2 b, names(grade_coef) rnames(tag)
+{txt}number of observations will be reset to 43
+Press any key to continue, or Break to abort
+{p}
+Number of observations ({bf:_N}) was 0,
+now 43.
+{p_end}
+
+{com}.   list in 1/10, noobs
+{txt}
+  {c TLC}{hline 10}{c -}{hline 21}{c TRC}
+  {c |} {res}grade_~f                   tag {txt}{c |}
+  {c LT}{hline 10}{c -}{hline 21}{c RT}
+  {c |} {res}       0   1982b.year#co.grade {txt}{c |}
+  {c |} {res}.0005182     1983.year#c.grade {txt}{c |}
+  {c |} {res} .001523     1984.year#c.grade {txt}{c |}
+  {c |} {res}.0022132     1985.year#c.grade {txt}{c |}
+  {c |} {res} .003859     1986.year#c.grade {txt}{c |}
+  {c LT}{hline 10}{c -}{hline 21}{c RT}
+  {c |} {res}.0044147     1987.year#c.grade {txt}{c |}
+  {c |} {res}.0044144     1988.year#c.grade {txt}{c |}
+  {c |} {res}.0038258     1989.year#c.grade {txt}{c |}
+  {c |} {res}.0036613     1990.year#c.grade {txt}{c |}
+  {c |} {res} .002853     1991.year#c.grade {txt}{c |}
+  {c BLC}{hline 10}{c -}{hline 21}{c BRC}
+
+{com}.   generate year=real(substr(tag, 1, 4))
+{txt}
+{com}.   drop tag
+{txt}
+{com}.   order year grade_coef
+{txt}
+{com}.   replace grade_coef = grade_coef * 100 // convert to percentages
+{txt}(42 real changes made)
+
+{com}.   list, noobs
+{txt}
+  {c TLC}{hline 6}{c -}{hline 10}{c TRC}
+  {c |} {res}year   grade_~f {txt}{c |}
+  {c LT}{hline 6}{c -}{hline 10}{c RT}
+  {c |} {res}1982          0 {txt}{c |}
+  {c |} {res}1983   .0518185 {txt}{c |}
+  {c |} {res}1984   .1523003 {txt}{c |}
+  {c |} {res}1985   .2213177 {txt}{c |}
+  {c |} {res}1986    .385904 {txt}{c |}
+  {c LT}{hline 6}{c -}{hline 10}{c RT}
+  {c |} {res}1987   .4414703 {txt}{c |}
+  {c |} {res}1988   .4414407 {txt}{c |}
+  {c |} {res}1989   .3825785 {txt}{c |}
+  {c |} {res}1990   .3661303 {txt}{c |}
+  {c |} {res}1991   .2853023 {txt}{c |}
+  {c LT}{hline 6}{c -}{hline 10}{c RT}
+  {c |} {res}1992   .3067697 {txt}{c |}
+  {c |} {res}1993    .332191 {txt}{c |}
+  {c |} {res}1994   .2773717 {txt}{c |}
+  {c |} {res}1995   .2596593 {txt}{c |}
+  {c |} {res}1996    .272191 {txt}{c |}
+  {c LT}{hline 6}{c -}{hline 10}{c RT}
+  {c |} {res}1997   .4170473 {txt}{c |}
+  {c |} {res}1998   .6630958 {txt}{c |}
+  {c |} {res}1999   .8522007 {txt}{c |}
+  {c |} {res}2000   .9959829 {txt}{c |}
+  {c |} {res}2001   1.062616 {txt}{c |}
+  {c LT}{hline 6}{c -}{hline 10}{c RT}
+  {c |} {res}2002    1.12567 {txt}{c |}
+  {c |} {res}2003   1.172021 {txt}{c |}
+  {c |} {res}2004   1.225832 {txt}{c |}
+  {c |} {res}2005    1.21664 {txt}{c |}
+  {c |} {res}2006    1.29317 {txt}{c |}
+  {c LT}{hline 6}{c -}{hline 10}{c RT}
+  {c |} {res}2007    1.32442 {txt}{c |}
+  {c |} {res}2008   1.303047 {txt}{c |}
+  {c |} {res}2009   1.317317 {txt}{c |}
+  {c |} {res}2010   1.293655 {txt}{c |}
+  {c |} {res}2011   1.194728 {txt}{c |}
+  {c LT}{hline 6}{c -}{hline 10}{c RT}
+  {c |} {res}2012   1.206764 {txt}{c |}
+  {c |} {res}2013   1.286381 {txt}{c |}
+  {c |} {res}2014   1.331923 {txt}{c |}
+  {c |} {res}2015   1.546723 {txt}{c |}
+  {c |} {res}2016   1.703253 {txt}{c |}
+  {c LT}{hline 6}{c -}{hline 10}{c RT}
+  {c |} {res}2017   1.822824 {txt}{c |}
+  {c |} {res}2018   1.908962 {txt}{c |}
+  {c |} {res}2019   2.114099 {txt}{c |}
+  {c |} {res}2020   2.344883 {txt}{c |}
+  {c |} {res}2021   2.375684 {txt}{c |}
+  {c LT}{hline 6}{c -}{hline 10}{c RT}
+  {c |} {res}2022   2.301307 {txt}{c |}
+  {c |} {res}2023   2.402128 {txt}{c |}
+  {c |} {res}2024   2.496599 {txt}{c |}
+  {c BLC}{hline 6}{c -}{hline 10}{c BRC}
+
+{com}.   describe
+
+{txt}Contains data
+ Observations:{res}            43                  
+{txt}    Variables:{res}             2                  
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:year           }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:grade_coef     }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{txt}{hline}
+Sorted by: 
+     Note: {res}Dataset has changed since last saved.
+{txt}
+{com}.   summarize
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 8}year {c |}{res}         43        2003    12.55654       1982       2024
+{txt}{space 2}grade_coef {c |}{res}         43    1.057568    .7304019          0   2.496599
+{txt}
+{com}.   tempfile temp1
+{txt}
+{com}.   save `temp1', replace
+{txt}{p 0 4 2}
+(file {bf}
+/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_55420.000002{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_55420.000002{rm}
+saved
+as .dta format
+{p_end}
+
+{com}.   
+. *** end part d
+. 
+. * part e: merging the grade coefficients with the 90-10 differential (in logs)
+.   use "../Data/CPS-ORG, Wage Percentiles, 1982-2024.dta", clear
+{txt}
+{com}.   keep year ldiff
+{txt}
+{com}.   describe
+
+{txt}Contains data from {res}../Data/CPS-ORG, Wage Percentiles, 1982-2024.dta
+{txt} Observations:{res}            43                  
+{txt}    Variables:{res}             2                  12 Jan 2025 16:41
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:year           }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}survey year{p_end}
+{p 0 48}{bind:ldiff          }{txt}{bind: float   }{bind:%4.1f     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{txt}{hline}
+Sorted by: {res}year
+{txt}
+{com}.   summarize
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 8}year {c |}{res}         43        2003    12.55654       1982       2024
+{txt}{space 7}ldiff {c |}{res}         43    184.7998    7.395999   173.1777   199.8685
+{txt}
+{com}.   tempfile temp2
+{txt}
+{com}.   save `temp2', replace
+{txt}{p 0 4 2}
+(file {bf}
+/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_55420.000003{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_55420.000003{rm}
+saved
+as .dta format
+{p_end}
 
 {com}. 
+. * merge
+.   use `temp1', clear
+{txt}
+{com}.   merge 1:1 year using `temp2'
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              43{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}.   assert _merge==3
+{txt}
+{com}.   drop _merge
+{txt}
+{com}. 
+. * saving
+.   save "../Data/Grade_coef and ldiff, 1982-2024.dta", replace
+{txt}{p 0 4 2}
+file {bf}
+../Data/Grade_coef and ldiff, 1982-2024.dta{rm}
+saved
+{p_end}
+
+{com}.   describe
+
+{txt}Contains data from {res}../Data/Grade_coef and ldiff, 1982-2024.dta
+{txt} Observations:{res}            43                  
+{txt}    Variables:{res}             3                  12 Jan 2025 16:49
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:year           }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:grade_coef     }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:ldiff          }{txt}{bind: float   }{bind:%4.1f     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{txt}{hline}
+Sorted by: {res}year
+{txt}
+{com}.   summarize
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 8}year {c |}{res}         43        2003    12.55654       1982       2024
+{txt}{space 2}grade_coef {c |}{res}         43    1.057568    .7304019          0   2.496599
+{txt}{space 7}ldiff {c |}{res}         43    184.7998    7.395999   173.1777   199.8685
+{txt}
+{com}.   list
+{txt}
+     {c TLC}{hline 6}{c -}{hline 10}{c -}{hline 7}{c TRC}
+     {c |} {res}year   grade_~f   ldiff {txt}{c |}
+     {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
+  1. {c |} {res}1982          0   173.2 {txt}{c |}
+  2. {c |} {res}1983   .0518185   178.1 {txt}{c |}
+  3. {c |} {res}1984   .1523003   176.4 {txt}{c |}
+  4. {c |} {res}1985   .2213177   178.2 {txt}{c |}
+  5. {c |} {res}1986    .385904   179.2 {txt}{c |}
+     {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
+  6. {c |} {res}1987   .4414703   178.4 {txt}{c |}
+  7. {c |} {res}1988   .4414407   179.6 {txt}{c |}
+  8. {c |} {res}1989   .3825785   177.5 {txt}{c |}
+  9. {c |} {res}1990   .3661303   174.3 {txt}{c |}
+ 10. {c |} {res}1991   .2853023   174.4 {txt}{c |}
+     {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
+ 11. {c |} {res}1992   .3067697   177.4 {txt}{c |}
+ 12. {c |} {res}1993    .332191   179.2 {txt}{c |}
+ 13. {c |} {res}1994   .2773717   184.4 {txt}{c |}
+ 14. {c |} {res}1995   .2596593   183.6 {txt}{c |}
+ 15. {c |} {res}1996    .272191   183.0 {txt}{c |}
+     {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
+ 16. {c |} {res}1997   .4170473   180.5 {txt}{c |}
+ 17. {c |} {res}1998   .6630958   180.5 {txt}{c |}
+ 18. {c |} {res}1999   .8522007   177.5 {txt}{c |}
+ 19. {c |} {res}2000   .9959829   178.6 {txt}{c |}
+ 20. {c |} {res}2001   1.062616   180.7 {txt}{c |}
+     {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
+ 21. {c |} {res}2002    1.12567   183.5 {txt}{c |}
+ 22. {c |} {res}2003   1.172021   185.4 {txt}{c |}
+ 23. {c |} {res}2004   1.225832   187.1 {txt}{c |}
+ 24. {c |} {res}2005    1.21664   184.6 {txt}{c |}
+ 25. {c |} {res}2006    1.29317   183.3 {txt}{c |}
+     {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
+ 26. {c |} {res}2007    1.32442   184.4 {txt}{c |}
+ 27. {c |} {res}2008   1.303047   186.2 {txt}{c |}
+ 28. {c |} {res}2009   1.317317   194.5 {txt}{c |}
+ 29. {c |} {res}2010   1.293655   195.6 {txt}{c |}
+ 30. {c |} {res}2011   1.194728   196.8 {txt}{c |}
+     {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
+ 31. {c |} {res}2012   1.206764   199.9 {txt}{c |}
+ 32. {c |} {res}2013   1.286381   197.4 {txt}{c |}
+ 33. {c |} {res}2014   1.331923   196.5 {txt}{c |}
+ 34. {c |} {res}2015   1.546723   199.7 {txt}{c |}
+ 35. {c |} {res}2016   1.703253   196.5 {txt}{c |}
+     {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
+ 36. {c |} {res}2017   1.822824   191.2 {txt}{c |}
+ 37. {c |} {res}2018   1.908962   190.1 {txt}{c |}
+ 38. {c |} {res}2019   2.114099   192.7 {txt}{c |}
+ 39. {c |} {res}2020   2.344883   188.0 {txt}{c |}
+ 40. {c |} {res}2021   2.375684   185.3 {txt}{c |}
+     {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
+ 41. {c |} {res}2022   2.301307   182.7 {txt}{c |}
+ 42. {c |} {res}2023   2.402128   184.6 {txt}{c |}
+ 43. {c |} {res}2024   2.496599   185.9 {txt}{c |}
+     {c BLC}{hline 6}{c -}{hline 10}{c -}{hline 7}{c BRC}
+
+{com}. 
+. *** end part e
+. 
+. * part f: plotting the relationship between the grade coefficients and the 90-10 differential
+. 
+. 
+. *** end part f
+. 
+. log close results
+      {txt}name:  {res}results
+       {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_4_Readman.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}12 Jan 2025, 16:49:27
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
