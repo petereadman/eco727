@@ -10,9 +10,9 @@ global lname="Readman"
 global eyear=2024
 global emonth=11
 
-* part a
+* part a: use the CPS-ORG files from the NBER
 
-* appending three morg data sets
+* appending three morg data sets from nber
   clear
   append using "../Data/morg79.dta" "../Data/morg80.dta" "../Data/morg81.dta"
   keep year intmonth minsamp classer esr age race sex gradeat uhours earnwke earnwt
@@ -41,7 +41,7 @@ global emonth=11
 
 *** end part a 
 
-* part b
+* part b: preparing the CPI data
 
 * preparing CPI data to merge into CPS data
   import excel using "../Data/SeriesReport-20250109151624_b18e88.xlsx", cellrange(A12:M124) firstrow clear
@@ -65,7 +65,7 @@ global emonth=11
 
 *** end part b
 
-* part c
+* part c: mergint the CPI into the CPS-ORGS
 
 * merging the CPI into the CPS data from previous session
   use "../Data/CPS ORGs, 1982-2024, Cleaned.dta", clear
@@ -89,7 +89,7 @@ global emonth=11
   summarize
 *** end part c
 
-* part d
+* part d: creating and plotting a data set of statistics.
 
 * calculating annual statistics for real weekly wage
   collapse (mean) mean=rwage /// mean
@@ -106,18 +106,19 @@ global emonth=11
 
 * plotting trend in real weekly wages
   line p10 year || line p50 year || line p90 year || line mean year, ///
-  title("Trends in Real Weekly Wages") ///
+  title("Real weekly wages since 1982") ///
   xtitle("Year") xlabel(1980(5)2025, format(%ty)) ///
   ytitle("Real Weekly Wage, 1982=100") ylabel(0(500)3000, noticks) ///
-  text(416.25 2025 "P10") text(1042.354 2025 "P50") text(1600 2025 "mean") text(2672.061 2025 "P90") ///
+  text(416.25 2025 "P10") text(1042.354 2025 "P50") text(1650 2025 "mean") text(2672.061 2025 "P90") ///
   scheme(Wide727Scheme)
   graph export "Results/fig1.png", width(600) replace
 
 * Plot difference between 10th and 90th percentiles
-  line ldiff year, sort scheme(Squarish727Scheme) ///
-  title("Wage Gap Between 90th and 10th Percentiles") ///
+  line ldiff year, sort ///
+  title("Income inequality since 1982") ///
   xtitle("Year") xlabel(1980(5)2025, format(%ty)) ///
-  ytitle("Log Difference")
+  ytitle("Log Difference") ///
+  scheme(Wide727Scheme)
   graph export "Results/fig2.png", width(600) replace
 
 log close results
