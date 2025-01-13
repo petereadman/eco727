@@ -1,0 +1,56 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}results
+       {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_5_Readman.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}13 Jan 2025, 11:14:05
+{txt}
+{com}. set scheme s2color
+{txt}
+{com}. global ex=5
+{txt}
+{com}. global lname="Readman"
+{txt}
+{com}. 
+. *part a: using the “Birth Quarter.dta” data
+. use "../Data/Birth Quarter.dta" if cohort==4, clear
+{txt}
+{com}. run data_check
+{txt}
+{com}. describe
+
+{txt}Contains data from {res}../Data/Birth Quarter.dta
+{txt} Observations:{res}       486,926                  
+{txt}    Variables:{res}            12                  18 Mar 2019 13:13
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:age            }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:ageq           }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:educ           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:lwklywge       }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:married        }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:census         }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:qob            }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:race           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:smsa           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:yob            }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:cohort         }{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:cohort   }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:region         }{txt}{bind: byte    }{bind:%18.0g    }{space 1}{bind:region   }{bind:  }{res}{res}{p_end}
+{txt}{hline}
+Sorted by: 
+
+{com}. assert _N == 486926
+{txt}
+{com}. 
+. *** end part a
+. 
+. log close results
+      {txt}name:  {res}results
+       {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_5_Readman.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}13 Jan 2025, 11:14:05
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

@@ -32,21 +32,21 @@ global lname="Readman"
 *** end part b
 
 * part c: adding factor variables
-  regress lrwage grade experience exp2 i.female i.race i.region i.occupation i.industry year [pw=earnwt]
-  testparm i.female
+  regress lrwage grade experience exp2 i.female i.race i.region i.occupation i.industry i.year [pw=earnwt]
   testparm i.race
   testparm i.region
   testparm i.occupation
   testparm i.industry
+  testparm i.year
 
 *** end part c
 
 * part d: estimate year-specific grade coefficients
-  regress lrwage year#c.grade grade experience exp2 i.female i.race i.region i.occupation i.industry year [pw=earnwt]
-  matrix b = e(b)[1, "1982.year#c.grade".."2024.year#c.grade"]'
+  regress lrwage year#c.grade experience exp2 female i.race i.region i.occupation i.industry i.year [pw=earnwt]
+  matrix b = e(b)[1, 1..43]'
   clear
   svmat2 b, names(grade_coef) rnames(tag)
-  list in 1/10, noobs
+  list, noobs
   generate year=real(substr(tag, 1, 4))
   drop tag
   order year grade_coef
@@ -82,7 +82,20 @@ global lname="Readman"
 *** end part e
 
 * part f: plotting the relationship between the grade coefficients and the 90-10 differential
+  line ldiff year, yaxis(1) || line grade_coef year, yaxis(2) ///
+  xtitle(Year) xlabel(1980(10)2025) xtick(1980(5)2015) ///
+  ytitle("90-10 log-Wage Differential (%)", axis(1)) ylabel(120(20)180, noticks axis(1)) ///
+  ytitle("Rate of Return to Schooling (%)", axis(2)) ylabel(4(2)10, noticks axis(2)) ///
+  text(137 1985 "90-10 Differential") text(185 1985 "Return to Schooling") ///
+  scheme(Wide727Scheme) name(g1, replace)
+  graph export results/inequality_schooling_line.png, name (g1) width(600) replace
 
+* scatter
+  scatter ldiff grade_coef || lfit ldiff grade_coef ||, ///
+  xtitle(Rate of Return to Schooling (%)) xlabel(4(1)10) ///
+  ytitle("90-10 log-Wage Differential (%)") ylabel(160(10)200, noticks) ///
+  scheme(Squarish727Scheme) name(g2, replace)
+  graph export results/inequality_schooling_scatter.png, name (g2)  width(450) replace
 
 *** end part f
 
