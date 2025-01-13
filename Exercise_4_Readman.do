@@ -1,6 +1,6 @@
 ***** Exercise_4_Readman.do
-***** organizing the CPI and CPS-ORG Data, 1982–2024
-***** cps-org data extracted from ipums and cleaned on 1/7/2024
+***** 
+***** 
 
 cd "~/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis"
 log using Exercise_4_Readman.smcl, name(results) replace
