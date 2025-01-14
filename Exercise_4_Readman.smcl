@@ -3,7 +3,7 @@
       name:  {res}results
        {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_4_Readman.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}13 Jan 2025, 16:24:38
+ {txt}opened on:  {res}14 Jan 2025, 09:54:36
 {txt}
 {com}. set scheme s2color
 {txt}
@@ -111,8 +111,7 @@ Sorted by:
 {space 8}exp2 {c |}{res}  6,729,292     535.218    542.8229          0       3364
 {txt}{space 6}lrwage {c |}{res}  6,729,292    6.797184     .796826  -4.557612   9.391535
 {txt}
-{com}. 
-. *** end part a
+{com}. *** end part a
 . 
 . * part b: estimating a simple log-wage regression
 .   regress lrwage grade experience exp2 [pw=earnwt]
@@ -134,7 +133,7 @@ Linear regression                               Number of obs     = {res} 6,729,
 {txt}{space 7}_cons {c |}{col 14}{res}{space 2}  4.66554{col 26}{space 2} .0019926{col 37}{space 1} 2341.47{col 46}{space 3}0.000{col 54}{space 4} 4.661635{col 67}{space 3} 4.669446
 {txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {res}{txt}
-{com}.   test experience exp2 // joinly significant at any conventional level
+{com}.    test experience exp2 // joinly significant at any conventional level
 
 {p 0 7}{space 1}{text:( 1)}{space 1} {res}experience = 0{p_end}
 {p 0 7}{space 1}{text:( 2)}{space 1} exp2 = 0{p_end}
@@ -142,14 +141,13 @@ Linear regression                               Number of obs     = {res} 6,729,
 {txt}       F(  2,6729288) ={res} 2.8e+05
 {txt}{col 13}Prob > F ={res}    0.0000
 {txt}
-{com}.   display "The sign of the coefficient on exp2 is negative, reflecting diminishing marginal returns to experience."
+{com}.    display "The sign of the coefficient on exp2 is negative, reflecting diminishing marginal returns to experience."
 {res}The sign of the coefficient on exp2 is negative, reflecting diminishing marginal returns to experience.
 {txt}
-{com}.   display "The log-wage profile peaks at" , %4.1f -e(b)[1,2]/(2*e(b)[1,3]) , "years of experience." // Compute and display peak experience
+{com}.    display "The log-wage profile peaks at" , %4.1f -e(b)[1,2]/(2*e(b)[1,3]) , "years of experience." // Compute and display peak experience
 {res}The log-wage profile peaks at 28.8 years of experience.
 {txt}
-{com}. 
-. *** end part b
+{com}. *** end part b
 . 
 . * part c: adding factor variables
 .   regress lrwage grade experience exp2 i.female i.race i.region i.occupation i.industry i.year [pw=earnwt]
@@ -257,7 +255,7 @@ Linear regression                               Number of obs     = {res} 6,729,
 {space 32}_cons {c |}{col 39}{res}{space 2} 5.666863{col 51}{space 2} .0036775{col 62}{space 1} 1540.96{col 71}{space 3}0.000{col 79}{space 4} 5.659655{col 92}{space 3}  5.67407
 {txt}{hline 38}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {res}{txt}
-{com}.   testparm i.race
+{com}.    testparm i.race
 
 {p 0 7}{space 1}{text:( 1)}{space 1} {res}200.race = 0{p_end}
 {p 0 7}{space 1}{text:( 2)}{space 1} 300.race = 0{p_end}
@@ -267,7 +265,7 @@ Linear regression                               Number of obs     = {res} 6,729,
 {txt}       F(  4,6729215) ={res} 1572.23
 {txt}{col 13}Prob > F ={res}    0.0000
 {txt}
-{com}.   testparm i.region
+{com}.    testparm i.region
 
 {p 0 7}{space 1}{text:( 1)}{space 1} {res}12.region = 0{p_end}
 {p 0 7}{space 1}{text:( 2)}{space 1} 21.region = 0{p_end}
@@ -281,7 +279,7 @@ Linear regression                               Number of obs     = {res} 6,729,
 {txt}       F(  8,6729215) ={res} 2622.12
 {txt}{col 13}Prob > F ={res}    0.0000
 {txt}
-{com}.   testparm i.occupation
+{com}.    testparm i.occupation
 
 {p 0 7}{space 1}{text:( 1)}{space 1} {res}2.occupation = 0{p_end}
 {p 0 7}{space 1}{text:( 2)}{space 1} 3.occupation = 0{p_end}
@@ -295,7 +293,7 @@ Linear regression                               Number of obs     = {res} 6,729,
 {txt}       F(  8,6729215) ={res}49627.45
 {txt}{col 13}Prob > F ={res}    0.0000
 {txt}
-{com}.   testparm i.industry
+{com}.    testparm i.industry
 
 {p 0 7}{space 1}{text:( 1)}{space 1} {res}2.industry = 0{p_end}
 {p 0 7}{space 1}{text:( 2)}{space 1} 3.industry = 0{p_end}
@@ -311,7 +309,7 @@ Linear regression                               Number of obs     = {res} 6,729,
 {txt}       F( 10,6729215) ={res}28990.38
 {txt}{col 13}Prob > F ={res}    0.0000
 {txt}
-{com}.   testparm i.year
+{com}.    testparm i.year
 
 {p 0 7}{space 1}{text:( 1)}{space 1} {res}1983.year = 0{p_end}
 {p 0 7}{space 1}{text:( 2)}{space 1} 1984.year = 0{p_end}
@@ -359,8 +357,7 @@ Linear regression                               Number of obs     = {res} 6,729,
 {txt}       F( 42,6729215) ={res}  384.66
 {txt}{col 13}Prob > F ={res}    0.0000
 {txt}
-{com}. 
-. *** end part c
+{com}. *** end part c
 . 
 . * part d: estimate year-specific grade coefficients
 .   regress lrwage year#c.grade experience exp2 female i.race i.region i.occupation i.industry i.year [pw=earnwt]
@@ -674,18 +671,17 @@ Sorted by:
 {com}.   save `temp1', replace
 {txt}{p 0 4 2}
 (file {bf}
-/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_84966.000001{rm}
+/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_18462.000001{rm}
 not found)
 {p_end}
 {p 0 4 2}
 file {bf}
-/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_84966.000001{rm}
+/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_18462.000001{rm}
 saved
 as .dta format
 {p_end}
 
-{com}.   
-. *** end part d
+{com}.   *** end part d
 . 
 . * part e: merging the grade coefficients with the 90-10 differential (in logs)
 .   use "../Data/CPS-ORG, Wage Percentiles, 1982-2024.dta", clear
@@ -718,12 +714,12 @@ Sorted by: {res}year
 {com}.   save `temp2', replace
 {txt}{p 0 4 2}
 (file {bf}
-/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_84966.000002{rm}
+/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_18462.000002{rm}
 not found)
 {p_end}
 {p 0 4 2}
 file {bf}
-/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_84966.000002{rm}
+/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_18462.000002{rm}
 saved
 as .dta format
 {p_end}
@@ -757,7 +753,7 @@ saved
 
 {txt}Contains data from {res}../Data/Grade_coef and ldiff, 1982-2024.dta
 {txt} Observations:{res}            43                  
-{txt}    Variables:{res}             3                  13 Jan 2025 16:25
+{txt}    Variables:{res}             3                  14 Jan 2025 09:55
 {txt}{hline}
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
@@ -834,16 +830,16 @@ Sorted by: {res}year
  43. {c |} {res}2024   9.018705   185.9 {txt}{c |}
      {c BLC}{hline 6}{c -}{hline 10}{c -}{hline 7}{c BRC}
 
-{com}. 
-. *** end part e
+{com}. *** end part e
 . 
-. * part f: plotting the relationship between the grade coefficients and the 90-10 differential
+. * part f: plots
+. * line graph of log-wage differential and grade coefficients
 .   line ldiff year, yaxis(1) || line grade_coef year, yaxis(2) ///
->   xtitle(Year) xlabel(1980(10)2025) xtick(1980(5)2015) ///
->   ytitle("90-10 log-Wage Differential (%)", axis(1)) ylabel(100(20)180, noticks axis(1)) ///
->   ytitle("Rate of Return to Schooling (%)", axis(2)) ylabel(2(2)10, noticks axis(2)) ///
->   text(112 1987 "90-10 Differential") text(190 1995 "Return to Schooling") ///
->   scheme(Wide727Scheme) name(g1, replace)
+>    xtitle(Year) xlabel(1980(10)2025) xtick(1980(5)2015) ///
+>    ytitle("90-10 log-Wage Differential (%)", axis(1)) ylabel(120(20)180, format(%10.0g) noticks axis(1)) ///
+>    ytitle("Rate of Return to Schooling (%)", axis(2)) ylabel(4(2)10, noticks axis(2)) ///
+>    text(185 1985 "90-10 Differential") text(137 1985 "Return to Schooling") ///
+>    scheme(Wide727Scheme) name(g1, replace)
 {res}{txt}
 {com}.   graph export results/inequality_schooling_line.png, name (g1) width(600) replace
 {txt}{p 0 4 2}
@@ -855,11 +851,11 @@ format
 {p_end}
 
 {com}. 
-. * scatter
+. * scatter plot of log-wage-differential and grade coefficients
 .   scatter ldiff grade_coef || lfit ldiff grade_coef ||, ///
->   xtitle(Rate of Return to Schooling (%)) xlabel(4(1)10) ///
->   ytitle("90-10 log-Wage Differential (%)") ylabel(100(20)180, noticks) ///
->   scheme(Squarish727Scheme) name(g2, replace)
+>    xtitle(Rate of Return to Schooling (%)) xlabel(4(1)10) ///
+>    ytitle("90-10 log-Wage Differential (%)") ylabel(160(10)200, format(%10.0g) noticks) ///
+>    scheme(Squarish727Scheme) name(g2, replace)
 {res}{txt}
 {com}.   graph export results/inequality_schooling_scatter.png, name (g2)  width(450) replace
 {txt}{p 0 4 2}
@@ -870,14 +866,13 @@ PNG
 format
 {p_end}
 
-{com}. 
-. *** end part f
+{com}. *** end part f
 . 
 . log close results
       {txt}name:  {res}results
        {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_4_Readman.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}13 Jan 2025, 16:25:49
+ {txt}closed on:  {res}14 Jan 2025, 09:55:47
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
