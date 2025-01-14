@@ -4,7 +4,7 @@
 
 cd "~/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis"
 log using Exercise_4_Readman.smcl, name(results) replace
-set scheme s2color
+*set scheme s2color
 global ex=4
 global lname="Readman"
 
@@ -57,17 +57,15 @@ global lname="Readman"
 
 * part e: merging the grade coefficients with the 90-10 differential (in logs)
   use "../Data/CPS-ORG, Wage Percentiles, 1982-2024.dta", clear
-  keep year ldiff
-  describe
-  summarize
-  tempfile temp2
-  save `temp2', replace
-
-* merge
+   keep year ldiff
+   describe
+   summarize
+   tempfile temp2
+   save `temp2', replace
   use `temp1', clear
-  merge 1:1 year using `temp2'
-  assert _merge==3
-  drop _merge
+   merge 1:1 year using `temp2'
+   assert _merge==3
+   drop _merge
 
 * saving
   save "../Data/Grade_coef and ldiff, 1982-2024.dta", replace
