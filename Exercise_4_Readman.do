@@ -7,15 +7,19 @@ log using Exercise_4_Readman.smcl, name(results) replace
 *set scheme s2color
 global ex=4
 global lname="Readman"
+global eyear=2024
+global syear=1982
+global numyear=$eyear-$syear+1
 
 * part a: using the merged CPS-ORG/CPI data from exercise 3
   use "../Data/CPS-ORG with CPI, 1982-2024.dta", replace
   run data_check
   keep if earnweek!=.
   generate experience=age-grade-6
+  drop if experience <=0 // experience less then 0 makes no sense
   label variable experience "experience as function of age and education"
   generate exp2=experience^2
-  label variable exp2 "quadratic of experience"
+  label variable exp2 "experience squared"
   generate lrwage=log(rwage)
   label variable lrwage "log of real weekly wage"
   describe
@@ -24,13 +28,13 @@ global lname="Readman"
 
 * part b: estimating a simple log-wage regression
   regress lrwage grade experience exp2 [pw=earnwt]
-   test experience exp2 // joinly significant at any conventional level
+   test experience exp2
    display "The sign of the coefficient on exp2 is negative, reflecting diminishing marginal returns to experience."
    display "The log-wage profile peaks at" , %4.1f -e(b)[1,2]/(2*e(b)[1,3]) , "years of experience." // Compute and display peak experience
 *** end part b
 
 * part c: adding factor variables
-  regress lrwage grade experience exp2 i.female i.race i.region i.occupation i.industry i.year [pw=earnwt]
+  regress lrwage grade experience exp2 female i.race i.region i.occupation i.industry i.year [pw=earnwt]
    testparm i.race
    testparm i.region
    testparm i.occupation
@@ -40,7 +44,7 @@ global lname="Readman"
 
 * part d: estimate year-specific grade coefficients
   regress lrwage year#c.grade experience exp2 female i.race i.region i.occupation i.industry i.year [pw=earnwt]
-  matrix b = e(b)[1, 1..43]'
+  matrix b = e(b)[1, 1..$numyear]' // store year#c.grade coefficients as column vector 'b'
   clear
   svmat2 b, names(grade_coef) rnames(tag)
   list, noobs
