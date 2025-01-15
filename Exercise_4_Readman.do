@@ -56,7 +56,7 @@ global numyear=$eyear-$syear+1
   summarize
   tempfile temp1
   save `temp1', replace
-  *** end part d
+*** end part d
 
 * part e: merging the grade coefficients with the 90-10 differential (in logs)
   use "../Data/CPS-ORG, Wage Percentiles, 1982-2024.dta", clear
