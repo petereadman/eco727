@@ -19,7 +19,7 @@ Peter Readman
 
 ### Preliminaries
 
-First, let's navigate to the analysis folder and set up some global macros. For this exercise, it's going to be useful to have macros for start year and number of years covered by our sample.
+First, let's navigate to the analysis folder and set up some global macros. For this exercise, it's going to be useful to have macros for the start year, end year, and number of years covered by our sample.
 
     cd "~/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis"
     set scheme s2color
@@ -33,9 +33,9 @@ First, let's navigate to the analysis folder and set up some global macros. For 
 
 ### Part A: Using the Merged CPS-ORG/CPI Data from Exercise 3
 
-Our final output from this exercise is to plot and analyze the trend of return to schooling with the weekly log-wage differential. We're going to the effects of each year of schooling on wages to merge with our log-differentials for each year in our sample.
+Our final output from this exercise is to plot and analyze the trend of return to schooling with the weekly log-wage differential. We're going to study the effects of each year of schooling on wages to merge with our log-differentials for each year in our sample.
 
-Let's start by using the CPS-ORG data including the CPI and real weekly wage observations prepared in exercise 3 and making a few edits.  We can get rid of missing `earnweek` observations, create a new variable for `experience` as a function of `age` and `grade`, generate experience-squared (`exp2`) to cover diminishing marginal return to experience and finally add the log of real wage `lwrage`.
+Let's start by using the CPS-ORG data including the CPI and real weekly wage observations prepared in exercise 3 and making a few edits. First, we'll drop any observations with missing `earnweek`. Then, we'll create a new variable for `experience` as a function of `age` and `grade`, dropping any observations where this calculation yields non-positive values (experience <= 0). Finally, we'll generate experience-squared (`exp2`) to capture diminishing marginal returns to experience and add the log of real wage `lrwage`.
 
     use "../Data/CPS-ORG with CPI, 1982-2024.dta", replace
     keep if earnweek!=.
@@ -47,12 +47,14 @@ Let's start by using the CPS-ORG data including the CPI and real weekly wage obs
     generate lrwage=log(rwage)
     label variable lrwage "log of real weekly wage"
 
-Let's peak at our new data and make sure we have what we need and all makes sense.
+Let's check our new dataset's structure and descriptive statistics for our key continuous variables:
 
     describe
     summarize
 
-The new variables are created. After dropping 163,630 missing `earnweek` values, we now have 6,574,458 observations across 27 variables, three more than the 24 we started with, as expected.
+After dropping observations with missing `earnweek` and non-positive experience values, we now have 6,574,458 observations across 27 variables, three more than the 24 we started with (the new variables being `experience`, `exp2`, and `lrwage`).
+
+The summary statistics show our calculated `experience` variable ranges from 1 to 58 years, with a mean of about 20 years. The standard deviation of 12.1 years indicates substantial variation in work experience across the sample. The quadratic term `exp2` ranges from 1 to 3,364 (58²), which captures the diminishing returns to experience in our wage regressions.
 
 ---
 
@@ -64,7 +66,9 @@ Let's estimate log-wage by grade and experience using appropriate CPS earnings w
      test experience exp2
      display "The log-wage profile peaks at" , %4.1f -e(b)[1,2]/(2*e(b)[1,3]) , "years of experience." // Compute and display peak experience
 
-Testing the significance of `experience`, we note the very large F-stat, confirming the return to `experience` is significant. The sign of the coefficient on `exp2` is negative, reflecting diminishing marginal returns to experience. The turning point of the log-wage profile is at 29.2 years of experience.
+The regression results show that each year of education (`grade`) is associated with approximately 11.5% increase in wages, holding `experience` constant. The coefficient on `experience` is positive (0.052) while the coefficient on `exp2` is negative (-0.0009), indicating that wages increase with experience but at a diminishing rate. This creates a concave wage profile over a worker's career.
+
+Testing the joint significance of the experience terms yields an F-statistic over 99,999, confirming that experience has a highly significant effect on wages. The wage profile peaks when the first derivative with respect to experience equals zero, which occurs at 29.2 years of experience. After this point, additional years of experience are associated with lower wages, though relatively few workers in our sample have more than 30 years of experience.
 
 ---
 
@@ -74,33 +78,23 @@ Now, let's add factor variables using Stata syntax to generate all the dummies f
 
     regress lrwage grade experience exp2 female i.race i.region i.occupation i.industry i.year [pw=earnwt]
 
-Testing the joint significiance of each categorical variable in turn shows us:
+Adding these controls slightly reduces the return to education to about 8.3% per year. The female wage gap remains substantial at approximately -31%, holding education, experience and other factors constant.
+
+Testing the joint significance of each categorical variable:
 
     testparm i.race
-
-`race` effects are all jointly statistically significant. 
-
     testparm i.region
-
-`region` effects are all jointly statistically significant. 
-
     testparm i.occupation
-
-`occupation` effects are all jointly statistically significant.
-
     testparm i.industry
-
-`industry` effects are all jointly statistically significant.
-
     testparm i.year
 
-`year` effects are all jointly statistically significant.
+All groups of factor variables are highly significant. Among racial groups, Black workers earn about 7.5% less than White workers. Regional variation is substantial, with workers in the East South Central division earning about 11% less than those in New England. Occupation effects show the largest wage differentials, with private household service workers earning roughly 82% less than professionals. Among industries, retail trade workers earn about 29% less than those in agriculture, while public administration workers earn about 13% more.
 
 ---
 
 ### Part D: Estimating Year-Specific Grade Coefficients
 
-We need estimate the grade effects for each year, so we'll add an interaction between year and grade, controlling for `experience` and our other factor variables.
+We need to estimate the grade effects for each year, so we'll add an interaction between year and grade, controlling for `experience` and our other factor variables.
 
     regress lrwage year#c.grade experience exp2 female i.race i.region i.occupation i.industry i.year [pw=earnwt]
 
@@ -129,7 +123,7 @@ We now have a new data set of grade effects for each year in our sample:
     describe
     summarize
 
-This looks good. We have 43 observations, one for each year 1982-2024. The our percentage rate of return to schooling ranges from 5.6 to 9.3, which we'll note for preparing the plot in part F.
+The data reveal a substantial increase in the return to education over 1982-2024. The rate of return to an additional year of schooling rose from about 5.6% in 1982 to peak at 9.3% in 2013, before moderating slightly to 9.0% by 2024. This nearly 4 percentage point increase in the return to education represents a dramatic rise in the value of schooling in the labor market.
 
 Let's save this as a temp file to merge with the log-wage differentials in part E.
 
@@ -140,7 +134,7 @@ Let's save this as a temp file to merge with the log-wage differentials in part 
 
 ### Part E: Merging the Grade Coefficients with the 90-10 Differential (in logs)
 
-Recall our goal here is to plot the rate of return to schooling overlayed on our log-wage differential to see how or if they match.  Let's use our log-differential data from Exercise 3 and keep just the `year` and `ldiff` variables.
+Recall our goal here is to plot the rate of return to schooling overlayed on our log-wage differential to see how or if they match. Let's use our log-differential data from Exercise 3 and keep just the `year` and `ldiff` variables.
 
     use "../Data/CPS-ORG, Wage Percentiles, 1982-2024.dta", clear
     keep year ldiff
@@ -148,12 +142,12 @@ Recall our goal here is to plot the rate of return to schooling overlayed on our
     describe
     summarize
 
-This is exactly what we need and ready to merge in the year-specific grade effects from part D, Let's save it as another temp.
+This is exactly what we need and ready to merge in the year-specific grade effects from part D. Let's save it as another temp.
 
     tempfile temp2
     save `temp2', replace
 
-Now, since the tables we're merging are a one-to-one match on `year`, we'll merge as follows, testing for a full match along the way using `assert`.
+Now, since the tables we're merging are a one-to-one match on `year`, we'll merge as follows, testing for a full match along the way using `assert`. While we're here, let's format `grade_coef` to one decimal place to make it a little easier on the eye.
 
     use `temp1', clear
     merge 1:1 year using `temp2'
@@ -166,36 +160,32 @@ Let's check the final table is what we need for our final plots in part F:
     describe
     summarize 
 
-Good. We now have rates of return to schooling and log-wage differentials from 1982-2024, 43 years in total.
+Our merged dataset combines two key measures of labor market inequality: the return to education ranging from 5.6% to 9.3%, and the 90-10 log-wage differential which varies between 173% and 197%. Having these measures in a single dataset will allow us to examine their co-movement over time and explore how changes in the value of education relate to overall wage inequality.
 
 ---
 
 ### Part F: Plotting the Relationship Between the Grade Coefficients and the 90-10 Differential
 
-We're now ready to produce our line and scatter plots. The line plot has a second vertical axis.
+Let's visualize how returns to education and wage inequality have evolved together over time.
 
     line ldiff year, yaxis(1) || line grade_coef year, yaxis(2) ///
      xtitle(Year) xlabel(1980(10)2025) xtick(1980(5)2015) ///
      ytitle("90-10 log-Wage Differential (%)", axis(1)) ylabel(150(10)200, format(%10.0g) noticks axis(1)) ///
      ytitle("Rate of Return to Schooling (%)", axis(2)) ylabel(5(1)10, noticks axis(2)) ///
-     text(182 1985 "90-10 Differential") text(155 1985 "Return to Schooling") ///
+     text(183 1985 "90-10 Differential") text(155 1985 "Return to Schooling") ///
      scheme(Wide727Scheme) name(g1, replace)
-    graph export results/inequality_schooling_line.png, name (g1) width(600) replace
 
 ![Earnings inequality and the Return to Schooling](Results/inequality_schooling_line.png)
 
-The graph shows that wage inequality and the return to education followed similar trends, both rising steadily from 1980 to around 2010. After 2010, the two lines diverge slightly, with wage inequality stabilizing while the return to education declines modestly, highlighting their close but not perfect relationship over time.
-
-Let's also present the relationship in a scatterplot with a regression line.
+The striking feature of this graph is how closely the return to schooling tracks overall wage inequality, particularly from the mid-1990s onward. While the relationship is less clear in the 1980s, the parallel movement of these two measures over the past 25+ years tells us something important: education has become a crucial driver of earnings differences in the modern labor market. When the payoff to education rises, we see wider gaps between high and low earners, highlighting just how much schooling makes a difference to income.
 
     scatter ldiff grade_coef || lfit ldiff grade_coef ||, ///
      xtitle(Rate of Return to Schooling (%)) xlabel(4(1)10) ///
      ytitle("90-10 log-Wage Differential (%)") ylabel(160(10)200, format(%10.0g) noticks) ///
      scheme(Squarish727Scheme) name(g2, replace)
-    graph export results/inequality_schooling_scatter.png, name (g2)  width(450) replace
 
 ![Earnings inequality and the Return to Schooling](Results/inequality_schooling_scatter.png)
 
-The scatter plot shows the strong positive relationship between wage inequality (90-10 log-wage differential) and the return to education, indicating that higher returns to schooling are associated with greater wage inequality.
+The scatter plot reinforces this story, showing a clear positive relationship between returns to education and wage inequality. 
 
 ---

@@ -96,7 +96,7 @@ global emonth=11
                   (p10) p10=rwage /// 10th percentile
                   (p50) p50=rwage /// 10th percentile
                   (p90) p90=rwage /// 90th percentile
-                  [pw=earnwt], by(year)
+    , by(year)
   generate ldiff=100*(ln(p90) - ln(p10))
   format ldiff %4.1f
   save "../Data/CPS-ORG, Wage Percentiles, 1982-2024", replace
@@ -109,14 +109,14 @@ global emonth=11
   xtitle("Year") xlabel(1980(5)2025, format(%ty)) ///
   ytitle("Real Weekly Wage, 1982=100") ylabel(0(500)3000, noticks) ///
   text(416.25 2025 "P10") text(1042.354 2025 "P50") text(1650 2025 "mean") text(2672.061 2025 "P90") ///
-  scheme(Wide727Scheme)
+  scheme(Wide727Scheme) name(fig2, replace)
   graph export "Results/fig1.png", width(600) replace
 
 * Plot difference between 10th and 90th percentiles
   line ldiff year, sort ///
   title("Income inequality since 1982") ///
   ytitle("Log Difference") ///
-  scheme(Wide727Scheme)
+  scheme(Wide727Scheme) name(fig2, replace)
   graph export "Results/fig2.png", width(600) replace
 
 *** end part d

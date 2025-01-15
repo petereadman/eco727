@@ -3,7 +3,7 @@
       name:  {res}results
        {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_3_Readman.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}12 Jan 2025, 08:07:33
+ {txt}opened on:  {res}15 Jan 2025, 13:12:37
 {txt}
 {com}. set scheme s2color
 {txt}
@@ -431,7 +431,7 @@ saved
 
 {txt}Contains data from {res}../Data/CPI 1913-2024.dta
 {txt} Observations:{res}         1,344                  
-{txt}    Variables:{res}             3                  12 Jan 2025 08:07
+{txt}    Variables:{res}             3                  15 Jan 2025 13:12
 {txt}{hline}
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
@@ -445,7 +445,7 @@ Sorted by: {res}year  month
 {com}. 
 . *** end part b
 . 
-. * part c: mergint the CPI into the CPS-ORGS
+. * part c: merging the CPI into the CPS-ORGS
 . 
 . * merging the CPI into the CPS data from previous session
 .   use "../Data/CPS ORGs, 1982-2024, Cleaned.dta", clear
@@ -565,7 +565,7 @@ saved
 
 {txt}Contains data from {res}../Data/CPS-ORG with CPI, 1982-2024.dta
 {txt} Observations:{res}     6,738,088                  
-{txt}    Variables:{res}            24                  12 Jan 2025 08:07
+{txt}    Variables:{res}            24                  15 Jan 2025 13:12
 {txt}{hline}
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
@@ -641,7 +641,7 @@ Sorted by:
 >                   (p10) p10=rwage /// 10th percentile
 >                   (p50) p50=rwage /// 10th percentile
 >                   (p90) p90=rwage /// 90th percentile
->                   [pw=earnwt], by(year)
+>     , by(year)
 {res}{txt}
 {com}.   generate ldiff=100*(ln(p90) - ln(p10))
 {txt}
@@ -658,7 +658,7 @@ saved
 
 {txt}Contains data from {res}../Data/CPS-ORG, Wage Percentiles, 1982-2024.dta
 {txt} Observations:{res}            43                  
-{txt}    Variables:{res}             6                  12 Jan 2025 08:07
+{txt}    Variables:{res}             6                  15 Jan 2025 13:12
 {txt}{hline}
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
@@ -677,33 +677,32 @@ Sorted by: {res}year
 {txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
 {hline 13}{c +}{hline 57}
 {space 8}year {c |}{res}         43        2003    12.55654       1982       2024
-{txt}{space 8}mean {c |}{res}         43    1193.283    114.1745   1029.591   1477.799
-{txt}{space 9}p10 {c |}{res}         43    352.1819    30.09094   315.8152   423.4635
-{txt}{space 9}p50 {c |}{res}         43    935.8289    53.61567   863.1819   1071.522
-{txt}{space 9}p90 {c |}{res}         43    2241.837      255.01   1828.463   2749.459
+{txt}{space 8}mean {c |}{res}         43    1196.493    116.7043   1027.055   1479.473
+{txt}{space 9}p10 {c |}{res}         43    353.5834    32.16091   309.6104   427.7871
+{txt}{space 9}p50 {c |}{res}         43    944.0539    59.72701   857.4938    1091.13
+{txt}{space 9}p90 {c |}{res}         43    2236.993    252.0302   1828.463   2731.089
 {txt}{hline 13}{c +}{hline 57}
-{space 7}ldiff {c |}{res}         43    184.7998    7.395999   173.1777   199.8685
+{space 7}ldiff {c |}{res}         43     184.242    6.375485   173.3826    197.421
 {txt}
 {com}.   list in 1/5, noobs
 {txt}
   {c TLC}{hline 6}{c -}{hline 10}{c -}{hline 10}{c -}{hline 10}{c -}{hline 10}{c -}{hline 7}{c TRC}
   {c |} {res}year       mean        p10        p50        p90   ldiff {txt}{c |}
   {c LT}{hline 6}{c -}{hline 10}{c -}{hline 10}{c -}{hline 10}{c -}{hline 10}{c -}{hline 7}{c RT}
-  {c |} {res}1982   1029.591   323.5826   867.1055   1828.463   173.2 {txt}{c |}
-  {c |} {res}1983   1041.954   315.8152    874.634   1874.216   178.1 {txt}{c |}
-  {c |} {res}1984   1055.879   318.2206   897.8702   1857.662   176.4 {txt}{c |}
-  {c |} {res}1985   1069.052     322.53   882.0867   1916.957   178.2 {txt}{c |}
-  {c |} {res}1986   1096.014   333.1653   898.9231   2000.409   179.2 {txt}{c |}
+  {c |} {res}1982   1027.055   322.9202   857.4938   1828.463   173.4 {txt}{c |}
+  {c |} {res}1983   1042.113   315.8088   872.9055   1874.216   178.1 {txt}{c |}
+  {c |} {res}1984   1052.358   309.6104   887.4197   1857.662   179.2 {txt}{c |}
+  {c |} {res}1985    1069.36   317.5135   879.6273   1921.902   180.1 {txt}{c |}
+  {c |} {res}1986     1094.9   325.3703   893.1765   2000.409   181.6 {txt}{c |}
   {c BLC}{hline 6}{c -}{hline 10}{c -}{hline 10}{c -}{hline 10}{c -}{hline 10}{c -}{hline 7}{c BRC}
 
 {com}. 
 . * plotting trend in real weekly wages
 .   line p10 year || line p50 year || line p90 year || line mean year, ///
->   title("Real weekly wages since 1982") ///
 >   xtitle("Year") xlabel(1980(5)2025, format(%ty)) ///
 >   ytitle("Real Weekly Wage, 1982=100") ylabel(0(500)3000, noticks) ///
 >   text(416.25 2025 "P10") text(1042.354 2025 "P50") text(1650 2025 "mean") text(2672.061 2025 "P90") ///
->   scheme(Wide727Scheme)
+>   scheme(Wide727Scheme) name(fig2, replace)
 {res}{txt}
 {com}.   graph export "Results/fig1.png", width(600) replace
 {txt}{p 0 4 2}
@@ -718,9 +717,8 @@ format
 . * Plot difference between 10th and 90th percentiles
 .   line ldiff year, sort ///
 >   title("Income inequality since 1982") ///
->   xtitle("Year") xlabel(1980(5)2025, format(%ty)) ///
 >   ytitle("Log Difference") ///
->   scheme(Wide727Scheme)
+>   scheme(Wide727Scheme) name(fig2, replace)
 {res}{txt}
 {com}.   graph export "Results/fig2.png", width(600) replace
 {txt}{p 0 4 2}
@@ -738,7 +736,7 @@ format
       {txt}name:  {res}results
        {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_3_Readman.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}12 Jan 2025, 08:07:42
+ {txt}closed on:  {res}15 Jan 2025, 13:12:46
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

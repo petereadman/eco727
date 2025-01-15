@@ -3,7 +3,7 @@
       name:  {res}<unnamed>
        {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_4_Readman_.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}15 Jan 2025, 08:41:14
+ {txt}opened on:  {res}15 Jan 2025, 14:31:10
 {txt}
 {com}. //_1
 . cd "~/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis"
@@ -47,7 +47,7 @@
 
 {txt}Contains data from {res}../Data/CPS-ORG with CPI, 1982-2024.dta
 {txt} Observations:{res}     6,574,458                  
-{txt}    Variables:{res}            27                  12 Jan 2025 08:07
+{txt}    Variables:{res}            27                  15 Jan 2025 13:12
 {txt}{hline}
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
@@ -268,8 +268,7 @@ Linear regression                               Number of obs     = {res} 6,574,
 {txt}       F(  4,6574381) ={res} 1695.16
 {txt}{col 13}Prob > F ={res}    0.0000
 {txt}
-{com}. //_7
-. testparm i.region
+{com}. testparm i.region
 
 {p 0 7}{space 1}{text:( 1)}{space 1} {res}12.region = 0{p_end}
 {p 0 7}{space 1}{text:( 2)}{space 1} 21.region = 0{p_end}
@@ -283,8 +282,7 @@ Linear regression                               Number of obs     = {res} 6,574,
 {txt}       F(  8,6574381) ={res} 2641.93
 {txt}{col 13}Prob > F ={res}    0.0000
 {txt}
-{com}. //_8
-. testparm i.occupation
+{com}. testparm i.occupation
 
 {p 0 7}{space 1}{text:( 1)}{space 1} {res}2.occupation = 0{p_end}
 {p 0 7}{space 1}{text:( 2)}{space 1} 3.occupation = 0{p_end}
@@ -298,8 +296,7 @@ Linear regression                               Number of obs     = {res} 6,574,
 {txt}       F(  8,6574381) ={res}48891.05
 {txt}{col 13}Prob > F ={res}    0.0000
 {txt}
-{com}. //_9
-. testparm i.industry
+{com}. testparm i.industry
 
 {p 0 7}{space 1}{text:( 1)}{space 1} {res}2.industry = 0{p_end}
 {p 0 7}{space 1}{text:( 2)}{space 1} 3.industry = 0{p_end}
@@ -315,8 +312,7 @@ Linear regression                               Number of obs     = {res} 6,574,
 {txt}       F( 10,6574381) ={res}27487.35
 {txt}{col 13}Prob > F ={res}    0.0000
 {txt}
-{com}. //_10
-. testparm i.year
+{com}. testparm i.year
 
 {p 0 7}{space 1}{text:( 1)}{space 1} {res}1983.year = 0{p_end}
 {p 0 7}{space 1}{text:( 2)}{space 1} 1984.year = 0{p_end}
@@ -364,7 +360,7 @@ Linear regression                               Number of obs     = {res} 6,574,
 {txt}       F( 42,6574381) ={res}  370.15
 {txt}{col 13}Prob > F ={res}    0.0000
 {txt}
-{com}. //_11
+{com}. //_7
 . regress lrwage year#c.grade experience exp2 female i.race i.region i.occupation i.industry i.year [pw=earnwt]
 {txt}(sum of wgt is 56,884,868,581.61)
 
@@ -512,12 +508,12 @@ Linear regression                               Number of obs     = {res} 6,574,
 {space 37}_cons {c |}{col 44}{res}{space 2} 6.062134{col 56}{space 2} .0082806{col 67}{space 1}  732.09{col 76}{space 3}0.000{col 84}{space 4} 6.045904{col 97}{space 3} 6.078364
 {txt}{hline 43}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {res}{txt}
-{com}. //_12
+{com}. //_8
 . matrix b = e(b)[1, 1..$numyear]' // store year#c.grade coefficients as column vector 'b'
 {txt}
 {com}. clear
 {txt}
-{com}. //_13
+{com}. //_9
 . svmat2 b, names(grade_coef) rnames(tag)
 {txt}number of observations will be reset to 43
 Press any key to continue, or Break to abort
@@ -584,7 +580,7 @@ now 43.
   {c |} {res}.0898014    2024.year#c.grade {txt}{c |}
   {c BLC}{hline 10}{c -}{hline 20}{c BRC}
 
-{com}. //_14
+{com}. //_10
 . generate year=real(substr(tag, 1, 4))
 {txt}
 {com}. drop tag
@@ -594,7 +590,7 @@ now 43.
 {com}. replace grade_coef = grade_coef * 100 // convert to percentages
 {txt}(43 real changes made)
 
-{com}. //_15
+{com}. //_11
 . list, noobs
 {txt}
   {c TLC}{hline 6}{c -}{hline 10}{c TRC}
@@ -675,7 +671,7 @@ Sorted by:
 {space 8}year {c |}{res}         43        2003    12.55654       1982       2024
 {txt}{space 2}grade_coef {c |}{res}         43    8.195671    .8626456   5.617335   9.300947
 {txt}
-{com}. //_16
+{com}. //_12
 . tempfile temp1
 {txt}
 {com}. save `temp1', replace
@@ -691,7 +687,7 @@ saved
 as .dta format
 {p_end}
 
-{com}. //_17
+{com}. //_13
 . use "../Data/CPS-ORG, Wage Percentiles, 1982-2024.dta", clear
 {txt}
 {com}. keep year ldiff
@@ -701,64 +697,64 @@ as .dta format
   {c TLC}{hline 6}{c -}{hline 7}{c TRC}
   {c |} {res}year   ldiff {txt}{c |}
   {c LT}{hline 6}{c -}{hline 7}{c RT}
-  {c |} {res}1982   173.2 {txt}{c |}
+  {c |} {res}1982   173.4 {txt}{c |}
   {c |} {res}1983   178.1 {txt}{c |}
-  {c |} {res}1984   176.4 {txt}{c |}
-  {c |} {res}1985   178.2 {txt}{c |}
-  {c |} {res}1986   179.2 {txt}{c |}
+  {c |} {res}1984   179.2 {txt}{c |}
+  {c |} {res}1985   180.1 {txt}{c |}
+  {c |} {res}1986   181.6 {txt}{c |}
   {c LT}{hline 6}{c -}{hline 7}{c RT}
-  {c |} {res}1987   178.4 {txt}{c |}
-  {c |} {res}1988   179.6 {txt}{c |}
-  {c |} {res}1989   177.5 {txt}{c |}
-  {c |} {res}1990   174.3 {txt}{c |}
-  {c |} {res}1991   174.4 {txt}{c |}
+  {c |} {res}1987   179.2 {txt}{c |}
+  {c |} {res}1988   180.6 {txt}{c |}
+  {c |} {res}1989   179.3 {txt}{c |}
+  {c |} {res}1990   175.4 {txt}{c |}
+  {c |} {res}1991   176.1 {txt}{c |}
   {c LT}{hline 6}{c -}{hline 7}{c RT}
-  {c |} {res}1992   177.4 {txt}{c |}
-  {c |} {res}1993   179.2 {txt}{c |}
-  {c |} {res}1994   184.4 {txt}{c |}
-  {c |} {res}1995   183.6 {txt}{c |}
-  {c |} {res}1996   183.0 {txt}{c |}
+  {c |} {res}1992   177.9 {txt}{c |}
+  {c |} {res}1993   179.3 {txt}{c |}
+  {c |} {res}1994   184.8 {txt}{c |}
+  {c |} {res}1995   183.2 {txt}{c |}
+  {c |} {res}1996   182.9 {txt}{c |}
   {c LT}{hline 6}{c -}{hline 7}{c RT}
-  {c |} {res}1997   180.5 {txt}{c |}
-  {c |} {res}1998   180.5 {txt}{c |}
-  {c |} {res}1999   177.5 {txt}{c |}
-  {c |} {res}2000   178.6 {txt}{c |}
-  {c |} {res}2001   180.7 {txt}{c |}
+  {c |} {res}1997   180.6 {txt}{c |}
+  {c |} {res}1998   180.2 {txt}{c |}
+  {c |} {res}1999   177.7 {txt}{c |}
+  {c |} {res}2000   178.2 {txt}{c |}
+  {c |} {res}2001   180.3 {txt}{c |}
   {c LT}{hline 6}{c -}{hline 7}{c RT}
-  {c |} {res}2002   183.5 {txt}{c |}
-  {c |} {res}2003   185.4 {txt}{c |}
-  {c |} {res}2004   187.1 {txt}{c |}
-  {c |} {res}2005   184.6 {txt}{c |}
-  {c |} {res}2006   183.3 {txt}{c |}
+  {c |} {res}2002   181.8 {txt}{c |}
+  {c |} {res}2003   184.5 {txt}{c |}
+  {c |} {res}2004   185.8 {txt}{c |}
+  {c |} {res}2005   183.9 {txt}{c |}
+  {c |} {res}2006   182.7 {txt}{c |}
   {c LT}{hline 6}{c -}{hline 7}{c RT}
-  {c |} {res}2007   184.4 {txt}{c |}
-  {c |} {res}2008   186.2 {txt}{c |}
-  {c |} {res}2009   194.5 {txt}{c |}
-  {c |} {res}2010   195.6 {txt}{c |}
-  {c |} {res}2011   196.8 {txt}{c |}
+  {c |} {res}2007   183.6 {txt}{c |}
+  {c |} {res}2008   185.8 {txt}{c |}
+  {c |} {res}2009   193.3 {txt}{c |}
+  {c |} {res}2010   193.6 {txt}{c |}
+  {c |} {res}2011   195.0 {txt}{c |}
   {c LT}{hline 6}{c -}{hline 7}{c RT}
-  {c |} {res}2012   199.9 {txt}{c |}
-  {c |} {res}2013   197.4 {txt}{c |}
-  {c |} {res}2014   196.5 {txt}{c |}
-  {c |} {res}2015   199.7 {txt}{c |}
-  {c |} {res}2016   196.5 {txt}{c |}
+  {c |} {res}2012   197.4 {txt}{c |}
+  {c |} {res}2013   195.9 {txt}{c |}
+  {c |} {res}2014   196.1 {txt}{c |}
+  {c |} {res}2015   195.6 {txt}{c |}
+  {c |} {res}2016   194.3 {txt}{c |}
   {c LT}{hline 6}{c -}{hline 7}{c RT}
-  {c |} {res}2017   191.2 {txt}{c |}
-  {c |} {res}2018   190.1 {txt}{c |}
-  {c |} {res}2019   192.7 {txt}{c |}
-  {c |} {res}2020   188.0 {txt}{c |}
-  {c |} {res}2021   185.3 {txt}{c |}
+  {c |} {res}2017   189.8 {txt}{c |}
+  {c |} {res}2018   190.0 {txt}{c |}
+  {c |} {res}2019   190.1 {txt}{c |}
+  {c |} {res}2020   186.2 {txt}{c |}
+  {c |} {res}2021   183.8 {txt}{c |}
   {c LT}{hline 6}{c -}{hline 7}{c RT}
-  {c |} {res}2022   182.7 {txt}{c |}
-  {c |} {res}2023   184.6 {txt}{c |}
-  {c |} {res}2024   185.9 {txt}{c |}
+  {c |} {res}2022   181.2 {txt}{c |}
+  {c |} {res}2023   182.0 {txt}{c |}
+  {c |} {res}2024   182.3 {txt}{c |}
   {c BLC}{hline 6}{c -}{hline 7}{c BRC}
 
 {com}. describe
 
 {txt}Contains data from {res}../Data/CPS-ORG, Wage Percentiles, 1982-2024.dta
 {txt} Observations:{res}            43                  
-{txt}    Variables:{res}             2                  14 Jan 2025 19:14
+{txt}    Variables:{res}             2                  15 Jan 2025 13:12
 {txt}{hline}
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
@@ -767,15 +763,16 @@ Variable      Storage   Display    Value
 {p 0 48}{bind:ldiff          }{txt}{bind: float   }{bind:%4.1f     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
 {txt}{hline}
 Sorted by: {res}year
+{txt}     Note: {res}Dataset has changed since last saved.
 {txt}
 {com}. summarize
 
 {txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
 {hline 13}{c +}{hline 57}
 {space 8}year {c |}{res}         43        2003    12.55654       1982       2024
-{txt}{space 7}ldiff {c |}{res}         43    184.7998    7.395999   173.1777   199.8685
+{txt}{space 7}ldiff {c |}{res}         43     184.242    6.375485   173.3826    197.421
 {txt}
-{com}. //_18
+{com}. //_14
 . tempfile temp2
 {txt}
 {com}. save `temp2', replace
@@ -791,7 +788,7 @@ saved
 as .dta format
 {p_end}
 
-{com}. //_19
+{com}. //_15
 . use `temp1', clear
 {txt}
 {com}. merge 1:1 year using `temp2'
@@ -806,70 +803,70 @@ as .dta format
 {txt}
 {com}. drop _merge
 {txt}
-{com}. //_20
+{com}. //_16
 . list
 {txt}
      {c TLC}{hline 6}{c -}{hline 10}{c -}{hline 7}{c TRC}
      {c |} {res}year   grade_~f   ldiff {txt}{c |}
      {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
-  1. {c |} {res}1982   5.617335   173.2 {txt}{c |}
+  1. {c |} {res}1982   5.617335   173.4 {txt}{c |}
   2. {c |} {res}1983    6.02647   178.1 {txt}{c |}
-  3. {c |} {res}1984   6.342713   176.4 {txt}{c |}
-  4. {c |} {res}1985   6.633296   178.2 {txt}{c |}
-  5. {c |} {res}1986   7.067152   179.2 {txt}{c |}
+  3. {c |} {res}1984   6.342713   179.2 {txt}{c |}
+  4. {c |} {res}1985   6.633296   180.1 {txt}{c |}
+  5. {c |} {res}1986   7.067152   181.6 {txt}{c |}
      {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
-  6. {c |} {res}1987    7.32246   178.4 {txt}{c |}
-  7. {c |} {res}1988   7.267192   179.6 {txt}{c |}
-  8. {c |} {res}1989   7.324494   177.5 {txt}{c |}
-  9. {c |} {res}1990   7.454219   174.3 {txt}{c |}
- 10. {c |} {res}1991   7.479922   174.4 {txt}{c |}
+  6. {c |} {res}1987    7.32246   179.2 {txt}{c |}
+  7. {c |} {res}1988   7.267192   180.6 {txt}{c |}
+  8. {c |} {res}1989   7.324494   179.3 {txt}{c |}
+  9. {c |} {res}1990   7.454219   175.4 {txt}{c |}
+ 10. {c |} {res}1991   7.479922   176.1 {txt}{c |}
      {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
- 11. {c |} {res}1992    7.95859   177.4 {txt}{c |}
- 12. {c |} {res}1993   8.144956   179.2 {txt}{c |}
- 13. {c |} {res}1994   8.552587   184.4 {txt}{c |}
- 14. {c |} {res}1995   8.464716   183.6 {txt}{c |}
- 15. {c |} {res}1996   8.341679   183.0 {txt}{c |}
+ 11. {c |} {res}1992    7.95859   177.9 {txt}{c |}
+ 12. {c |} {res}1993   8.144956   179.3 {txt}{c |}
+ 13. {c |} {res}1994   8.552587   184.8 {txt}{c |}
+ 14. {c |} {res}1995   8.464716   183.2 {txt}{c |}
+ 15. {c |} {res}1996   8.341679   182.9 {txt}{c |}
      {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
- 16. {c |} {res}1997   8.294611   180.5 {txt}{c |}
- 17. {c |} {res}1998   8.350834   180.5 {txt}{c |}
- 18. {c |} {res}1999   8.401559   177.5 {txt}{c |}
- 19. {c |} {res}2000   8.279337   178.6 {txt}{c |}
- 20. {c |} {res}2001   8.407659   180.7 {txt}{c |}
+ 16. {c |} {res}1997   8.294611   180.6 {txt}{c |}
+ 17. {c |} {res}1998   8.350834   180.2 {txt}{c |}
+ 18. {c |} {res}1999   8.401559   177.7 {txt}{c |}
+ 19. {c |} {res}2000   8.279337   178.2 {txt}{c |}
+ 20. {c |} {res}2001   8.407659   180.3 {txt}{c |}
      {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
- 21. {c |} {res}2002   8.416082   183.5 {txt}{c |}
- 22. {c |} {res}2003   8.130848   185.4 {txt}{c |}
- 23. {c |} {res}2004   8.164243   187.1 {txt}{c |}
- 24. {c |} {res}2005   8.341518   184.6 {txt}{c |}
- 25. {c |} {res}2006   8.284541   183.3 {txt}{c |}
+ 21. {c |} {res}2002   8.416082   181.8 {txt}{c |}
+ 22. {c |} {res}2003   8.130848   184.5 {txt}{c |}
+ 23. {c |} {res}2004   8.164243   185.8 {txt}{c |}
+ 24. {c |} {res}2005   8.341518   183.9 {txt}{c |}
+ 25. {c |} {res}2006   8.284541   182.7 {txt}{c |}
      {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
- 26. {c |} {res}2007   8.421254   184.4 {txt}{c |}
- 27. {c |} {res}2008   8.649587   186.2 {txt}{c |}
- 28. {c |} {res}2009   8.898782   194.5 {txt}{c |}
- 29. {c |} {res}2010   9.121205   195.6 {txt}{c |}
- 30. {c |} {res}2011   9.083028   196.8 {txt}{c |}
+ 26. {c |} {res}2007   8.421254   183.6 {txt}{c |}
+ 27. {c |} {res}2008   8.649587   185.8 {txt}{c |}
+ 28. {c |} {res}2009   8.898782   193.3 {txt}{c |}
+ 29. {c |} {res}2010   9.121205   193.6 {txt}{c |}
+ 30. {c |} {res}2011   9.083028   195.0 {txt}{c |}
      {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
- 31. {c |} {res}2012   9.178314   199.9 {txt}{c |}
- 32. {c |} {res}2013   9.300947   197.4 {txt}{c |}
- 33. {c |} {res}2014   9.064603   196.5 {txt}{c |}
- 34. {c |} {res}2015   8.935328   199.7 {txt}{c |}
- 35. {c |} {res}2016   9.038714   196.5 {txt}{c |}
+ 31. {c |} {res}2012   9.178314   197.4 {txt}{c |}
+ 32. {c |} {res}2013   9.300947   195.9 {txt}{c |}
+ 33. {c |} {res}2014   9.064603   196.1 {txt}{c |}
+ 34. {c |} {res}2015   8.935328   195.6 {txt}{c |}
+ 35. {c |} {res}2016   9.038714   194.3 {txt}{c |}
      {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
- 36. {c |} {res}2017   8.808623   191.2 {txt}{c |}
- 37. {c |} {res}2018   8.637478   190.1 {txt}{c |}
- 38. {c |} {res}2019   8.716049   192.7 {txt}{c |}
- 39. {c |} {res}2020    8.72036   188.0 {txt}{c |}
- 40. {c |} {res}2021   8.549835   185.3 {txt}{c |}
+ 36. {c |} {res}2017   8.808623   189.8 {txt}{c |}
+ 37. {c |} {res}2018   8.637478   190.0 {txt}{c |}
+ 38. {c |} {res}2019   8.716049   190.1 {txt}{c |}
+ 39. {c |} {res}2020    8.72036   186.2 {txt}{c |}
+ 40. {c |} {res}2021   8.549835   183.8 {txt}{c |}
      {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
- 41. {c |} {res}2022   8.582025   182.7 {txt}{c |}
- 42. {c |} {res}2023   8.658587   184.6 {txt}{c |}
- 43. {c |} {res}2024   8.980139   185.9 {txt}{c |}
+ 41. {c |} {res}2022   8.582025   181.2 {txt}{c |}
+ 42. {c |} {res}2023   8.658587   182.0 {txt}{c |}
+ 43. {c |} {res}2024   8.980139   182.3 {txt}{c |}
      {c BLC}{hline 6}{c -}{hline 10}{c -}{hline 7}{c BRC}
 
 {com}. describe
 
 {txt}Contains data from {res}/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_07102.000001
 {txt} Observations:{res}            43                  
-{txt}    Variables:{res}             3                  15 Jan 2025 08:42
+{txt}    Variables:{res}             3                  15 Jan 2025 14:31
 {txt}{hline}
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
@@ -887,46 +884,28 @@ Sorted by: {res}year
 {hline 13}{c +}{hline 57}
 {space 8}year {c |}{res}         43        2003    12.55654       1982       2024
 {txt}{space 2}grade_coef {c |}{res}         43    8.195671    .8626456   5.617335   9.300947
-{txt}{space 7}ldiff {c |}{res}         43    184.7998    7.395999   173.1777   199.8685
+{txt}{space 7}ldiff {c |}{res}         43     184.242    6.375485   173.3826    197.421
 {txt}
-{com}. //_21
+{com}. //_17
 . line ldiff year, yaxis(1) || line grade_coef year, yaxis(2) ///
 >  xtitle(Year) xlabel(1980(10)2025) xtick(1980(5)2015) ///
 >  ytitle("90-10 log-Wage Differential (%)", axis(1)) ylabel(150(10)200, format(%10.0g) noticks axis(1)) ///
 >  ytitle("Rate of Return to Schooling (%)", axis(2)) ylabel(5(1)10, noticks axis(2)) ///
->  text(182 1985 "90-10 Differential") text(155 1985 "Return to Schooling") ///
+>  text(183 1985 "90-10 Differential") text(155 1985 "Return to Schooling") ///
 >  scheme(Wide727Scheme) name(g1, replace)
 {res}{txt}
-{com}. graph export results/inequality_schooling_line.png, name (g1) width(600) replace
-{txt}{p 0 4 2}
-file {bf}
-/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/results/inequality_schooling_line.png{rm}
-saved as
-PNG
-format
-{p_end}
-
-{com}. //_22
+{com}. //_18
 . scatter ldiff grade_coef || lfit ldiff grade_coef ||, ///
 >  xtitle(Rate of Return to Schooling (%)) xlabel(4(1)10) ///
 >  ytitle("90-10 log-Wage Differential (%)") ylabel(160(10)200, format(%10.0g) noticks) ///
 >  scheme(Squarish727Scheme) name(g2, replace)
 {res}{txt}
-{com}. graph export results/inequality_schooling_scatter.png, name (g2)  width(450) replace
-{txt}{p 0 4 2}
-file {bf}
-/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/results/inequality_schooling_scatter.png{rm}
-saved as
-PNG
-format
-{p_end}
-
 {com}. //_^
 . log close
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_4_Readman_.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}15 Jan 2025, 08:42:05
+ {txt}closed on:  {res}15 Jan 2025, 14:32:01
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

@@ -87,7 +87,7 @@ global numyear=$eyear-$syear+1
    xtitle(Year) xlabel(1980(10)2025) xtick(1980(5)2015) ///
    ytitle("90-10 log-Wage Differential (%)", axis(1)) ylabel(150(10)200, format(%10.0g) noticks axis(1)) ///
    ytitle("Rate of Return to Schooling (%)", axis(2)) ylabel(5(1)10, noticks axis(2)) ///
-   text(182 1985 "90-10 Differential") text(155 1985 "Return to Schooling") ///
+   text(183 1985 "90-10 Differential") text(155 1985 "Return to Schooling") ///
    scheme(Wide727Scheme) name(g1, replace)
   graph export results/inequality_schooling_line.png, name (g1) width(600) replace
 
