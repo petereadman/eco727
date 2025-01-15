@@ -805,7 +805,7 @@ e(b), from which we can pull all the interaction coefficients into a
 column vector and then create a new two-column table of
 <code>grade</code> effect for each year. This requires a few steps.</p>
 <p>First, let’s retrieve all the coefficients of our interaction term
-<code>year#c.grade</code> and store them as a new column vactor ‘b’:</p>
+<code>year#c.grade</code> and store them as a new column vector ‘b’:</p>
 <pre class='stata'>. matrix b = e(b)[1, 1..$numyear]' // store year#c.grade coefficients as column vector 'b'
 
 . clear
@@ -1167,7 +1167,7 @@ part F:</p>
 
 Contains data from /var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_07102.000001
  Observations:            43                  
-    Variables:             3                  15 Jan 2025 14:31
+    Variables:             3                  15 Jan 2025 14:57
 ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 Variable      Storage   Display    Value
     name         type    format    label      Variable label

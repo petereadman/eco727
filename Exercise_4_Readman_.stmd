@@ -100,7 +100,7 @@ We need to estimate the grade effects for each year, so we'll add an interaction
 
 Stata stores all the coefficients from this regression in the matrix e(b), from which we can pull all the interaction coefficients into a column vector and then create a new two-column table of `grade` effect for each year. This requires a few steps.
 
-First, let's retrieve all the coefficients of our interaction term `year#c.grade` and store them as a new column vactor 'b':
+First, let's retrieve all the coefficients of our interaction term `year#c.grade` and store them as a new column vector 'b':
 
     matrix b = e(b)[1, 1..$numyear]' // store year#c.grade coefficients as column vector 'b'
     clear
