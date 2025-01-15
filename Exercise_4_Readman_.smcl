@@ -3,7 +3,7 @@
       name:  {res}<unnamed>
        {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_4_Readman_.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}15 Jan 2025, 14:57:07
+ {txt}opened on:  {res}15 Jan 2025, 15:15:21
 {txt}
 {com}. //_1
 . cd "~/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis"
@@ -590,63 +590,65 @@ now 43.
 {com}. replace grade_coef = grade_coef * 100 // convert to percentages
 {txt}(43 real changes made)
 
+{com}. format grade_coef %4.1f
+{txt}
 {com}. //_11
 . list, noobs
 {txt}
   {c TLC}{hline 6}{c -}{hline 10}{c TRC}
   {c |} {res}year   grade_~f {txt}{c |}
   {c LT}{hline 6}{c -}{hline 10}{c RT}
-  {c |} {res}1982   5.617335 {txt}{c |}
-  {c |} {res}1983    6.02647 {txt}{c |}
-  {c |} {res}1984   6.342713 {txt}{c |}
-  {c |} {res}1985   6.633296 {txt}{c |}
-  {c |} {res}1986   7.067152 {txt}{c |}
+  {c |} {res}1982        5.6 {txt}{c |}
+  {c |} {res}1983        6.0 {txt}{c |}
+  {c |} {res}1984        6.3 {txt}{c |}
+  {c |} {res}1985        6.6 {txt}{c |}
+  {c |} {res}1986        7.1 {txt}{c |}
   {c LT}{hline 6}{c -}{hline 10}{c RT}
-  {c |} {res}1987    7.32246 {txt}{c |}
-  {c |} {res}1988   7.267192 {txt}{c |}
-  {c |} {res}1989   7.324494 {txt}{c |}
-  {c |} {res}1990   7.454219 {txt}{c |}
-  {c |} {res}1991   7.479922 {txt}{c |}
+  {c |} {res}1987        7.3 {txt}{c |}
+  {c |} {res}1988        7.3 {txt}{c |}
+  {c |} {res}1989        7.3 {txt}{c |}
+  {c |} {res}1990        7.5 {txt}{c |}
+  {c |} {res}1991        7.5 {txt}{c |}
   {c LT}{hline 6}{c -}{hline 10}{c RT}
-  {c |} {res}1992    7.95859 {txt}{c |}
-  {c |} {res}1993   8.144956 {txt}{c |}
-  {c |} {res}1994   8.552587 {txt}{c |}
-  {c |} {res}1995   8.464716 {txt}{c |}
-  {c |} {res}1996   8.341679 {txt}{c |}
+  {c |} {res}1992        8.0 {txt}{c |}
+  {c |} {res}1993        8.1 {txt}{c |}
+  {c |} {res}1994        8.6 {txt}{c |}
+  {c |} {res}1995        8.5 {txt}{c |}
+  {c |} {res}1996        8.3 {txt}{c |}
   {c LT}{hline 6}{c -}{hline 10}{c RT}
-  {c |} {res}1997   8.294611 {txt}{c |}
-  {c |} {res}1998   8.350834 {txt}{c |}
-  {c |} {res}1999   8.401559 {txt}{c |}
-  {c |} {res}2000   8.279337 {txt}{c |}
-  {c |} {res}2001   8.407659 {txt}{c |}
+  {c |} {res}1997        8.3 {txt}{c |}
+  {c |} {res}1998        8.4 {txt}{c |}
+  {c |} {res}1999        8.4 {txt}{c |}
+  {c |} {res}2000        8.3 {txt}{c |}
+  {c |} {res}2001        8.4 {txt}{c |}
   {c LT}{hline 6}{c -}{hline 10}{c RT}
-  {c |} {res}2002   8.416082 {txt}{c |}
-  {c |} {res}2003   8.130848 {txt}{c |}
-  {c |} {res}2004   8.164243 {txt}{c |}
-  {c |} {res}2005   8.341518 {txt}{c |}
-  {c |} {res}2006   8.284541 {txt}{c |}
+  {c |} {res}2002        8.4 {txt}{c |}
+  {c |} {res}2003        8.1 {txt}{c |}
+  {c |} {res}2004        8.2 {txt}{c |}
+  {c |} {res}2005        8.3 {txt}{c |}
+  {c |} {res}2006        8.3 {txt}{c |}
   {c LT}{hline 6}{c -}{hline 10}{c RT}
-  {c |} {res}2007   8.421254 {txt}{c |}
-  {c |} {res}2008   8.649587 {txt}{c |}
-  {c |} {res}2009   8.898782 {txt}{c |}
-  {c |} {res}2010   9.121205 {txt}{c |}
-  {c |} {res}2011   9.083028 {txt}{c |}
+  {c |} {res}2007        8.4 {txt}{c |}
+  {c |} {res}2008        8.6 {txt}{c |}
+  {c |} {res}2009        8.9 {txt}{c |}
+  {c |} {res}2010        9.1 {txt}{c |}
+  {c |} {res}2011        9.1 {txt}{c |}
   {c LT}{hline 6}{c -}{hline 10}{c RT}
-  {c |} {res}2012   9.178314 {txt}{c |}
-  {c |} {res}2013   9.300947 {txt}{c |}
-  {c |} {res}2014   9.064603 {txt}{c |}
-  {c |} {res}2015   8.935328 {txt}{c |}
-  {c |} {res}2016   9.038714 {txt}{c |}
+  {c |} {res}2012        9.2 {txt}{c |}
+  {c |} {res}2013        9.3 {txt}{c |}
+  {c |} {res}2014        9.1 {txt}{c |}
+  {c |} {res}2015        8.9 {txt}{c |}
+  {c |} {res}2016        9.0 {txt}{c |}
   {c LT}{hline 6}{c -}{hline 10}{c RT}
-  {c |} {res}2017   8.808623 {txt}{c |}
-  {c |} {res}2018   8.637478 {txt}{c |}
-  {c |} {res}2019   8.716049 {txt}{c |}
-  {c |} {res}2020    8.72036 {txt}{c |}
-  {c |} {res}2021   8.549835 {txt}{c |}
+  {c |} {res}2017        8.8 {txt}{c |}
+  {c |} {res}2018        8.6 {txt}{c |}
+  {c |} {res}2019        8.7 {txt}{c |}
+  {c |} {res}2020        8.7 {txt}{c |}
+  {c |} {res}2021        8.5 {txt}{c |}
   {c LT}{hline 6}{c -}{hline 10}{c RT}
-  {c |} {res}2022   8.582025 {txt}{c |}
-  {c |} {res}2023   8.658587 {txt}{c |}
-  {c |} {res}2024   8.980139 {txt}{c |}
+  {c |} {res}2022        8.6 {txt}{c |}
+  {c |} {res}2023        8.7 {txt}{c |}
+  {c |} {res}2024        9.0 {txt}{c |}
   {c BLC}{hline 6}{c -}{hline 10}{c BRC}
 
 {com}. describe
@@ -659,7 +661,7 @@ Variable      Storage   Display    Value
     name         type    format    label      Variable label
 {hline}
 {p 0 48}{res}{bind:year           }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
-{p 0 48}{bind:grade_coef     }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:grade_coef     }{txt}{bind: float   }{bind:%4.1f     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
 {txt}{hline}
 Sorted by: 
      Note: {res}Dataset has changed since last saved.
@@ -809,70 +811,70 @@ as .dta format
      {c TLC}{hline 6}{c -}{hline 10}{c -}{hline 7}{c TRC}
      {c |} {res}year   grade_~f   ldiff {txt}{c |}
      {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
-  1. {c |} {res}1982   5.617335   173.4 {txt}{c |}
-  2. {c |} {res}1983    6.02647   178.1 {txt}{c |}
-  3. {c |} {res}1984   6.342713   179.2 {txt}{c |}
-  4. {c |} {res}1985   6.633296   180.1 {txt}{c |}
-  5. {c |} {res}1986   7.067152   181.6 {txt}{c |}
+  1. {c |} {res}1982        5.6   173.4 {txt}{c |}
+  2. {c |} {res}1983        6.0   178.1 {txt}{c |}
+  3. {c |} {res}1984        6.3   179.2 {txt}{c |}
+  4. {c |} {res}1985        6.6   180.1 {txt}{c |}
+  5. {c |} {res}1986        7.1   181.6 {txt}{c |}
      {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
-  6. {c |} {res}1987    7.32246   179.2 {txt}{c |}
-  7. {c |} {res}1988   7.267192   180.6 {txt}{c |}
-  8. {c |} {res}1989   7.324494   179.3 {txt}{c |}
-  9. {c |} {res}1990   7.454219   175.4 {txt}{c |}
- 10. {c |} {res}1991   7.479922   176.1 {txt}{c |}
+  6. {c |} {res}1987        7.3   179.2 {txt}{c |}
+  7. {c |} {res}1988        7.3   180.6 {txt}{c |}
+  8. {c |} {res}1989        7.3   179.3 {txt}{c |}
+  9. {c |} {res}1990        7.5   175.4 {txt}{c |}
+ 10. {c |} {res}1991        7.5   176.1 {txt}{c |}
      {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
- 11. {c |} {res}1992    7.95859   177.9 {txt}{c |}
- 12. {c |} {res}1993   8.144956   179.3 {txt}{c |}
- 13. {c |} {res}1994   8.552587   184.8 {txt}{c |}
- 14. {c |} {res}1995   8.464716   183.2 {txt}{c |}
- 15. {c |} {res}1996   8.341679   182.9 {txt}{c |}
+ 11. {c |} {res}1992        8.0   177.9 {txt}{c |}
+ 12. {c |} {res}1993        8.1   179.3 {txt}{c |}
+ 13. {c |} {res}1994        8.6   184.8 {txt}{c |}
+ 14. {c |} {res}1995        8.5   183.2 {txt}{c |}
+ 15. {c |} {res}1996        8.3   182.9 {txt}{c |}
      {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
- 16. {c |} {res}1997   8.294611   180.6 {txt}{c |}
- 17. {c |} {res}1998   8.350834   180.2 {txt}{c |}
- 18. {c |} {res}1999   8.401559   177.7 {txt}{c |}
- 19. {c |} {res}2000   8.279337   178.2 {txt}{c |}
- 20. {c |} {res}2001   8.407659   180.3 {txt}{c |}
+ 16. {c |} {res}1997        8.3   180.6 {txt}{c |}
+ 17. {c |} {res}1998        8.4   180.2 {txt}{c |}
+ 18. {c |} {res}1999        8.4   177.7 {txt}{c |}
+ 19. {c |} {res}2000        8.3   178.2 {txt}{c |}
+ 20. {c |} {res}2001        8.4   180.3 {txt}{c |}
      {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
- 21. {c |} {res}2002   8.416082   181.8 {txt}{c |}
- 22. {c |} {res}2003   8.130848   184.5 {txt}{c |}
- 23. {c |} {res}2004   8.164243   185.8 {txt}{c |}
- 24. {c |} {res}2005   8.341518   183.9 {txt}{c |}
- 25. {c |} {res}2006   8.284541   182.7 {txt}{c |}
+ 21. {c |} {res}2002        8.4   181.8 {txt}{c |}
+ 22. {c |} {res}2003        8.1   184.5 {txt}{c |}
+ 23. {c |} {res}2004        8.2   185.8 {txt}{c |}
+ 24. {c |} {res}2005        8.3   183.9 {txt}{c |}
+ 25. {c |} {res}2006        8.3   182.7 {txt}{c |}
      {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
- 26. {c |} {res}2007   8.421254   183.6 {txt}{c |}
- 27. {c |} {res}2008   8.649587   185.8 {txt}{c |}
- 28. {c |} {res}2009   8.898782   193.3 {txt}{c |}
- 29. {c |} {res}2010   9.121205   193.6 {txt}{c |}
- 30. {c |} {res}2011   9.083028   195.0 {txt}{c |}
+ 26. {c |} {res}2007        8.4   183.6 {txt}{c |}
+ 27. {c |} {res}2008        8.6   185.8 {txt}{c |}
+ 28. {c |} {res}2009        8.9   193.3 {txt}{c |}
+ 29. {c |} {res}2010        9.1   193.6 {txt}{c |}
+ 30. {c |} {res}2011        9.1   195.0 {txt}{c |}
      {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
- 31. {c |} {res}2012   9.178314   197.4 {txt}{c |}
- 32. {c |} {res}2013   9.300947   195.9 {txt}{c |}
- 33. {c |} {res}2014   9.064603   196.1 {txt}{c |}
- 34. {c |} {res}2015   8.935328   195.6 {txt}{c |}
- 35. {c |} {res}2016   9.038714   194.3 {txt}{c |}
+ 31. {c |} {res}2012        9.2   197.4 {txt}{c |}
+ 32. {c |} {res}2013        9.3   195.9 {txt}{c |}
+ 33. {c |} {res}2014        9.1   196.1 {txt}{c |}
+ 34. {c |} {res}2015        8.9   195.6 {txt}{c |}
+ 35. {c |} {res}2016        9.0   194.3 {txt}{c |}
      {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
- 36. {c |} {res}2017   8.808623   189.8 {txt}{c |}
- 37. {c |} {res}2018   8.637478   190.0 {txt}{c |}
- 38. {c |} {res}2019   8.716049   190.1 {txt}{c |}
- 39. {c |} {res}2020    8.72036   186.2 {txt}{c |}
- 40. {c |} {res}2021   8.549835   183.8 {txt}{c |}
+ 36. {c |} {res}2017        8.8   189.8 {txt}{c |}
+ 37. {c |} {res}2018        8.6   190.0 {txt}{c |}
+ 38. {c |} {res}2019        8.7   190.1 {txt}{c |}
+ 39. {c |} {res}2020        8.7   186.2 {txt}{c |}
+ 40. {c |} {res}2021        8.5   183.8 {txt}{c |}
      {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
- 41. {c |} {res}2022   8.582025   181.2 {txt}{c |}
- 42. {c |} {res}2023   8.658587   182.0 {txt}{c |}
- 43. {c |} {res}2024   8.980139   182.3 {txt}{c |}
+ 41. {c |} {res}2022        8.6   181.2 {txt}{c |}
+ 42. {c |} {res}2023        8.7   182.0 {txt}{c |}
+ 43. {c |} {res}2024        9.0   182.3 {txt}{c |}
      {c BLC}{hline 6}{c -}{hline 10}{c -}{hline 7}{c BRC}
 
 {com}. describe
 
 {txt}Contains data from {res}/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_07102.000001
 {txt} Observations:{res}            43                  
-{txt}    Variables:{res}             3                  15 Jan 2025 14:57
+{txt}    Variables:{res}             3                  15 Jan 2025 15:16
 {txt}{hline}
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
 {hline}
 {p 0 48}{res}{bind:year           }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
-{p 0 48}{bind:grade_coef     }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:grade_coef     }{txt}{bind: float   }{bind:%4.1f     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
 {p 0 48}{bind:ldiff          }{txt}{bind: float   }{bind:%4.1f     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
 {txt}{hline}
 Sorted by: {res}year
@@ -905,7 +907,7 @@ Sorted by: {res}year
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_4_Readman_.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}15 Jan 2025, 14:57:59
+ {txt}closed on:  {res}15 Jan 2025, 15:16:14
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

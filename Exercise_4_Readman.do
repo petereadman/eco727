@@ -51,6 +51,7 @@ global numyear=$eyear-$syear+1
   drop tag
   order year grade_coef
   replace grade_coef = grade_coef * 100 // convert to percentages
+  format grade_coef %4.1f
   list, noobs
   describe
   summarize

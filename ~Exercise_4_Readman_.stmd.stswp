@@ -116,6 +116,7 @@ While the column names and 'year' values are a mess, this has got us the data we
     drop tag
     order year grade_coef
     replace grade_coef = grade_coef * 100 // convert to percentages
+    format grade_coef %4.1f
 
 We now have a new data set of grade effects for each year in our sample:
 
