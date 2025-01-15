@@ -3,7 +3,7 @@
       name:  {res}results
        {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_5_Readman.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}13 Jan 2025, 11:14:05
+ {txt}opened on:  {res}14 Jan 2025, 17:17:29
 {txt}
 {com}. set scheme s2color
 {txt}
@@ -11,13 +11,15 @@
 {txt}
 {com}. global lname="Readman"
 {txt}
+{com}. tempfile temp1
+{txt}
 {com}. 
-. *part a: using the “Birth Quarter.dta” data
-. use "../Data/Birth Quarter.dta" if cohort==4, clear
+. * part a: using the “Birth Quarter.dta” data
+.   use "../Data/Birth Quarter.dta" if cohort==4, clear
 {txt}
-{com}. run data_check
+{com}.   run data_check
 {txt}
-{com}. describe
+{com}.   describe
 
 {txt}Contains data from {res}../Data/Birth Quarter.dta
 {txt} Observations:{res}       486,926                  
@@ -41,16 +43,279 @@ Variable      Storage   Display    Value
 {txt}{hline}
 Sorted by: 
 
-{com}. assert _N == 486926
+{com}.   assert _N == 486926
 {txt}
 {com}. 
-. *** end part a
+. * generating new variables
+.   generate ageqsq=ageq^2
+{txt}
+{com}.   tab qob
+
+        {txt}qob {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}    117,720       24.18       24.18
+{txt}          2 {c |}{res}    114,707       23.56       47.73
+{txt}          3 {c |}{res}    129,805       26.66       74.39
+{txt}          4 {c |}{res}    124,694       25.61      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}    486,926      100.00
+{txt}
+{com}.   generate q1=1 if qob==1
+{txt}(369,206 missing values generated)
+
+{com}.   replace  q1=0 if q1==.
+{txt}(369,206 real changes made)
+
+{com}.   tab q1
+
+         {txt}q1 {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}    369,206       75.82       75.82
+{txt}          1 {c |}{res}    117,720       24.18      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}    486,926      100.00
+{txt}
+{com}. 
+. * add labels and save
+.   label variable q1 "quarter 1"
+{txt}
+{com}.   label variable ageqsq "age quarter squared"
+{txt}
+{com}.   describe
+
+{txt}Contains data from {res}../Data/Birth Quarter.dta
+{txt} Observations:{res}       486,926                  
+{txt}    Variables:{res}            14                  18 Mar 2019 13:13
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:age            }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:ageq           }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:educ           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:lwklywge       }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:married        }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:census         }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:qob            }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:race           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:smsa           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:yob            }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:cohort         }{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:cohort   }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:region         }{txt}{bind: byte    }{bind:%18.0g    }{space 1}{bind:region   }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:ageqsq         }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}age quarter squared{p_end}
+{p 0 48}{bind:q1             }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}quarter 1{p_end}
+{txt}{hline}
+Sorted by: 
+     Note: {res}Dataset has changed since last saved.
+{txt}
+{com}.   save `temp1', replace
+{txt}{p 0 4 2}
+(file {bf}
+/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_07102.000001{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_07102.000001{rm}
+saved
+as .dta format
+{p_end}
+
+{com}. *** end part a
 . 
-. log close results
+. * part b: Estimate the log-Wage Regression by OLS and 2SLS
+. 
+. * OLS regression
+.   regress lwklywge educ
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}   486,926
+{txt}{hline 13}{c +}{hline 34}   F(1, 486924)    = {res} 34137.04
+{txt}       Model {c |} {res} 13286.5814         1  13286.5814   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 189517.161   486,924  .389213022   {txt}R-squared       ={res}    0.0655
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0655
+{txt}       Total {c |} {res} 202803.743   486,925  .416498932   {txt}Root MSE        =   {res} .62387
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    lwklywge{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}educ {c |}{col 14}{res}{space 2} .0554276{col 26}{space 2}    .0003{col 37}{space 1}  184.76{col 46}{space 3}0.000{col 54}{space 4} .0548397{col 67}{space 3} .0560156
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}  5.04521{col 26}{space 2} .0041685{col 37}{space 1} 1210.33{col 46}{space 3}0.000{col 54}{space 4}  5.03704{col 67}{space 3} 5.053381
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}.   eststo ols
+{txt}
+{com}. 
+. *2SLS regression using q1 as the only instrument (Wald estimate)
+.   ivregress 2sls lwklywge (educ = q1)
+{res}
+{txt}{col 1}Instrumental-variables 2SLS regression{col 51}Number of obs{col 67}= {res}   486,926
+{txt}{col 1}{col 51}Wald chi2({res}1{txt}){col 67}= {res}      0.14
+{txt}{col 1}{col 51}Prob > chi2{col 67}= {res}    0.7111
+{txt}{col 1}{col 51}R-squared{col 67}= {res}         .
+{txt}{col 51}Root MSE{col 67}=    {res} .65347
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    lwklywge{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}educ {c |}{col 14}{res}{space 2}-.0098222{col 26}{space 2} .0265177{col 37}{space 1}   -0.37{col 46}{space 3}0.711{col 54}{space 4}-.0617959{col 67}{space 3} .0421516
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 5.930765{col 26}{space 2} .3598933{col 37}{space 1}   16.48{col 46}{space 3}0.000{col 54}{space 4} 5.225387{col 67}{space 3} 6.636143
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 12 28}Endogenous: {res:educ}{p_end}
+{p 0 12 28}Exogenous:{space 1} {res:q1}{p_end}
+
+{com}.   estat firststage  // Check instrument strength
+{res}
+{txt}{col 3}First-stage regression summary statistics
+{res}{col 3}{text}{hline 13}{c TT}{hline 12}{hline 12}{hline 12}{hline 12}{hline 12}
+{col 16}{c |}{col 29}Adjusted{col 43}Partial
+{col 3}{text}    Variable{col 16}{c |}   R-sq.{col 29}   R-sq.{col 41}    R-sq.{col 53}F(1,486924){col 65}  Prob > F
+{res}{col 3}{text}{hline 13}{c +}{hline 12}{hline 12}{hline 12}{hline 12}{hline 12}
+{col 3}{text}        educ{col 16}{c |}{result}{space 2}0.0001{col 29}{space 2}0.0001{col 41}{space 3}0.0001{col 53}{space 3} 68.3823{col 65}{space 3}0.0000
+{col 3}{text}{hline 13}{c BT}{hline 12}{hline 12}{hline 12}{hline 12}{hline 12}
+
+
+{col 3}Minimum eigenvalue statistic = {res}68.3823     
+
+{txt}{col 3}Critical Values{col 40}# of endogenous regressors:{res}    1
+{txt}{col 3}H0: Instruments are weak{col 40}# of excluded instruments: {res}    1
+{txt}{col 3}{hline 35}{c TT}{hline 33}
+{col 38}{c |}{col 43}5%     10%     20%     30%
+{col 3}2SLS relative bias{col 38}{c |}{col 48}(not available)
+{col 3}{hline 35}{c +}{hline 33}
+{col 38}{c |}{col 42}10%     15%     20%     25%
+{col 3}2SLS size of nominal 5% Wald test{col 38}{c |}{res}{col 41}16.38{col 49} 8.96{col 57} 6.66{col 65} 5.53
+{txt}{col 3}LIML size of nominal 5% Wald test{col 38}{c |}{res}{col 41}16.38{col 49} 8.96{col 57} 6.66{col 65} 5.53
+{txt}{col 3}{hline 35}{c BT}{hline 33}
+
+{res}{txt}
+{com}.   eststo wald
+{txt}
+{com}. 
+. * Step 3: 2SLS regression using qob as instruments and including birth-year effects
+.   ivregress 2sls lwklywge (educ = qob) i.yob
+{res}
+{txt}{col 1}Instrumental-variables 2SLS regression{col 51}Number of obs{col 67}= {res}   486,926
+{txt}{col 1}{col 51}Wald chi2({res}10{txt}){col 67}= {res}   5076.56
+{txt}{col 1}{col 51}Prob > chi2{col 67}= {res}    0.0000
+{txt}{col 1}{col 51}R-squared{col 67}= {res}         .
+{txt}{col 51}Root MSE{col 67}=    {res} .72411
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    lwklywge{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}educ {c |}{col 14}{res}{space 2}-.0696151{col 26}{space 2} .0269286{col 37}{space 1}   -2.59{col 46}{space 3}0.010{col 54}{space 4}-.1223942{col 67}{space 3} -.016836
+{txt}{space 12} {c |}
+{space 9}yob {c |}
+{space 9}41  {c |}{col 14}{res}{space 2} .0038381{col 26}{space 2} .0058411{col 37}{space 1}    0.66{col 46}{space 3}0.511{col 54}{space 4}-.0076102{col 67}{space 3} .0152865
+{txt}{space 9}42  {c |}{col 14}{res}{space 2} .0141073{col 26}{space 2} .0088334{col 37}{space 1}    1.60{col 46}{space 3}0.110{col 54}{space 4}-.0032059{col 67}{space 3} .0314206
+{txt}{space 9}43  {c |}{col 14}{res}{space 2} .0077204{col 26}{space 2}  .009868{col 37}{space 1}    0.78{col 46}{space 3}0.434{col 54}{space 4}-.0116205{col 67}{space 3} .0270612
+{txt}{space 9}44  {c |}{col 14}{res}{space 2}-.0242497{col 26}{space 2} .0107195{col 37}{space 1}   -2.26{col 46}{space 3}0.024{col 54}{space 4}-.0452596{col 67}{space 3}-.0032398
+{txt}{space 9}45  {c |}{col 14}{res}{space 2}-.0351275{col 26}{space 2} .0141017{col 37}{space 1}   -2.49{col 46}{space 3}0.013{col 54}{space 4}-.0627664{col 67}{space 3}-.0074887
+{txt}{space 9}46  {c |}{col 14}{res}{space 2}-.0504651{col 26}{space 2} .0176248{col 37}{space 1}   -2.86{col 46}{space 3}0.004{col 54}{space 4}-.0850091{col 67}{space 3}-.0159211
+{txt}{space 9}47  {c |}{col 14}{res}{space 2}-.0787212{col 26}{space 2} .0190966{col 37}{space 1}   -4.12{col 46}{space 3}0.000{col 54}{space 4}  -.11615{col 67}{space 3}-.0412925
+{txt}{space 9}48  {c |}{col 14}{res}{space 2}-.1287527{col 26}{space 2} .0180385{col 37}{space 1}   -7.14{col 46}{space 3}0.000{col 54}{space 4}-.1641074{col 67}{space 3}-.0933979
+{txt}{space 9}49  {c |}{col 14}{res}{space 2}-.1707824{col 26}{space 2} .0176843{col 37}{space 1}   -9.66{col 46}{space 3}0.000{col 54}{space 4} -.205443{col 67}{space 3}-.1361217
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} 6.796173{col 26}{space 2}  .353474{col 37}{space 1}   19.23{col 46}{space 3}0.000{col 54}{space 4} 6.103377{col 67}{space 3}  7.48897
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 12 28}Endogenous: {res:educ}{p_end}
+{p 0 12 28}Exogenous:{space 1} {res:41.yob 42.yob 43.yob 44.yob 45.yob 46.yob 47.yob 48.yob 49.yob qob}{p_end}
+
+{com}.   estat firststage  // Check instrument strength
+{res}
+{txt}{col 3}First-stage regression summary statistics
+{res}{col 3}{text}{hline 13}{c TT}{hline 12}{hline 12}{hline 12}{hline 12}{hline 12}
+{col 16}{c |}{col 29}Adjusted{col 43}Partial
+{col 3}{text}    Variable{col 16}{c |}   R-sq.{col 29}   R-sq.{col 41}    R-sq.{col 53}F(1,486915){col 65}  Prob > F
+{res}{col 3}{text}{hline 13}{c +}{hline 12}{hline 12}{hline 12}{hline 12}{hline 12}
+{col 3}{text}        educ{col 16}{c |}{result}{space 2}0.0059{col 29}{space 2}0.0058{col 41}{space 3}0.0002{col 53}{space 3} 81.8896{col 65}{space 3}0.0000
+{col 3}{text}{hline 13}{c BT}{hline 12}{hline 12}{hline 12}{hline 12}{hline 12}
+
+
+{col 3}Minimum eigenvalue statistic = {res}81.8896     
+
+{txt}{col 3}Critical Values{col 40}# of endogenous regressors:{res}    1
+{txt}{col 3}H0: Instruments are weak{col 40}# of excluded instruments: {res}    1
+{txt}{col 3}{hline 35}{c TT}{hline 33}
+{col 38}{c |}{col 43}5%     10%     20%     30%
+{col 3}2SLS relative bias{col 38}{c |}{col 48}(not available)
+{col 3}{hline 35}{c +}{hline 33}
+{col 38}{c |}{col 42}10%     15%     20%     25%
+{col 3}2SLS size of nominal 5% Wald test{col 38}{c |}{res}{col 41}16.38{col 49} 8.96{col 57} 6.66{col 65} 5.53
+{txt}{col 3}LIML size of nominal 5% Wald test{col 38}{c |}{res}{col 41}16.38{col 49} 8.96{col 57} 6.66{col 65} 5.53
+{txt}{col 3}{hline 35}{c BT}{hline 33}
+
+{res}{txt}
+{com}.   estat overid      // Test overidentifying restrictions
+{err}no overidentifying restrictions
+{txt}{search r(498), local:r(498);}
+
+end of do-file
+
+{search r(498), local:r(498);}
+
+{com}. do /var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T/StataRun1736894021699.do
+{txt}
+{com}.   ivregress 2sls lwklywge (educ = q1), first
+{res}
+{txt}First-stage regressions
+{hline 23}
+
+{col 56}{lalign 13:Number of obs}{col 69} = {res}{ralign 7:486,926}
+{txt}{col 56}{lalign 13:F({res:1}, {res:486924})}{col 69} = {res}{ralign 7:68.38}
+{txt}{col 56}{lalign 13:Prob > F}{col 69} = {res}{ralign 7:0.0000}
+{txt}{col 56}{lalign 13:R-squared}{col 69} = {res}{ralign 7:0.0001}
+{txt}{col 56}{lalign 13:Adj R-squared}{col 69} = {res}{ralign 7:0.0001}
+{txt}{col 56}{lalign 13:Root MSE}{col 69} = {res}{ralign 7:2.9800}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        educ{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 10}q1 {c |}{col 14}{res}{space 2}-.0824827{col 26}{space 2} .0099745{col 37}{space 1}   -8.27{col 46}{space 3}0.000{col 54}{space 4}-.1020324{col 67}{space 3} -.062933
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}  13.5917{col 26}{space 2} .0049044{col 37}{space 1} 2771.33{col 46}{space 3}0.000{col 54}{space 4} 13.58209{col 67}{space 3} 13.60131
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{res}
+{txt}{col 1}Instrumental-variables 2SLS regression{col 51}Number of obs{col 67}= {res}   486,926
+{txt}{col 1}{col 51}Wald chi2({res}1{txt}){col 67}= {res}      0.14
+{txt}{col 1}{col 51}Prob > chi2{col 67}= {res}    0.7111
+{txt}{col 1}{col 51}R-squared{col 67}= {res}         .
+{txt}{col 51}Root MSE{col 67}=    {res} .65347
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    lwklywge{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}educ {c |}{col 14}{res}{space 2}-.0098222{col 26}{space 2} .0265177{col 37}{space 1}   -0.37{col 46}{space 3}0.711{col 54}{space 4}-.0617959{col 67}{space 3} .0421516
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 5.930765{col 26}{space 2} .3598933{col 37}{space 1}   16.48{col 46}{space 3}0.000{col 54}{space 4} 5.225387{col 67}{space 3} 6.636143
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 12 28}Endogenous: {res:educ}{p_end}
+{p 0 12 28}Exogenous:{space 1} {res:q1}{p_end}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do /var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T/StataRun1736899128675.do
+{txt}
+{com}. ***** Exercise_4_Readman.do
+. ***** regressing factor variables using CPS-ORGS CPI data from exercise 3 (in Data folder)
+. ***** analyzing earnings inequality and return to schooling
+. 
+. cd "~/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis"
+{res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis
+{txt}
+{com}. log using Exercise_4_Readman.smcl, name(results) replace
+{err}log file already open
+{txt}{search r(604), local:r(604);}
+
+end of do-file
+
+{search r(604), local:r(604);}
+
+{com}. log close results
       {txt}name:  {res}results
        {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_5_Readman.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}13 Jan 2025, 11:14:05
+ {txt}closed on:  {res}14 Jan 2025, 18:58:55
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

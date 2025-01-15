@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Exercise_4_Readman_</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+<style>
+/* CSS for Markstat 2.0 using Pandoc 2.0 */
+body{padding:14px 28px; max-width:45em;}
+body, table {font-family: Helvetica, Arial, Sans-serif; font-size: 14px; max-width:70em}
+h1, h2, h3, h4 {font-weight: normal; color: #3366cc}
+h1 {font-size: 200%;}
+h2 {font-size: 150%;}
+h3 {font-size: 120%;}
+h4 {font-size: 100%; font-weight:bold}
+img.center {display:block; margin-left:auto; margin-right:auto}
+.small{font-size:8pt;}
+a {color: black;}
+a:visited {color: #808080;}
+a.plain {text-decoration:none;}
+a.plain:hover {text-decoration:underline;}
+.em {font-weight:bold;}
+pre, code {font-family: "lucida console", monospace;}
+pre.stata {font-size:13px; line-height:13px;}
+pre {padding:8px; border:1px solid #c0c0c0; border-radius:8px; background-color:#fdfdfd;}
+code {color:#3366cc; background-color:#fafafa;}
+pre code { color:black; background-color:white}
+/* Added for Pandoc */
+figure > img, div.figure > img {display:block; margin:auto}
+figcaption, p.caption {text-align:center; font-weight:bold; color:#3366cc;}
+h1.title {text-align:center; margin-bottom:0}
+p.author, h2.author {font-style:italic; text-align:center;margin-top:4px;margin-bottom:0}
+p.date, h3.date {text-align:center;margin-top:4px; margin-bottom:0}
+/* Tables*/
+table { margin:auto; border-collapse:collapse; }
+table caption { margin-bottom:1ex;}
+td {padding:0 0 0 0} /* override */
+table:not([class]) th { padding:4px 6px } 
+table:not([class]) td { padding:4px 6px } 
+table:not([class]) thead tr:first-child th {border-top:1px solid black; padding-top:6px}
+table:not([class]) thead tr:last-child  th {padding-bottom:6px}
+table:not([class]) tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
+table:not([class]) tbody tr:last-child  td {padding-bottom:6px;}
+table:not([class]) tbody:last-child tr:last-child td {border-bottom:1px solid black;}
+</style>
+</head>
+<body>
+<h2 id="exercise-4-factor-variables-cps-orgcpi-data-19822024">Exercise
+4: Factor Variables, CPS-ORG/CPI Data, 1982–2024</h2>
+<p>Peter Readman</p>
+<hr />
+<h3 id="plan">Plan</h3>
+<hr />
+<ul>
+<li>Use the Merged CPS-ORG/CPI Data from Exercise 3</li>
+<li>Estimate a Simple log-Wage Regression</li>
+<li>Add Factor Variables</li>
+<li>Estimate Year-Specific Grade Coefficients</li>
+<li>Merge the Grade Coefficients with the 90-10 Differential (in
+logs)</li>
+<li>Plot the Relationship Between the Grade Coefficients and the 90-10
+Differential</li>
+</ul>
+<hr />
+<h3 id="preliminaries">Preliminaries</h3>
+<p>First, let’s navigate to the analysis folder and set up some global
+macros. For this exercise, it’s going to be useful to have macros for
+start year and number of years covered by our sample.</p>
+<pre class='stata'>. cd "~/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis"
+/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis
+
+. set scheme s2color
+
+. global ex=4
+
+. global lname="Readman"
+
+. global syear=1982 // start year
+
+. global eyear=2024 // end year
+
+. global numyear=$eyear-$syear+1
+</pre>
+<hr />
+<h3 id="part-a-using-the-merged-cps-orgcpi-data-from-exercise-3">Part A:
+Using the Merged CPS-ORG/CPI Data from Exercise 3</h3>
+<p>Our final output from this exercise is to plot and analyze the trend
+of return to schooling with the weekly log-wage differential. We’re
+going to the effects of each year of schooling on wages to merge with
+our log-differentials for each year in our sample.</p>
+<p>Let’s start by using the CPS-ORG data including the CPI and real
+weekly wage observations prepared in exercise 3 and making a few edits.
+We can get rid of missing <code>earnweek</code> observations, create a
+new variable for <code>experience</code> as a function of
+<code>age</code> and <code>grade</code>, generate experience-squared
+(<code>exp2</code>) to cover diminishing marginal return to experience
+and finally add the log of real wage <code>lwrage</code>.</p>
+<pre class='stata'>. use "../Data/CPS-ORG with CPI, 1982-2024.dta", replace
+
+. keep if earnweek!=.
+(8,796 observations deleted)
+
+. generate experience=age-grade-6
+
+. drop if experience &lt;=0 // experience less then 0 makes no sense
+(154,834 observations deleted)
+
+. label variable experience "experience as function of age and education"
+
+. generate exp2=experience^2
+
+. label variable exp2 "experience squared"
+
+. generate lrwage=log(rwage)
+
+. label variable lrwage "log of real weekly wage"
+</pre>
+<p>Let’s peak at our new data and make sure we have what we need and all
+makes sense.</p>
+<pre class='stata'>. describe
+
+Contains data from ../Data/CPS-ORG with CPI, 1982-2024.dta
+ Observations:     6,574,458                  
+    Variables:            27                  12 Jan 2025 08:07
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+year            int     %8.0g                 survey year
+month           byte    %8.0g      MONTH      month
+mish            byte    %8.0g      MISH       month in sample, household level
+region          byte    %8.0g      REGION     region and division
+cpsidv          double  %12.0g                validated longitudinal identifier
+age             byte    %8.0g      AGE        age
+female          byte    %9.0g      FEMALE     
+race            int     %58.0g     RACE       race
+empstat         byte    %8.0g      EMPSTAT    employment status
+classwkr        byte    %8.0g      CLASSWKR   class of worker
+uhrswork1       int     %8.0g      UHRSWORK1
+                                              hours usually worked per week at main job
+grade           float   %9.0g                 highest grade completed
+earnwt          double  %12.0g                earnings weight
+qearnwee        byte    %8.0g      QEARNWEE   data quality flag for earnweek
+hourwage        double  %12.0g     HOURWAGE   hourly wage
+paidhour        byte    %15.0g     PAIDHOUR   paid by the hour
+union           byte    %8.0g      UNION      union membership
+earnweek        double  %12.0g     EARNWEEK   weekly earnings
+uhrsworkorg     byte    %8.0g                 usual hours worked per week, outgoing rotation groups
+occupation      byte    %32.0g     OCCUPATION
+                                              occupation (1-10)
+industry        byte    %49.0g     INDUSTRY   industry (1-11)
+topcode         byte    %9.0g                 topcode indicator
+cpi             double  %9.3f                 Consumer Price Index
+rwage           float   %9.0g                 real wage in November 2024 dollars
+experience      float   %9.0g                 experience as function of age and education
+exp2            float   %9.0g                 experience squared
+lrwage          float   %9.0g                 log of real weekly wage
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Sorted by: 
+     Note: Dataset has changed since last saved.
+
+. summarize
+
+    Variable │        Obs        Mean    Std. dev.       Min        Max
+─────────────┼─────────────────────────────────────────────────────────
+        year │  6,574,458    2002.116    12.09726       1982       2024
+       month │  6,574,458    6.498614    3.451774          1         12
+        mish │  6,574,458    6.004376    1.999995          4          8
+      region │  6,574,458    27.37088    10.73954         11         42
+      cpsidv │  6,574,458    2.00e+14    1.21e+12   1.98e+14   2.02e+14
+─────────────┼─────────────────────────────────────────────────────────
+         age │  6,574,458    39.50486     11.9916         18         64
+      female │  6,574,458    .4857076    .4997957          0          1
+        race │  6,574,458    141.8355    129.4766        100        700
+     empstat │  6,574,458    10.08345    .3999123         10         12
+    classwkr │  6,574,458    22.69108    2.128732         13         28
+─────────────┼─────────────────────────────────────────────────────────
+   uhrswork1 │  6,574,458    77.85324    188.4037          0        997
+       grade │  6,574,458    13.49247    2.632527          0         18
+      earnwt │  6,574,458    8652.404     5089.47      90.01   209103.1
+    qearnwee │  4,342,009    1.275251    1.864065          0          4
+    hourwage │  3,826,680     13.0791    8.820384        .01      99.99
+─────────────┼─────────────────────────────────────────────────────────
+    paidhour │  6,574,458    .5821583    .4932039          0          1
+       union │  6,361,149    1.175053    .4225005          1          3
+    earnweek │  6,574,458    721.8457    713.1979        .01      11960
+ uhrsworkorg │  2,824,504    37.07508    9.768883          1         99
+  occupation │  6,574,458     3.91869    2.590572          1          9
+─────────────┼─────────────────────────────────────────────────────────
+    industry │  6,574,458    6.964137    2.785147          1         11
+     topcode │  6,574,458    .0228547      .14944          0          1
+         cpi │  6,574,458    184.3855    56.12374       94.3    315.664
+       rwage │  6,574,458    1203.699     996.046   .0104871   11986.48
+  experience │  6,574,458    20.01239     12.1376          1         58
+─────────────┼─────────────────────────────────────────────────────────
+        exp2 │  6,574,458    547.8171    542.8601          1       3364
+      lrwage │  6,574,458    6.818866    .7839537  -4.557612   9.391535
+</pre>
+<p>The new variables are created. After dropping 163,630 missing
+<code>earnweek</code> values, we now have 6,574,458 observations across
+27 variables, three more than the 24 we started with, as expected.</p>
+<hr />
+<h3 id="part-b-estimating-a-simple-log-wage-regression">Part B:
+Estimating a Simple log-Wage Regression</h3>
+<p>Let’s estimate log-wage by grade and experience using appropriate CPS
+earnings weights.</p>
+<pre class='stata'>. regress lrwage grade experience exp2 [pw=earnwt]
+(sum of wgt is 56,884,868,581.61)
+
+Linear regression                               Number of obs     =  6,574,458
+                                                F(3, 6574454)     >   99999.00
+                                                Prob > F          =     0.0000
+                                                R-squared         =     0.2176
+                                                Root MSE          =     .69842
+
+─────────────┬────────────────────────────────────────────────────────────────
+             │               Robust
+      lrwage │ Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+─────────────┼────────────────────────────────────────────────────────────────
+       grade │   .1148866   .0001322   868.83   0.000     .1146274    .1151457
+  experience │   .0515668   .0001031   500.18   0.000     .0513648    .0517689
+        exp2 │  -.0008836   2.37e-06  -372.53   0.000    -.0008883    -.000879
+       _cons │   4.733568    .002025  2337.57   0.000     4.729599    4.737537
+─────────────┴────────────────────────────────────────────────────────────────
+
+.  test experience exp2
+
+ ( 1)  experience = 0
+ ( 2)  exp2 = 0
+
+       F(  2,6574454) = 2.1e+05
+            Prob > F =    0.0000
+
+.  display "The log-wage profile peaks at" , %4.1f -e(b)[1,2]/(2*e(b)[1,3]) , "years of experience." // Compute and display peak experience
+The log-wage profile peaks at 29.2 years of experience.
+</pre>
+<p>Testing the significance of <code>experience</code>, we note the very
+large F-stat, confirming the return to <code>experience</code> is
+significant. The sign of the coefficient on <code>exp2</code> is
+negative, reflecting diminishing marginal returns to experience. The
+turning point of the log-wage profile is at 29.2 years of
+experience.</p>
+<hr />
+<h3 id="part-c-adding-factor-variables">Part C: Adding Factor
+Variables</h3>
+<p>Now, let’s add factor variables using Stata syntax to generate all
+the dummies for our categorical variables and estimate effects for all
+categories of <code>race</code>, <code>region</code>,
+<code>occupation</code>, <code>industry</code>, as well as
+<code>year</code> effects.</p>
+<pre class='stata'>. regress lrwage grade experience exp2 female i.race i.region i.occupation i.industry i.year [pw=earnwt]
+(sum of wgt is 56,884,868,581.61)
+
+Linear regression                               Number of obs     =  6,574,458
+                                                F(76, 6574381)    =   35846.28
+                                                Prob > F          =     0.0000
+                                                R-squared         =     0.3793
+                                                Root MSE          =     .62209
+
+───────────────────────────────────────────┬────────────────────────────────────────────────────────────────
+                                           │               Robust
+                                    lrwage │ Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+───────────────────────────────────────────┼────────────────────────────────────────────────────────────────
+                                     grade │   .0826143   .0001532   539.15   0.000      .082314    .0829147
+                                experience │   .0411113   .0000937   438.53   0.000     .0409276    .0412951
+                                      exp2 │  -.0006988   2.12e-06  -330.26   0.000     -.000703   -.0006947
+                                    female │  -.3070483    .000674  -455.56   0.000    -.3083693   -.3057273
+                                           │
+                                      race │
+                               200. black  │  -.0750425   .0009484   -79.12   0.000    -.0769014   -.0731837
+        300. american indian/aleut/eskimo  │  -.0668067   .0034301   -19.48   0.000    -.0735295   -.0600839
+           650. asian or pacific islander  │  -.0015006   .0016174    -0.93   0.354    -.0046706    .0016694
+          700. other (single) race, n.e.c  │  -.0451802   .0026537   -17.03   0.000    -.0503814   -.0399791
+                                           │
+                                    region │
+                 middle atlantic division  │   .0037566   .0013338     2.82   0.005     .0011424    .0063708
+              east north central division  │  -.0528833   .0012747   -41.49   0.000    -.0553817    -.050385
+              west north central division  │  -.0847331   .0013943   -60.77   0.000    -.0874659   -.0820003
+                  south atlantic division  │  -.0374745   .0012636   -29.66   0.000    -.0399511   -.0349979
+              east south central division  │  -.1110616   .0015117   -73.47   0.000    -.1140245   -.1080987
+              west south central division  │  -.0533996    .001387   -38.50   0.000     -.056118   -.0506812
+                        mountain division  │  -.0519069   .0014339   -36.20   0.000    -.0547173   -.0490965
+                         pacific division  │   .0379088   .0013245    28.62   0.000      .035313    .0405047
+                                           │
+                                occupation │
+         managers, officials, proprietors  │   .1130752   .0010763   105.06   0.000     .1109657    .1151848
+                        clerical, kindred  │  -.3324211   .0010108  -328.87   0.000    -.3344022     -.33044
+                                    sales  │  -.2024055   .0016172  -125.16   0.000    -.2055752   -.1992359
+                                craftsmen  │  -.1740512   .0012176  -142.94   0.000    -.1764377   -.1716647
+                               operatives  │  -.3577312    .001248  -286.65   0.000    -.3601771   -.3552852
+                     service (private hh)  │  -.8167152    .004048  -201.76   0.000    -.8246491   -.8087813
+                          service (other)  │  -.4846426   .0011828  -409.76   0.000    -.4869607   -.4823244
+                                 laborers  │  -.4792114   .0016827  -284.79   0.000    -.4825094   -.4759133
+                                           │
+                                  industry │
+                             construction  │   .0475755   .0022719    20.94   0.000     .0431226    .0520285
+                    durable manufacturing  │   .1207265   .0021744    55.52   0.000     .1164648    .1249881
+                 nondurable manufacturing  │   .0676577    .002285    29.61   0.000     .0631791    .0721363
+communications, transportation, utilities  │   .1201389   .0023042    52.14   0.000     .1156228     .124655
+                          wholesale trade  │   .0382241   .0025074    15.24   0.000     .0333096    .0431386
+                             retail trade  │  -.2894815   .0021927  -132.02   0.000     -.293779   -.2851839
+              professional services, fire  │    .006051   .0021997     2.75   0.006     .0017395    .0103624
+              education, welfare services  │  -.3014385   .0023328  -129.22   0.000    -.3060107   -.2968664
+                    public administration  │   .1259352   .0023447    53.71   0.000     .1213397    .1305306
+                           other services  │  -.0892712    .002265   -39.41   0.000    -.0937104   -.0848319
+                                           │
+                                      year │
+                                     1983  │  -.0018561   .0021741    -0.85   0.393    -.0061173    .0024052
+                                     1984  │   .0016751   .0021691     0.77   0.440    -.0025762    .0059263
+                                     1985  │   .0037953   .0021584     1.76   0.079    -.0004351    .0080258
+                                     1986  │   .0173101   .0021644     8.00   0.000     .0130681    .0215522
+                                     1987  │   .0161688   .0021718     7.44   0.000     .0119121    .0204255
+                                     1988  │   .0117007    .002237     5.23   0.000     .0073162    .0160852
+                                     1989  │  -.0036308   .0021907    -1.66   0.097    -.0079244    .0006628
+                                     1990  │  -.0129209   .0021289    -6.07   0.000    -.0170936   -.0087483
+                                     1991  │  -.0292302   .0021545   -13.57   0.000     -.033453   -.0250075
+                                     1992  │  -.0370854   .0021681   -17.10   0.000    -.0413348   -.0328359
+                                     1993  │  -.0413168   .0021864   -18.90   0.000    -.0456021   -.0370315
+                                     1994  │  -.0579036   .0022799   -25.40   0.000     -.062372   -.0534352
+                                     1995  │  -.0667718   .0022915   -29.14   0.000    -.0712631   -.0622805
+                                     1996  │  -.0701698   .0023354   -30.05   0.000    -.0747471   -.0655925
+                                     1997  │  -.0559231   .0023027   -24.29   0.000    -.0604363   -.0514099
+                                     1998  │  -.0290081   .0023241   -12.48   0.000    -.0335634   -.0244529
+                                     1999  │  -.0082016   .0022886    -3.58   0.000    -.0126872    -.003716
+                                     2000  │   .0047496   .0022905     2.07   0.038     .0002602    .0092389
+                                     2001  │   .0079355   .0023092     3.44   0.001     .0034096    .0124614
+                                     2002  │    .010847   .0022932     4.73   0.000     .0063524    .0153415
+                                     2003  │   .0134164   .0023851     5.63   0.000     .0087417     .018091
+                                     2004  │   .0151549   .0023535     6.44   0.000     .0105422    .0197676
+                                     2005  │   .0067785   .0023348     2.90   0.004     .0022024    .0113545
+                                     2006  │   .0117593    .002306     5.10   0.000     .0072397    .0162789
+                                     2007  │   .0087063   .0023671     3.68   0.000     .0040668    .0133458
+                                     2008  │  -.0007684   .0023953    -0.32   0.748     -.005463    .0039263
+                                     2009  │   -.004655   .0024413    -1.91   0.057    -.0094399    .0001299
+                                     2010  │  -.0151523   .0024547    -6.17   0.000    -.0199633   -.0103412
+                                     2011  │   -.035972   .0024425   -14.73   0.000    -.0407593   -.0311848
+                                     2012  │  -.0397123   .0024665   -16.10   0.000    -.0445465    -.034878
+                                     2013  │  -.0346927   .0024458   -14.18   0.000    -.0394863   -.0298991
+                                     2014  │  -.0342398   .0024262   -14.11   0.000     -.038995   -.0294846
+                                     2015  │  -.0087293   .0024619    -3.55   0.000    -.0135546    -.003904
+                                     2016  │   .0074851    .002448     3.06   0.002      .002687    .0122831
+                                     2017  │   .0195196   .0024704     7.90   0.000     .0146778    .0243615
+                                     2018  │   .0264969   .0024954    10.62   0.000      .021606    .0313877
+                                     2019  │   .0504985   .0025343    19.93   0.000     .0455315    .0554656
+                                     2020  │   .0791944   .0026881    29.46   0.000     .0739258    .0844631
+                                     2021  │   .0776528   .0026094    29.76   0.000     .0725385    .0827671
+                                     2022  │    .060822    .002647    22.98   0.000     .0556339      .06601
+                                     2023  │   .0701667   .0026774    26.21   0.000     .0649191    .0754142
+                                     2024  │   .0769282   .0028454    27.04   0.000     .0713512    .0825052
+                                           │
+                                     _cons │   5.723061   .0036951  1548.84   0.000     5.715819    5.730303
+───────────────────────────────────────────┴────────────────────────────────────────────────────────────────
+</pre>
+<p>Testing the joint significiance of each categorical variable in turn
+shows us:</p>
+<pre class='stata'>. testparm i.race
+
+ ( 1)  200.race = 0
+ ( 2)  300.race = 0
+ ( 3)  650.race = 0
+ ( 4)  700.race = 0
+
+       F(  4,6574381) = 1695.16
+            Prob > F =    0.0000
+</pre>
+<p><code>race</code> effects are all jointly statistically
+significant.</p>
+<pre class='stata'>. testparm i.region
+
+ ( 1)  12.region = 0
+ ( 2)  21.region = 0
+ ( 3)  22.region = 0
+ ( 4)  31.region = 0
+ ( 5)  32.region = 0
+ ( 6)  33.region = 0
+ ( 7)  41.region = 0
+ ( 8)  42.region = 0
+
+       F(  8,6574381) = 2641.93
+            Prob > F =    0.0000
+</pre>
+<p><code>region</code> effects are all jointly statistically
+significant.</p>
+<pre class='stata'>. testparm i.occupation
+
+ ( 1)  2.occupation = 0
+ ( 2)  3.occupation = 0
+ ( 3)  4.occupation = 0
+ ( 4)  5.occupation = 0
+ ( 5)  6.occupation = 0
+ ( 6)  7.occupation = 0
+ ( 7)  8.occupation = 0
+ ( 8)  9.occupation = 0
+
+       F(  8,6574381) =48891.05
+            Prob > F =    0.0000
+</pre>
+<p><code>occupation</code> effects are all jointly statistically
+significant.</p>
+<pre class='stata'>. testparm i.industry
+
+ ( 1)  2.industry = 0
+ ( 2)  3.industry = 0
+ ( 3)  4.industry = 0
+ ( 4)  5.industry = 0
+ ( 5)  6.industry = 0
+ ( 6)  7.industry = 0
+ ( 7)  8.industry = 0
+ ( 8)  9.industry = 0
+ ( 9)  10.industry = 0
+ (10)  11.industry = 0
+
+       F( 10,6574381) =27487.35
+            Prob > F =    0.0000
+</pre>
+<p><code>industry</code> effects are all jointly statistically
+significant.</p>
+<pre class='stata'>. testparm i.year
+
+ ( 1)  1983.year = 0
+ ( 2)  1984.year = 0
+ ( 3)  1985.year = 0
+ ( 4)  1986.year = 0
+ ( 5)  1987.year = 0
+ ( 6)  1988.year = 0
+ ( 7)  1989.year = 0
+ ( 8)  1990.year = 0
+ ( 9)  1991.year = 0
+ (10)  1992.year = 0
+ (11)  1993.year = 0
+ (12)  1994.year = 0
+ (13)  1995.year = 0
+ (14)  1996.year = 0
+ (15)  1997.year = 0
+ (16)  1998.year = 0
+ (17)  1999.year = 0
+ (18)  2000.year = 0
+ (19)  2001.year = 0
+ (20)  2002.year = 0
+ (21)  2003.year = 0
+ (22)  2004.year = 0
+ (23)  2005.year = 0
+ (24)  2006.year = 0
+ (25)  2007.year = 0
+ (26)  2008.year = 0
+ (27)  2009.year = 0
+ (28)  2010.year = 0
+ (29)  2011.year = 0
+ (30)  2012.year = 0
+ (31)  2013.year = 0
+ (32)  2014.year = 0
+ (33)  2015.year = 0
+ (34)  2016.year = 0
+ (35)  2017.year = 0
+ (36)  2018.year = 0
+ (37)  2019.year = 0
+ (38)  2020.year = 0
+ (39)  2021.year = 0
+ (40)  2022.year = 0
+ (41)  2023.year = 0
+ (42)  2024.year = 0
+
+       F( 42,6574381) =  370.15
+            Prob > F =    0.0000
+</pre>
+<p><code>year</code> effects are all jointly statistically
+significant.</p>
+<hr />
+<h3 id="part-d-estimating-year-specific-grade-coefficients">Part D:
+Estimating Year-Specific Grade Coefficients</h3>
+<p>We need estimate the grade effects for each year, so we’ll add an
+interaction between year and grade, controlling for
+<code>experience</code> and our other factor variables.</p>
+<pre class='stata'>. regress lrwage year#c.grade experience exp2 female i.race i.region i.occupation i.industry i.year [pw=earnwt]
+(sum of wgt is 56,884,868,581.61)
+
+Linear regression                               Number of obs     =  6,574,458
+                                                F(118, 6574339)   =   23624.19
+                                                Prob > F          =     0.0000
+                                                R-squared         =     0.3800
+                                                Root MSE          =     .62173
+
+───────────────────────────────────────────┬────────────────────────────────────────────────────────────────
+                                           │               Robust
+                                    lrwage │ Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+───────────────────────────────────────────┼────────────────────────────────────────────────────────────────
+                              year#c.grade │
+                                     1982  │   .0561733   .0006028    93.19   0.000     .0549919    .0573548
+                                     1983  │   .0602647   .0006226    96.80   0.000     .0590444     .061485
+                                     1984  │   .0634271   .0006301   100.66   0.000     .0621922    .0646621
+                                     1985  │    .066333   .0006325   104.87   0.000     .0650933    .0675727
+                                     1986  │   .0706715   .0006424   110.00   0.000     .0694124    .0719307
+                                     1987  │   .0732246     .00065   112.65   0.000     .0719505    .0744987
+                                     1988  │   .0726719   .0006929   104.88   0.000     .0713138    .0740301
+                                     1989  │   .0732449   .0007092   103.28   0.000      .071855    .0746349
+                                     1990  │   .0745422   .0006445   115.66   0.000      .073279    .0758054
+                                     1991  │   .0747992   .0006372   117.39   0.000     .0735503    .0760481
+                                     1992  │   .0795859   .0006763   117.69   0.000     .0782605    .0809113
+                                     1993  │   .0814496   .0007069   115.23   0.000     .0800641     .082835
+                                     1994  │   .0855259   .0007348   116.40   0.000     .0840857     .086966
+                                     1995  │   .0846472   .0007388   114.58   0.000     .0831992    .0860952
+                                     1996  │   .0834168    .000779   107.09   0.000       .08189    .0849436
+                                     1997  │   .0829461   .0007504   110.53   0.000     .0814753     .084417
+                                     1998  │   .0835083   .0007367   113.35   0.000     .0820644    .0849523
+                                     1999  │   .0840156   .0007038   119.38   0.000     .0826362    .0853949
+                                     2000  │   .0827934   .0007083   116.89   0.000     .0814051    .0841816
+                                     2001  │   .0840766    .000734   114.55   0.000      .082638    .0855152
+                                     2002  │   .0841608   .0006884   122.25   0.000     .0828115    .0855101
+                                     2003  │   .0813085   .0007531   107.97   0.000     .0798324    .0827845
+                                     2004  │   .0816424   .0007289   112.01   0.000     .0802138     .083071
+                                     2005  │   .0834152   .0007065   118.07   0.000     .0820305    .0847999
+                                     2006  │   .0828454   .0007006   118.25   0.000     .0814723    .0842185
+                                     2007  │   .0842125   .0007357   114.47   0.000     .0827706    .0856545
+                                     2008  │   .0864959    .000759   113.95   0.000     .0850082    .0879836
+                                     2009  │   .0889878   .0007778   114.40   0.000     .0874633    .0905124
+                                     2010  │    .091212   .0007901   115.44   0.000     .0896635    .0927606
+                                     2011  │   .0908303   .0007849   115.72   0.000     .0892919    .0923686
+                                     2012  │   .0917831   .0008093   113.40   0.000     .0901969    .0933694
+                                     2013  │   .0930095   .0007885   117.96   0.000      .091464    .0945549
+                                     2014  │    .090646   .0007577   119.63   0.000     .0891609    .0921311
+                                     2015  │   .0893533    .000789   113.25   0.000     .0878069    .0908997
+                                     2016  │   .0903871   .0007837   115.34   0.000     .0888512    .0919231
+                                     2017  │   .0880862   .0007866   111.98   0.000     .0865445     .089628
+                                     2018  │   .0863748   .0008022   107.67   0.000     .0848025    .0879471
+                                     2019  │   .0871605   .0008224   105.98   0.000     .0855486    .0887724
+                                     2020  │   .0872036   .0009134    95.47   0.000     .0854133    .0889939
+                                     2021  │   .0854984   .0008735    97.88   0.000     .0837863    .0872104
+                                     2022  │   .0858202   .0008998    95.38   0.000     .0840567    .0875838
+                                     2023  │   .0865859   .0008869    97.63   0.000     .0848476    .0883242
+                                     2024  │   .0898014   .0009826    91.39   0.000     .0878755    .0917272
+                                           │
+                                experience │   .0410639   .0000938   437.94   0.000     .0408801    .0412477
+                                      exp2 │  -.0006992   2.12e-06  -330.05   0.000    -.0007033    -.000695
+                                    female │  -.3085029   .0006741  -457.63   0.000    -.3098241   -.3071816
+                                           │
+                                      race │
+                               200. black  │  -.0756936   .0009481   -79.84   0.000    -.0775518   -.0738353
+        300. american indian/aleut/eskimo  │   -.063837   .0034367   -18.57   0.000    -.0705729   -.0571011
+           650. asian or pacific islander  │  -.0055139   .0016181    -3.41   0.001    -.0086852   -.0023426
+          700. other (single) race, n.e.c  │  -.0427244   .0026518   -16.11   0.000    -.0479217    -.037527
+                                           │
+                                    region │
+                 middle atlantic division  │   .0040812   .0013325     3.06   0.002     .0014696    .0066927
+              east north central division  │  -.0523125   .0012735   -41.08   0.000    -.0548086   -.0498165
+              west north central division  │  -.0842317   .0013932   -60.46   0.000    -.0869624    -.081501
+                  south atlantic division  │  -.0376067   .0012624   -29.79   0.000     -.040081   -.0351323
+              east south central division  │  -.1113491   .0015109   -73.70   0.000    -.1143104   -.1083878
+              west south central division  │  -.0525548   .0013862   -37.91   0.000    -.0552717   -.0498378
+                        mountain division  │  -.0508812   .0014331   -35.51   0.000    -.0536899   -.0480725
+                         pacific division  │   .0393983   .0013235    29.77   0.000     .0368044    .0419923
+                                           │
+                                occupation │
+         managers, officials, proprietors  │   .1136374   .0010751   105.70   0.000     .1115302    .1157446
+                        clerical, kindred  │   -.330332   .0010116  -326.53   0.000    -.3323148   -.3283493
+                                    sales  │  -.2005792   .0016168  -124.06   0.000    -.2037481   -.1974103
+                                craftsmen  │   -.174021   .0012176  -142.92   0.000    -.1764075   -.1716345
+                               operatives  │  -.3582512   .0012478  -287.10   0.000    -.3606969   -.3558055
+                     service (private hh)  │  -.8111141   .0040761  -198.99   0.000    -.8191031    -.803125
+                          service (other)  │  -.4828064   .0011834  -407.97   0.000    -.4851259   -.4804869
+                                 laborers  │  -.4793252   .0016835  -284.71   0.000    -.4826249   -.4760255
+                                           │
+                                  industry │
+                             construction  │   .0479607    .002275    21.08   0.000     .0435017    .0524197
+                    durable manufacturing  │   .1185247   .0021767    54.45   0.000     .1142584     .122791
+                 nondurable manufacturing  │   .0651904   .0022875    28.50   0.000      .060707    .0696739
+communications, transportation, utilities  │   .1194581   .0023062    51.80   0.000      .114938    .1239781
+                          wholesale trade  │   .0372723   .0025093    14.85   0.000     .0323541    .0421905
+                             retail trade  │  -.2900507   .0021951  -132.13   0.000    -.2943531   -.2857483
+              professional services, fire  │    .003828   .0022024     1.74   0.082    -.0004886    .0081446
+              education, welfare services  │  -.3022451   .0023349  -129.45   0.000    -.3068214   -.2976688
+                    public administration  │   .1242857   .0023471    52.95   0.000     .1196854     .128886
+                           other services  │  -.0914901   .0022675   -40.35   0.000    -.0959343   -.0870459
+                                           │
+                                      year │
+                                     1983  │  -.0523009   .0111307    -4.70   0.000    -.0741166   -.0304853
+                                     1984  │  -.0885881   .0112311    -7.89   0.000    -.1106008   -.0665755
+                                     1985  │  -.1234112   .0112929   -10.93   0.000    -.1455448   -.1012776
+                                     1986  │  -.1652766   .0113936   -14.51   0.000    -.1876077   -.1429455
+                                     1987  │    -.19918   .0114837   -17.34   0.000    -.2216877   -.1766723
+                                     1988  │  -.1961397     .01192   -16.45   0.000    -.2195026   -.1727769
+                                     1989  │  -.2185214   .0121171   -18.03   0.000    -.2422704   -.1947724
+                                     1990  │  -.2446904    .011469   -21.34   0.000    -.2671691   -.2222116
+                                     1991  │   -.263911    .011418   -23.11   0.000    -.2862898   -.2415322
+                                     1992  │  -.3344626   .0117931   -28.36   0.000    -.3575766   -.3113486
+                                     1993  │  -.3630454   .0121314   -29.93   0.000    -.3868226   -.3392683
+                                     1994  │  -.4333936   .0124532   -34.80   0.000    -.4578015   -.4089858
+                                     1995  │  -.4307234   .0124766   -34.52   0.000     -.455177   -.4062697
+                                     1996  │  -.4177676   .0128706   -32.46   0.000    -.4429936   -.3925416
+                                     1997  │  -.3972598   .0125753   -31.59   0.000    -.4219069   -.3726126
+                                     1998  │  -.3778185   .0124907   -30.25   0.000    -.4022999   -.3533372
+                                     1999  │  -.3637995   .0121271   -30.00   0.000    -.3875682   -.3400308
+                                     2000  │  -.3345284   .0121934   -27.44   0.000     -.358427   -.3106299
+                                     2001  │  -.3484886   .0124772   -27.93   0.000    -.3729436   -.3240337
+                                     2002  │  -.3467432   .0120445   -28.79   0.000    -.3703499   -.3231365
+                                     2003  │  -.3060094   .0127196   -24.06   0.000    -.3309393   -.2810796
+                                     2004  │  -.3087323   .0124107   -24.88   0.000    -.3330569   -.2844077
+                                     2005  │  -.3409253   .0122266   -27.88   0.000     -.364889   -.3169616
+                                     2006  │   -.328281   .0121514   -27.02   0.000    -.3520973   -.3044646
+                                     2007  │  -.3498129   .0125502   -27.87   0.000    -.3744109   -.3252149
+                                     2008  │  -.3904392   .0128339   -30.42   0.000    -.4155932   -.3652852
+                                     2009  │  -.4284875   .0130896   -32.73   0.000    -.4541426   -.4028323
+                                     2010  │  -.4695827   .0132046   -35.56   0.000    -.4954633   -.4437022
+                                     2011  │  -.4853928   .0132256   -36.70   0.000    -.5113146   -.4594711
+                                     2012  │  -.5024684   .0135524   -37.08   0.000    -.5290307   -.4759061
+                                     2013  │  -.5147503    .013342   -38.58   0.000    -.5409002   -.4886005
+                                     2014  │  -.4818591   .0129854   -37.11   0.000    -.5073101   -.4564081
+                                     2015  │  -.4388044   .0133643   -32.83   0.000    -.4649979   -.4126108
+                                     2016  │  -.4371616   .0133143   -32.83   0.000    -.4632571    -.411066
+                                     2017  │  -.3934159   .0133512   -29.47   0.000    -.4195837   -.3672481
+                                     2018  │  -.3627636   .0135249   -26.82   0.000    -.3892719   -.3362553
+                                     2019  │    -.34985   .0138077   -25.34   0.000    -.3769127   -.3227873
+                                     2020  │  -.3224213   .0148918   -21.65   0.000    -.3516087   -.2932338
+                                     2021  │   -.299788   .0145769   -20.57   0.000    -.3283582   -.2712178
+                                     2022  │  -.3211861   .0148728   -21.60   0.000    -.3503363    -.292036
+                                     2023  │  -.3227428   .0147035   -21.95   0.000    -.3515612   -.2939245
+                                     2024  │  -.3616013    .015808   -22.87   0.000    -.3925844   -.3306181
+                                           │
+                                     _cons │   6.062134   .0082806   732.09   0.000     6.045904    6.078364
+───────────────────────────────────────────┴────────────────────────────────────────────────────────────────
+</pre>
+<p>Stata stores all the coefficients from this regression in the matrix
+e(b), from which we can pull all the interaction coefficients into a
+column vector and then create a new two-column table of
+<code>grade</code> effect for each year. This requires a few steps.</p>
+<p>First, let’s retrieve all the coefficients of our interaction term
+<code>year#c.grade</code> and store them as a new column vactor ‘b’:</p>
+<pre class='stata'>. matrix b = e(b)[1, 1..$numyear]' // store year#c.grade coefficients as column vector 'b'
+
+. clear
+</pre>
+<p>Then, using <code>svmat2</code>, we can create a new two-column table
+of the ‘name’ of each row and the value, i.e. the ‘year’ and grade
+effect for that year:</p>
+<pre class='stata'>. svmat2 b, names(grade_coef) rnames(tag)
+number of observations will be reset to 43
+Press any key to continue, or Break to abort
+Number of observations (_N) was 0, now 43.
+
+. list, noobs
+
+  ┌───────────────────────────────┐
+  │ grade_~f                  tag │
+  ├───────────────────────────────┤
+  │ .0561733   1982b.year#c.grade │
+  │ .0602647    1983.year#c.grade │
+  │ .0634271    1984.year#c.grade │
+  │  .066333    1985.year#c.grade │
+  │ .0706715    1986.year#c.grade │
+  ├───────────────────────────────┤
+  │ .0732246    1987.year#c.grade │
+  │ .0726719    1988.year#c.grade │
+  │ .0732449    1989.year#c.grade │
+  │ .0745422    1990.year#c.grade │
+  │ .0747992    1991.year#c.grade │
+  ├───────────────────────────────┤
+  │ .0795859    1992.year#c.grade │
+  │ .0814496    1993.year#c.grade │
+  │ .0855259    1994.year#c.grade │
+  │ .0846472    1995.year#c.grade │
+  │ .0834168    1996.year#c.grade │
+  ├───────────────────────────────┤
+  │ .0829461    1997.year#c.grade │
+  │ .0835083    1998.year#c.grade │
+  │ .0840156    1999.year#c.grade │
+  │ .0827934    2000.year#c.grade │
+  │ .0840766    2001.year#c.grade │
+  ├───────────────────────────────┤
+  │ .0841608    2002.year#c.grade │
+  │ .0813085    2003.year#c.grade │
+  │ .0816424    2004.year#c.grade │
+  │ .0834152    2005.year#c.grade │
+  │ .0828454    2006.year#c.grade │
+  ├───────────────────────────────┤
+  │ .0842125    2007.year#c.grade │
+  │ .0864959    2008.year#c.grade │
+  │ .0889878    2009.year#c.grade │
+  │  .091212    2010.year#c.grade │
+  │ .0908303    2011.year#c.grade │
+  ├───────────────────────────────┤
+  │ .0917831    2012.year#c.grade │
+  │ .0930095    2013.year#c.grade │
+  │  .090646    2014.year#c.grade │
+  │ .0893533    2015.year#c.grade │
+  │ .0903871    2016.year#c.grade │
+  ├───────────────────────────────┤
+  │ .0880862    2017.year#c.grade │
+  │ .0863748    2018.year#c.grade │
+  │ .0871605    2019.year#c.grade │
+  │ .0872036    2020.year#c.grade │
+  │ .0854984    2021.year#c.grade │
+  ├───────────────────────────────┤
+  │ .0858203    2022.year#c.grade │
+  │ .0865859    2023.year#c.grade │
+  │ .0898014    2024.year#c.grade │
+  └───────────────────────────────┘
+</pre>
+<p>While the column names and ‘year’ values are a mess, this has got us
+the data we need. Let’s clean these up and convert our grade effects to
+percentages as <code>grade_coef</code>:</p>
+<pre class='stata'>. generate year=real(substr(tag, 1, 4))
+
+. drop tag
+
+. order year grade_coef
+
+. replace grade_coef = grade_coef * 100 // convert to percentages
+(43 real changes made)
+</pre>
+<p>We now have a new data set of grade effects for each year in our
+sample:</p>
+<pre class='stata'>. list, noobs
+
+  ┌─────────────────┐
+  │ year   grade_~f │
+  ├─────────────────┤
+  │ 1982   5.617335 │
+  │ 1983    6.02647 │
+  │ 1984   6.342713 │
+  │ 1985   6.633296 │
+  │ 1986   7.067152 │
+  ├─────────────────┤
+  │ 1987    7.32246 │
+  │ 1988   7.267192 │
+  │ 1989   7.324494 │
+  │ 1990   7.454219 │
+  │ 1991   7.479922 │
+  ├─────────────────┤
+  │ 1992    7.95859 │
+  │ 1993   8.144956 │
+  │ 1994   8.552587 │
+  │ 1995   8.464716 │
+  │ 1996   8.341679 │
+  ├─────────────────┤
+  │ 1997   8.294611 │
+  │ 1998   8.350834 │
+  │ 1999   8.401559 │
+  │ 2000   8.279337 │
+  │ 2001   8.407659 │
+  ├─────────────────┤
+  │ 2002   8.416082 │
+  │ 2003   8.130848 │
+  │ 2004   8.164243 │
+  │ 2005   8.341518 │
+  │ 2006   8.284541 │
+  ├─────────────────┤
+  │ 2007   8.421254 │
+  │ 2008   8.649587 │
+  │ 2009   8.898782 │
+  │ 2010   9.121205 │
+  │ 2011   9.083028 │
+  ├─────────────────┤
+  │ 2012   9.178314 │
+  │ 2013   9.300947 │
+  │ 2014   9.064603 │
+  │ 2015   8.935328 │
+  │ 2016   9.038714 │
+  ├─────────────────┤
+  │ 2017   8.808623 │
+  │ 2018   8.637478 │
+  │ 2019   8.716049 │
+  │ 2020    8.72036 │
+  │ 2021   8.549835 │
+  ├─────────────────┤
+  │ 2022   8.582025 │
+  │ 2023   8.658587 │
+  │ 2024   8.980139 │
+  └─────────────────┘
+
+. describe
+
+Contains data
+ Observations:            43                  
+    Variables:             2                  
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+year            float   %9.0g                 
+grade_coef      float   %9.0g                 
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Sorted by: 
+     Note: Dataset has changed since last saved.
+
+. summarize
+
+    Variable │        Obs        Mean    Std. dev.       Min        Max
+─────────────┼─────────────────────────────────────────────────────────
+        year │         43        2003    12.55654       1982       2024
+  grade_coef │         43    8.195671    .8626456   5.617335   9.300947
+</pre>
+<p>This looks good. We have 43 observations, one for each year
+1982-2024. The our percentage rate of return to schooling ranges from
+5.6 to 9.3, which we’ll note for preparing the plot in part F.</p>
+<p>Let’s save this as a temp file to merge with the log-wage
+differentials in part E.</p>
+<pre class='stata'>. tempfile temp1
+
+. save `temp1', replace
+(file /var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_07102.000001 not found)
+file /var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_07102.000001 saved as .dta format
+</pre>
+<hr />
+<h3 id="part-e-merging-the-grade-coefficients-with-the-90-10-differential-in-logs">Part
+E: Merging the Grade Coefficients with the 90-10 Differential (in
+logs)</h3>
+<p>Recall our goal here is to plot the rate of return to schooling
+overlayed on our log-wage differential to see how or if they match.
+Let’s use our log-differential data from Exercise 3 and keep just the
+<code>year</code> and <code>ldiff</code> variables.</p>
+<pre class='stata'>. use "../Data/CPS-ORG, Wage Percentiles, 1982-2024.dta", clear
+
+. keep year ldiff
+
+. list, noobs
+
+  ┌──────────────┐
+  │ year   ldiff │
+  ├──────────────┤
+  │ 1982   173.2 │
+  │ 1983   178.1 │
+  │ 1984   176.4 │
+  │ 1985   178.2 │
+  │ 1986   179.2 │
+  ├──────────────┤
+  │ 1987   178.4 │
+  │ 1988   179.6 │
+  │ 1989   177.5 │
+  │ 1990   174.3 │
+  │ 1991   174.4 │
+  ├──────────────┤
+  │ 1992   177.4 │
+  │ 1993   179.2 │
+  │ 1994   184.4 │
+  │ 1995   183.6 │
+  │ 1996   183.0 │
+  ├──────────────┤
+  │ 1997   180.5 │
+  │ 1998   180.5 │
+  │ 1999   177.5 │
+  │ 2000   178.6 │
+  │ 2001   180.7 │
+  ├──────────────┤
+  │ 2002   183.5 │
+  │ 2003   185.4 │
+  │ 2004   187.1 │
+  │ 2005   184.6 │
+  │ 2006   183.3 │
+  ├──────────────┤
+  │ 2007   184.4 │
+  │ 2008   186.2 │
+  │ 2009   194.5 │
+  │ 2010   195.6 │
+  │ 2011   196.8 │
+  ├──────────────┤
+  │ 2012   199.9 │
+  │ 2013   197.4 │
+  │ 2014   196.5 │
+  │ 2015   199.7 │
+  │ 2016   196.5 │
+  ├──────────────┤
+  │ 2017   191.2 │
+  │ 2018   190.1 │
+  │ 2019   192.7 │
+  │ 2020   188.0 │
+  │ 2021   185.3 │
+  ├──────────────┤
+  │ 2022   182.7 │
+  │ 2023   184.6 │
+  │ 2024   185.9 │
+  └──────────────┘
+
+. describe
+
+Contains data from ../Data/CPS-ORG, Wage Percentiles, 1982-2024.dta
+ Observations:            43                  
+    Variables:             2                  14 Jan 2025 19:14
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+year            int     %8.0g                 survey year
+ldiff           float   %4.1f                 
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Sorted by: year
+
+. summarize
+
+    Variable │        Obs        Mean    Std. dev.       Min        Max
+─────────────┼─────────────────────────────────────────────────────────
+        year │         43        2003    12.55654       1982       2024
+       ldiff │         43    184.7998    7.395999   173.1777   199.8685
+</pre>
+<p>This is exactly what we need and ready to merge in the year-specific
+grade effects from part D, Let’s save it as another temp.</p>
+<pre class='stata'>. tempfile temp2
+
+. save `temp2', replace
+(file /var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_07102.000002 not found)
+file /var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_07102.000002 saved as .dta format
+</pre>
+<p>Now, since the tables we’re merging are a one-to-one match on
+<code>year</code>, we’ll merge as follows, testing for a full match
+along the way using <code>assert</code>.</p>
+<pre class='stata'>. use `temp1', clear
+
+. merge 1:1 year using `temp2'
+
+    Result                      Number of obs
+    ─────────────────────────────────────────
+    Not matched                             0
+    Matched                                43  (_merge==3)
+    ─────────────────────────────────────────
+
+. assert _merge==3
+
+. drop _merge
+</pre>
+<p>Let’s check the final table is what we need for our final plots in
+part F:</p>
+<pre class='stata'>. list
+
+     ┌─────────────────────────┐
+     │ year   grade_~f   ldiff │
+     ├─────────────────────────┤
+  1. │ 1982   5.617335   173.2 │
+  2. │ 1983    6.02647   178.1 │
+  3. │ 1984   6.342713   176.4 │
+  4. │ 1985   6.633296   178.2 │
+  5. │ 1986   7.067152   179.2 │
+     ├─────────────────────────┤
+  6. │ 1987    7.32246   178.4 │
+  7. │ 1988   7.267192   179.6 │
+  8. │ 1989   7.324494   177.5 │
+  9. │ 1990   7.454219   174.3 │
+ 10. │ 1991   7.479922   174.4 │
+     ├─────────────────────────┤
+ 11. │ 1992    7.95859   177.4 │
+ 12. │ 1993   8.144956   179.2 │
+ 13. │ 1994   8.552587   184.4 │
+ 14. │ 1995   8.464716   183.6 │
+ 15. │ 1996   8.341679   183.0 │
+     ├─────────────────────────┤
+ 16. │ 1997   8.294611   180.5 │
+ 17. │ 1998   8.350834   180.5 │
+ 18. │ 1999   8.401559   177.5 │
+ 19. │ 2000   8.279337   178.6 │
+ 20. │ 2001   8.407659   180.7 │
+     ├─────────────────────────┤
+ 21. │ 2002   8.416082   183.5 │
+ 22. │ 2003   8.130848   185.4 │
+ 23. │ 2004   8.164243   187.1 │
+ 24. │ 2005   8.341518   184.6 │
+ 25. │ 2006   8.284541   183.3 │
+     ├─────────────────────────┤
+ 26. │ 2007   8.421254   184.4 │
+ 27. │ 2008   8.649587   186.2 │
+ 28. │ 2009   8.898782   194.5 │
+ 29. │ 2010   9.121205   195.6 │
+ 30. │ 2011   9.083028   196.8 │
+     ├─────────────────────────┤
+ 31. │ 2012   9.178314   199.9 │
+ 32. │ 2013   9.300947   197.4 │
+ 33. │ 2014   9.064603   196.5 │
+ 34. │ 2015   8.935328   199.7 │
+ 35. │ 2016   9.038714   196.5 │
+     ├─────────────────────────┤
+ 36. │ 2017   8.808623   191.2 │
+ 37. │ 2018   8.637478   190.1 │
+ 38. │ 2019   8.716049   192.7 │
+ 39. │ 2020    8.72036   188.0 │
+ 40. │ 2021   8.549835   185.3 │
+     ├─────────────────────────┤
+ 41. │ 2022   8.582025   182.7 │
+ 42. │ 2023   8.658587   184.6 │
+ 43. │ 2024   8.980139   185.9 │
+     └─────────────────────────┘
+
+. describe
+
+Contains data from /var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_07102.000001
+ Observations:            43                  
+    Variables:             3                  15 Jan 2025 08:42
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+year            float   %9.0g                 
+grade_coef      float   %9.0g                 
+ldiff           float   %4.1f                 
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Sorted by: year
+     Note: Dataset has changed since last saved.
+
+. summarize 
+
+    Variable │        Obs        Mean    Std. dev.       Min        Max
+─────────────┼─────────────────────────────────────────────────────────
+        year │         43        2003    12.55654       1982       2024
+  grade_coef │         43    8.195671    .8626456   5.617335   9.300947
+       ldiff │         43    184.7998    7.395999   173.1777   199.8685
+</pre>
+<p>Good. We now have rates of return to schooling and log-wage
+differentials from 1982-2024, 43 years in total.</p>
+<hr />
+<h3 id="part-f-plotting-the-relationship-between-the-grade-coefficients-and-the-90-10-differential">Part
+F: Plotting the Relationship Between the Grade Coefficients and the
+90-10 Differential</h3>
+<p>We’re now ready to produce our line and scatter plots. The line plot
+has a second vertical axis.</p>
+<pre class='stata'>. line ldiff year, yaxis(1) || line grade_coef year, yaxis(2) ///
+>  xtitle(Year) xlabel(1980(10)2025) xtick(1980(5)2015) ///
+>  ytitle("90-10 log-Wage Differential (%)", axis(1)) ylabel(150(10)200, format(%10.0g) noticks axis(1)) ///
+>  ytitle("Rate of Return to Schooling (%)", axis(2)) ylabel(5(1)10, noticks axis(2)) ///
+>  text(182 1985 "90-10 Differential") text(155 1985 "Return to Schooling") ///
+>  scheme(Wide727Scheme) name(g1, replace)
+
+. graph export results/inequality_schooling_line.png, name (g1) width(600) replace
+file /Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/results/inequality_schooling_line.png saved as PNG format
+</pre>
+<figure>
+<img role="img" aria-label="Earnings inequality and the Return to Schooling" src="data:image/png;base64,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" alt="Earnings inequality and the Return to Schooling" />
+<figcaption aria-hidden="true">Earnings inequality and the Return to
+Schooling</figcaption>
+</figure>
+<p>The graph shows that wage inequality and the return to education
+followed similar trends, both rising steadily from 1980 to around 2010.
+After 2010, the two lines diverge slightly, with wage inequality
+stabilizing while the return to education declines modestly,
+highlighting their close but not perfect relationship over time.</p>
+<p>Let’s also present the relationship in a scatterplot with a
+regression line.</p>
+<pre class='stata'>. scatter ldiff grade_coef || lfit ldiff grade_coef ||, ///
+>  xtitle(Rate of Return to Schooling (%)) xlabel(4(1)10) ///
+>  ytitle("90-10 log-Wage Differential (%)") ylabel(160(10)200, format(%10.0g) noticks) ///
+>  scheme(Squarish727Scheme) name(g2, replace)
+
+. graph export results/inequality_schooling_scatter.png, name (g2)  width(450) replace
+file /Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/results/inequality_schooling_scatter.png saved as PNG format
+</pre>
+<figure>
+<img role="img" aria-label="Earnings inequality and the Return to Schooling" src="data:image/png;base64,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" alt="Earnings inequality and the Return to Schooling" />
+<figcaption aria-hidden="true">Earnings inequality and the Return to
+Schooling</figcaption>
+</figure>
+<p>The scatter plot shows the strong positive relationship between wage
+inequality (90-10 log-wage differential) and the return to education,
+indicating that higher returns to schooling are associated with greater
+wage inequality.</p>
+<hr />
+</body>
+</html>

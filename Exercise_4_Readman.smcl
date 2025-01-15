@@ -3,16 +3,17 @@
       name:  {res}results
        {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_4_Readman.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}14 Jan 2025, 14:28:23
+ {txt}opened on:  {res}14 Jan 2025, 19:16:12
 {txt}
-{com}. *set scheme s2color
-. global ex=4
+{com}. set scheme s2color
+{txt}
+{com}. global ex=4
 {txt}
 {com}. global lname="Readman"
 {txt}
-{com}. global eyear=2024
+{com}. global syear=1982 // start year
 {txt}
-{com}. global syear=1982
+{com}. global eyear=2024 // end year
 {txt}
 {com}. global numyear=$eyear-$syear+1
 {txt}
@@ -677,12 +678,12 @@ Sorted by:
 {com}.   save `temp1', replace
 {txt}{p 0 4 2}
 (file {bf}
-/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_04680.000001{rm}
+/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_07102.000001{rm}
 not found)
 {p_end}
 {p 0 4 2}
 file {bf}
-/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_04680.000001{rm}
+/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_07102.000001{rm}
 saved
 as .dta format
 {p_end}
@@ -694,11 +695,69 @@ as .dta format
 {txt}
 {com}.    keep year ldiff
 {txt}
+{com}.    list, noobs
+{txt}
+  {c TLC}{hline 6}{c -}{hline 7}{c TRC}
+  {c |} {res}year   ldiff {txt}{c |}
+  {c LT}{hline 6}{c -}{hline 7}{c RT}
+  {c |} {res}1982   173.2 {txt}{c |}
+  {c |} {res}1983   178.1 {txt}{c |}
+  {c |} {res}1984   176.4 {txt}{c |}
+  {c |} {res}1985   178.2 {txt}{c |}
+  {c |} {res}1986   179.2 {txt}{c |}
+  {c LT}{hline 6}{c -}{hline 7}{c RT}
+  {c |} {res}1987   178.4 {txt}{c |}
+  {c |} {res}1988   179.6 {txt}{c |}
+  {c |} {res}1989   177.5 {txt}{c |}
+  {c |} {res}1990   174.3 {txt}{c |}
+  {c |} {res}1991   174.4 {txt}{c |}
+  {c LT}{hline 6}{c -}{hline 7}{c RT}
+  {c |} {res}1992   177.4 {txt}{c |}
+  {c |} {res}1993   179.2 {txt}{c |}
+  {c |} {res}1994   184.4 {txt}{c |}
+  {c |} {res}1995   183.6 {txt}{c |}
+  {c |} {res}1996   183.0 {txt}{c |}
+  {c LT}{hline 6}{c -}{hline 7}{c RT}
+  {c |} {res}1997   180.5 {txt}{c |}
+  {c |} {res}1998   180.5 {txt}{c |}
+  {c |} {res}1999   177.5 {txt}{c |}
+  {c |} {res}2000   178.6 {txt}{c |}
+  {c |} {res}2001   180.7 {txt}{c |}
+  {c LT}{hline 6}{c -}{hline 7}{c RT}
+  {c |} {res}2002   183.5 {txt}{c |}
+  {c |} {res}2003   185.4 {txt}{c |}
+  {c |} {res}2004   187.1 {txt}{c |}
+  {c |} {res}2005   184.6 {txt}{c |}
+  {c |} {res}2006   183.3 {txt}{c |}
+  {c LT}{hline 6}{c -}{hline 7}{c RT}
+  {c |} {res}2007   184.4 {txt}{c |}
+  {c |} {res}2008   186.2 {txt}{c |}
+  {c |} {res}2009   194.5 {txt}{c |}
+  {c |} {res}2010   195.6 {txt}{c |}
+  {c |} {res}2011   196.8 {txt}{c |}
+  {c LT}{hline 6}{c -}{hline 7}{c RT}
+  {c |} {res}2012   199.9 {txt}{c |}
+  {c |} {res}2013   197.4 {txt}{c |}
+  {c |} {res}2014   196.5 {txt}{c |}
+  {c |} {res}2015   199.7 {txt}{c |}
+  {c |} {res}2016   196.5 {txt}{c |}
+  {c LT}{hline 6}{c -}{hline 7}{c RT}
+  {c |} {res}2017   191.2 {txt}{c |}
+  {c |} {res}2018   190.1 {txt}{c |}
+  {c |} {res}2019   192.7 {txt}{c |}
+  {c |} {res}2020   188.0 {txt}{c |}
+  {c |} {res}2021   185.3 {txt}{c |}
+  {c LT}{hline 6}{c -}{hline 7}{c RT}
+  {c |} {res}2022   182.7 {txt}{c |}
+  {c |} {res}2023   184.6 {txt}{c |}
+  {c |} {res}2024   185.9 {txt}{c |}
+  {c BLC}{hline 6}{c -}{hline 7}{c BRC}
+
 {com}.    describe
 
 {txt}Contains data from {res}../Data/CPS-ORG, Wage Percentiles, 1982-2024.dta
 {txt} Observations:{res}            43                  
-{txt}    Variables:{res}             2                  12 Jan 2025 16:41
+{txt}    Variables:{res}             2                  14 Jan 2025 19:14
 {txt}{hline}
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
@@ -720,12 +779,12 @@ Sorted by: {res}year
 {com}.    save `temp2', replace
 {txt}{p 0 4 2}
 (file {bf}
-/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_04680.000002{rm}
+/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_07102.000002{rm}
 not found)
 {p_end}
 {p 0 4 2}
 file {bf}
-/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_04680.000002{rm}
+/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_07102.000002{rm}
 saved
 as .dta format
 {p_end}
@@ -744,8 +803,90 @@ as .dta format
 {txt}
 {com}.    drop _merge
 {txt}
+{com}.   list
+{txt}
+     {c TLC}{hline 6}{c -}{hline 10}{c -}{hline 7}{c TRC}
+     {c |} {res}year   grade_~f   ldiff {txt}{c |}
+     {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
+  1. {c |} {res}1982   5.617335   173.2 {txt}{c |}
+  2. {c |} {res}1983    6.02647   178.1 {txt}{c |}
+  3. {c |} {res}1984   6.342713   176.4 {txt}{c |}
+  4. {c |} {res}1985   6.633296   178.2 {txt}{c |}
+  5. {c |} {res}1986   7.067152   179.2 {txt}{c |}
+     {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
+  6. {c |} {res}1987    7.32246   178.4 {txt}{c |}
+  7. {c |} {res}1988   7.267192   179.6 {txt}{c |}
+  8. {c |} {res}1989   7.324494   177.5 {txt}{c |}
+  9. {c |} {res}1990   7.454219   174.3 {txt}{c |}
+ 10. {c |} {res}1991   7.479922   174.4 {txt}{c |}
+     {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
+ 11. {c |} {res}1992    7.95859   177.4 {txt}{c |}
+ 12. {c |} {res}1993   8.144956   179.2 {txt}{c |}
+ 13. {c |} {res}1994   8.552587   184.4 {txt}{c |}
+ 14. {c |} {res}1995   8.464716   183.6 {txt}{c |}
+ 15. {c |} {res}1996   8.341679   183.0 {txt}{c |}
+     {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
+ 16. {c |} {res}1997   8.294611   180.5 {txt}{c |}
+ 17. {c |} {res}1998   8.350834   180.5 {txt}{c |}
+ 18. {c |} {res}1999   8.401559   177.5 {txt}{c |}
+ 19. {c |} {res}2000   8.279337   178.6 {txt}{c |}
+ 20. {c |} {res}2001   8.407659   180.7 {txt}{c |}
+     {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
+ 21. {c |} {res}2002   8.416082   183.5 {txt}{c |}
+ 22. {c |} {res}2003   8.130848   185.4 {txt}{c |}
+ 23. {c |} {res}2004   8.164243   187.1 {txt}{c |}
+ 24. {c |} {res}2005   8.341518   184.6 {txt}{c |}
+ 25. {c |} {res}2006   8.284541   183.3 {txt}{c |}
+     {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
+ 26. {c |} {res}2007   8.421254   184.4 {txt}{c |}
+ 27. {c |} {res}2008   8.649587   186.2 {txt}{c |}
+ 28. {c |} {res}2009   8.898782   194.5 {txt}{c |}
+ 29. {c |} {res}2010   9.121205   195.6 {txt}{c |}
+ 30. {c |} {res}2011   9.083028   196.8 {txt}{c |}
+     {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
+ 31. {c |} {res}2012   9.178314   199.9 {txt}{c |}
+ 32. {c |} {res}2013   9.300947   197.4 {txt}{c |}
+ 33. {c |} {res}2014   9.064603   196.5 {txt}{c |}
+ 34. {c |} {res}2015   8.935328   199.7 {txt}{c |}
+ 35. {c |} {res}2016   9.038714   196.5 {txt}{c |}
+     {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
+ 36. {c |} {res}2017   8.808623   191.2 {txt}{c |}
+ 37. {c |} {res}2018   8.637478   190.1 {txt}{c |}
+ 38. {c |} {res}2019   8.716049   192.7 {txt}{c |}
+ 39. {c |} {res}2020    8.72036   188.0 {txt}{c |}
+ 40. {c |} {res}2021   8.549835   185.3 {txt}{c |}
+     {c LT}{hline 6}{c -}{hline 10}{c -}{hline 7}{c RT}
+ 41. {c |} {res}2022   8.582025   182.7 {txt}{c |}
+ 42. {c |} {res}2023   8.658587   184.6 {txt}{c |}
+ 43. {c |} {res}2024   8.980139   185.9 {txt}{c |}
+     {c BLC}{hline 6}{c -}{hline 10}{c -}{hline 7}{c BRC}
+
+{com}.   describe
+
+{txt}Contains data from {res}/var/folders/h0/wxw40lrj64j6l30lq749x76r0000gn/T//S_07102.000001
+{txt} Observations:{res}            43                  
+{txt}    Variables:{res}             3                  14 Jan 2025 19:17
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:year           }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:grade_coef     }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:ldiff          }{txt}{bind: float   }{bind:%4.1f     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{txt}{hline}
+Sorted by: {res}year
+{txt}     Note: {res}Dataset has changed since last saved.
+{txt}
+{com}.   summarize 
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 8}year {c |}{res}         43        2003    12.55654       1982       2024
+{txt}{space 2}grade_coef {c |}{res}         43    8.195671    .8626456   5.617335   9.300947
+{txt}{space 7}ldiff {c |}{res}         43    184.7998    7.395999   173.1777   199.8685
+{txt}
 {com}. 
-. * saving
+. * saving 
 .   save "../Data/Grade_coef and ldiff, 1982-2024.dta", replace
 {txt}{p 0 4 2}
 file {bf}
@@ -757,7 +898,7 @@ saved
 
 {txt}Contains data from {res}../Data/Grade_coef and ldiff, 1982-2024.dta
 {txt} Observations:{res}            43                  
-{txt}    Variables:{res}             3                  14 Jan 2025 14:29
+{txt}    Variables:{res}             3                  14 Jan 2025 19:17
 {txt}{hline}
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
@@ -876,7 +1017,7 @@ format
       {txt}name:  {res}results
        {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_4_Readman.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}14 Jan 2025, 14:29:18
+ {txt}closed on:  {res}14 Jan 2025, 19:17:05
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

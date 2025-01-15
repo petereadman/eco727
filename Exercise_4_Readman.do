@@ -4,11 +4,11 @@
 
 cd "~/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis"
 log using Exercise_4_Readman.smcl, name(results) replace
-*set scheme s2color
+set scheme s2color
 global ex=4
 global lname="Readman"
-global eyear=2024
-global syear=1982
+global syear=1982 // start year
+global eyear=2024 // end year
 global numyear=$eyear-$syear+1
 
 * part a: using the merged CPS-ORG/CPI data from exercise 3
@@ -29,7 +29,6 @@ global numyear=$eyear-$syear+1
 * part b: estimating a simple log-wage regression
   regress lrwage grade experience exp2 [pw=earnwt]
    test experience exp2
-   display "The sign of the coefficient on exp2 is negative, reflecting diminishing marginal returns to experience."
    display "The log-wage profile peaks at" , %4.1f -e(b)[1,2]/(2*e(b)[1,3]) , "years of experience." // Compute and display peak experience
 *** end part b
 
@@ -62,6 +61,7 @@ global numyear=$eyear-$syear+1
 * part e: merging the grade coefficients with the 90-10 differential (in logs)
   use "../Data/CPS-ORG, Wage Percentiles, 1982-2024.dta", clear
    keep year ldiff
+   list, noobs
    describe
    summarize
    tempfile temp2
@@ -70,8 +70,11 @@ global numyear=$eyear-$syear+1
    merge 1:1 year using `temp2'
    assert _merge==3
    drop _merge
+  list
+  describe
+  summarize 
 
-* saving
+* saving 
   save "../Data/Grade_coef and ldiff, 1982-2024.dta", replace
   describe
   summarize
