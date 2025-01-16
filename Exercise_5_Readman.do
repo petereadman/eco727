@@ -13,7 +13,9 @@ tempfile temp1
   use "../Data/Birth Quarter.dta" if cohort==4, clear
   run data_check
   describe
-  assert _N == 486926
+  tabulate census
+  assert census==80
+  assert _N==486926
 
 * generating new variables
   generate ageqsq=ageq^2
@@ -30,24 +32,52 @@ tempfile temp1
 *** end part a
 
 * part b: Estimate the log-Wage Regression by OLS and 2SLS
-
 * OLS regression
   regress lwklywge educ
-  eststo ols
-
-*2SLS regression using q1 as the only instrument (Wald estimate)
+   eststo ols
   ivregress 2sls lwklywge (educ = q1), first
-  estat firststage  // Check instrument strength
-  eststo wald
+   eststo wald
+  ivregress 2sls lwklywge i.yob (educ = i.qob), first
+   eststo qob_iv
+*** end part b
 
-* Step 3: 2SLS regression using qob as instruments and including birth-year effects
-  ivregress 2sls lwklywge (educ = qob) i.yob
-  estat firststage  // Check instrument strength
-  estat overid      // Test overidentifying restrictions
-  eststo qob_iv
+* part c: Reproducing Angrist and Krueger’s Table 6
+* estimating OLS regressions for table columns 1, 3, 5, 7
+regress lwklywge educ i.yob // OLS (1)
+ eststo column_1
+regress lwklywge educ i.yob ageq ageqsq // OLS (3)
+ eststo column_3
+regress lwklywge educ i.race i.smsa i.married i.yob i.region // OLS (5)
+ eststo column_5
+regress lwklywge educ i.race i.smsa i.married i.yob i.region ageq ageqsq // OLS (7)
+ eststo column_7
 
-* Step 4: Export the results for comparison
-  esttab ols wald qob_iv, stats(N r2) se label nonumbers
+* estimating 2SLS regressions for table columns 2, 4, 6, 8
+ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) ib49.yob // TSLS (2)
+ eststo column_2
+ estat firststage
+ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) ib49.yob ageq ageqsq // TSLS (4)
+ eststo column_4
+ estat firststage
+ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) i.race i.smsa i.married ib49.yob i.region // TSLS (6)
+ eststo column_6
+ estat firststage
+ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) i.race i.smsa i.married ib49.yob i.region ageq ageqsq // OLS (8)
+ eststo column_8
+ estat firststage
+*** end part c
+
+* part d: Comparing the Estimates
+
+*** end part d
+
+* part e: Creating a Table of Estimates from Part B
+
+*** end part e
+
+* part f: Reproducing Angrist and Krueger’s Table 6
+
+*** end part f
 
 
 
