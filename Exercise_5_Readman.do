@@ -33,12 +33,11 @@ tempfile temp1
 
 * part b: Estimate the log-Wage Regression by OLS and 2SLS
 * OLS regression
-  regress lwklywge educ
-   eststo ols
-  ivregress 2sls lwklywge (educ = q1), first
-   eststo wald
-  ivregress 2sls lwklywge i.yob (educ = i.qob), first
-   eststo qob_iv
+  eststo ols: regress lwklywge educ
+  eststo wald: ivregress 2sls lwklywge (educ = q1), first
+   estadd scalar widstat=e(F)
+  eststo qob_iv: ivregress 2sls lwklywge i.yob (educ = i.qob), first
+   estadd scalar widstat=e(F)
 *** end part b
 
 * part c: Reproducing Angrist and Krueger’s Table 6
@@ -72,7 +71,15 @@ ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) i.race i.smsa i.married ib49.y
 *** end part d
 
 * part e: Creating a Table of Estimates from Part B
-
+ esttab ols wald qob_iv, ///
+    b(3) se(3) stats(r2 widstat N , fmt(%4.3f %4.1f %9.0fc) labels("R-squared" "First-stage F-stat" "Observations")) ///
+    nodepvars nostar obslast nobaselevels varwidth(24) alignment(r) ///
+    title("Returns to Education Estimates") ///
+    mtitles("OLS" "Wald" "2SLS") ///
+    coeflabels(_cons "Constant" educ "Highest Grade Completed") ///
+    order(_cons educ) ///
+    indicate("Birth Year Effects = *.yob") ///
+    nonotes addnotes("Standard errors in parentheses." "Data source: 1980 Census.")
 *** end part e
 
 * part f: Reproducing Angrist and Krueger’s Table 6
