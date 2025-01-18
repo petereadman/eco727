@@ -1,0 +1,46 @@
+## Exercise 5: Reproducing Angrist and Krueger’s Table 6
+
+Peter Readman
+
+---
+
+### Plan    
+
+---
+
+- Use the Birth Quarter Data, prepared from Angrist and Krueger's paper
+- Estimate log-Wage Regressions by OLS and 2SLS
+- Reproduce Angrist and Krueger’s Table 6 estimates
+- Comparing the Estimates
+- Create a Table of Estimates from the log-Wage OLS and 2SLS regressions
+- Reproduce Angrist and Krueger’s Table 6
+
+---
+
+### Preliminaries
+
+---
+
+### Part A: Use the “Birth Quarter.dta” Data
+
+---
+
+### Part B: Estimate the log-Wage Regression by OLS and 2SLS
+
+---
+
+### Part C: Reproduce Angrist and Krueger’s Table 6
+
+---
+
+### Part D: Compare the Estimates
+
+---
+
+### Part E: Create a Table of Estimates from Part B
+
+---
+
+### Part F: Reproduce Angrist and Krueger’s Table 6
+
+---
