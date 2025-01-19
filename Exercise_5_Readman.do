@@ -28,7 +28,7 @@ global lname="Readman"
 
 * part b: Estimate the log-Wage Regression by OLS and 2SLS
   eststo ols:    regress lwklywge educ
-  eststo wald:   ivregress 2sls lwklywge (educ = q1)
+  eststo wald:   ivregress 2sls lwklywge (educ = q1), first
    estat firststage
   eststo qob_iv: ivregress 2sls lwklywge (educ = ib4.qob) ib49.yob, first
    estat firststage
@@ -58,54 +58,55 @@ global lname="Readman"
 * part e: Creating a Table of Estimates from Part B
   estimates dir
 
-  * write table of estimates to stata log
+  * writing table of part b estimates to stata log
   esttab ols wald qob_iv, ///
-   nodepvars nostar obslast nobaselevels varwidth(24) ///
-   title("Least-Squares Estimates of the log-Wage Regression") ///
+   title("OLS and 2SLS Estimates of the Return to Education for Men Born 1940-1949: 1980 Census") ///
    mtitles("OLS" "1 IV" "QOB IV") ///
    b(4) se(4) stats(r2 N, fmt(%4.3f %9.0fc) labels("R^2" "N")) ///
-   coeflabels(_cons Constant educ "Years of Education") ///
+   coeflabels(_cons Constant educ "Years of education") ///
    order(_cons educ) ///
    indicate("Birth Year Effects = *.yob") ///
-   nonotes addnotes("Standard errors in parentheses." "Data source: 1980 Census.")
-
-  * write table of estimates to tex file
-  esttab ols wald qob_iv using results/Exercise_5_table_a_readman.tex, replace ///
-   b(4) se(4) stats(r2 N, fmt(%4.3f %9.0fc) labels("\$R^2\$" "\$N\$")) ///
    nodepvars nostar obslast nobaselevels varwidth(24) ///
-   alignment(D{.}{.}{-1}) ///
-   title("Least-Squares Estimates of the log-Wage Regression") ///
+   nonotes addnotes("Standard errors in parentheses." "Data source: ~1980 Census (Angrist and Krueger, 1991).")
+
+  * writing table of part b estimates to tex file
+  esttab ols wald qob_iv using results/Exercise_5_table_a_Readman.tex, replace ///
+   title("OLS and 2SLS Estimates of the Return to Education for Men Born 1940-1949: 1980 Census") ///
    mtitles("OLS" "1 IV" "QOB IV") ///
+   b(4) se(4) stats(r2 N, fmt(%4.3f %9.0fc) labels("\$R^2\$" "\$N\$")) ///
    coeflabels(_cons Constant educ "Years of education") ///
    order(_cons educ) ///
    indicate("Birth Year Effects = *.yob", labels(\checkmark \text{})) ///
-   nonotes addnotes("Standard errors in parentheses." "Data source: 1980 Census.")
+   nodepvars nostar obslast nobaselevels varwidth(24) ///
+   alignment(D{.}{.}{-1}) ///
+   nonotes addnotes("Standard errors in parentheses." "Data source: ~1980 Census (Angrist and Krueger, 1991).")
 *** end part e
 
 * part f: Reproducing Angrist and Krueger’s Table 6
-  * reproduce models 1–4 from Angrist and Krueger's Table VI for stata log
+  * table of models 1–4 from Angrist and Krueger's Table VI for stata log
   esttab column_1 column_2 column_3 column_4, ///
-   order(educ *.yob ageq ageqsq) ///
-   b(4) se(4) stats(r2, fmt(%4.3f) labels("R^2")) ///
-   nodepvars nostar obslast nobaselevels varwidth(24) ///
    title("OLS and TSLS Estimates of the Return to Education for Men Born 1940-1949: 1980 Census") ///
-   indicate("9 Year-of-birth dummies = *.yob") ///
    mtitles("OLS" "2SLS" "OLS" "2SLS") ///
-   coeflabels(educ "Years of education" ageq "Age" ageqsq "Age-squared") ///
+   b(4) se(4) stats(r2, fmt(%4.3f) labels("R^2")) ///
+   coeflabels(_cons Constant educ "Years of education" race "Race (1=white)" smsa "SMSA (1 = center city)" married "Married (1 = married)" ageq "Age" ageqsq "Age-squared") ///
+   order(_cons educ race smsa married ageq ageqsq) ///
+   indicate("9 Year-of-birth dummies = *.yob") ///
+   nodepvars nostar obslast nobaselevels varwidth(24) ///
    nonotes addnotes("a. Standard errors in parentheses. Sample size is 486,926. Instruments are a full set of quarter-of-birth times year-of-birth interactions." ///
      "Sample consists of males born in the United States. The sample is drawn from the 5 percent samples of the 1980 Census." ///
      "The dependent variable is the log of weekly earnings. Age and age-squared are measured in quarters of years." ///
      "Each equation also includes an intercept.")
 
-  * reproduce models 1–4 from Angrist and Krueger's Table VI for tex
-  esttab column_1 column_2 column_3 column_4 using results/Exercise_5_table_b_readman.tex, replace ///
-   order(_cons educ *.yob ageq ageqsq) ///
-   b(4) se(4) stats(r2, fmt(%4.3f) labels("\$R^2\$")) ///
-   nodepvars nostar obslast nobaselevels varwidth(24) alignment(D{.}{.}{-1}) ///
+  * table models 1–4 from Angrist and Krueger's Table VI for tex
+  esttab column_1 column_2 column_3 column_4 using results/Exercise_5_table_b_Readman.tex, replace ///
    title("OLS and TSLS Estimates of the Return to Education for Men Born 1940-1949: 1980 Census") ///
-   indicate("9 Year-of-birth dummies = *.yob", labels(\text{yes} \text{no})) ///
    mtitles("OLS" "2SLS" "OLS" "2SLS") ///
-   coeflabels(_cons Constant educ "Years of education" ageq "Age" ageqsq "Age-squared") ///
+   b(4) se(4) stats(r2, fmt(%4.3f) labels("\$R^2\$")) ///
+   coeflabels(_cons Constant educ "Years of education" race "Race (1=white)" smsa "SMSA (1 = center city)" married "Married (1 = married)" ageq "Age" ageqsq "Age-squared") ///
+   order(_cons educ race smsa married ageq ageqsq) ///
+   indicate("9 Year-of-birth dummies = *.yob", labels(\text{yes} \text{no})) ///
+   alignment(D{.}{.}{-1}) ///
+   nodepvars nostar obslast nobaselevels varwidth(24) ///
    nonotes addnotes("a. Standard errors in parentheses. Sample size is 486,926. Instruments are a full set of quarter-of-birth times year-of-birth interactions." ///
      "Sample consists of males born in the United States. The sample is drawn from the 5 percent samples of the 1980 Census." ///
      "The dependent variable is the log of weekly earnings. Age and age-squared are measured in quarters of years." ///

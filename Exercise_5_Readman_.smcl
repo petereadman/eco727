@@ -3,7 +3,7 @@
       name:  {res}<unnamed>
        {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_5_Readman_.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}18 Jan 2025, 19:02:06
+ {txt}opened on:  {res}19 Jan 2025, 15:59:32
 {txt}
 {com}. //_1
 . use "../Data/Birth Quarter.dta" if cohort==4, clear
@@ -59,7 +59,8 @@ Sorted by:
 {txt}{hline 12}{c +}{hline 35}
       Total {c |}{res}    486,926      100.00
 {txt}
-{com}. generate q1=1 if qob==1
+{com}. //_4
+. generate q1=1 if qob==1
 {txt}(369,206 missing values generated)
 
 {com}. replace  q1=0 if q1==.
@@ -78,7 +79,8 @@ Sorted by:
 {txt}
 {com}. label variable ageqsq "age quarter squared"
 {txt}
-{com}. describe
+{com}. //_5
+. describe
 
 {txt}Contains data from {res}../Data/Birth Quarter.dta
 {txt} Observations:{res}       486,926                  
@@ -105,8 +107,43 @@ Variable      Storage   Display    Value
 Sorted by: 
      Note: {res}Dataset has changed since last saved.
 {txt}
-{com}. //_4
-. eststo wald:   ivregress 2sls lwklywge (educ = q1)
+{com}. //_6
+. eststo ols: regress lwklywge educ
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}   486,926
+{txt}{hline 13}{c +}{hline 34}   F(1, 486924)    = {res} 34137.04
+{txt}       Model {c |} {res} 13286.5814         1  13286.5814   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 189517.161   486,924  .389213022   {txt}R-squared       ={res}    0.0655
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0655
+{txt}       Total {c |} {res} 202803.743   486,925  .416498932   {txt}Root MSE        =   {res} .62387
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    lwklywge{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}educ {c |}{col 14}{res}{space 2} .0554276{col 26}{space 2}    .0003{col 37}{space 1}  184.76{col 46}{space 3}0.000{col 54}{space 4} .0548397{col 67}{space 3} .0560156
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}  5.04521{col 26}{space 2} .0041685{col 37}{space 1} 1210.33{col 46}{space 3}0.000{col 54}{space 4}  5.03704{col 67}{space 3} 5.053381
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. //_7
+. eststo wald: ivregress 2sls lwklywge (educ = q1), first
+{res}
+{txt}First-stage regressions
+{hline 23}
+
+{col 56}{lalign 13:Number of obs}{col 69} = {res}{ralign 7:486,926}
+{txt}{col 56}{lalign 13:F({res:1}, {res:486924})}{col 69} = {res}{ralign 7:68.38}
+{txt}{col 56}{lalign 13:Prob > F}{col 69} = {res}{ralign 7:0.0000}
+{txt}{col 56}{lalign 13:R-squared}{col 69} = {res}{ralign 7:0.0001}
+{txt}{col 56}{lalign 13:Adj R-squared}{col 69} = {res}{ralign 7:0.0001}
+{txt}{col 56}{lalign 13:Root MSE}{col 69} = {res}{ralign 7:2.9800}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        educ{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 10}q1 {c |}{col 14}{res}{space 2}-.0824827{col 26}{space 2} .0099745{col 37}{space 1}   -8.27{col 46}{space 3}0.000{col 54}{space 4}-.1020324{col 67}{space 3} -.062933
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}  13.5917{col 26}{space 2} .0049044{col 37}{space 1} 2771.33{col 46}{space 3}0.000{col 54}{space 4} 13.58209{col 67}{space 3} 13.60131
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
 {res}
 {txt}{col 1}Instrumental-variables 2SLS regression{col 51}Number of obs{col 67}= {res}   486,926
 {txt}{col 1}{col 51}Wald chi2({res}1{txt}){col 67}= {res}      0.14
@@ -120,8 +157,8 @@ Sorted by:
 {space 8}educ {c |}{col 14}{res}{space 2}-.0098222{col 26}{space 2} .0265177{col 37}{space 1}   -0.37{col 46}{space 3}0.711{col 54}{space 4}-.0617959{col 67}{space 3} .0421516
 {txt}{space 7}_cons {c |}{col 14}{res}{space 2} 5.930765{col 26}{space 2} .3598933{col 37}{space 1}   16.48{col 46}{space 3}0.000{col 54}{space 4} 5.225387{col 67}{space 3} 6.636143
 {txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{p 0 12 47}Endogenous: {res:educ}{p_end}
-{p 0 12 47}Exogenous:{space 1} {res:q1}{p_end}
+{p 0 12 57}Endogenous: {res:educ}{p_end}
+{p 0 12 57}Exogenous:{space 1} {res:q1}{p_end}
 
 {com}.  estat firststage
 {res}
@@ -148,7 +185,8 @@ Sorted by:
 {txt}{col 3}{hline 35}{c BT}{hline 33}
 
 {res}{txt}
-{com}. eststo qob_iv: ivregress 2sls lwklywge (educ = ib4.qob) ib49.yob, first
+{com}. //_8
+. eststo qob_iv: ivregress 2sls lwklywge (educ = ib4.qob) ib49.yob, first
 {res}
 {txt}First-stage regressions
 {hline 23}
@@ -207,8 +245,8 @@ Sorted by:
 {txt}{space 12} {c |}
 {space 7}_cons {c |}{col 14}{res}{space 2} 6.509484{col 26}{space 2} .3534527{col 37}{space 1}   18.42{col 46}{space 3}0.000{col 54}{space 4}  5.81673{col 67}{space 3} 7.202239
 {txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{p 0 12 47}Endogenous: {res:educ}{p_end}
-{p 0 12 47}Exogenous:{space 1} {res:40.yob 41.yob 42.yob 43.yob 44.yob 45.yob 46.yob 47.yob 48.yob 1.qob 2.qob 3.qob}{p_end}
+{p 0 12 57}Endogenous: {res:educ}{p_end}
+{p 0 12 57}Exogenous:{space 1} {res:40.yob 41.yob 42.yob 43.yob 44.yob 45.yob 46.yob 47.yob 48.yob 1.qob 2.qob 3.qob}{p_end}
 
 {com}.  estat firststage
 {res}
@@ -242,7 +280,36 @@ Sorted by:
 {col 3}Sargan (score) chi2({res}2{txt}){col 26}={res}{col 28}  10.889{txt}{col 38}(p = {res}0.0043{txt})
 {col 3}Basmann chi2({res}2{txt}){col 26}={res}{col 28}  10.889{txt}{col 38}(p = {res}0.0043{txt})
 
-{com}. //_5
+{com}. //_9
+. eststo column_1: regress lwklywge educ i.yob // OLS (1)
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}   486,926
+{txt}{hline 13}{c +}{hline 34}   F(10, 486915)   = {res}  4396.64
+{txt}       Model {c |} {res} 16795.7577        10  1679.57577   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 186007.985   486,915  .382013257   {txt}R-squared       ={res}    0.0828
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0828
+{txt}       Total {c |} {res} 202803.743   486,925  .416498932   {txt}Root MSE        =   {res} .61807
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    lwklywge{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}educ {c |}{col 14}{res}{space 2} .0573383{col 26}{space 2} .0002981{col 37}{space 1}  192.37{col 46}{space 3}0.000{col 54}{space 4} .0567541{col 67}{space 3} .0579224
+{txt}{space 12} {c |}
+{space 9}yob {c |}
+{space 9}41  {c |}{col 14}{res}{space 2} -.008401{col 26}{space 2} .0044663{col 37}{space 1}   -1.88{col 46}{space 3}0.060{col 54}{space 4}-.0171549{col 67}{space 3} .0003528
+{txt}{space 9}42  {c |}{col 14}{res}{space 2} -.020105{col 26}{space 2} .0042998{col 37}{space 1}   -4.68{col 46}{space 3}0.000{col 54}{space 4}-.0285323{col 67}{space 3}-.0116776
+{txt}{space 9}43  {c |}{col 14}{res}{space 2}-.0323785{col 26}{space 2} .0042716{col 37}{space 1}   -7.58{col 46}{space 3}0.000{col 54}{space 4}-.0407507{col 67}{space 3}-.0240063
+{txt}{space 9}44  {c |}{col 14}{res}{space 2}-.0688195{col 26}{space 2} .0043143{col 37}{space 1}  -15.95{col 46}{space 3}0.000{col 54}{space 4}-.0772754{col 67}{space 3}-.0603637
+{txt}{space 9}45  {c |}{col 14}{res}{space 2}-.0972022{col 26}{space 2} .0043119{col 37}{space 1}  -22.54{col 46}{space 3}0.000{col 54}{space 4}-.1056534{col 67}{space 3} -.088751
+{txt}{space 9}46  {c |}{col 14}{res}{space 2}-.1303642{col 26}{space 2} .0041339{col 37}{space 1}  -31.54{col 46}{space 3}0.000{col 54}{space 4}-.1384665{col 67}{space 3}-.1222619
+{txt}{space 9}47  {c |}{col 14}{res}{space 2}-.1659494{col 26}{space 2}   .00404{col 37}{space 1}  -41.08{col 46}{space 3}0.000{col 54}{space 4}-.1738678{col 67}{space 3}-.1580311
+{txt}{space 9}48  {c |}{col 14}{res}{space 2}-.2107593{col 26}{space 2}  .004081{col 37}{space 1}  -51.64{col 46}{space 3}0.000{col 54}{space 4}-.2187579{col 67}{space 3}-.2027607
+{txt}{space 9}49  {c |}{col 14}{res}{space 2}-.2510504{col 26}{space 2} .0040846{col 37}{space 1}  -61.46{col 46}{space 3}0.000{col 54}{space 4}-.2590561{col 67}{space 3}-.2430446
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} 5.129832{col 26}{space 2}   .00503{col 37}{space 1} 1019.85{col 46}{space 3}0.000{col 54}{space 4} 5.119973{col 67}{space 3}  5.13969
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. //_10
 . eststo column_2: ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) ib49.yob // TSLS (2)
 {res}
 {txt}{col 1}Instrumental-variables 2SLS regression{col 51}Number of obs{col 67}= {res}   486,926
@@ -269,8 +336,8 @@ Sorted by:
 {txt}{space 12} {c |}
 {space 7}_cons {c |}{col 14}{res}{space 2} 4.906853{col 26}{space 2} .1892754{col 37}{space 1}   25.92{col 46}{space 3}0.000{col 54}{space 4}  4.53588{col 67}{space 3} 5.277826
 {txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{p 0 12 47}Endogenous: {res:educ}{p_end}
-{p 0 12 47}Exogenous:{space 1} {res:40.yob 41.yob 42.yob 43.yob 44.yob 45.yob 46.yob 47.yob 48.yob 1.qob#40.yob 1.qob#41.yob 1.qob#42.yob 1.qob#43.yob 1.qob#44.yob 1.qob#45.yob 1.qob#46.yob 1.qob#47.yob 1.qob#48.yob 1.qob#49b.yob 2.qob#40.yob 2.qob#41.yob 2.qob#42.yob 2.qob#43.yob 2.qob#44.yob 2.qob#45.yob 2.qob#46.yob 2.qob#47.yob 2.qob#48.yob 2.qob#49b.yob 3.qob#40.yob 3.qob#41.yob 3.qob#42.yob 3.qob#43.yob 3.qob#44.yob 3.qob#45.yob 3.qob#46.yob 3.qob#47.yob 3.qob#48.yob 3.qob#49b.yob}{p_end}
+{p 0 12 57}Endogenous: {res:educ}{p_end}
+{p 0 12 57}Exogenous:{space 1} {res:40.yob 41.yob 42.yob 43.yob 44.yob 45.yob 46.yob 47.yob 48.yob 1.qob#40.yob 1.qob#41.yob 1.qob#42.yob 1.qob#43.yob 1.qob#44.yob 1.qob#45.yob 1.qob#46.yob 1.qob#47.yob 1.qob#48.yob 1.qob#49b.yob 2.qob#40.yob 2.qob#41.yob 2.qob#42.yob 2.qob#43.yob 2.qob#44.yob 2.qob#45.yob 2.qob#46.yob 2.qob#47.yob 2.qob#48.yob 2.qob#49b.yob 3.qob#40.yob 3.qob#41.yob 3.qob#42.yob 3.qob#43.yob 3.qob#44.yob 3.qob#45.yob 3.qob#46.yob 3.qob#47.yob 3.qob#48.yob 3.qob#49b.yob}{p_end}
 
 {com}.  estat firststage
 {res}
@@ -304,7 +371,8 @@ Sorted by:
 {col 3}Sargan (score) chi2({res}29{txt}){col 26}={res}{col 28} 101.621{txt}{col 38}(p = {res}0.0000{txt})
 {col 3}Basmann chi2({res}29{txt}){col 26}={res}{col 28} 101.634{txt}{col 38}(p = {res}0.0000{txt})
 
-{com}. eststo column_3: regress lwklywge educ i.yob ageq ageqsq // OLS (3)
+{com}. //_11
+. eststo column_3: regress lwklywge educ i.yob ageq ageqsq // OLS (3)
 
 {txt}      Source {c |}       SS           df       MS      Number of obs   ={res}   486,926
 {txt}{hline 13}{c +}{hline 34}   F(12, 486913)   = {res}  3668.22
@@ -334,7 +402,8 @@ Sorted by:
 {txt}{space 7}_cons {c |}{col 14}{res}{space 2} 1.672882{col 26}{space 2} .6714968{col 37}{space 1}    2.49{col 46}{space 3}0.013{col 54}{space 4} .3567686{col 67}{space 3} 2.988994
 {txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {res}{txt}
-{com}. eststo column_4: ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) ib49.yob ageq ageqsq // TSLS (4)
+{com}. //_12
+. eststo column_4: ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) ib49.yob ageq ageqsq // TSLS (4)
 {res}{txt}note: 3.qob#48.yob omitted because of collinearity.
 {txt}note: 3.qob#49b.yob omitted because of collinearity.
 {res}
@@ -364,8 +433,8 @@ Sorted by:
 {txt}{space 6}ageqsq {c |}{col 14}{res}{space 2} -.001582{col 26}{space 2} .0007254{col 37}{space 1}   -2.18{col 46}{space 3}0.029{col 54}{space 4}-.0030038{col 67}{space 3}-.0001602
 {txt}{space 7}_cons {c |}{col 14}{res}{space 2} 1.788557{col 26}{space 2} .6948771{col 37}{space 1}    2.57{col 46}{space 3}0.010{col 54}{space 4} .4266227{col 67}{space 3} 3.150491
 {txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{p 0 12 47}Endogenous: {res:educ}{p_end}
-{p 0 12 47}Exogenous:{space 1} {res:40.yob 41.yob 42.yob 43.yob 44.yob 45.yob 46.yob 47.yob 48.yob ageq ageqsq 1.qob#40.yob 1.qob#41.yob 1.qob#42.yob 1.qob#43.yob 1.qob#44.yob 1.qob#45.yob 1.qob#46.yob 1.qob#47.yob 1.qob#48.yob 1.qob#49b.yob 2.qob#40.yob 2.qob#41.yob 2.qob#42.yob 2.qob#43.yob 2.qob#44.yob 2.qob#45.yob 2.qob#46.yob 2.qob#47.yob 2.qob#48.yob 2.qob#49b.yob 3.qob#40.yob 3.qob#41.yob 3.qob#42.yob 3.qob#43.yob 3.qob#44.yob 3.qob#45.yob 3.qob#46.yob 3.qob#47.yob}{p_end}
+{p 0 12 57}Endogenous: {res:educ}{p_end}
+{p 0 12 57}Exogenous:{space 1} {res:40.yob 41.yob 42.yob 43.yob 44.yob 45.yob 46.yob 47.yob 48.yob ageq ageqsq 1.qob#40.yob 1.qob#41.yob 1.qob#42.yob 1.qob#43.yob 1.qob#44.yob 1.qob#45.yob 1.qob#46.yob 1.qob#47.yob 1.qob#48.yob 1.qob#49b.yob 2.qob#40.yob 2.qob#41.yob 2.qob#42.yob 2.qob#43.yob 2.qob#44.yob 2.qob#45.yob 2.qob#46.yob 2.qob#47.yob 2.qob#48.yob 2.qob#49b.yob 3.qob#40.yob 3.qob#41.yob 3.qob#42.yob 3.qob#43.yob 3.qob#44.yob 3.qob#45.yob 3.qob#46.yob 3.qob#47.yob}{p_end}
 
 {com}.  estat firststage
 {res}
@@ -399,7 +468,8 @@ Sorted by:
 {col 3}Sargan (score) chi2({res}27{txt}){col 26}={res}{col 28} 49.1187{txt}{col 38}(p = {res}0.0057{txt})
 {col 3}Basmann chi2({res}27{txt}){col 26}={res}{col 28} 49.1196{txt}{col 38}(p = {res}0.0057{txt})
 
-{com}. eststo column_5: regress lwklywge educ i.race i.smsa i.married i.yob i.region // OLS (5)
+{com}. //_13
+. eststo column_5: regress lwklywge educ i.race i.smsa i.married i.yob i.region // OLS (5)
 
 {txt}      Source {c |}       SS           df       MS      Number of obs   ={res}   486,926
 {txt}{hline 13}{c +}{hline 34}   F(21, 486904)   = {res}  3447.63
@@ -440,7 +510,8 @@ Sorted by:
 {space 14}_cons {c |}{col 21}{res}{space 2} 4.985284{col 33}{space 2}  .006473{col 44}{space 1}  770.17{col 53}{space 3}0.000{col 61}{space 4} 4.972597{col 74}{space 3} 4.997971
 {txt}{hline 20}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {res}{txt}
-{com}. eststo column_6: ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) i.race i.smsa i.married ib49.yob ib9.region // TSLS (6)
+{com}. //_14
+. eststo column_6: ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) i.race i.smsa i.married ib49.yob ib9.region // TSLS (6)
 {res}
 {txt}{col 1}Instrumental-variables 2SLS regression{col 51}Number of obs{col 67}= {res}   486,926
 {txt}{col 1}{col 51}Wald chi2({res}21{txt}){col 67}= {res}  41560.34
@@ -479,8 +550,8 @@ Sorted by:
 {txt}{space 19} {c |}
 {space 14}_cons {c |}{col 21}{res}{space 2} 5.040699{col 33}{space 2} .2120262{col 44}{space 1}   23.77{col 53}{space 3}0.000{col 61}{space 4} 4.625135{col 74}{space 3} 5.456262
 {txt}{hline 20}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{p 0 12 40}Endogenous: {res:educ}{p_end}
-{p 0 12 40}Exogenous:{space 1} {res:1.race 1.smsa 1.married 40.yob 41.yob 42.yob 43.yob 44.yob 45.yob 46.yob 47.yob 48.yob 1.region 2.region 3.region 4.region 5.region 6.region 7.region 8.region 1.qob#40.yob 1.qob#41.yob 1.qob#42.yob 1.qob#43.yob 1.qob#44.yob 1.qob#45.yob 1.qob#46.yob 1.qob#47.yob 1.qob#48.yob 1.qob#49b.yob 2.qob#40.yob 2.qob#41.yob 2.qob#42.yob 2.qob#43.yob 2.qob#44.yob 2.qob#45.yob 2.qob#46.yob 2.qob#47.yob 2.qob#48.yob 2.qob#49b.yob 3.qob#40.yob 3.qob#41.yob 3.qob#42.yob 3.qob#43.yob 3.qob#44.yob 3.qob#45.yob 3.qob#46.yob 3.qob#47.yob 3.qob#48.yob 3.qob#49b.yob}{p_end}
+{p 0 12 50}Endogenous: {res:educ}{p_end}
+{p 0 12 50}Exogenous:{space 1} {res:1.race 1.smsa 1.married 40.yob 41.yob 42.yob 43.yob 44.yob 45.yob 46.yob 47.yob 48.yob 1.region 2.region 3.region 4.region 5.region 6.region 7.region 8.region 1.qob#40.yob 1.qob#41.yob 1.qob#42.yob 1.qob#43.yob 1.qob#44.yob 1.qob#45.yob 1.qob#46.yob 1.qob#47.yob 1.qob#48.yob 1.qob#49b.yob 2.qob#40.yob 2.qob#41.yob 2.qob#42.yob 2.qob#43.yob 2.qob#44.yob 2.qob#45.yob 2.qob#46.yob 2.qob#47.yob 2.qob#48.yob 2.qob#49b.yob 3.qob#40.yob 3.qob#41.yob 3.qob#42.yob 3.qob#43.yob 3.qob#44.yob 3.qob#45.yob 3.qob#46.yob 3.qob#47.yob 3.qob#48.yob 3.qob#49b.yob}{p_end}
 
 {com}.  estat firststage
 {res}
@@ -514,7 +585,8 @@ Sorted by:
 {col 3}Sargan (score) chi2({res}29{txt}){col 26}={res}{col 28} 93.5624{txt}{col 38}(p = {res}0.0000{txt})
 {col 3}Basmann chi2({res}29{txt}){col 26}={res}{col 28} 93.5706{txt}{col 38}(p = {res}0.0000{txt})
 
-{com}. eststo column_7: regress lwklywge educ i.race i.smsa i.married i.yob i.region ageq ageqsq // OLS (7)
+{com}. //_15
+. eststo column_7: regress lwklywge educ i.race i.smsa i.married i.yob i.region ageq ageqsq // OLS (7)
 
 {txt}      Source {c |}       SS           df       MS      Number of obs   ={res}   486,926
 {txt}{hline 13}{c +}{hline 34}   F(23, 486902)   = {res}  3149.93
@@ -557,15 +629,219 @@ Sorted by:
 {txt}{space 14}_cons {c |}{col 21}{res}{space 2} 2.024643{col 33}{space 2} .6542627{col 44}{space 1}    3.09{col 53}{space 3}0.002{col 61}{space 4} .7423089{col 74}{space 3} 3.306978
 {txt}{hline 20}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {res}{txt}
+{com}. //_16
+. eststo column_8: ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) i.race i.smsa i.married ib49.yob ib9.region ageq ageqsq // TSLS (8)
+{res}{txt}note: 3.qob#48.yob omitted because of collinearity.
+{txt}note: 3.qob#49b.yob omitted because of collinearity.
+{res}
+{txt}{col 1}Instrumental-variables 2SLS regression{col 51}Number of obs{col 67}= {res}   486,926
+{txt}{col 1}{col 51}Wald chi2({res}23{txt}){col 67}= {res}  41126.26
+{txt}{col 1}{col 51}Prob > chi2{col 67}= {res}    0.0000
+{txt}{col 1}{col 51}R-squared{col 67}= {res}    0.1160
+{txt}{col 51}Root MSE{col 67}=    {res} .60678
+
+{txt}{hline 20}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           lwklywge{col 21}{c |} Coefficient{col 33}  Std. err.{col 45}      z{col 53}   P>|z|{col 61}     [95% con{col 74}f. interval]
+{hline 20}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 15}educ {c |}{col 21}{res}{space 2} .0778794{col 33}{space 2} .0238719{col 44}{space 1}    3.26{col 53}{space 3}0.001{col 61}{space 4} .0310913{col 74}{space 3} .1246675
+{txt}{space 13}1.race {c |}{col 21}{res}{space 2}-.1786508{col 33}{space 2} .0298591{col 44}{space 1}   -5.98{col 53}{space 3}0.000{col 61}{space 4}-.2371737{col 74}{space 3} -.120128
+{txt}{space 13}1.smsa {c |}{col 21}{res}{space 2} -.118195{col 33}{space 2} .0219906{col 44}{space 1}   -5.37{col 53}{space 3}0.000{col 61}{space 4}-.1612958{col 74}{space 3}-.0750942
+{txt}{space 10}1.married {c |}{col 21}{res}{space 2} .2450111{col 33}{space 2} .0022881{col 44}{space 1}  107.08{col 53}{space 3}0.000{col 61}{space 4} .2405264{col 74}{space 3} .2494958
+{txt}{space 19} {c |}
+{space 16}yob {c |}
+{space 16}40  {c |}{col 21}{res}{space 2} .0694201{col 33}{space 2} .0332307{col 44}{space 1}    2.09{col 53}{space 3}0.037{col 61}{space 4} .0042891{col 74}{space 3}  .134551
+{txt}{space 16}41  {c |}{col 21}{res}{space 2} .0661282{col 33}{space 2} .0279558{col 44}{space 1}    2.37{col 53}{space 3}0.018{col 61}{space 4} .0113359{col 74}{space 3} .1209205
+{txt}{space 16}42  {c |}{col 21}{res}{space 2} .0598051{col 33}{space 2} .0244168{col 44}{space 1}    2.45{col 53}{space 3}0.014{col 61}{space 4} .0119491{col 74}{space 3} .1076612
+{txt}{space 16}43  {c |}{col 21}{res}{space 2}  .061215{col 33}{space 2} .0210718{col 44}{space 1}    2.91{col 53}{space 3}0.004{col 61}{space 4}  .019915{col 74}{space 3} .1025149
+{txt}{space 16}44  {c |}{col 21}{res}{space 2} .0454745{col 33}{space 2} .0183422{col 44}{space 1}    2.48{col 53}{space 3}0.013{col 61}{space 4} .0095245{col 74}{space 3} .0814246
+{txt}{space 16}45  {c |}{col 21}{res}{space 2} .0353133{col 33}{space 2} .0160197{col 44}{space 1}    2.20{col 53}{space 3}0.027{col 61}{space 4} .0039152{col 74}{space 3} .0667114
+{txt}{space 16}46  {c |}{col 21}{res}{space 2} .0233468{col 33}{space 2} .0131575{col 44}{space 1}    1.77{col 53}{space 3}0.076{col 61}{space 4}-.0024415{col 74}{space 3} .0491351
+{txt}{space 16}47  {c |}{col 21}{res}{space 2} .0134784{col 33}{space 2} .0100404{col 44}{space 1}    1.34{col 53}{space 3}0.179{col 61}{space 4}-.0062004{col 74}{space 3} .0331571
+{txt}{space 16}48  {c |}{col 21}{res}{space 2} .0041175{col 33}{space 2} .0061689{col 44}{space 1}    0.67{col 53}{space 3}0.504{col 61}{space 4}-.0079733{col 74}{space 3} .0162083
+{txt}{space 19} {c |}
+{space 13}region {c |}
+{space 7}New England  {c |}{col 21}{res}{space 2}-.0842096{col 33}{space 2} .0089382{col 44}{space 1}   -9.42{col 53}{space 3}0.000{col 61}{space 4}-.1017283{col 74}{space 3} -.066691
+{txt}{space 6}Mid Atlantic  {c |}{col 21}{res}{space 2}-.0019918{col 33}{space 2} .0118723{col 44}{space 1}   -0.17{col 53}{space 3}0.867{col 61}{space 4}-.0252611{col 74}{space 3} .0212775
+{txt}East-North-Central  {c |}{col 21}{res}{space 2} .0635762{col 33}{space 2} .0193291{col 44}{space 1}    3.29{col 53}{space 3}0.001{col 61}{space 4} .0256918{col 74}{space 3} .1014606
+{txt}West-North-Central  {c |}{col 21}{res}{space 2} -.059055{col 33}{space 2} .0108965{col 44}{space 1}   -5.42{col 53}{space 3}0.000{col 61}{space 4}-.0804118{col 74}{space 3}-.0376982
+{txt}{space 4}South Atlantic  {c |}{col 21}{res}{space 2}-.0834619{col 33}{space 2} .0201841{col 44}{space 1}   -4.14{col 53}{space 3}0.000{col 61}{space 4}-.1230221{col 74}{space 3}-.0439017
+{txt}East-South-Central  {c |}{col 21}{res}{space 2}-.0882407{col 33}{space 2}  .029919{col 44}{space 1}   -2.95{col 53}{space 3}0.003{col 61}{space 4} -.146881{col 74}{space 3}-.0296005
+{txt}West-South-Central  {c |}{col 21}{res}{space 2}-.0413585{col 33}{space 2} .0158921{col 44}{space 1}   -2.60{col 53}{space 3}0.009{col 61}{space 4}-.0725064{col 74}{space 3}-.0102106
+{txt}{space 10}Mountain  {c |}{col 21}{res}{space 2}-.0667399{col 33}{space 2} .0045836{col 44}{space 1}  -14.56{col 53}{space 3}0.000{col 61}{space 4}-.0757236{col 74}{space 3}-.0577561
+{txt}{space 19} {c |}
+{space 15}ageq {c |}{col 21}{res}{space 2} .1214942{col 33}{space 2} .0473933{col 44}{space 1}    2.56{col 53}{space 3}0.010{col 61}{space 4} .0286051{col 74}{space 3} .2143834
+{txt}{space 13}ageqsq {c |}{col 21}{res}{space 2}-.0014596{col 33}{space 2} .0007093{col 44}{space 1}   -2.06{col 53}{space 3}0.040{col 61}{space 4}-.0028497{col 74}{space 3}-.0000694
+{txt}{space 14}_cons {c |}{col 21}{res}{space 2} 2.124466{col 33}{space 2}  .664537{col 44}{space 1}    3.20{col 53}{space 3}0.001{col 61}{space 4}  .821997{col 74}{space 3} 3.426934
+{txt}{hline 20}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 12 50}Endogenous: {res:educ}{p_end}
+{p 0 12 50}Exogenous:{space 1} {res:1.race 1.smsa 1.married 40.yob 41.yob 42.yob 43.yob 44.yob 45.yob 46.yob 47.yob 48.yob 1.region 2.region 3.region 4.region 5.region 6.region 7.region 8.region ageq ageqsq 1.qob#40.yob 1.qob#41.yob 1.qob#42.yob 1.qob#43.yob 1.qob#44.yob 1.qob#45.yob 1.qob#46.yob 1.qob#47.yob 1.qob#48.yob 1.qob#49b.yob 2.qob#40.yob 2.qob#41.yob 2.qob#42.yob 2.qob#43.yob 2.qob#44.yob 2.qob#45.yob 2.qob#46.yob 2.qob#47.yob 2.qob#48.yob 2.qob#49b.yob 3.qob#40.yob 3.qob#41.yob 3.qob#42.yob 3.qob#43.yob 3.qob#44.yob 3.qob#45.yob 3.qob#46.yob 3.qob#47.yob}{p_end}
+
 {com}.  estat firststage
-{err}{bf:estat} {bf:firststage} not valid
-{txt}{search r(321), local:r(321);}
+{res}
+{txt}{col 3}First-stage regression summary statistics
+{res}{col 3}{text}{hline 13}{c TT}{hline 12}{hline 12}{hline 12}{hline 12}{hline 12}
+{col 16}{c |}{col 29}Adjusted{col 43}Partial
+{col 3}{text}    Variable{col 16}{c |}   R-sq.{col 29}   R-sq.{col 41}    R-sq.{col 53}F(28,486875){col 65}  Prob > F
+{res}{col 3}{text}{hline 13}{c +}{hline 12}{hline 12}{hline 12}{hline 12}{hline 12}
+{col 3}{text}        educ{col 16}{c |}{result}{space 2}0.0504{col 29}{space 2}0.0504{col 41}{space 3}0.0002{col 53}{space 3} 2.73609{col 65}{space 3}0.0000
+{col 3}{text}{hline 13}{c BT}{hline 12}{hline 12}{hline 12}{hline 12}{hline 12}
 
-end of do-file
 
-{com}. 
-. 
-. 
-{txt}end of do-file
+{col 3}Minimum eigenvalue statistic = {res}2.73573     
 
-{com}. exit, clear
+{txt}{col 3}Critical Values{col 40}# of endogenous regressors:{res}    1
+{txt}{col 3}H0: Instruments are weak{col 40}# of excluded instruments: {res}   28
+{txt}{col 3}{hline 35}{c TT}{hline 33}
+{col 38}{c |}{col 43}5%     10%     20%     30%
+{col 3}2SLS relative bias{col 38}{c |}{res}{col 41}21.42{col 49}11.34{col 57} 6.13{col 65} 4.32
+{txt}{col 3}{hline 35}{c +}{hline 33}
+{col 38}{c |}{col 42}10%     15%     20%     25%
+{col 3}2SLS size of nominal 5% Wald test{col 38}{c |}{res}{col 41}81.40{col 49}42.37{col 57}29.12{col 65}22.43
+{txt}{col 3}LIML size of nominal 5% Wald test{col 38}{c |}{res}{col 41} 3.86{col 49} 2.20{col 57} 1.92{col 65} 1.77
+{txt}{col 3}{hline 35}{c BT}{hline 33}
+
+{res}{txt}
+{com}.  estat overid
+
+{txt}{col 3}Tests of overidentifying restrictions:
+
+{col 3}Sargan (score) chi2({res}27{txt}){col 26}={res}{col 28} 50.5825{txt}{col 38}(p = {res}0.0039{txt})
+{col 3}Basmann chi2({res}27{txt}){col 26}={res}{col 28} 50.5825{txt}{col 38}(p = {res}0.0039{txt})
+
+{com}. //_17
+. estimates dir
+
+{txt}{hline 13}{c TT}{hline 71}
+             {c |}           Dependent  Number of        
+        Name {c |} Command    variable     param.  Title 
+{hline 13}{c +}{hline 71}
+{ralign 12:{stata estimates replay wald:wald}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:ivregress}{col 26}{ralign 9:lwklywge}{col 42}   2{col 48}{it:Instrumental-variables 2SLS regression}
+{txt}{ralign 12:{stata estimates replay qob_iv:qob_iv}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:ivregress}{col 26}{ralign 9:lwklywge}{col 42}  12{col 48}{it:Instrumental-variables 2SLS regression}
+{txt}{ralign 12:{stata estimates replay column_2:column_2}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:ivregress}{col 26}{ralign 9:lwklywge}{col 42}  12{col 48}{it:Instrumental-variables 2SLS regression}
+{txt}{ralign 12:{stata estimates replay column_3:column_3}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:regress}{col 26}{ralign 9:lwklywge}{col 42}  14{col 48}{it:Linear regression}
+{txt}{ralign 12:{stata estimates replay column_4:column_4}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:ivregress}{col 26}{ralign 9:lwklywge}{col 42}  14{col 48}{it:Instrumental-variables 2SLS regression}
+{txt}{ralign 12:{stata estimates replay column_5:column_5}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:regress}{col 26}{ralign 9:lwklywge}{col 42}  27{col 48}{it:Linear regression}
+{txt}{ralign 12:{stata estimates replay column_6:column_6}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:ivregress}{col 26}{ralign 9:lwklywge}{col 42}  27{col 48}{it:Instrumental-variables 2SLS regression}
+{txt}{ralign 12:{stata estimates replay column_7:column_7}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:regress}{col 26}{ralign 9:lwklywge}{col 42}  29{col 48}{it:Linear regression}
+{txt}{ralign 12:{stata estimates replay column_1:column_1}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:regress}{col 26}{ralign 9:lwklywge}{col 42}  12{col 48}{it:Linear regression}
+{txt}{ralign 12:{stata estimates replay column_8:column_8}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:ivregress}{col 26}{ralign 9:lwklywge}{col 42}  29{col 48}{it:Instrumental-variables 2SLS regression}
+{txt}{ralign 12:{stata estimates replay ols:ols}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:regress}{col 26}{ralign 9:lwklywge}{col 42}   2{col 48}{it:Linear regression}
+{txt}{hline 13}{c BT}{hline 71}
+
+{com}. //_18
+. esttab ols wald qob_iv, ///
+>  title("OLS and 2SLS Estimates of the Return to Education for Men Born 1940-1949: 1980 Census") ///
+>  mtitles("OLS" "1 IV" "QOB IV") ///
+>  b(4) se(4) stats(r2 N, fmt(%4.3f %9.0fc) labels("R^2" "N")) ///
+>  coeflabels(_cons Constant educ "Years of education") ///
+>  order(_cons educ) ///
+>  indicate("Birth Year Effects = *.yob") ///
+>  nodepvars nostar obslast nobaselevels varwidth(24) ///
+>  nonotes addnotes("Standard errors in parentheses." "Data source: ~1980 Census (Angrist and Krueger, 1991).")
+{res}
+{txt}OLS and 2SLS Estimates of the Return to Education for Men Born 1940-1949: 1980 Census
+{txt}{hline 63}
+{txt}                                  (1)          (2)          (3)
+{txt}                                  OLS         1 IV       QOB IV
+{txt}{hline 63}
+{txt}Constant                {res}       5.0452       5.9308       6.5095{txt}
+                        {res} {ralign 12:{txt:(}0.0042{txt:)}} {ralign 12:{txt:(}0.3599{txt:)}} {ralign 12:{txt:(}0.3535{txt:)}}{txt}
+
+{txt}Years of education      {res}       0.0554      -0.0098      -0.0612{txt}
+                        {res} {ralign 12:{txt:(}0.0003{txt:)}} {ralign 12:{txt:(}0.0265{txt:)}} {ralign 12:{txt:(}0.0257{txt:)}}{txt}
+
+{txt}Birth Year Effects      {res}           No           No          Yes{txt}
+{txt}{hline 63}
+{txt}R^2                     {res}        0.066            .            .{txt}
+{txt}N                       {res}      486,926      486,926      486,926{txt}
+{txt}{hline 63}
+{txt}Standard errors in parentheses.
+{txt}Data source: ~1980 Census (Angrist and Krueger, 1991).
+
+{com}. //_19
+. esttab ols wald qob_iv using results/Exercise_5_table_a_Readman.tex, replace ///
+>  title("OLS and 2SLS Estimates of the Return to Education for Men Born 1940-1949: 1980 Census") ///
+>  mtitles("OLS" "1 IV" "QOB IV") ///
+>  b(4) se(4) stats(r2 N, fmt(%4.3f %9.0fc) labels("\$R^2\$" "\$N\$")) ///
+>  coeflabels(_cons Constant educ "Years of education") ///
+>  order(_cons educ) ///
+>  indicate("Birth Year Effects = *.yob", labels(\checkmark \text{c -(}{c )-})) ///
+>  nodepvars nostar obslast nobaselevels varwidth(24) ///
+>  alignment(D{c -(}.{c )-}{c -(}.{c )-}{c -(}-1{c )-}) ///
+>  nonotes addnotes("Standard errors in parentheses." "Data source: ~1980 Census (Angrist and Krueger, 1991).")
+{res}{txt}(output written to {browse  `"results/Exercise_5_table_a_Readman.tex"'})
+
+{com}. //_20
+. esttab column_1 column_2 column_3 column_4, ///
+>  title("OLS and TSLS Estimates of the Return to Education for Men Born 1940-1949: 1980 Census") ///
+>  mtitles("OLS" "2SLS" "OLS" "2SLS") ///
+>  b(4) se(4) stats(r2, fmt(%4.3f) labels("R^2")) ///
+>  coeflabels(_cons Constant educ "Years of education" race "Race (1=white)" smsa "SMSA (1 = center city)" married "Married (1 = married)" ageq "Age" ageqsq "Age-squared") ///
+>  order(_cons educ race smsa married ageq ageqsq) ///
+>  indicate("9 Year-of-birth dummies = *.yob") ///
+>  nodepvars nostar obslast nobaselevels varwidth(24) ///
+>  nonotes addnotes("a. Standard errors in parentheses. Sample size is 486,926. Instruments are a full set of quarter-of-birth times year-of-birth interactions." ///
+>   "Sample consists of males born in the United States. The sample is drawn from the 5 percent samples of the 1980 Census." ///
+>   "The dependent variable is the log of weekly earnings. Age and age-squared are measured in quarters of years." ///
+>   "Each equation also includes an intercept.")
+{res}
+{txt}OLS and TSLS Estimates of the Return to Education for Men Born 1940-1949: 1980 Census
+{txt}{hline 76}
+{txt}                                  (1)          (2)          (3)          (4)
+{txt}                                  OLS         2SLS          OLS         2SLS
+{txt}{hline 76}
+{txt}Constant                {res}       5.1298       4.9069       1.6729       1.7886{txt}
+                        {res} {ralign 12:{txt:(}0.0050{txt:)}} {ralign 12:{txt:(}0.1893{txt:)}} {ralign 12:{txt:(}0.6715{txt:)}} {ralign 12:{txt:(}0.6949{txt:)}}{txt}
+
+{txt}Years of education      {res}       0.0573       0.0553       0.0573       0.0948{txt}
+                        {res} {ralign 12:{txt:(}0.0003{txt:)}} {ralign 12:{txt:(}0.0138{txt:)}} {ralign 12:{txt:(}0.0003{txt:)}} {ralign 12:{txt:(}0.0223{txt:)}}{txt}
+
+{txt}Race (1=white)          {res}                                                    {txt}
+                        {res}                                                    {txt}
+
+{txt}SMSA (1 = center city)  {res}                                                    {txt}
+                        {res}                                                    {txt}
+
+{txt}Married (1 = married)   {res}                                                    {txt}
+                        {res}                                                    {txt}
+
+{txt}Age                     {res}                                 0.1800       0.1325{txt}
+                        {res}                           {ralign 12:{txt:(}0.0389{txt:)}} {ralign 12:{txt:(}0.0486{txt:)}}{txt}
+
+{txt}Age-squared             {res}                                -0.0023      -0.0016{txt}
+                        {res}                           {ralign 12:{txt:(}0.0006{txt:)}} {ralign 12:{txt:(}0.0007{txt:)}}{txt}
+
+{txt}9 Year-of-birth dummies {res}          Yes          Yes          Yes          Yes{txt}
+{txt}{hline 76}
+{txt}R^2                     {res}        0.083        0.083        0.083        0.053{txt}
+{txt}{hline 76}
+{txt}a. Standard errors in parentheses. Sample size is 486,926. Instruments are a full set of quarter-of-birth times year-of-birth interactions.
+{txt}Sample consists of males born in the United States. The sample is drawn from the 5 percent samples of the 1980 Census.
+{txt}The dependent variable is the log of weekly earnings. Age and age-squared are measured in quarters of years.
+{txt}Each equation also includes an intercept.
+
+{com}. //_21
+. esttab column_1 column_2 column_3 column_4 using results/Exercise_5_table_b_Readman.tex, replace ///
+>  title("OLS and TSLS Estimates of the Return to Education for Men Born 1940-1949: 1980 Census") ///
+>  mtitles("OLS" "2SLS" "OLS" "2SLS") ///
+>  b(4) se(4) stats(r2, fmt(%4.3f) labels("\$R^2\$")) ///
+>  coeflabels(_cons Constant educ "Years of education" race "Race (1=white)" smsa "SMSA (1 = center city)" married "Married (1 = married)" ageq "Age" ageqsq "Age-squared") ///
+>  order(_cons educ race smsa married ageq ageqsq) ///
+>  indicate("9 Year-of-birth dummies = *.yob", labels(\text{c -(}yes{c )-} \text{c -(}no{c )-})) ///
+>  alignment(D{c -(}.{c )-}{c -(}.{c )-}{c -(}-1{c )-}) ///
+>  nodepvars nostar obslast nobaselevels varwidth(24) ///
+>  nonotes addnotes("a. Standard errors in parentheses. Sample size is 486,926. Instruments are a full set of quarter-of-birth times year-of-birth interactions." ///
+>   "Sample consists of males born in the United States. The sample is drawn from the 5 percent samples of the 1980 Census." ///
+>   "The dependent variable is the log of weekly earnings. Age and age-squared are measured in quarters of years." ///
+>   "Each equation also includes an intercept.")
+{res}{txt}(output written to {browse  `"results/Exercise_5_table_b_Readman.tex"'})
+
+{com}. //_^
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_5_Readman_.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}19 Jan 2025, 16:02:39
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
