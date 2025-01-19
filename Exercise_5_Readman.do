@@ -57,32 +57,6 @@ global lname="Readman"
    estat overid
 *** end part c
 
-* part d: Comparing the Estimates
-
-  /*
-    My Wald estimate suggests a very small negative effect of education on wages (-1%) that is not statistically
-    significant due to large standard errors, whereas Angrist and Krueger's Wald estimate from Table III indicates an economically significant positive return to education of about 10.2%. This represents an 11 percentage point difference between the estimates, with their result being more precisely estimated and statistically significant.
-  */ 
-  /*
-    The 2SLS estimates using three quarter-of-birth dummies as instruments (-5.5%) and quarter-of-birth dummies controlling for birth year (-6.1%) yield similar negative effects on weekly wages, with both estimates being similarly precise (standard errors around 0.025) and statistically significant at conventional levels.
-    The addition of birth year controls results in only a small change in the estimated return to education, suggesting the simpler specification with just quarter-of-birth instruments captures most of the relevant variation.
-  */
-
-  /*Are the over-identifying restrictions rejected in the models with
-    (a) three birth-quarter instruments or
-    (b) 29 birth-quarter/birthyear instruments?
-  */
- * test for overidentification
-
-  /*
-    Final Write-Up:
-	1.	The Wald estimate in Part B (0.055 ) differs significantly from Angrist and Krueger’s table 3 estimate ( +0.102 ), both in sign and magnitude.
-	2.	The 2SLS estimate with three birth-quarter instruments ( -0.055 ) is smaller in magnitude compared to the 2SLS estimate with 29 birth-quarter × birth-year instruments ( -0.253 ), but both suggest negative returns to education, which is counterintuitive.
-	3.	The over-identifying restrictions are rejected for both models, indicating that the instruments in both cases are invalid.
-  */
-
-*** end part d
-
 * part e: Creating a Table of Estimates from Part B
   estimates dir
 
