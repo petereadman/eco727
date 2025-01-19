@@ -40,19 +40,19 @@ global lname="Readman"
 * part c: Reproducing Angrist and Krueger’s results for Table 6
 * estimating OLS and TSLS regressions
   eststo column_1: regress lwklywge educ i.yob // OLS (1)
-  eststo column_2: ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) ib49.yob // TSLS (2)
+  eststo column_2: ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) ib49.yob, first // TSLS (2)
    estat firststage
    estat overid
   eststo column_3: regress lwklywge educ i.yob ageq ageqsq // OLS (3)
-  eststo column_4: ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) ib49.yob ageq ageqsq // TSLS (4)
+  eststo column_4: ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) ib49.yob ageq ageqsq, first // TSLS (4)
    estat firststage
    estat overid
   eststo column_5: regress lwklywge educ i.race i.smsa i.married i.yob i.region // OLS (5)
-  eststo column_6: ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) i.race i.smsa i.married ib49.yob ib9.region // TSLS (6)
+  eststo column_6: ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) i.race i.smsa i.married ib49.yob ib9.region, first // TSLS (6)
    estat firststage
    estat overid
   eststo column_7: regress lwklywge educ i.race i.smsa i.married i.yob i.region ageq ageqsq // OLS (7)
-  eststo column_8: ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) i.race i.smsa i.married ib49.yob ib9.region ageq ageqsq // TSLS (8)
+  eststo column_8: ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) i.race i.smsa i.married ib49.yob ib9.region ageq ageqsq, first // TSLS (8)
    estat firststage
    estat overid
 *** end part c
