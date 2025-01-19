@@ -21,8 +21,6 @@ global lname="Readman"
   generate q1=1 if qob==1
   replace  q1=0 if q1==.
   tab q1
-
-* add labels and save
   label variable q1 "quarter 1"
   label variable ageqsq "age quarter squared"
   describe
@@ -60,7 +58,7 @@ global lname="Readman"
 * part e: Creating a Table of Estimates from Part B
   estimates dir
 
-  * stata version
+  * write table of estimates to stata log
   esttab ols wald qob_iv, ///
    nodepvars nostar obslast nobaselevels varwidth(24) ///
    title("Least-Squares Estimates of the log-Wage Regression") ///
@@ -71,7 +69,7 @@ global lname="Readman"
    indicate("Birth Year Effects = *.yob") ///
    nonotes addnotes("Standard errors in parentheses." "Data source: 1980 Census.")
 
-  * tex version
+  * write table of estimates to tex file
   esttab ols wald qob_iv using results/Exercise_5_table_a_readman.tex, replace ///
    b(4) se(4) stats(r2 N, fmt(%4.3f %9.0fc) labels("\$R^2\$" "\$N\$")) ///
    nodepvars nostar obslast nobaselevels varwidth(24) ///
@@ -85,7 +83,7 @@ global lname="Readman"
 *** end part e
 
 * part f: Reproducing Angrist and Krueger’s Table 6
-  * stata version
+  * reproduce models 1–4 from Angrist and Krueger's Table VI for stata log
   esttab column_1 column_2 column_3 column_4, ///
    order(educ *.yob ageq ageqsq) ///
    b(4) se(4) stats(r2, fmt(%4.3f) labels("R^2")) ///
@@ -99,7 +97,7 @@ global lname="Readman"
      "The dependent variable is the log of weekly earnings. Age and age-squared are measured in quarters of years." ///
      "Each equation also includes an intercept.")
 
-  * tex version //
+  * reproduce models 1–4 from Angrist and Krueger's Table VI for tex
   esttab column_1 column_2 column_3 column_4 using results/Exercise_5_table_b_readman.tex, replace ///
    order(_cons educ *.yob ageq ageqsq) ///
    b(4) se(4) stats(r2, fmt(%4.3f) labels("\$R^2\$")) ///
