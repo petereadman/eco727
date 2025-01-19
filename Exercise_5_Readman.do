@@ -11,6 +11,7 @@ global lname="Readman"
   use "../Data/Birth Quarter.dta" if cohort==4, clear
   run data_check
   describe
+  summarize
   tabulate census
   assert census==80
   assert _N==486926

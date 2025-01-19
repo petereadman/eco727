@@ -239,10 +239,10 @@ and the number of observations matches those reported by A&amp;K.</p>
 Contains data from ../Data/Birth Quarter.dta
  Observations:       486,926                  
     Variables:            12                  18 Mar 2019 13:13
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+────────────────────────────────────────────────────────────────────────────────────────────────────────
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+────────────────────────────────────────────────────────────────────────────────────────────────────────
 age             byte    %8.0g                 
 ageq            float   %9.0g                 
 educ            byte    %8.0g                 
@@ -255,8 +255,27 @@ smsa            byte    %8.0g
 yob             byte    %8.0g                 
 cohort          byte    %9.0g      cohort     
 region          byte    %18.0g     region     
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+────────────────────────────────────────────────────────────────────────────────────────────────────────
 Sorted by: 
+
+. summarize
+
+    Variable │        Obs        Mean    Std. dev.       Min        Max
+─────────────┼─────────────────────────────────────────────────────────
+         age │    486,926    34.32047    2.874323         30         40
+        ageq │    486,926    34.69447    2.857102      30.25         40
+        educ │    486,926    13.57176    2.980226          0         20
+    lwklywge │    486,926    5.797461    .6453673  -2.341806   11.22524
+     married │    486,926    .8041468    .3968564          0          1
+─────────────┼─────────────────────────────────────────────────────────
+      census │    486,926          80           0         80         80
+         qob │    486,926    2.536987    1.115494          1          4
+        race │    486,926    .0816448    .2738232          0          1
+        smsa │    486,926    .1854923    .3886968          0          1
+         yob │    486,926    44.92129    2.843409         40         49
+─────────────┼─────────────────────────────────────────────────────────
+      cohort │    486,926           4           0          4          4
+      region │    486,926    4.794946    2.470187          1          9
 
 . tabulate census
 
@@ -270,7 +289,7 @@ Sorted by:
 
 . assert _N==486926
 </pre>
-<p>Confirmed.</p>
+<p>We have 486,926 observations, all from the 1980 census.</p>
 <p>A&amp;K’s table VI includes ‘Age’ and ‘Age-squared’ which are
 measured in quarters of years. The Birth Quarter data we’re using
 includes <code>ageq</code> (age in quarters of years) and we’ll generate
@@ -319,10 +338,10 @@ the variables we need to recreate Angrist and Krueger’s results.</p>
 Contains data from ../Data/Birth Quarter.dta
  Observations:       486,926                  
     Variables:            14                  18 Mar 2019 13:13
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+────────────────────────────────────────────────────────────────────────────────────────────────────────
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+────────────────────────────────────────────────────────────────────────────────────────────────────────
 age             byte    %8.0g                 
 ageq            float   %9.0g                 
 educ            byte    %8.0g                 
@@ -337,7 +356,7 @@ cohort          byte    %9.0g      cohort
 region          byte    %18.0g     region     
 ageqsq          float   %9.0g                 age quarter squared
 q1              float   %9.0g                 quarter 1
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+────────────────────────────────────────────────────────────────────────────────────────────────────────
 Sorted by: 
      Note: Dataset has changed since last saved.
 </pre>
@@ -811,7 +830,8 @@ West-South-Central  │   .0342179   .0045555     7.51   0.000     .0252894    .
 return to education to 5.20% (SE=0.0003), with all demographic controls
 showing significant effects on wages as expected.</p>
 <h4 id="column-6-tsls">Column 6 (TSLS)</h4>
-<pre class='stata'>. eststo column_6: ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) i.race i.smsa i.married ib49.yob ib9.region // TSLS (6)
+<pre class='stata'>. eststo column_6: ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) i.race i.smsa i.married ib49.yob ib
+> 9.region // TSLS (6)
 
 Instrumental-variables 2SLS regression            Number of obs   =    486,926
                                                   Wald chi2(21)   =   41560.34
@@ -946,8 +966,8 @@ leaves the education coefficient virtually unchanged at 5.21%
 (SE=0.0003), while the quadratic age terms remain significant and
 suggest a concave age-earnings profile.</p>
 <h4 id="column-8-2sls">Column 8 (2SLS)</h4>
-<pre class='stata'>. eststo column_8: ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) i.race i.smsa i.married ib49.yob ib9.region ageq ageqsq // TSL
-> S (8)
+<pre class='stata'>. eststo column_8: ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) i.race i.smsa i.married ib49.yob ib
+> 9.region ageq ageqsq // TSLS (8)
 note: 3.qob#48.yob omitted because of collinearity.
 note: 3.qob#49b.yob omitted because of collinearity.
 
@@ -1039,18 +1059,27 @@ F-statistic drops to 2.74, indicating severe weak instrument problems
 that make these estimates unreliable.</p>
 <hr />
 <h3 id="part-d-compare-the-estimates">Part D: Compare the Estimates</h3>
-<p>The Wald estimate for men born in the 1940s (-0.98%, SE=0.0265) is
-notably different from A&amp;K’s estimates for both the 1920s cohort
-(7.15%, SE=0.0219) and 1930s cohort (10.20%, SE=0.0239).</p>
-<p>Moving from three birth-quarter instruments to birth-quarter ×
-birth-year interactions leads to more extreme negative estimates (-6.12%
-vs -0.98%), contrary to A&amp;K’s original findings where using more
-instruments produced more precise, positive returns to education.</p>
-<h2 id="the-overidentification-tests-reject-the-null-of-valid-instruments-in-both-specifications-for-the-three-birth-quarter-instruments-p0.0043-and-for-the-29-birth-quarterbirth-year-instruments-p0.001-suggesting-potential-violations-of-the-exclusion-restriction.">The
-overidentification tests reject the null of valid instruments in both
-specifications: for the three birth-quarter instruments (p=0.0043) and
-for the 29 birth-quarter/birth-year instruments (p&lt;0.001), suggesting
-potential violations of the exclusion restriction.</h2>
+<h4 id="comparing-wald-estimates">Comparing Wald Estimates</h4>
+<p>The Wald estimate for men born in the 1940s (-0.98%, SE=0.0265)
+differs substantially from Angrist &amp; Krueger’s estimates for the
+1930s cohort (10.20%, SE=0.0239), suggesting different patterns in
+returns to education across decades. The first-stage F-statistic of
+68.38 indicates our quarter-of-birth instrument is strong.</p>
+<h4 id="comparing-instruments">Comparing Instruments</h4>
+<p>When expanding to three birth-quarter instruments, our 2SLS estimate
+becomes more negative (-6.12%, SE=0.0257) with a still-strong
+F-statistic of 28.95. However, using the full set of 29 birth-quarter ×
+birth-year interactions weakens our instruments considerably (F=6.85),
+unlike in A&amp;K’s original analysis where additional instruments
+improved precision.</p>
+<h4 id="overidentification-tests">Overidentification tests</h4>
+<p>The overidentification tests reject the null hypothesis of valid
+instruments in both specifications: with three birth-quarter instruments
+(p=0.0043) and with 29 birth-quarter/birth-year interactions
+(p&lt;0.001). This suggests that birth timing might influence wages
+through variables beyond just education, at least for this 1940s
+cohort.</p>
+<hr />
 <h3 id="part-e-create-a-table-of-estimates-from-part-b">Part E: Create a
 Table of Estimates from Part B</h3>
 <p>The results of the three regressions we ran in part B are stored in
@@ -1062,17 +1091,17 @@ what we have.</p>
              │           Dependent  Number of        
         Name │ Command    variable     param.  Title 
 ─────────────┼───────────────────────────────────────────────────────────────────────
+         ols │ regress    lwklywge          2  Linear regression
         wald │ ivregress  lwklywge          2  Instrumental-variables 2SLS regression
       qob_iv │ ivregress  lwklywge         12  Instrumental-variables 2SLS regression
+    column_1 │ regress    lwklywge         12  Linear regression
     column_2 │ ivregress  lwklywge         12  Instrumental-variables 2SLS regression
     column_3 │ regress    lwklywge         14  Linear regression
     column_4 │ ivregress  lwklywge         14  Instrumental-variables 2SLS regression
     column_5 │ regress    lwklywge         27  Linear regression
     column_6 │ ivregress  lwklywge         27  Instrumental-variables 2SLS regression
     column_7 │ regress    lwklywge         29  Linear regression
-    column_1 │ regress    lwklywge         12  Linear regression
     column_8 │ ivregress  lwklywge         29  Instrumental-variables 2SLS regression
-         ols │ regress    lwklywge          2  Linear regression
 ─────────────┴───────────────────────────────────────────────────────────────────────
 </pre>
 <p>We’ll create a table with three columns, one for each model from part
@@ -1088,7 +1117,8 @@ before exporting to LaTeX.</p>
 >  order(_cons educ) ///
 >  indicate("Birth Year Effects = *.yob") ///
 >  nodepvars nostar obslast nobaselevels varwidth(24) ///
->  nonotes addnotes("Standard errors in parentheses." "Data source: ~1980 Census (Angrist and Krueger, 1991).")
+>  nonotes addnotes("Standard errors in parentheses." "Data source: ~1980 Census (Angrist and Krueger, 1
+> 991).")
 
 OLS and 2SLS Estimates of the Return to Education for Men Born 1940-1949: 1980 Census
 ───────────────────────────────────────────────────────────────
@@ -1120,28 +1150,32 @@ presentation.</p>
 >  indicate("Birth Year Effects = *.yob", labels(\checkmark \text{})) ///
 >  nodepvars nostar obslast nobaselevels varwidth(24) ///
 >  alignment(D{.}{.}{-1}) ///
->  nonotes addnotes("Standard errors in parentheses." "Data source: ~1980 Census (Angrist and Krueger, 1991).")
+>  nonotes addnotes("Standard errors in parentheses." "Data source: ~1980 Census (Angrist and Krueger, 1
+> 991).")
 (output written to results/Exercise_5_table_a_Readman.tex)
 </pre>
 <hr />
 <h3 id="part-f-reproduce-angrist-and-kruegers-table-6">Part F: Reproduce
 Angrist and Krueger’s Table 6</h3>
 <p>Angrist and Krueger’s table VI shows restults from four OLS and four
-TSLS regressions for men born in the 1940s cohort. We’ll reporduce the
-firt four columns in the table, below.</p>
+TSLS regressions for men born in the 1940s cohort. We’ll Reproduce the
+firt four columns in the table, adding the constant for reference,
+below.</p>
 <pre class='stata'>. esttab column_1 column_2 column_3 column_4, ///
 >  title("OLS and TSLS Estimates of the Return to Education for Men Born 1940-1949: 1980 Census") ///
 >  mtitles("OLS" "2SLS" "OLS" "2SLS") ///
 >  b(4) se(4) stats(r2, fmt(%4.3f) labels("R^2")) ///
->  coeflabels(_cons Constant educ "Years of education" race "Race (1=white)" smsa "SMSA (1 = center city)" married "Married (1 = ma
-> rried)" ageq "Age" ageqsq "Age-squared") ///
+>  coeflabels(_cons Constant educ "Years of education" race "Race (1=white)" smsa "SMSA (1 = center city
+> )" married "Married (1 = married)" ageq "Age" ageqsq "Age-squared") ///
 >  order(_cons educ race smsa married ageq ageqsq) ///
 >  indicate("9 Year-of-birth dummies = *.yob") ///
 >  nodepvars nostar obslast nobaselevels varwidth(24) ///
->  nonotes addnotes("a. Standard errors in parentheses. Sample size is 486,926. Instruments are a full set of quarter-of-birth time
-> s year-of-birth interactions." ///
->   "Sample consists of males born in the United States. The sample is drawn from the 5 percent samples of the 1980 Census." ///
->   "The dependent variable is the log of weekly earnings. Age and age-squared are measured in quarters of years." ///
+>  nonotes addnotes("a. Standard errors in parentheses. Sample size is 486,926. Instruments are a full s
+> et of quarter-of-birth times year-of-birth interactions." ///
+>   "Sample consists of males born in the United States. The sample is drawn from the 5 percent samples 
+> of the 1980 Census." ///
+>   "The dependent variable is the log of weekly earnings. Age and age-squared are measured in quarters 
+> of years." ///
 >   "Each equation also includes an intercept.")
 
 OLS and TSLS Estimates of the Return to Education for Men Born 1940-1949: 1980 Census
@@ -1174,28 +1208,33 @@ Age-squared                                             -0.0023      -0.0016
 ────────────────────────────────────────────────────────────────────────────
 R^2                             0.083        0.083        0.083        0.053
 ────────────────────────────────────────────────────────────────────────────
-a. Standard errors in parentheses. Sample size is 486,926. Instruments are a full set of quarter-of-birth times year-of-birth inter
-> actions.
-Sample consists of males born in the United States. The sample is drawn from the 5 percent samples of the 1980 Census.
-The dependent variable is the log of weekly earnings. Age and age-squared are measured in quarters of years.
+a. Standard errors in parentheses. Sample size is 486,926. Instruments are a full set of quarter-of-birt
+> h times year-of-birth interactions.
+Sample consists of males born in the United States. The sample is drawn from the 5 percent samples of th
+> e 1980 Census.
+The dependent variable is the log of weekly earnings. Age and age-squared are measured in quarters of ye
+> ars.
 Each equation also includes an intercept.
 </pre>
 <p>Again, we can add some code and export this to LaTeX for more
-profesional appearance.</p>
+profesional appearance. This time, we’ll remove the constant to more
+closely match the original table.</p>
 <pre class='stata'>. esttab column_1 column_2 column_3 column_4 using results/Exercise_5_table_b_Readman.tex, replace ///
 >  title("OLS and TSLS Estimates of the Return to Education for Men Born 1940-1949: 1980 Census") ///
 >  mtitles("OLS" "2SLS" "OLS" "2SLS") ///
 >  b(4) se(4) stats(r2, fmt(%4.3f) labels("\$R^2\$")) ///
->  coeflabels(educ "Years of education" race "Race (1=white)" smsa "SMSA (1 = center city)" married "Married (1 = married)" ageq "A
-> ge" ageqsq "Age-squared") ///
+>  coeflabels(educ "Years of education" race "Race (1=white)" smsa "SMSA (1 = center city)" married "Mar
+> ried (1 = married)" ageq "Age" ageqsq "Age-squared") ///
 >  order(educ race smsa married ageq ageqsq) ///
 >  indicate("9 Year-of-birth dummies = *.yob", labels(\text{yes} \text{no})) ///
 >  alignment(D{.}{.}{-1}) ///
 >  noconstant nodepvars nostar obslast nobaselevels varwidth(24) ///
->  nonotes addnotes("a. Standard errors in parentheses. Sample size is 486,926. Instruments are a full set of quarter-of-birth time
-> s year-of-birth interactions." ///
->   "Sample consists of males born in the United States. The sample is drawn from the 5 percent samples of the 1980 Census." ///
->   "The dependent variable is the log of weekly earnings. Age and age-squared are measured in quarters of years." ///
+>  nonotes addnotes("a. Standard errors in parentheses. Sample size is 486,926. Instruments are a full s
+> et of quarter-of-birth times year-of-birth interactions." ///
+>   "Sample consists of males born in the United States. The sample is drawn from the 5 percent samples 
+> of the 1980 Census." ///
+>   "The dependent variable is the log of weekly earnings. Age and age-squared are measured in quarters 
+> of years." ///
 >   "Each equation also includes an intercept.")
 (output written to results/Exercise_5_table_b_Readman.tex)
 </pre>

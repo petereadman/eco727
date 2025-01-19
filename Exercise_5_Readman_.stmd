@@ -30,11 +30,12 @@ Table VI from Angrist and Krueger presents data from the 1940's cohort, so we'll
 Let's peak at the data. We want to make sure we have 1980 census data and the number of observations matches those reported by A&K.
 
     describe
+    summarize
     tabulate census
     assert census==80
     assert _N==486926
 
-Confirmed. 
+We have 486,926 observations, all from the 1980 census. 
 
 A&K's table VI includes 'Age' and 'Age-squared' which are measured in quarters of years. The Birth Quarter data we're using includes `ageq` (age in quarters of years) and we'll generate the required Age-squared variable from this. We're also going to need a 1st-quarter variable `q1`.
 
@@ -146,11 +147,18 @@ In this final specification with full demographic and age controls, the IV estim
 
 ### Part D: Compare the Estimates
 
-The Wald estimate for men born in the 1940s (-0.98%, SE=0.0265) is notably different from A&K's estimates for both the 1920s cohort (7.15%, SE=0.0219) and 1930s cohort (10.20%, SE=0.0239).
+#### Comparing Wald Estimates
 
-Moving from three birth-quarter instruments to birth-quarter × birth-year interactions leads to more extreme negative estimates (-6.12% vs -0.98%), contrary to A&K's original findings where using more instruments produced more precise, positive returns to education.
+The Wald estimate for men born in the 1940s (-0.98%, SE=0.0265) differs substantially from Angrist & Krueger's estimates for the 1930s cohort (10.20%, SE=0.0239), suggesting different patterns in returns to education across decades. The first-stage F-statistic of 68.38 indicates our quarter-of-birth instrument is strong.
 
-The overidentification tests reject the null of valid instruments in both specifications: for the three birth-quarter instruments (p=0.0043) and for the 29 birth-quarter/birth-year instruments (p<0.001), suggesting potential violations of the exclusion restriction.
+#### Comparing Instruments
+
+When expanding to three birth-quarter instruments, our 2SLS estimate becomes more negative (-6.12%, SE=0.0257) with a still-strong F-statistic of 28.95. However, using the full set of 29 birth-quarter × birth-year interactions weakens our instruments considerably (F=6.85), unlike in A&K's original analysis where additional instruments improved precision.
+
+#### Overidentification tests
+
+The overidentification tests reject the null hypothesis of valid instruments in both specifications: with three birth-quarter instruments (p=0.0043) and with 29 birth-quarter/birth-year interactions (p<0.001). This suggests that birth timing might influence wages through variables beyond just education, at least for this 1940s cohort.
+
 ---
 
 ### Part E: Create a Table of Estimates from Part B
@@ -188,7 +196,7 @@ From the above, we can export to a LaTeX file for a more professional presentati
 
 ### Part F: Reproduce Angrist and Krueger’s Table 6
 
-Angrist and Krueger's table VI shows restults from four OLS and four TSLS regressions for men born in the 1940s cohort. We'll reporduce the firt four columns in the table, below.
+Angrist and Krueger's table VI shows restults from four OLS and four TSLS regressions for men born in the 1940s cohort. We'll Reproduce the firt four columns in the table, adding the constant for reference, below.
 
     esttab column_1 column_2 column_3 column_4, ///
      title("OLS and TSLS Estimates of the Return to Education for Men Born 1940-1949: 1980 Census") ///
@@ -203,7 +211,7 @@ Angrist and Krueger's table VI shows restults from four OLS and four TSLS regres
       "The dependent variable is the log of weekly earnings. Age and age-squared are measured in quarters of years." ///
       "Each equation also includes an intercept.")
 
-Again, we can add some code and export this to LaTeX for more profesional appearance.
+Again, we can add some code and export this to LaTeX for more profesional appearance. This time, we'll remove the constant to more closely match the original table.
 
     esttab column_1 column_2 column_3 column_4 using results/Exercise_5_table_b_Readman.tex, replace ///
      title("OLS and TSLS Estimates of the Return to Education for Men Born 1940-1949: 1980 Census") ///

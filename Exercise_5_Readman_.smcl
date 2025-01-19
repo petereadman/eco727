@@ -3,7 +3,7 @@
       name:  {res}<unnamed>
        {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_5_Readman_.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}19 Jan 2025, 16:36:24
+ {txt}opened on:  {res}19 Jan 2025, 17:56:13
 {txt}
 {com}. //_1
 . use "../Data/Birth Quarter.dta" if cohort==4, clear
@@ -33,6 +33,25 @@ Variable      Storage   Display    Value
 {txt}{hline}
 Sorted by: 
 
+{com}. summarize
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 9}age {c |}{res}    486,926    34.32047    2.874323         30         40
+{txt}{space 8}ageq {c |}{res}    486,926    34.69447    2.857102      30.25         40
+{txt}{space 8}educ {c |}{res}    486,926    13.57176    2.980226          0         20
+{txt}{space 4}lwklywge {c |}{res}    486,926    5.797461    .6453673  -2.341806   11.22524
+{txt}{space 5}married {c |}{res}    486,926    .8041468    .3968564          0          1
+{txt}{hline 13}{c +}{hline 57}
+{space 6}census {c |}{res}    486,926          80           0         80         80
+{txt}{space 9}qob {c |}{res}    486,926    2.536987    1.115494          1          4
+{txt}{space 8}race {c |}{res}    486,926    .0816448    .2738232          0          1
+{txt}{space 8}smsa {c |}{res}    486,926    .1854923    .3886968          0          1
+{txt}{space 9}yob {c |}{res}    486,926    44.92129    2.843409         40         49
+{txt}{hline 13}{c +}{hline 57}
+{space 6}cohort {c |}{res}    486,926           4           0          4          4
+{txt}{space 6}region {c |}{res}    486,926    4.794946    2.470187          1          9
+{txt}
 {com}. tabulate census
 
      {txt}census {c |}      Freq.     Percent        Cum.
@@ -157,8 +176,8 @@ Sorted by:
 {space 8}educ {c |}{col 14}{res}{space 2}-.0098222{col 26}{space 2} .0265177{col 37}{space 1}   -0.37{col 46}{space 3}0.711{col 54}{space 4}-.0617959{col 67}{space 3} .0421516
 {txt}{space 7}_cons {c |}{col 14}{res}{space 2} 5.930765{col 26}{space 2} .3598933{col 37}{space 1}   16.48{col 46}{space 3}0.000{col 54}{space 4} 5.225387{col 67}{space 3} 6.636143
 {txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{p 0 12 55}Endogenous: {res:educ}{p_end}
-{p 0 12 55}Exogenous:{space 1} {res:q1}{p_end}
+{p 0 12 28}Endogenous: {res:educ}{p_end}
+{p 0 12 28}Exogenous:{space 1} {res:q1}{p_end}
 
 {com}.  estat firststage
 {res}
@@ -245,8 +264,8 @@ Sorted by:
 {txt}{space 12} {c |}
 {space 7}_cons {c |}{col 14}{res}{space 2} 6.509484{col 26}{space 2} .3534527{col 37}{space 1}   18.42{col 46}{space 3}0.000{col 54}{space 4}  5.81673{col 67}{space 3} 7.202239
 {txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{p 0 12 55}Endogenous: {res:educ}{p_end}
-{p 0 12 55}Exogenous:{space 1} {res:40.yob 41.yob 42.yob 43.yob 44.yob 45.yob 46.yob 47.yob 48.yob 1.qob 2.qob 3.qob}{p_end}
+{p 0 12 28}Endogenous: {res:educ}{p_end}
+{p 0 12 28}Exogenous:{space 1} {res:40.yob 41.yob 42.yob 43.yob 44.yob 45.yob 46.yob 47.yob 48.yob 1.qob 2.qob 3.qob}{p_end}
 
 {com}.  estat firststage
 {res}
@@ -336,8 +355,8 @@ Sorted by:
 {txt}{space 12} {c |}
 {space 7}_cons {c |}{col 14}{res}{space 2} 4.906853{col 26}{space 2} .1892754{col 37}{space 1}   25.92{col 46}{space 3}0.000{col 54}{space 4}  4.53588{col 67}{space 3} 5.277826
 {txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{p 0 12 55}Endogenous: {res:educ}{p_end}
-{p 0 12 55}Exogenous:{space 1} {res:40.yob 41.yob 42.yob 43.yob 44.yob 45.yob 46.yob 47.yob 48.yob 1.qob#40.yob 1.qob#41.yob 1.qob#42.yob 1.qob#43.yob 1.qob#44.yob 1.qob#45.yob 1.qob#46.yob 1.qob#47.yob 1.qob#48.yob 1.qob#49b.yob 2.qob#40.yob 2.qob#41.yob 2.qob#42.yob 2.qob#43.yob 2.qob#44.yob 2.qob#45.yob 2.qob#46.yob 2.qob#47.yob 2.qob#48.yob 2.qob#49b.yob 3.qob#40.yob 3.qob#41.yob 3.qob#42.yob 3.qob#43.yob 3.qob#44.yob 3.qob#45.yob 3.qob#46.yob 3.qob#47.yob 3.qob#48.yob 3.qob#49b.yob}{p_end}
+{p 0 12 28}Endogenous: {res:educ}{p_end}
+{p 0 12 28}Exogenous:{space 1} {res:40.yob 41.yob 42.yob 43.yob 44.yob 45.yob 46.yob 47.yob 48.yob 1.qob#40.yob 1.qob#41.yob 1.qob#42.yob 1.qob#43.yob 1.qob#44.yob 1.qob#45.yob 1.qob#46.yob 1.qob#47.yob 1.qob#48.yob 1.qob#49b.yob 2.qob#40.yob 2.qob#41.yob 2.qob#42.yob 2.qob#43.yob 2.qob#44.yob 2.qob#45.yob 2.qob#46.yob 2.qob#47.yob 2.qob#48.yob 2.qob#49b.yob 3.qob#40.yob 3.qob#41.yob 3.qob#42.yob 3.qob#43.yob 3.qob#44.yob 3.qob#45.yob 3.qob#46.yob 3.qob#47.yob 3.qob#48.yob 3.qob#49b.yob}{p_end}
 
 {com}.  estat firststage
 {res}
@@ -433,8 +452,8 @@ Sorted by:
 {txt}{space 6}ageqsq {c |}{col 14}{res}{space 2} -.001582{col 26}{space 2} .0007254{col 37}{space 1}   -2.18{col 46}{space 3}0.029{col 54}{space 4}-.0030038{col 67}{space 3}-.0001602
 {txt}{space 7}_cons {c |}{col 14}{res}{space 2} 1.788557{col 26}{space 2} .6948771{col 37}{space 1}    2.57{col 46}{space 3}0.010{col 54}{space 4} .4266227{col 67}{space 3} 3.150491
 {txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{p 0 12 55}Endogenous: {res:educ}{p_end}
-{p 0 12 55}Exogenous:{space 1} {res:40.yob 41.yob 42.yob 43.yob 44.yob 45.yob 46.yob 47.yob 48.yob ageq ageqsq 1.qob#40.yob 1.qob#41.yob 1.qob#42.yob 1.qob#43.yob 1.qob#44.yob 1.qob#45.yob 1.qob#46.yob 1.qob#47.yob 1.qob#48.yob 1.qob#49b.yob 2.qob#40.yob 2.qob#41.yob 2.qob#42.yob 2.qob#43.yob 2.qob#44.yob 2.qob#45.yob 2.qob#46.yob 2.qob#47.yob 2.qob#48.yob 2.qob#49b.yob 3.qob#40.yob 3.qob#41.yob 3.qob#42.yob 3.qob#43.yob 3.qob#44.yob 3.qob#45.yob 3.qob#46.yob 3.qob#47.yob}{p_end}
+{p 0 12 28}Endogenous: {res:educ}{p_end}
+{p 0 12 28}Exogenous:{space 1} {res:40.yob 41.yob 42.yob 43.yob 44.yob 45.yob 46.yob 47.yob 48.yob ageq ageqsq 1.qob#40.yob 1.qob#41.yob 1.qob#42.yob 1.qob#43.yob 1.qob#44.yob 1.qob#45.yob 1.qob#46.yob 1.qob#47.yob 1.qob#48.yob 1.qob#49b.yob 2.qob#40.yob 2.qob#41.yob 2.qob#42.yob 2.qob#43.yob 2.qob#44.yob 2.qob#45.yob 2.qob#46.yob 2.qob#47.yob 2.qob#48.yob 2.qob#49b.yob 3.qob#40.yob 3.qob#41.yob 3.qob#42.yob 3.qob#43.yob 3.qob#44.yob 3.qob#45.yob 3.qob#46.yob 3.qob#47.yob}{p_end}
 
 {com}.  estat firststage
 {res}
@@ -550,8 +569,8 @@ Sorted by:
 {txt}{space 19} {c |}
 {space 14}_cons {c |}{col 21}{res}{space 2} 5.040699{col 33}{space 2} .2120262{col 44}{space 1}   23.77{col 53}{space 3}0.000{col 61}{space 4} 4.625135{col 74}{space 3} 5.456262
 {txt}{hline 20}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{p 0 12 48}Endogenous: {res:educ}{p_end}
-{p 0 12 48}Exogenous:{space 1} {res:1.race 1.smsa 1.married 40.yob 41.yob 42.yob 43.yob 44.yob 45.yob 46.yob 47.yob 48.yob 1.region 2.region 3.region 4.region 5.region 6.region 7.region 8.region 1.qob#40.yob 1.qob#41.yob 1.qob#42.yob 1.qob#43.yob 1.qob#44.yob 1.qob#45.yob 1.qob#46.yob 1.qob#47.yob 1.qob#48.yob 1.qob#49b.yob 2.qob#40.yob 2.qob#41.yob 2.qob#42.yob 2.qob#43.yob 2.qob#44.yob 2.qob#45.yob 2.qob#46.yob 2.qob#47.yob 2.qob#48.yob 2.qob#49b.yob 3.qob#40.yob 3.qob#41.yob 3.qob#42.yob 3.qob#43.yob 3.qob#44.yob 3.qob#45.yob 3.qob#46.yob 3.qob#47.yob 3.qob#48.yob 3.qob#49b.yob}{p_end}
+{p 0 12 21}Endogenous: {res:educ}{p_end}
+{p 0 12 21}Exogenous:{space 1} {res:1.race 1.smsa 1.married 40.yob 41.yob 42.yob 43.yob 44.yob 45.yob 46.yob 47.yob 48.yob 1.region 2.region 3.region 4.region 5.region 6.region 7.region 8.region 1.qob#40.yob 1.qob#41.yob 1.qob#42.yob 1.qob#43.yob 1.qob#44.yob 1.qob#45.yob 1.qob#46.yob 1.qob#47.yob 1.qob#48.yob 1.qob#49b.yob 2.qob#40.yob 2.qob#41.yob 2.qob#42.yob 2.qob#43.yob 2.qob#44.yob 2.qob#45.yob 2.qob#46.yob 2.qob#47.yob 2.qob#48.yob 2.qob#49b.yob 3.qob#40.yob 3.qob#41.yob 3.qob#42.yob 3.qob#43.yob 3.qob#44.yob 3.qob#45.yob 3.qob#46.yob 3.qob#47.yob 3.qob#48.yob 3.qob#49b.yob}{p_end}
 
 {com}.  estat firststage
 {res}
@@ -673,8 +692,8 @@ Sorted by:
 {txt}{space 13}ageqsq {c |}{col 21}{res}{space 2}-.0014596{col 33}{space 2} .0007093{col 44}{space 1}   -2.06{col 53}{space 3}0.040{col 61}{space 4}-.0028497{col 74}{space 3}-.0000694
 {txt}{space 14}_cons {c |}{col 21}{res}{space 2} 2.124466{col 33}{space 2}  .664537{col 44}{space 1}    3.20{col 53}{space 3}0.001{col 61}{space 4}  .821997{col 74}{space 3} 3.426934
 {txt}{hline 20}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{p 0 12 48}Endogenous: {res:educ}{p_end}
-{p 0 12 48}Exogenous:{space 1} {res:1.race 1.smsa 1.married 40.yob 41.yob 42.yob 43.yob 44.yob 45.yob 46.yob 47.yob 48.yob 1.region 2.region 3.region 4.region 5.region 6.region 7.region 8.region ageq ageqsq 1.qob#40.yob 1.qob#41.yob 1.qob#42.yob 1.qob#43.yob 1.qob#44.yob 1.qob#45.yob 1.qob#46.yob 1.qob#47.yob 1.qob#48.yob 1.qob#49b.yob 2.qob#40.yob 2.qob#41.yob 2.qob#42.yob 2.qob#43.yob 2.qob#44.yob 2.qob#45.yob 2.qob#46.yob 2.qob#47.yob 2.qob#48.yob 2.qob#49b.yob 3.qob#40.yob 3.qob#41.yob 3.qob#42.yob 3.qob#43.yob 3.qob#44.yob 3.qob#45.yob 3.qob#46.yob 3.qob#47.yob}{p_end}
+{p 0 12 21}Endogenous: {res:educ}{p_end}
+{p 0 12 21}Exogenous:{space 1} {res:1.race 1.smsa 1.married 40.yob 41.yob 42.yob 43.yob 44.yob 45.yob 46.yob 47.yob 48.yob 1.region 2.region 3.region 4.region 5.region 6.region 7.region 8.region ageq ageqsq 1.qob#40.yob 1.qob#41.yob 1.qob#42.yob 1.qob#43.yob 1.qob#44.yob 1.qob#45.yob 1.qob#46.yob 1.qob#47.yob 1.qob#48.yob 1.qob#49b.yob 2.qob#40.yob 2.qob#41.yob 2.qob#42.yob 2.qob#43.yob 2.qob#44.yob 2.qob#45.yob 2.qob#46.yob 2.qob#47.yob 2.qob#48.yob 2.qob#49b.yob 3.qob#40.yob 3.qob#41.yob 3.qob#42.yob 3.qob#43.yob 3.qob#44.yob 3.qob#45.yob 3.qob#46.yob 3.qob#47.yob}{p_end}
 
 {com}.  estat firststage
 {res}
@@ -715,17 +734,17 @@ Sorted by:
              {c |}           Dependent  Number of        
         Name {c |} Command    variable     param.  Title 
 {hline 13}{c +}{hline 71}
-{ralign 12:{stata estimates replay wald:wald}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:ivregress}{col 26}{ralign 9:lwklywge}{col 42}   2{col 48}{it:Instrumental-variables 2SLS regression}
+{ralign 12:{stata estimates replay ols:ols}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:regress}{col 26}{ralign 9:lwklywge}{col 42}   2{col 48}{it:Linear regression}
+{txt}{ralign 12:{stata estimates replay wald:wald}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:ivregress}{col 26}{ralign 9:lwklywge}{col 42}   2{col 48}{it:Instrumental-variables 2SLS regression}
 {txt}{ralign 12:{stata estimates replay qob_iv:qob_iv}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:ivregress}{col 26}{ralign 9:lwklywge}{col 42}  12{col 48}{it:Instrumental-variables 2SLS regression}
+{txt}{ralign 12:{stata estimates replay column_1:column_1}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:regress}{col 26}{ralign 9:lwklywge}{col 42}  12{col 48}{it:Linear regression}
 {txt}{ralign 12:{stata estimates replay column_2:column_2}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:ivregress}{col 26}{ralign 9:lwklywge}{col 42}  12{col 48}{it:Instrumental-variables 2SLS regression}
 {txt}{ralign 12:{stata estimates replay column_3:column_3}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:regress}{col 26}{ralign 9:lwklywge}{col 42}  14{col 48}{it:Linear regression}
 {txt}{ralign 12:{stata estimates replay column_4:column_4}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:ivregress}{col 26}{ralign 9:lwklywge}{col 42}  14{col 48}{it:Instrumental-variables 2SLS regression}
 {txt}{ralign 12:{stata estimates replay column_5:column_5}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:regress}{col 26}{ralign 9:lwklywge}{col 42}  27{col 48}{it:Linear regression}
 {txt}{ralign 12:{stata estimates replay column_6:column_6}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:ivregress}{col 26}{ralign 9:lwklywge}{col 42}  27{col 48}{it:Instrumental-variables 2SLS regression}
 {txt}{ralign 12:{stata estimates replay column_7:column_7}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:regress}{col 26}{ralign 9:lwklywge}{col 42}  29{col 48}{it:Linear regression}
-{txt}{ralign 12:{stata estimates replay column_1:column_1}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:regress}{col 26}{ralign 9:lwklywge}{col 42}  12{col 48}{it:Linear regression}
 {txt}{ralign 12:{stata estimates replay column_8:column_8}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:ivregress}{col 26}{ralign 9:lwklywge}{col 42}  29{col 48}{it:Instrumental-variables 2SLS regression}
-{txt}{ralign 12:{stata estimates replay ols:ols}}{col 14}{txt:{c |}}{res}{col 16}{lalign 10:regress}{col 26}{ralign 9:lwklywge}{col 42}   2{col 48}{it:Linear regression}
 {txt}{hline 13}{c BT}{hline 71}
 
 {com}. //_18
@@ -841,7 +860,7 @@ Sorted by:
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}/Users/peterreadman/Dropbox/@10,000 feet and Runway/MA in Economics at Hunter/ECO 727 - Data Analysis and Research Methods/Analysis/Exercise_5_Readman_.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}19 Jan 2025, 16:39:28
+ {txt}closed on:  {res}19 Jan 2025, 18:02:36
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
