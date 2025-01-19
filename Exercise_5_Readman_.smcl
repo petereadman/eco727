@@ -568,4 +568,4 @@ end of do-file
 . 
 {txt}end of do-file
 
-{com}. 
+{com}. exit, clear

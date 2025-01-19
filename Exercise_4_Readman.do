@@ -41,24 +41,6 @@ global numyear=$eyear-$syear+1
    testparm i.year
 *** end part c
 
-* part d: estimate year-specific grade coefficients
-  regress lrwage year#c.grade experience exp2 female i.race i.region i.occupation i.industry i.year [pw=earnwt]
-  matrix b = e(b)[1, 1..$numyear]' // store year#c.grade coefficients as column vector 'b'
-  clear
-  svmat2 b, names(grade_coef) rnames(tag)
-  list, noobs
-  generate year=real(substr(tag, 1, 4))
-  drop tag
-  order year grade_coef
-  replace grade_coef = grade_coef * 100 // convert to percentages
-  format grade_coef %4.1f
-  list, noobs
-  describe
-  summarize
-  tempfile temp1
-  save `temp1', replace
-*** end part d
-
 * part e: merging the grade coefficients with the 90-10 differential (in logs)
   use "../Data/CPS-ORG, Wage Percentiles, 1982-2024.dta", clear
    keep year ldiff
