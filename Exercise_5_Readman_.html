@@ -239,10 +239,10 @@ and the number of observations matches those reported by A&amp;K.</p>
 Contains data from ../Data/Birth Quarter.dta
  Observations:       486,926                  
     Variables:            12                  18 Mar 2019 13:13
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 age             byte    %8.0g                 
 ageq            float   %9.0g                 
 educ            byte    %8.0g                 
@@ -255,7 +255,7 @@ smsa            byte    %8.0g
 yob             byte    %8.0g                 
 cohort          byte    %9.0g      cohort     
 region          byte    %18.0g     region     
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 Sorted by: 
 
 . tabulate census
@@ -319,10 +319,10 @@ the variables we need to recreate Angrist and Krueger’s results.</p>
 Contains data from ../Data/Birth Quarter.dta
  Observations:       486,926                  
     Variables:            14                  18 Mar 2019 13:13
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 age             byte    %8.0g                 
 ageq            float   %9.0g                 
 educ            byte    %8.0g                 
@@ -337,7 +337,7 @@ cohort          byte    %9.0g      cohort
 region          byte    %18.0g     region     
 ageqsq          float   %9.0g                 age quarter squared
 q1              float   %9.0g                 quarter 1
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 Sorted by: 
      Note: Dataset has changed since last saved.
 </pre>
@@ -946,8 +946,8 @@ leaves the education coefficient virtually unchanged at 5.21%
 (SE=0.0003), while the quadratic age terms remain significant and
 suggest a concave age-earnings profile.</p>
 <h4 id="column-8-2sls">Column 8 (2SLS)</h4>
-<pre class='stata'>. eststo column_8: ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) i.race i.smsa i.married ib49.yob ib9.region ageq ageqsq // TSLS 
-> (8)
+<pre class='stata'>. eststo column_8: ivregress 2sls lwklywge (educ = ib4.qob#ib49.yob) i.race i.smsa i.married ib49.yob ib9.region ageq ageqsq // TSL
+> S (8)
 note: 3.qob#48.yob omitted because of collinearity.
 note: 3.qob#49b.yob omitted because of collinearity.
 
@@ -1133,13 +1133,13 @@ firt four columns in the table, below.</p>
 >  title("OLS and TSLS Estimates of the Return to Education for Men Born 1940-1949: 1980 Census") ///
 >  mtitles("OLS" "2SLS" "OLS" "2SLS") ///
 >  b(4) se(4) stats(r2, fmt(%4.3f) labels("R^2")) ///
->  coeflabels(_cons Constant educ "Years of education" race "Race (1=white)" smsa "SMSA (1 = center city)" married "Married (1 = marr
-> ied)" ageq "Age" ageqsq "Age-squared") ///
+>  coeflabels(_cons Constant educ "Years of education" race "Race (1=white)" smsa "SMSA (1 = center city)" married "Married (1 = ma
+> rried)" ageq "Age" ageqsq "Age-squared") ///
 >  order(_cons educ race smsa married ageq ageqsq) ///
 >  indicate("9 Year-of-birth dummies = *.yob") ///
 >  nodepvars nostar obslast nobaselevels varwidth(24) ///
->  nonotes addnotes("a. Standard errors in parentheses. Sample size is 486,926. Instruments are a full set of quarter-of-birth times 
-> year-of-birth interactions." ///
+>  nonotes addnotes("a. Standard errors in parentheses. Sample size is 486,926. Instruments are a full set of quarter-of-birth time
+> s year-of-birth interactions." ///
 >   "Sample consists of males born in the United States. The sample is drawn from the 5 percent samples of the 1980 Census." ///
 >   "The dependent variable is the log of weekly earnings. Age and age-squared are measured in quarters of years." ///
 >   "Each equation also includes an intercept.")
@@ -1174,8 +1174,8 @@ Age-squared                                             -0.0023      -0.0016
 ────────────────────────────────────────────────────────────────────────────
 R^2                             0.083        0.083        0.083        0.053
 ────────────────────────────────────────────────────────────────────────────
-a. Standard errors in parentheses. Sample size is 486,926. Instruments are a full set of quarter-of-birth times year-of-birth interac
-> tions.
+a. Standard errors in parentheses. Sample size is 486,926. Instruments are a full set of quarter-of-birth times year-of-birth inter
+> actions.
 Sample consists of males born in the United States. The sample is drawn from the 5 percent samples of the 1980 Census.
 The dependent variable is the log of weekly earnings. Age and age-squared are measured in quarters of years.
 Each equation also includes an intercept.
@@ -1186,14 +1186,14 @@ profesional appearance.</p>
 >  title("OLS and TSLS Estimates of the Return to Education for Men Born 1940-1949: 1980 Census") ///
 >  mtitles("OLS" "2SLS" "OLS" "2SLS") ///
 >  b(4) se(4) stats(r2, fmt(%4.3f) labels("\$R^2\$")) ///
->  coeflabels(_cons Constant educ "Years of education" race "Race (1=white)" smsa "SMSA (1 = center city)" married "Married (1 = marr
-> ied)" ageq "Age" ageqsq "Age-squared") ///
->  order(_cons educ race smsa married ageq ageqsq) ///
+>  coeflabels(educ "Years of education" race "Race (1=white)" smsa "SMSA (1 = center city)" married "Married (1 = married)" ageq "A
+> ge" ageqsq "Age-squared") ///
+>  order(educ race smsa married ageq ageqsq) ///
 >  indicate("9 Year-of-birth dummies = *.yob", labels(\text{yes} \text{no})) ///
 >  alignment(D{.}{.}{-1}) ///
->  nodepvars nostar obslast nobaselevels varwidth(24) ///
->  nonotes addnotes("a. Standard errors in parentheses. Sample size is 486,926. Instruments are a full set of quarter-of-birth times 
-> year-of-birth interactions." ///
+>  noconstant nodepvars nostar obslast nobaselevels varwidth(24) ///
+>  nonotes addnotes("a. Standard errors in parentheses. Sample size is 486,926. Instruments are a full set of quarter-of-birth time
+> s year-of-birth interactions." ///
 >   "Sample consists of males born in the United States. The sample is drawn from the 5 percent samples of the 1980 Census." ///
 >   "The dependent variable is the log of weekly earnings. Age and age-squared are measured in quarters of years." ///
 >   "Each equation also includes an intercept.")

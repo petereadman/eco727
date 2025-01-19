@@ -102,11 +102,11 @@ global lname="Readman"
    title("OLS and TSLS Estimates of the Return to Education for Men Born 1940-1949: 1980 Census") ///
    mtitles("OLS" "2SLS" "OLS" "2SLS") ///
    b(4) se(4) stats(r2, fmt(%4.3f) labels("\$R^2\$")) ///
-   coeflabels(_cons Constant educ "Years of education" race "Race (1=white)" smsa "SMSA (1 = center city)" married "Married (1 = married)" ageq "Age" ageqsq "Age-squared") ///
-   order(_cons educ race smsa married ageq ageqsq) ///
+   coeflabels(educ "Years of education" race "Race (1=white)" smsa "SMSA (1 = center city)" married "Married (1 = married)" ageq "Age" ageqsq "Age-squared") ///
+   order(educ race smsa married ageq ageqsq) ///
    indicate("9 Year-of-birth dummies = *.yob", labels(\text{yes} \text{no})) ///
    alignment(D{.}{.}{-1}) ///
-   nodepvars nostar obslast nobaselevels varwidth(24) ///
+   noconstant nodepvars nostar obslast nobaselevels varwidth(24) ///
    nonotes addnotes("a. Standard errors in parentheses. Sample size is 486,926. Instruments are a full set of quarter-of-birth times year-of-birth interactions." ///
      "Sample consists of males born in the United States. The sample is drawn from the 5 percent samples of the 1980 Census." ///
      "The dependent variable is the log of weekly earnings. Age and age-squared are measured in quarters of years." ///
